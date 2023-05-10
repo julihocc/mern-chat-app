@@ -56,7 +56,7 @@ const typeDefs = gql`
         sendMessage(senderId:ID!, chatRoomId: ID!,  body: String!): Message!
         sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
         acceptContactRequest(senderId: ID!, recipientId:ID!): ContactRequest!
-        rejectContactRequest(senderIds: ID!, recipientId:ID!): ContactRequest!
+        rejectContactRequest(senderId: ID!, recipientId:ID!): ContactRequest!
         createChatRoom(participantIds: [ID!]!): ChatRoom!
     }
 
