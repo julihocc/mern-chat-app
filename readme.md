@@ -1,4 +1,4 @@
-| Name               | Goal                                                         | Status | Sealed              | Notes                                                        |
+| Name               | Goal                                                         | Status | Commit              | Notes                                                        |
 | ------------------ | ------------------------------------------------------------ | ------ | ------------------- | ------------------------------------------------------------ |
 | Aflutter 3697      |                                                              | OK     | 2023-04-06          |                                                              |
 | Whoever0408        | Be able to send, accept and reject contact request           | OK     | 2023-04-14          | Able to send, accept and reject contact request              |
@@ -25,6 +25,6 @@
 | PixelPal87         | refactor \ContactRequests.js                                 | OK     | 2023-05-10 17:57    |                                                              |
 | MidnightEcho       | refactor mutations in smaller files                          | OK     | 2023-05-11 10:57    |                                                              |
 | Brook8674          | group conversations feature                                  | OK     | 2023-05-11 12:09    |                                                              |
-| Surging3773        | I should show emails instead ids                             | OK     | 2023-05-11 13:32    | Now, chat lists are showing participant emails               |
+| Surging3773        | I should show emails instead ids                             | OK     | 2023-05-11 13:34    | Now, chat lists are showing participant emails               |
 |                    |                                                              |        |                     |                                                              |
 
