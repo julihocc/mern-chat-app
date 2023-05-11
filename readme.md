@@ -24,5 +24,5 @@
 | ElectricEagle9     | refactor ChatRoom component                                  | OK     | 2023-05-10 17:38    |                                                              |
 | PixelPal87         | refactor \ContactRequests.js                                 | OK     | 2023-05-10 17:57    |                                                              |
 | MidnightEcho       | refactor mutations in smaller files                          | OK     | 2023-05-11 10:57    |                                                              |
-| Brook8674          | group conversations feature                                  |        |                     |                                                              |
+| Brook8674          | group conversations feature                                  | OK     | 2023-05-11 12:09    | I need to show emails instead ids                            |
 

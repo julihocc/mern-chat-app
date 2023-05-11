@@ -58,6 +58,7 @@ const typeDefs = gql`
         acceptContactRequest(senderId: ID!, recipientId:ID!): ContactRequest!
         rejectContactRequest(senderId: ID!, recipientId:ID!): ContactRequest!
         createChatRoom(participantIds: [ID!]!): ChatRoom!
+        createGroupConversation(emails: [String!]!): ChatRoom!
     }
 
     type Subscription {

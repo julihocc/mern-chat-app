@@ -2,6 +2,7 @@
 const { Schema, model } = require('mongoose');
 
 function arrayLimit(val) {
+    console.log('arrayLimit: val: ', val)
     return val.length >= 2;
 }
 

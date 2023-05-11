@@ -9,6 +9,7 @@ import gql from 'graphql-tag';
 import ChatList from "./ChatList";
 import SendContactRequest from "./SendContactRequest";
 import ContactRequests  from "./ContactRequests";
+import CreateGroupConversation from "./CreateGroupConversation";
 
 export const GET_CURRENT_USER = gql`
     query GetCurrentUser {
@@ -47,6 +48,7 @@ const Dashboard = () => {
             <p>Welcome, {getCurrentUser.email}!</p>
             <p>Your user ID is: {getCurrentUser.id}</p>
             <ContactRequests userId={getCurrentUser.id} />
+            <CreateGroupConversation userEmail={getCurrentUser.email} />
             <SendContactRequest />
             <ChatList />
             <button onClick={handleLogout}>Logout</button>

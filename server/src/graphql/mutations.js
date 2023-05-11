@@ -5,6 +5,7 @@ const acceptContactRequest = require('./acceptContactRequest');
 const rejectContactRequest = require('./rejectContactRequest');
 const createChatRoom = require('./createChatRoom');
 const sendMessage = require('./sendMessage');
+const createGroupConversation = require('./createGroupConversation');
 
 const mutations = {
     signUp,
@@ -13,7 +14,8 @@ const mutations = {
     acceptContactRequest,
     rejectContactRequest,
     createChatRoom,
-    sendMessage
+    sendMessage,
+    createGroupConversation
 };
 
 module.exports = mutations;
