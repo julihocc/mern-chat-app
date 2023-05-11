@@ -103,6 +103,13 @@ const queries = {
     getChatRoomsByUserId: async (parent, {userId}) => {
         const chatRooms = await ChatRoom.find({participantIds: userId});
         return chatRooms;
+    },
+
+    getUsersById: async (parent, {userIds}) => {
+        console.log("Calling getUsersById", userIds)
+        const users = await User.find({_id: {$in: userIds}});
+        console.log('users', !!users)
+        return users;
     }
 };
 

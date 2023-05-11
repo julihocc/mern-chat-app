@@ -1,9 +1,9 @@
-| Name               | Notes                                                        | Status | Sealed              | Notes                                                        |
+| Name               | Goal                                                         | Status | Sealed              | Notes                                                        |
 | ------------------ | ------------------------------------------------------------ | ------ | ------------------- | ------------------------------------------------------------ |
 | Aflutter 3697      |                                                              | OK     | 2023-04-06          |                                                              |
-| Whoever0408        |                                                              | OK     | 2023-04-14          | Able to send, accept and reject contact request              |
-| Greasily3518       |                                                              | Failed | 2023-04-21          | I lost ContactRequestList functionality                      |
-| Chowtime0858       |                                                              | OK     | 2023-04-26          | Showing again Contact request list                           |
+| Whoever0408        | Be able to send, accept and reject contact request           | OK     | 2023-04-14          | Able to send, accept and reject contact request              |
+| Greasily3518       | Show again Contact Request                                   | Failed | 2023-04-21          | I lost ContactRequestList functionality                      |
+| Chowtime0858       | Show again Contact Request                                   | OK     | 2023-04-26          | Showing again Contact request list                           |
 | Little1132         | Need to recover accept and reject requests funcionalities    | OK     | 2023-04-28          | Accept request funcionality recovered.                       |
 | Duffel6447         | Enable conversations one-to-one real-time conversations      | OK     | 2023-04-28 16:24    | Logic for one-to-one real-time conversations completed       |
 | Elf8580            | Remove socket.io                                             | Failed | 2023-04-28 22:53    | I remove socket.io and eliminated any error on console, but I don't know if logics is going to work. |
@@ -24,5 +24,7 @@
 | ElectricEagle9     | refactor ChatRoom component                                  | OK     | 2023-05-10 17:38    |                                                              |
 | PixelPal87         | refactor \ContactRequests.js                                 | OK     | 2023-05-10 17:57    |                                                              |
 | MidnightEcho       | refactor mutations in smaller files                          | OK     | 2023-05-11 10:57    |                                                              |
-| Brook8674          | group conversations feature                                  | OK     | 2023-05-11 12:09    | I need to show emails instead ids                            |
+| Brook8674          | group conversations feature                                  | OK     | 2023-05-11 12:09    |                                                              |
+| Surging3773        | I should show emails instead ids                             | OK     | 2023-05-11 13:32    | Now, chat lists are showing participant emails               |
+|                    |                                                              |        |                     |                                                              |
 

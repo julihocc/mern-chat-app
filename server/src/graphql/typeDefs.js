@@ -30,6 +30,7 @@ const typeDefs = gql`
         getUserByEmail(email: String!): User
         getChatRoomsByUserId(userId: ID!): [ChatRoom]
         getMessageById(messageId: ID!): Message
+        getUsersById(userIds: [ID!]!): [User]
     }
 
     type SignupPayload {
