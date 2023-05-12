@@ -1,4 +1,4 @@
-// server/models/ChatRoom.js
+// server/models/ChatRoomViewer.js
 const { Schema, model } = require('mongoose');
 
 function arrayLimit(val) {

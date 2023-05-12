@@ -1,11 +1,36 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useQuery, gql } from '@apollo/client';
 import Loading from './Loading';
 import Error from './Error';
 import useChatRoomQuery from './useChatRoomQuery';
 import useMessageSender from './useMessageSender';
 
-const ChatRoom = () => {
+const GET_USER_BY_ID = gql`
+    query GetUserById($userId: ID!) {
+        getUserById(userId: $userId) {
+            id
+            email
+        }
+    }
+`;
+
+const Message = ({ message }) => {
+    const { loading, error, data } = useQuery(GET_USER_BY_ID, {
+        variables: { userId: message.senderId },
+    });
+
+    if (loading) return <p>Loading sender info...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
+    return (
+        <li key={message.id}>
+            {data.getUserById.email}: {message.body}
+        </li>
+    );
+};
+
+const ChatRoomViewer = () => {
     const { id } = useParams();
     const { chatRoom, messages, currentUser } = useChatRoomQuery(id);
     const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError } = useMessageSender();
@@ -26,9 +51,7 @@ const ChatRoom = () => {
             <h2>Chat Room: {chatRoom.data.getChatRoom.id}</h2>
             <ul>
                 {messages.data.getMessagesByChatRoomId.map((message) => (
-                    <li key={message.id}>
-                        {message.senderId}: {message.body}
-                    </li>
+                    <Message key={message.id} message={message} />
                 ))}
             </ul>
             <form onSubmit={(e) => handleSendMessage(e, currentUser.data.getCurrentUser.id, chatRoom.data.getChatRoom.id)}>
@@ -44,4 +67,4 @@ const ChatRoom = () => {
     );
 };
 
-export default ChatRoom;
+export default ChatRoomViewer;

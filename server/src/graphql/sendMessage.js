@@ -6,7 +6,7 @@ const { getUserById } = require("./user-utils");
 const sendMessage = async (_, {chatRoomId, senderId, text}) => {
     const chatRoom = await ChatRoom.findById(chatRoomId);
     if (!chatRoom) {
-        throw new Error('ChatRoom not found');
+        throw new Error('ChatRoomViewer not found');
     }
 
     const sender = await getUserById(senderId);

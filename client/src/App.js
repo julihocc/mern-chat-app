@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import ChatRoom from "./components/ChatRoom";
+import ChatRoomViewer from "./components/ChatRoomViewer";
 import Signup from "./components/SignUp";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/chat/:id" element={<ChatRoom />} />
+                    <Route path="/chat/:id" element={<ChatRoomViewer />} />
                 </Routes>
             </BrowserRouter>
         </div>

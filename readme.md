@@ -21,10 +21,10 @@
 | CosmicCoyote12     | send contact request functionality                           | OK     | 2023-05-09 12:26    | send contact request functionality working                   |
 | EnchantedEmber23   | Accept/reject functionalities                                | OK     | 2023-05-09 12:42    | Ready to be sent to Gon!                                     |
 | MidnightMarauder77 | Refactor resolvers                                           | OK     | 2023-05-09 11:37    | Resolvers working!                                           |
-| ElectricEagle9     | refactor ChatRoom component                                  | OK     | 2023-05-10 17:38    |                                                              |
+| ElectricEagle9     | refactor ChatRoomViewer component                            | OK     | 2023-05-10 17:38    |                                                              |
 | PixelPal87         | refactor \ContactRequests.js                                 | OK     | 2023-05-10 17:57    |                                                              |
 | MidnightEcho       | refactor mutations in smaller files                          | OK     | 2023-05-11 10:57    |                                                              |
 | Brook8674          | group conversations feature                                  | OK     | 2023-05-11 12:09    |                                                              |
 | Surging3773        | I should show emails instead ids                             | OK     | 2023-05-11 13:34    | Now, chat lists are showing participant emails               |
-| Canal2681          | Show user emails in chat room                                |        |                     |                                                              |
+| Canal2681          | Show user emails in chat room                                | OK     |                     |                                                              |
 
