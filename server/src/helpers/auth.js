@@ -55,5 +55,5 @@ async function getUserFromHttpRequest(req) {
 module.exports = {
     getUserById,
     verifyToken,
-    getUserFromHttpRequest,
+
 };

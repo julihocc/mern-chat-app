@@ -1,5 +1,5 @@
-const { getUserById } = require('./user-utils');
-const ContactRequest = require("../models/ContactRequest");
+const { getUserById } = require('../utils/user-utils');
+const ContactRequest = require("../../../models/ContactRequest");
 
 const sendContactRequest = async (parent, {senderId, recipientId}) => {
     const sender = await getUserById(senderId);

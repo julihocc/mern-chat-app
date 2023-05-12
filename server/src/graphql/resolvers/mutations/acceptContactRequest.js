@@ -1,7 +1,7 @@
-const { getUserById } = require('./user-utils');
-const { getContactRequest } = require('./contact-request-utils');
-const ContactRequest = require("../models/ContactRequest");
-const ChatRoom = require("../models/ChatRoom");
+const { getUserById } = require('../utils/user-utils');
+const { getContactRequest } = require('../utils/contact-request-utils');
+const ContactRequest = require("../../../models/ContactRequest");
+const ChatRoom = require("../../../models/ChatRoom");
 
 const acceptContactRequest = async (parent, {senderId, recipientId}) => {
     const sender = await getUserById(senderId);

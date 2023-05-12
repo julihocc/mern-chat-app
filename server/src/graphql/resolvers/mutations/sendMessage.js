@@ -1,7 +1,7 @@
-const User = require("../models/User");
-const ChatRoom = require("../models/ChatRoom");
-const Message = require("../models/Message");
-const { getUserById } = require("./user-utils");
+require("../../../models/User");
+const ChatRoom = require("../../../models/ChatRoom");
+const Message = require("../../../models/Message");
+const { getUserById } = require("../utils/user-utils");
 
 const sendMessage = async (_, {chatRoomId, senderId, text}) => {
     const chatRoom = await ChatRoom.findById(chatRoomId);

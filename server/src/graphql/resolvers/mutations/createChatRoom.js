@@ -1,5 +1,5 @@
-const User = require("../models/User");
-const ChatRoom = require("../models/ChatRoom");
+const User = require("../../../models/User");
+const ChatRoom = require("../../../models/ChatRoom");
 
 const createChatRoom = async (_, {participantIds}) => {
     const participants = await User.find({_id: {$in: participantIds}});

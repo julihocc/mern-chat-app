@@ -3,13 +3,13 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 
-// src/graphql/queries.js
+// src/useChatRoomQuery/queries.js
 import gql from 'graphql-tag';
 
-import ChatList from "./ChatList";
-import SendContactRequest from "./SendContactRequest";
-import ContactRequests  from "./ContactRequests";
-import CreateGroupConversation from "./CreateGroupConversation";
+import ChatList from "./Dashboard/ChatList";
+import SendContactRequest from "./Dashboard/SendContactRequest";
+import ContactRequests  from "./Dashboard/ContactRequests";
+import CreateGroupConversation from "./Dashboard/CreateGroupConversation";
 
 export const GET_CURRENT_USER = gql`
     query GetCurrentUser {

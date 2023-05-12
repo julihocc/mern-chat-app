@@ -27,4 +27,5 @@
 | Brook8674          | group conversations feature                                  | OK     | 2023-05-11 12:09    |
 | Surging3773        | I should show emails instead ids                             | OK     | 2023-05-11 13:34    |
 | Canal2681          | Show user emails in chat room                                | OK     | 2023-05-11 18:26    |
+| Pointy2616         | Reorganize dependencies into folders                         | OK     |                     |
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useGetContactRequests, useAcceptContactRequest, useRejectContactRequest} from './hooks';
+import {useGetContactRequests, useAcceptContactRequest, useRejectContactRequest} from './ContactRequest/hooks';
 
 const ContactRequests = ({userId}) => {
     const {loading, error, data} = useGetContactRequests(userId);

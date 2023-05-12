@@ -1,5 +1,5 @@
 import {useMutation, useQuery} from '@apollo/client';
-import {GET_CONTACT_REQUESTS, ACCEPT_CONTACT_REQUEST, REJECT_CONTACT_REQUEST} from './graphqlOperations';
+import {GET_CONTACT_REQUESTS, ACCEPT_CONTACT_REQUEST, REJECT_CONTACT_REQUEST} from './hooks/graphql';
 
 export const useGetContactRequests = (userId) => {
     const {loading, error, data} = useQuery(GET_CONTACT_REQUESTS, {

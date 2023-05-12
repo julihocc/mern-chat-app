@@ -1,11 +1,11 @@
 const {
     UserInputError, AuthenticationError
 } = require("apollo-server-express");
-const Message = require('../models/Message');
-const ChatRoom = require('../models/ChatRoom');
-const User = require('../models/User');
-const ContactRequest = require('../models/ContactRequest');
-const {getUserFromToken} = require('./utils');
+const Message = require('../../models/Message');
+const ChatRoom = require('../../models/ChatRoom');
+const User = require('../../models/User');
+const ContactRequest = require('../../models/ContactRequest');
+const {getUserFromToken} = require('./utils/utils');
 
 const queries = {
 
@@ -16,15 +16,6 @@ const queries = {
             throw new UserInputError('Messages not found');
         }
         return messages;
-    },
-
-    getMessageById: async (parent, args, context) => {
-        const {messageId} = args;
-        const message = await Message.findById(messageId);
-        if (!message) {
-            throw new UserInputError('Message not found');
-        }
-        return message;
     },
 
     getChatRooms: async (parent, args, context) => {
@@ -46,8 +37,7 @@ const queries = {
         }
 
         // Fetch all chat rooms where the user is a participant
-        const chatRooms = await ChatRoom.find({participantIds: user.id});
-        return chatRooms;
+        return await ChatRoom.find({participantIds: user.id});
     },
 
     getCurrentUser: async (parent, args, context) => {
@@ -90,19 +80,12 @@ const queries = {
     },
 
     getChatRoom: async (parent, {chatRoomId}, context) => {
-        const chatRoom = await ChatRoom.findById(chatRoomId);
-        return chatRoom;
+        return await ChatRoom.findById(chatRoomId);
     },
 
 
     getUserByEmail: async (parent, {email}) => {
-        const user = await User.findOne({email});
-        return user;
-    },
-
-    getChatRoomsByUserId: async (parent, {userId}) => {
-        const chatRooms = await ChatRoom.find({participantIds: userId});
-        return chatRooms;
+        return await User.findOne({email});
     },
 
     getUsersById: async (parent, {userIds}) => {

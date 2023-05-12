@@ -1,5 +1,5 @@
-const User = require("../models/User");
-const ChatRoom = require("../models/ChatRoom");
+const User = require("../../../models/User");
+const ChatRoom = require("../../../models/ChatRoom");
 
 const createGroupConversation = async (_, {emails}) => {
 

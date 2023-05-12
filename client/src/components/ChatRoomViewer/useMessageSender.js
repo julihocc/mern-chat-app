@@ -1,4 +1,4 @@
-import useSendMessage from './useSendMessage';
+import useSendMessage from './useMessageSender/useSendMessage';
 
 export default function useMessageSender() {
     const {

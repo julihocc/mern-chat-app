@@ -1,6 +1,6 @@
-const User = require('../models/User');
+const User = require('../../../models/User');
 const jwt = require('jsonwebtoken');
-const {comparePassword} = require('./utils');
+const {comparePassword} = require('../utils/utils');
 
 const login = async (parent, {email, password}) => {
     const user = await User.findOne({email});

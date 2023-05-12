@@ -1,9 +1,9 @@
 const {
     UserInputError
 } = require("apollo-server-express");
-const User = require('../models/User');
+const User = require('../../../models/User');
 const jwt = require('jsonwebtoken');
-const {encryptPassword} = require('./utils');
+const {encryptPassword} = require('../utils/utils');
 
 const signUp = async (parent, {email, password}) => {
     const existingUser = await User.findOne({email});

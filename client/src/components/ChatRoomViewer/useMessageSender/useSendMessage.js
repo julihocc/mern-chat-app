@@ -1,6 +1,6 @@
 // useSendMessage.js
 import { useMutation, gql } from '@apollo/client';
-import { SEND_MESSAGE } from './graphql';
+import { SEND_MESSAGE } from '../useChatRoomQuery/graphql';
 import {useState} from "react";
 
 const useSendMessage = () => {

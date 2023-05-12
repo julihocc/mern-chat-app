@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
-import Loading from './Loading';
-import Error from './Error';
-import useChatRoomQuery from './useChatRoomQuery';
-import useMessageSender from './useMessageSender';
+import Loading from './ChatRoomViewer/Loading';
+import Error from './ChatRoomViewer/Error';
+import useChatRoomQuery from './ChatRoomViewer/useChatRoomQuery';
+import useMessageSender from './ChatRoomViewer/useMessageSender';
 
 const GET_USER_BY_ID = gql`
     query GetUserById($userId: ID!) {

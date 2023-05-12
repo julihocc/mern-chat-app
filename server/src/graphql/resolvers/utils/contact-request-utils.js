@@ -1,4 +1,4 @@
-const ContactRequest = require("../models/ContactRequest");
+const ContactRequest = require("../../../models/ContactRequest");
 
 async function getContactRequest(senderId, recipientId) {
     const contactRequest = await ContactRequest.findOne({senderId, recipientId});

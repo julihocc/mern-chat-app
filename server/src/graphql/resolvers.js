@@ -1,6 +1,6 @@
-const queries = require('./queries');
-const mutations = require('./mutations');
-const subscriptions = require('./subscriptions');
+const queries = require('./resolvers/queries');
+const mutations = require('./resolvers/mutations');
+const subscriptions = require('./resolvers/subscriptions');
 
 const resolvers = {
     Query: queries,
