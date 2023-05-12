@@ -26,5 +26,5 @@
 | MidnightEcho       | refactor mutations in smaller files                          | OK     | 2023-05-11 10:57    |                                                              |
 | Brook8674          | group conversations feature                                  | OK     | 2023-05-11 12:09    |                                                              |
 | Surging3773        | I should show emails instead ids                             | OK     | 2023-05-11 13:34    | Now, chat lists are showing participant emails               |
-|                    |                                                              |        |                     |                                                              |
+| Canal2681          | Show user emails in chat room                                |        |                     |                                                              |
 
