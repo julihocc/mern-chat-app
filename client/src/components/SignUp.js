@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
+import { Button, TextField } from '@mui/material'; // Import MUI components
 
 const SIGNUP = gql`
     mutation SignUp($email: String!, $password: String!) {
@@ -30,6 +31,7 @@ const Signup = () => {
     });
 
     if (error) return <p>SIGNUP_USER Error: {error.message}</p>;
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -44,19 +46,21 @@ const Signup = () => {
         <div>
             <h2>Signup</h2>
             <form onSubmit={handleSubmit}>
-                <input
+                <TextField
                     type="email"
-                    placeholder="Email"
+                    label="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <input
+                <TextField
                     type="password"
-                    placeholder="Password"
+                    label="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Signup</button>
+                <Button type="submit" variant="contained" color="primary">
+                    Signup
+                </Button>
             </form>
         </div>
     );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
+import { Typography, TextField, Button } from '@mui/material'; // Import MUI components
 import Loading from './ChatRoomViewer/Loading';
 import Error from './ChatRoomViewer/Error';
 import useChatRoomQuery from './ChatRoomViewer/useChatRoomQuery';
@@ -48,20 +49,22 @@ const ChatRoomViewer = () => {
 
     return (
         <div>
-            <h2>Chat Room: {chatRoom.data.getChatRoom.id}</h2>
+            <Typography variant="h2">Chat Room: {chatRoom.data.getChatRoom.id}</Typography>
             <ul>
                 {messages.data.getMessagesByChatRoomId.map((message) => (
                     <Message key={message.id} message={message} />
                 ))}
             </ul>
             <form onSubmit={(e) => handleSendMessage(e, currentUser.data.getCurrentUser.id, chatRoom.data.getChatRoom.id)}>
-                <input
+                <TextField
                     type="text"
-                    placeholder="New Message"
+                    label="New Message"
                     value={messageBody}
                     onChange={(e) => setMessageBody(e.target.value)}
                 />
-                <button type="submit">Send Message</button>
+                <Button type="submit" variant="contained" color="primary">
+                    Send Message
+                </Button>
             </form>
         </div>
     );

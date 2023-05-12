@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
-import {useMutation, useApolloClient} from '@apollo/client';
+import React, { useState } from 'react';
+import { useMutation, useApolloClient } from '@apollo/client';
 import gql from 'graphql-tag';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Button, TextField } from '@mui/material'; // Import MUI components
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
@@ -16,7 +17,7 @@ const LOGIN_USER = gql`
         login(email: $email, password: $password) {
             token
             user {
-                id,
+                id
                 email
             }
         }
@@ -24,24 +25,21 @@ const LOGIN_USER = gql`
 `;
 
 const Login = () => {
-
     const navigate = useNavigate();
     const client = useApolloClient();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-
-
-    const [loginUser, {error}] = useMutation(LOGIN_USER, {
+    const [loginUser, { error }] = useMutation(LOGIN_USER, {
         onCompleted(data) {
-            console.log('Calling onCompleted(data)')
-            console.log('data', data)
+            console.log('Calling onCompleted(data)');
+            console.log('data', data);
             // Set JWT token as a cookie
-            console.log('data.login.token', data.login.token)
-            console.log('data.login.user', data.login.user.email)
+            console.log('data.login.token', data.login.token);
+            console.log('data.login.user', data.login.user.email);
             document.cookie = `token=${data.login.token}; path=/; max-age=3600`;
-            console.log('document.cookie', document.cookie)
+            console.log('document.cookie', document.cookie);
 
             // Refetch the GET_CURRENT_USER query after login
             client.query({
@@ -54,13 +52,13 @@ const Login = () => {
         },
     });
 
-
     if (error) return <p>LOGIN_USER Error: {error.message}</p>;
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            await loginUser({variables: {email, password}});
+            await loginUser({ variables: { email, password } });
         } catch (err) {
             console.error(err);
         }
@@ -70,19 +68,21 @@ const Login = () => {
         <div>
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
-                <input
+                <TextField
                     type="email"
-                    placeholder="Email"
+                    label="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <input
+                <TextField
                     type="password"
-                    placeholder="Password"
+                    label="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Login</button>
+                <Button type="submit" variant="contained" color="primary">
+                    Login
+                </Button>
             </form>
         </div>
     );
