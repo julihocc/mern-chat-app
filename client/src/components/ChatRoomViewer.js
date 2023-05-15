@@ -22,7 +22,7 @@ const Message = ({ message }) => {
     });
 
     if (loading) return <p>Loading sender info...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+    if (error) return <p>GET_USER)BY_ID Error: {error.message}</p>;
 
     return (
         <li key={message.id}>
@@ -37,15 +37,20 @@ const ChatRoomViewer = () => {
     const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError } = useMessageSender();
 
     const isLoading = chatRoom.loading || messages.loading || currentUser.loading || sendMessageLoading;
-    const error = chatRoom.error || messages.error || currentUser.error || sendMessageError;
+    // const error = chatRoom.error || messages.error || currentUser.error || sendMessageError;
 
     if (isLoading) {
         return <Loading queryName="Loading" />;
     }
 
-    if (error) {
-        return <Error queryName="Error" message={error.message} />;
-    }
+    // if (error) {
+    //     return <Error queryName="ChatRoomViewer Error" message={error.message} />;
+    // }
+
+    if (chatRoom.error)  return <Error queryName="chatRoom" message={chatRoom.error.message} />;
+    if (messages.error)  return <Error queryName="messages" message={messages.error.message} />;
+    if (currentUser.error)  return <Error queryName="currentUser" message={currentUser.error.message} />;
+    if (sendMessageError)  return <Error queryName="sendMessage" message={sendMessageError.message} />;
 
     return (
         <div>
@@ -57,7 +62,7 @@ const ChatRoomViewer = () => {
             </ul>
             <form onSubmit={(e) => handleSendMessage(e, currentUser.data.getCurrentUser.id, chatRoom.data.getChatRoom.id)}>
                 <TextField
-                    type="text"
+                    type="body"
                     label="New Message"
                     value={messageBody}
                     onChange={(e) => setMessageBody(e.target.value)}

@@ -34,7 +34,7 @@ const CreateGroupConversation = ({ userEmail }) => {
                 <label htmlFor="emails">Emails:</label>
                 <input
                     id="emails"
-                    type="text"
+                    type="body"
                     placeholder="Enter comma-separated emails"
                     value={emailsInput}
                     onChange={(e) => setEmailsInput(e.target.value)}

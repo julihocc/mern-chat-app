@@ -1,4 +1,6 @@
-import useSendMessage from './useMessageSender/useSendMessage';
+import useSendMessage from './useSendMessage';
+
+
 
 export default function useMessageSender() {
     const {
@@ -13,13 +15,7 @@ export default function useMessageSender() {
         e.preventDefault();
         if (messageBody.trim() !== '') {
             try {
-                await sendMessage({
-                    variables: {
-                        senderId,
-                        chatRoomId,
-                        body: messageBody,
-                    },
-                });
+                await sendMessage(senderId, chatRoomId, messageBody);
                 setMessageBody('');
             } catch (err) {
                 console.error('Failed to send message:', err);
