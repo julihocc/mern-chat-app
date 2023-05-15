@@ -9,5 +9,6 @@
 
 ## Version History
 
-See `version-history.xlsx`
+See [version-history.xlsx](https://www.dropbox.
+com/s/2w5dvtpan7t1fto/version-history.xlsx?dl=0) for more details.
 
