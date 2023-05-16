@@ -9,13 +9,11 @@ import Signup from "./components/SignUp";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function App() {
-
     const { t } = useTranslation();
-    console.log('t: ', t)
 
     return (
         <div className="App">
-            <h1>{t('mernStackChatApp')}</h1>
+            <h1>{t('greeting')}</h1>
             <LanguageSwitcher />
             <BrowserRouter>
                 <Routes>
