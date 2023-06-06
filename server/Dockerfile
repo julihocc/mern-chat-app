@@ -1,20 +1,19 @@
-# Pull the base image
-FROM node:14
+# Pull Docker Hub base image
+FROM node:16.13.1
 
-# Set your working directory
-WORKDIR /usr/src/app
+# Create and Set working directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/app
 
-# Copy package.json and package-lock.json
+# Install app dependencies
 COPY package*.json ./
-
-# Install all dependencies
 RUN npm install
 
-# Copy all other source code to work directory
-COPY . /usr/src/app
+# Copy app to container
+COPY . .
 
-# TypeScript
-# RUN npm run build
+# Exports
+EXPOSE 4000
 
-# Start
-CMD [ "npm", "start" ]
+# Run the "start" script in package.json
+CMD ["npm", "start"]

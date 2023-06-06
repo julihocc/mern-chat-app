@@ -1,19 +1,18 @@
-# Pull the base image
-FROM node:14
+# Pull Docker Hub base image
+FROM node:16.13.1
 
-# Set working directory
-WORKDIR /app
+# Create and Set working directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/app
 
-# Add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+# Install app dependencies
+COPY package*.json ./
+RUN npm install
 
-# Install and cache app dependencies
-COPY package.json /app/package.json
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+# Copy app to container
+COPY . .
 
-# Add app
-COPY . /app
+EXPOSE 3000
 
-# start app
+# Run the "start" script in package.json
 CMD ["npm", "start"]
