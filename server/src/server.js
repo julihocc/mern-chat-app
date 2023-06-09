@@ -1,3 +1,4 @@
+// server/scr/server.js
 const express = require('express');
 const { ApolloServer} = require('apollo-server-express');
 const { PubSub } = require('graphql-subscriptions');
@@ -7,7 +8,7 @@ const cors = require('cors');
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
 const errorHandler = require('./middlewares/errorHandler');
-const connectDB = require('./config/database');
+const connectDB = require('./config/connectDB');
 const http = require('http');
 const PORT = process.env.PORT || 4000;
 const cookieParser = require('cookie-parser');
@@ -72,8 +73,10 @@ async function startServer() {
     );
 
     httpServer.listen(PORT, () => {
-        console.log(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`);
-        console.log(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`);
+        // console.log(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`);
+        // console.log(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`);
+        console.log(`Server is running at http://${process.env.SERVER_HOST || '0.0.0.0'}:${PORT}${apolloServer.graphqlPath}`);
+        console.log(`Subscriptions ready at ws://${process.env.SERVER_HOST || '0.0.0.0'}:${PORT}${apolloServer.graphqlPath}`);
     });
 }
 

@@ -1,3 +1,4 @@
+// client/src/index.js
 import '@mui/material/styles';
 import {ThemeProvider} from '@mui/material/styles';
 import {ApolloProvider} from '@apollo/client';
