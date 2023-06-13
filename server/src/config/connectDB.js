@@ -1,6 +1,6 @@
 //server\src\config\connectDB.js
 const mongoose = require('mongoose');
-require('dotenv').config();
+// require('dotenv').config();
 
 const connectDB = async () => {
     try {

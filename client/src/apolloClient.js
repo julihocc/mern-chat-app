@@ -1,29 +1,17 @@
-// client/src/apolloClient.js
 import { ApolloClient, InMemoryCache, split, HttpLink } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { setContext } from '@apollo/client/link/context';
 
-// const httpLink = new HttpLink({
-//     uri: 'http://localhost:4000/graphql',
-// });
-//
-// const wsLink = new WebSocketLink({
-//     // uri: 'ws://localhost:4000/useChatRoomQuery',
-//     uri: 'ws://localhost:4000/graphql',
-//     options: {
-//         reconnect: true,
-//     },
-// });
 
-console.log('process.env.REACT_APP_BACKEND_URL', process.env.REACT_APP_BACKEND_URL)
+const URL = "http://127.0.0.1:58029"
 
 const httpLink = new HttpLink({
-    uri: 'http://backend:4000/graphql',
+    uri: URL+"/graphql",
 });
 
 const wsLink = new WebSocketLink({
-    uri: 'ws://backend:4000/graphql',
+    uri: URL+"/graphql",
     options: {
         reconnect: true,
     },
@@ -40,7 +28,6 @@ const authLink = setContext((_, { headers }) => {
         },
     };
 });
-
 
 const link = split(
     ({ query }) => {

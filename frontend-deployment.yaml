@@ -18,7 +18,7 @@ spec:
           image: jdk2py/client:latest
           env:
             - name: REACT_APP_BACKEND_URL
-              value: "http://backend:4000"
+              value: "http://127.0.0.1:58029"
           ports:
             - containerPort: 3000
 ---

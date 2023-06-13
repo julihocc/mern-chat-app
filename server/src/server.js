@@ -73,11 +73,10 @@ async function startServer() {
     );
 
     httpServer.listen(PORT, () => {
-        // console.log(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`);
-        // console.log(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`);
-        console.log(`Server is running at http://${process.env.SERVER_HOST || '0.0.0.0'}:${PORT}${apolloServer.graphqlPath}`);
-        console.log(`Subscriptions ready at ws://${process.env.SERVER_HOST || '0.0.0.0'}:${PORT}${apolloServer.graphqlPath}`);
+        console.log(`Server is running at http://backend:${PORT}${apolloServer.graphqlPath}`);
+        console.log(`Subscriptions ready at ws://backend:${PORT}${apolloServer.graphqlPath}`);
     });
+
 }
 
 (async () => {
