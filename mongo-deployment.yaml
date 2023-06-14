@@ -14,7 +14,7 @@ spec:
         app: mongo
     spec:
       containers:
-        - name: todo-mern-graphql-mongodb
+        - name: database
           image: mongo:latest
           ports:
             - containerPort: 27017

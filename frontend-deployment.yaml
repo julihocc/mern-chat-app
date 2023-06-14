@@ -1,4 +1,3 @@
-#frontend-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,8 +16,10 @@ spec:
         - name: client
           image: jdk2py/client:latest
           env:
-            - name: REACT_APP_BACKEND_URL
-              value: "http://127.0.0.1:58029"
+            - name: REACT_APP_BACKEND_HTTP_URL
+              value: "http://127.0.0.1:64844"
+            - name: REACT_APP_BACKEND_WS_URL
+              value: "ws://127.0.0.1:64844"
           ports:
             - containerPort: 3000
 ---
@@ -32,5 +33,7 @@ spec:
     - port: 3000
       targetPort: 3000
       nodePort: 31000
+      protocol: TCP
+      name: http
   selector:
     app: frontend

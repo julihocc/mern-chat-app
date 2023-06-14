@@ -1,21 +1,27 @@
+// client\src\apolloClient.js
 import { ApolloClient, InMemoryCache, split, HttpLink } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { setContext } from '@apollo/client/link/context';
 
 
-const URL = "http://127.0.0.1:58029"
+// const HTTP_URL = "http://backend:4000";
+// const WS_URL = "ws://backend:4000";
+
+const HTTP_URL = process.env.REACT_APP_BACKEND_HTTP_URL;
+const WS_URL = process.env.REACT_APP_BACKEND_WS_URL;
 
 const httpLink = new HttpLink({
-    uri: URL+"/graphql",
+    uri: HTTP_URL + "/graphql",
 });
 
 const wsLink = new WebSocketLink({
-    uri: URL+"/graphql",
+    uri: WS_URL + "/graphql",
     options: {
         reconnect: true,
     },
 });
+
 
 const authLink = setContext((_, { headers }) => {
     const tokenCookie = document.cookie.split('; ').find((row) => row.startsWith('token='));

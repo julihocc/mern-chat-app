@@ -17,7 +17,7 @@ spec:
           image: jdk2py/server:latest
           env:
             - name: MONGODB_URL
-              value: "mongodb://mongo:27017/my-chat-app"
+              value: "mongodb://mongo:27017"
             - name: PORT
               value: "4000"
             - name: JWT_SECRET
@@ -30,10 +30,7 @@ kind: Service
 metadata:
   name: backend
 spec:
-  type: NodePort
   ports:
-    - port: 4000
-      targetPort: 4000
-      nodePort: 31001  # Specify the port on each node where this service can be accessed
+    - port: 4000 # Specify the port on each node where this service can be accessed
   selector:
     app: backend
