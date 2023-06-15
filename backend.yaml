@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: jdk2py/backend:latest
+          env:
+            - name: MONGODB_URL
+              value: "mongodb://mongo:27017"
+            - name: PORT
+              value: "4000"
+            - name: JWT_SECRET
+              value: "mysecretkey"
+          ports:
+            - containerPort: 4000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  type: NodePort  # Change the type to NodePort
+  ports:
+    - port: 4000
+      targetPort: 4000
+      nodePort: 30000  # Add the nodePort field with the desired port number
+  selector:
+    app: backend

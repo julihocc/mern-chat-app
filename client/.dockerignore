@@ -1,4 +1,0 @@
-# /client/.dockerignore
-node_modules
-.dockerignore
-Dockerfile
