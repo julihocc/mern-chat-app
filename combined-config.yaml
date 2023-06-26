@@ -1,0 +1,89 @@
+# Backend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: jdk2py/backend:latest  # Specify version tag instead of latest
+          env:
+            - name: MONGODB_URL
+              value: "mongodb+srv://julihocastillo:vQI7ZpG2ml13Tyib@cluster0.mjrfzla.mongodb.net/?retryWrites=true&w=majority" # Replace <username> and <dbname>
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-atlas-credentials
+                  key: password
+            - name: PORT
+              value: "4000"
+            - name: JWT_SECRET
+              valueFrom:  # Use Secrets for sensitive data
+                secretKeyRef:
+                  name: jwt-secret
+                  key: secret
+          ports:
+            - containerPort: 4000
+
+# Backend Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  ports:
+    - port: 4000
+      targetPort: 4000
+  selector:
+    app: backend
+
+# Frontend Deployment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: jdk2py/frontend:latest  # Specify version tag instead of latest
+          env:
+            - name: REACT_APP_BACKEND_HTTP_URL
+              value: "http://backend:4000"  # Point to backend service
+            - name: REACT_APP_BACKEND_WS_URL
+              value: "ws://backend:4000"  # Point to backend service
+          ports:
+            - containerPort: 3000
+
+# Frontend Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancer  # Use LoadBalancer for external access on AWS
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    app: frontend
