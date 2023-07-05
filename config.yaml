@@ -15,10 +15,10 @@ spec:
     spec:
       containers:
         - name: backend
-          image: jdk2py/backend:latest  # Specify version tag instead of latest
+          image: jdk2py/backend:latest
           env:
             - name: MONGODB_URL
-              value: "mongodb+srv://julihocastillo:vQI7ZpG2ml13Tyib@cluster0.mjrfzla.mongodb.net/?retryWrites=true&w=majority" # Replace <username> and <dbname>
+              value: "mongodb+srv://julihocastillo:vQI7ZpG2ml13Tyib@cluster0.mjrfzla.mongodb.net/?retryWrites=true&w=majority"
             - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -27,7 +27,7 @@ spec:
             - name: PORT
               value: "4000"
             - name: JWT_SECRET
-              valueFrom:  # Use Secrets for sensitive data
+              valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: secret
@@ -65,12 +65,14 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: jdk2py/frontend:latest  # Specify version tag instead of latest
+          image: jdk2py/frontend:latest
           env:
             - name: REACT_APP_BACKEND_HTTP_URL
-              value: "http://backend:4000"  # Point to backend service
+              value: "http://a6bd7ac91d4f4411bb76e38fe6ac53be-a25919179c5b392e.elb.us-east-1.amazonaws.com/api"
             - name: REACT_APP_BACKEND_WS_URL
-              value: "ws://backend:4000"  # Point to backend service
+              value: "ws://a6bd7ac91d4f4411bb76e38fe6ac53be-a25919179c5b392e.elb.us-east-1.amazonaws.com/api"
+            - name: PUBLIC_URL
+              value: "/frontend"
           ports:
             - containerPort: 3000
 
@@ -81,9 +83,35 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  type: LoadBalancer  # Use LoadBalancer for external access on AWS
+  type: ClusterIP
   ports:
     - port: 3000
       targetPort: 3000
   selector:
     app: frontend
+
+# Ingress Resource
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  ingressClassName: "nginx"
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 3000
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 4000
