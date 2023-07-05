@@ -68,11 +68,9 @@ spec:
           image: jdk2py/frontend:latest
           env:
             - name: REACT_APP_BACKEND_HTTP_URL
-              value: "http://a6bd7ac91d4f4411bb76e38fe6ac53be-a25919179c5b392e.elb.us-east-1.amazonaws.com/api"
+              value: "http://backend:4000"
             - name: REACT_APP_BACKEND_WS_URL
-              value: "ws://a6bd7ac91d4f4411bb76e38fe6ac53be-a25919179c5b392e.elb.us-east-1.amazonaws.com/api"
-            - name: PUBLIC_URL
-              value: "/frontend"
+              value: "ws://backend:4000"
           ports:
             - containerPort: 3000
 
@@ -96,6 +94,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: my-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/enable-websocket: "true"
+    nginx.ingress.kubernetes.io/websocket-services: "backend"
 spec:
   ingressClassName: "nginx"
   rules:
@@ -108,10 +109,3 @@ spec:
                 name: frontend
                 port:
                   number: 3000
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: backend
-                port:
-                  number: 4000
