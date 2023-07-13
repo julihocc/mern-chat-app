@@ -1,5 +1,6 @@
 import React from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 
 const GET_CHAT_ROOMS = gql`

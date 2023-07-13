@@ -5,7 +5,8 @@ import {
     BrowserRouter,
     Route,
     Routes,
-    Link
+    Link,
+    useNavigate
 } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import Login from './components/Login';
@@ -15,14 +16,17 @@ import Signup from "./components/SignUp";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(!!document.cookie);
-
-    const { t } = useTranslation();
+    const [isLoggedIn, setIsLoggedIn] = useState(!!document.cookie); // <--- Add
+    // this line
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         setIsLoggedIn(false);
+        navigate('/login');
     };
+
+    const { t } = useTranslation();
 
     return (
         <div className="App">
@@ -30,8 +34,10 @@ function App() {
             <LanguageSwitcher />
             <BrowserRouter>
                 {isLoggedIn ? (
-                    <button onClick={handleLogout}>{t('Logout')}</button>
+                    // If logged in, show a logout button
+                    <button onClick={() => setIsLoggedIn(false)}>{t('Logout')}</button>
                 ) : (
+                    // If not logged in, show login and signup buttons
                     <>
                         <Link to="/login">
                             <button>{t('Login')}</button>

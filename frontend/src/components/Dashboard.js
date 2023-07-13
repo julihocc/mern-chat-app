@@ -1,3 +1,5 @@
+// Dashboard component
+// Path: frontend\src\components\Dashboard.js
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
@@ -19,18 +21,18 @@ export const GET_CURRENT_USER = gql`
 `;
 
 
-const Dashboard = () => {
-    const navigate = useNavigate();
+const Dashboard = ({ handleLogout }) => {
+    // const navigate = useNavigate();
 
-    const handleLogout = () => {
-        console.log('Calling handleLogout()');
-        // Remove the stored cookie
-        console.log('document.cookie', document.cookie);
-        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        console.log('document.cookie', document.cookie);
-        // Redirect the user to the login page
-        navigate('/login');
-    };
+    // const handleLogout = () => {
+    //     console.log('Calling handleLogout()');
+    //     // Remove the stored cookie
+    //     console.log('document.cookie', document.cookie);
+    //     document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    //     console.log('document.cookie', document.cookie);
+    //     // Redirect the user to the login page
+    //     navigate('/login');
+    // };
 
     const { loading, error, data } = useQuery(GET_CURRENT_USER);
 

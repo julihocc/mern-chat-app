@@ -1,5 +1,6 @@
 // useSendMessage.js
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/react-hooks';
+import { gql } from '@apollo/client';
 import { SEND_MESSAGE } from './graphql';
 import {useState} from "react";
 
