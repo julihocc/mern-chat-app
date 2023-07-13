@@ -1,6 +1,9 @@
+// ChatRoomViewer component
+// Path: frontend\src\components\ChatRoomViewer.js
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery, gql } from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useQuery } from '@apollo/react-hooks';
 import { Typography, TextField, Button } from '@mui/material'; // Import MUI components
 import Loading from './ChatRoomViewer/Loading';
 import Error from './ChatRoomViewer/Error';

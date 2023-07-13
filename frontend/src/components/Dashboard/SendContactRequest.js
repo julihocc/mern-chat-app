@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { useMutation, useLazyQuery, useQuery, gql } from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useMutation, useLazyQuery, useQuery } from '@apollo/react-hooks';
 
 const SEND_CONTACT_REQUEST = gql`
     mutation SendContactRequest($senderId: ID!, $recipientId: ID!) {

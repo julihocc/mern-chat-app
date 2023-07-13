@@ -1,4 +1,4 @@
-import {useMutation, useQuery} from '@apollo/client';
+import {useMutation, useQuery} from '@apollo/react-hooks';
 import {GET_CONTACT_REQUESTS, ACCEPT_CONTACT_REQUEST, REJECT_CONTACT_REQUEST} from './hooks/graphql';
 
 export const useGetContactRequests = (userId) => {

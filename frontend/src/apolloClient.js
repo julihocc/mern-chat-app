@@ -8,8 +8,11 @@ import { setContext } from '@apollo/client/link/context';
 // const HTTP_URL = "http://backend:4000";
 // const WS_URL = "ws://backend:4000";
 
-const HTTP_URL = process.env.REACT_APP_BACKEND_HTTP_URL;
-const WS_URL = process.env.REACT_APP_BACKEND_WS_URL;
+// const HTTP_URL = process.env.REACT_APP_BACKEND_HTTP_URL;
+// const WS_URL = process.env.REACT_APP_BACKEND_WS_URL;
+
+const HTTP_URL = "http://localhost:4000";
+const WS_URL = "ws://localhost:4000";
 
 const httpLink = new HttpLink({
     uri: HTTP_URL + "/graphql",

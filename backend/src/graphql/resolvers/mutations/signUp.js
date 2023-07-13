@@ -5,13 +5,13 @@ const User = require('../../../models/User');
 const jwt = require('jsonwebtoken');
 const {encryptPassword} = require('../utils/utils');
 
-const signUp = async (parent, {email, password}) => {
+const signUp = async (parent, {email, username, password}) => {
     const existingUser = await User.findOne({email});
     if (existingUser) {
         throw new UserInputError('Email already in use');
     }
     const hashedPassword = await encryptPassword(password)
-    const user = new User({email: email, password: hashedPassword});
+    const user = new User({email: email, username: username, password: hashedPassword});
     await user.save();
     const token = jwt.sign({
         id: user.id, email: user.email
@@ -20,4 +20,3 @@ const signUp = async (parent, {email, password}) => {
 };
 
 module.exports = signUp;
-

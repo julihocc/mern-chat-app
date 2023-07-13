@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/react-hooks';
 import { GET_CHAT_ROOM, GET_CURRENT_USER, GET_MESSAGES_BY_CHAT_ROOM_ID } from './graphql';
 
 export default function useChatRoomQuery(id) {

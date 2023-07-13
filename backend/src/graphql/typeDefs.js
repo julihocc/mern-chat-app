@@ -4,6 +4,7 @@ const typeDefs = gql`
     type User {
         id: ID!
         email: String!
+        username: String!
     }
 
     type ChatRoom {
@@ -52,7 +53,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        signUp(email: String!, password: String!): SignupPayload!
+        signUp(email: String!, username: String!, password: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
         sendMessage(senderId:ID!, chatRoomId: ID!,  body: String!): Message!
         sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest

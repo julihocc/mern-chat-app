@@ -1,5 +1,7 @@
+// frontend\src\components\Login.js
 import React, { useState } from 'react';
-import { useMutation, useApolloClient } from '@apollo/client';
+import { useApolloClient } from '@apollo/client';
+import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material'; // Import MUI components
@@ -24,7 +26,9 @@ const LOGIN_USER = gql`
     }
 `;
 
-const Login = () => {
+// const Login = () => {
+const Login = ({ onLogin }) => {  // Pass setIsLoggedIn prop
+
     const navigate = useNavigate();
     const client = useApolloClient();
 
@@ -32,7 +36,19 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const [loginUser, { error }] = useMutation(LOGIN_USER, {
+
+        onError(err) {
+            // Handle error by showing a more user-friendly message
+            console.error('Login Error:', err.message);
+            alert('Failed to login. Please check your email and password.');
+        },
+
         onCompleted(data) {
+
+            // Set isLoggedIn to true on successful login
+            // setIsLoggedIn(true);
+            onLogin();
+
             console.log('Calling onCompleted(data)');
             console.log('data', data);
             // Set JWT token as a cookie
@@ -56,6 +72,12 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (email === "" || password === "") {
+            alert("Both fields are required!");
+            return;
+        }
+
 
         try {
             await loginUser({ variables: { email, password } });
