@@ -49,9 +49,6 @@ const Dashboard = ({ handleLogout }) => {
             <Grid item>
                 <ChatList />
             </Grid>
-            <Grid item>
-                <Button variant="contained" color="primary" onClick={handleLogout}>Logout</Button>
-            </Grid>
         </Grid>
     );
 };
