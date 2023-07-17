@@ -1,7 +1,9 @@
+// frontend\src\components\Dashboard\ChatList.js
 import React from 'react';
 import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
+import { CircularProgress, Alert, List, ListItem, Typography } from "@mui/material";
 
 const GET_CHAT_ROOMS = gql`
     query GetChatRooms {
@@ -26,18 +28,18 @@ const ChatRoom = ({ id, participantIds }) => {
         variables: { userIds: participantIds },
     });
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+    if (loading) return <CircularProgress />;
+    if (error) return <Alert severity="error">Error: {error.message}</Alert>;
 
     return (
-        <li>
+        <ListItem>
             <Link to={`/chat/${id}`}>{id}: </Link>
-            <ul>
+            <List>
                 {data.getUsersById.map((user) => (
-                    <li key={user.id}>{user.email}</li>
+                    <ListItem key={user.id}>{user.email}</ListItem>
                 ))}
-            </ul>
-        </li>
+            </List>
+        </ListItem>
     );
 };
 
@@ -46,17 +48,17 @@ const ChatList = () => {
         fetchPolicy: 'network-only', // ignore cache
     });
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+    if (loading) return <CircularProgress />;
+    if (error) return <Alert severity="error">Error: {error.message}</Alert>;
 
     return (
         <div>
-            <h3>Chat List</h3>
-            <ul>
+            <Typography variant="h3">Chat List</Typography>
+            <List>
                 {data.getChatRooms.map(({ id, participantIds }) => (
                     <ChatRoom key={id} id={id} participantIds={participantIds} />
                 ))}
-            </ul>
+            </List>
         </div>
     );
 };

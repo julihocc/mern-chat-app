@@ -1,10 +1,9 @@
 // Dashboard component
 // Path: frontend\src\components\Dashboard.js
+
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
-import { Typography, Button } from '@mui/material'; // Import MUI components
-
+import { Typography, Button, Grid, CircularProgress, Alert } from '@mui/material';
 import ChatList from "./Dashboard/ChatList";
 import SendContactRequest from "./Dashboard/SendContactRequest";
 import ContactRequests from "./Dashboard/ContactRequests";
@@ -22,42 +21,38 @@ export const GET_CURRENT_USER = gql`
 
 
 const Dashboard = ({ handleLogout }) => {
-    // const navigate = useNavigate();
-
-    // const handleLogout = () => {
-    //     console.log('Calling handleLogout()');
-    //     // Remove the stored cookie
-    //     console.log('document.cookie', document.cookie);
-    //     document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    //     console.log('document.cookie', document.cookie);
-    //     // Redirect the user to the login page
-    //     navigate('/login');
-    // };
-
     const { loading, error, data } = useQuery(GET_CURRENT_USER);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>GET_CURRENT_USER Error: {error.message}</p>;
+    if (loading) return <CircularProgress />;
+    if (error) return <Alert severity="error">GET_CURRENT_USER Error: {error.message}</Alert>;
 
     const { getCurrentUser } = data;
 
     return (
-        <div>
-            <Typography variant="h2">Dashboard</Typography>
-            <Typography variant="body1">
-                Welcome, {getCurrentUser.email}!
-            </Typography>
-            <Typography variant="body1">
-                Your user ID is: {getCurrentUser.id}
-            </Typography>
-            <ContactRequests userId={getCurrentUser.id} />
-            <CreateGroupConversation userEmail={getCurrentUser.email} />
-            <SendContactRequest />
-            <ChatList />
-            <Button variant="contained" color="primary" onClick={handleLogout}>
-                Logout
-            </Button>
-        </div>
+        <Grid container spacing={3} direction="column">
+            <Grid item>
+                <Typography variant="h2">Dashboard</Typography>
+            </Grid>
+            <Grid item>
+                <Typography variant="body1">Welcome, {getCurrentUser.email}!</Typography>
+                <Typography variant="body1">Your user ID is: {getCurrentUser.id}</Typography>
+            </Grid>
+            <Grid item>
+                <ContactRequests userId={getCurrentUser.id} />
+            </Grid>
+            <Grid item>
+                <CreateGroupConversation userEmail={getCurrentUser.email} />
+            </Grid>
+            <Grid item>
+                <SendContactRequest />
+            </Grid>
+            <Grid item>
+                <ChatList />
+            </Grid>
+            <Grid item>
+                <Button variant="contained" color="primary" onClick={handleLogout}>Logout</Button>
+            </Grid>
+        </Grid>
     );
 };
 

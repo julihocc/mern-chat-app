@@ -1,3 +1,4 @@
+// frontend\src\components\Dashboard\ContactRequests.js
 import React from 'react';
 import {useGetContactRequests, useAcceptContactRequest, useRejectContactRequest} from './ContactRequest/hooks';
 
@@ -10,6 +11,9 @@ const ContactRequests = ({userId}) => {
     if (error) return <p>Error : {error.message} </p>;
 
     const pendingRequests = data.getContactRequests.filter((request) => request.status === 'pending');
+
+    // Don't render anything if there are no pending requests
+    if (pendingRequests.length === 0) return null;
 
     return (
         <div>

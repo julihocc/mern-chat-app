@@ -1,6 +1,9 @@
-import React, {useEffect, useState} from 'react';
+// frontend\src\components\Dashboard\SendContactRequest.js
+
+import React, { useEffect, useState } from 'react';
 import { gql } from '@apollo/client';
 import { useMutation, useLazyQuery, useQuery } from '@apollo/react-hooks';
+import { TextField, Button, CircularProgress, Typography, Alert } from '@mui/material';
 
 const SEND_CONTACT_REQUEST = gql`
     mutation SendContactRequest($senderId: ID!, $recipientId: ID!) {
@@ -58,7 +61,7 @@ const SendContactRequest = () => {
         setUserError(null);
 
         // Load recipient user when form is submitted
-        await getUserByEmail({variables: {email}});
+        await getUserByEmail({ variables: { email } });
     };
 
     useEffect(() => {
@@ -76,30 +79,32 @@ const SendContactRequest = () => {
         }
     }, [getUserByEmailData]);
 
-    if (currentUserLoading || getUserByEmailLoading) return <p>Loading...</p>;
-    if (currentUserError) return <p>Error: {currentUserError.message}</p>;
+    if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
+    if (currentUserError) return <Alert severity="error">Error: {currentUserError.message}</Alert>;
+
     if (getUserByEmailError) {
         setUserError('User with this email does not exist.');
     }
 
-
-
     return (
         <div>
-            <h2>Send Contact Request</h2>
+            <Typography variant="h2">Send Contact Request</Typography>
             <form onSubmit={handleSubmit}>
-                <input
+                <TextField
                     type="email"
+                    label="Email"
                     placeholder="Email"
+                    variant="outlined"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    fullWidth
                 />
-                <button type="submit" disabled={sendContactLoading}>
+                <Button type="submit" variant="contained" color="primary" disabled={sendContactLoading}>
                     {sendContactLoading ? 'Sending...' : 'Send Contact Request'}
-                </button>
+                </Button>
             </form>
-            {userError && <p>{userError}</p>}
-            {sendContactError && <p>Error: {sendContactError.message}</p>}
+            {userError && <Alert severity="error">{userError}</Alert>}
+            {sendContactError && <Alert severity="error">Error: {sendContactError.message}</Alert>}
         </div>
     );
 };

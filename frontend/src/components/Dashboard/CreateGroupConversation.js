@@ -1,6 +1,9 @@
+// frontend\src\components\Dashboard\CreateGroupConversation.js
+
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import { TextField, Button, CircularProgress, Typography, Alert, Snackbar } from '@mui/material';
 
 const CREATE_GROUP_CONVERSATION = gql`
     mutation CreateGroupConversation($emails: [String!]!) {
@@ -13,6 +16,7 @@ const CREATE_GROUP_CONVERSATION = gql`
 const CreateGroupConversation = ({ userEmail }) => {
     const [emailsInput, setEmailsInput] = useState('');
     const [createGroupConversation, { data, loading, error }] = useMutation(CREATE_GROUP_CONVERSATION);
+    const [openSnackbar, setOpenSnackbar] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,26 +28,34 @@ const CreateGroupConversation = ({ userEmail }) => {
 
         if (!error) {
             setEmailsInput('');  // clear the input field after successful submission
+            setOpenSnackbar(true); // show success message
         }
     };
 
     return (
         <div>
-            <h2>Create Group Conversation</h2>
+            <Typography variant="h2">Create Group Conversation</Typography>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="emails">Emails:</label>
-                <input
+                <TextField
                     id="emails"
-                    type="body"
+                    label="Emails"
                     placeholder="Enter comma-separated emails"
+                    variant="outlined"
                     value={emailsInput}
                     onChange={(e) => setEmailsInput(e.target.value)}
+                    fullWidth
                 />
-                <button type="submit">Create</button>
+                <Button type="submit" variant="contained" color="primary" disabled={loading}>Create</Button>
             </form>
-            {loading && <p>Loading...</p>}
-            {error && <p>CREATE_GROUP_CONVERSATION Error: {error.message}</p>}
-            {data && <p>Group Conversation ID: {data.createGroupConversation.id}</p>}
+            {loading && <CircularProgress />}
+            {error && <Alert severity="error">CREATE_GROUP_CONVERSATION Error: {error.message}</Alert>}
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={6000}
+                onClose={() => setOpenSnackbar(false)}
+                message={`Group Conversation ID: ${data?.createGroupConversation.id}`}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            />
         </div>
     );
 };

@@ -1,13 +1,14 @@
 // frontend\src\App.js
-// import React from 'react';
+
 import React, { useState } from 'react';
 import {
     BrowserRouter,
-    Route,
     Routes,
-    Link
+    Route,
 } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
+import { AppBar, Toolbar, Button, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import ChatRoomViewer from "./components/ChatRoomViewer";
@@ -15,7 +16,7 @@ import Signup from "./components/SignUp";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(!!document.cookie);
+    const [isLoggedIn, setIsLoggedIn] = useState(document.cookie.includes('your_token_name'));
 
     const { t } = useTranslation();
 
@@ -26,21 +27,27 @@ function App() {
 
     return (
         <div className="App">
-            <h1>{t('greeting')}</h1>
-            <LanguageSwitcher />
             <BrowserRouter>
-                {isLoggedIn ? (
-                    <button onClick={handleLogout}>{t('Logout')}</button>
-                ) : (
-                    <>
-                        <Link to="/login">
-                            <button>{t('Login')}</button>
-                        </Link>
-                        <Link to="/signup">
-                            <button>{t('Sign Up')}</button>
-                        </Link>
-                    </>
-                )}
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="h6" style={{ flexGrow: 1 }}>
+                            {t('greeting')}
+                        </Typography>
+                        <LanguageSwitcher />
+                        {isLoggedIn ? (
+                            <Button color="inherit" onClick={handleLogout}>{t('Logout')}</Button>
+                        ) : (
+                            <>
+                                <Button color="inherit" component={Link} to="/login">
+                                    {t('Login')}
+                                </Button>
+                                <Button color="inherit" component={Link} to="/signup">
+                                    {t('Sign Up')}
+                                </Button>
+                            </>
+                        )}
+                    </Toolbar>
+                </AppBar>
                 <Routes>
                     <Route path="/signup" element={<Signup onLogin={() => setIsLoggedIn(true)} />} />
                     <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
