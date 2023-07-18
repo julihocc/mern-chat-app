@@ -4,7 +4,8 @@ import { useApolloClient } from '@apollo/client';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
-import { Button, TextField } from '@mui/material'; // Import MUI components
+import { Button, TextField } from '@mui/material';
+import {useTranslation} from "react-i18next"; // Import MUI components
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
@@ -31,6 +32,7 @@ const Login = ({ onLogin }) => {  // Pass setIsLoggedIn prop
 
     const navigate = useNavigate();
     const client = useApolloClient();
+    const { t } = useTranslation();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -74,7 +76,7 @@ const Login = ({ onLogin }) => {  // Pass setIsLoggedIn prop
         e.preventDefault();
 
         if (email === "" || password === "") {
-            alert("Both fields are required!");
+            alert(t('bothFieldsRequired'));
             return;
         }
 
@@ -88,22 +90,22 @@ const Login = ({ onLogin }) => {  // Pass setIsLoggedIn prop
 
     return (
         <div>
-            <h2>Login</h2>
+            <h2>{t('login')}</h2>
             <form onSubmit={handleSubmit}>
                 <TextField
                     type="email"
-                    label="Email"
+                    label={t('email')}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                     type="password"
-                    label="Password"
+                    label={t('password')}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <Button type="submit" variant="contained" color="primary">
-                    Login
+                    {t('login')}
                 </Button>
             </form>
         </div>

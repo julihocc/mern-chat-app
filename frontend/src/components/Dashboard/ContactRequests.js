@@ -1,8 +1,10 @@
 // frontend\src\components\Dashboard\ContactRequests.js
 import React from 'react';
 import {useGetContactRequests, useAcceptContactRequest, useRejectContactRequest} from './ContactRequest/hooks';
+import { useTranslation } from "react-i18next";
 
 const ContactRequests = ({userId}) => {
+    const {t} = useTranslation();
     const {loading, error, data} = useGetContactRequests(userId);
     const acceptContactRequest = useAcceptContactRequest(userId);
     const rejectContactRequest = useRejectContactRequest(userId);
@@ -17,7 +19,7 @@ const ContactRequests = ({userId}) => {
 
     return (
         <div>
-            <h3> Contact Requests </h3>
+            <h3> {t('contactRequest')} </h3>
             <ul>
                 {pendingRequests.map(({id, senderId, createdAt}) => (
                     <li key={id}>

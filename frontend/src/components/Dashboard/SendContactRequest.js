@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { gql } from '@apollo/client';
 import { useMutation, useLazyQuery, useQuery } from '@apollo/react-hooks';
 import { TextField, Button, CircularProgress, Typography, Alert } from '@mui/material';
+import { useTranslation } from "react-i18next";
 
 const SEND_CONTACT_REQUEST = gql`
     mutation SendContactRequest($senderId: ID!, $recipientId: ID!) {
@@ -36,6 +37,7 @@ const GET_USER_BY_EMAIL = gql`
 `;
 
 const SendContactRequest = () => {
+    const {t} = useTranslation();
     const [email, setEmail] = useState('');
     const [userError, setUserError] = useState(null);
 
@@ -88,19 +90,18 @@ const SendContactRequest = () => {
 
     return (
         <div>
-            <Typography variant="h2">Send Contact Request</Typography>
+            <Typography variant="h3">{t('sendContactRequest')}</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
                     type="email"
-                    label="Email"
-                    placeholder="Email"
+                    label={t('email')}
+                    placeholder={t('enterEmail')}
                     variant="outlined"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    fullWidth
                 />
                 <Button type="submit" variant="contained" color="primary" disabled={sendContactLoading}>
-                    {sendContactLoading ? 'Sending...' : 'Send Contact Request'}
+                    {sendContactLoading ? t('sending') : t('send')}
                 </Button>
             </form>
             {userError && <Alert severity="error">{userError}</Alert>}

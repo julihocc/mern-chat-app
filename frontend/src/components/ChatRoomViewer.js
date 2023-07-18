@@ -11,6 +11,8 @@ import Error from './ChatRoomViewer/Error';
 import useChatRoomQuery from './ChatRoomViewer/useChatRoomQuery';
 import useMessageSender from './ChatRoomViewer/useMessageSender';
 
+import { useTranslation } from "react-i18next";
+
 const GET_USER_BY_ID = gql`
     query GetUserById($userId: ID!) {
         getUserById(userId: $userId) {
@@ -45,6 +47,7 @@ const Message = ({ message, isCurrentUser }) => {
 };
 
 const ChatRoomViewer = () => {
+    const {t} = useTranslation();
     const { id } = useParams();
     const { chatRoom, messages, currentUser } = useChatRoomQuery(id);
     const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError } = useMessageSender();
@@ -61,31 +64,10 @@ const ChatRoomViewer = () => {
     if (currentUser.error)  return <Error queryName="currentUser" message={currentUser.error.message} />;
     if (sendMessageError)  return <Error queryName="sendMessage" message={sendMessageError.message} />;
 
-    // return (
-    //     <div>
-    //         <Typography variant="h2">Chat Room: {chatRoom.data.getChatRoom.id}</Typography>
-    //         <ul>
-    //             {messages.data.getMessagesByChatRoomId.map((message) => (
-    //                 <Message key={message.id} message={message} />
-    //             ))}
-    //         </ul>
-    //         <form onSubmit={(e) => handleSendMessage(e, currentUser.data.getCurrentUser.id, chatRoom.data.getChatRoom.id)}>
-    //             <TextField
-    //                 type="body"
-    //                 label="New Message"
-    //                 value={messageBody}
-    //                 onChange={(e) => setMessageBody(e.target.value)}
-    //             />
-    //             <Button type="submit" variant="contained" color="primary">
-    //                 Send Message
-    //             </Button>
-    //         </form>
-    //     </div>
-    // );
     return (
         <Container component={Paper} sx={{ height: '90vh', mt: 2, display: 'flex', flexDirection: 'column', p: 2 }}>
             <CssBaseline />
-            <Typography variant="h2" sx={{ mb: 2 }}>Chat Room: {chatRoom.data.getChatRoom.id}</Typography>
+            <Typography variant="h2" sx={{ mb: 2 }}>{t('chatRoom')}: {chatRoom.data.getChatRoom.id}</Typography>
             <Box sx={{ overflow: 'auto', flexGrow: 1 }}>
                 <Stack>
                     {messages.data.getMessagesByChatRoomId.map((message) => (
@@ -97,13 +79,13 @@ const ChatRoomViewer = () => {
                 <Stack direction="row" spacing={1}>
                     <TextField
                         type="body"
-                        label="New Message"
+                        label={t('newMessage')}
                         fullWidth
                         value={messageBody}
                         onChange={(e) => setMessageBody(e.target.value)}
                     />
                     <Button type="submit" variant="contained" color="primary">
-                        Send Message
+                        {t('sendMessage')}
                     </Button>
                 </Stack>
             </form>

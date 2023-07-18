@@ -4,6 +4,7 @@ import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 import { CircularProgress, Alert, List, ListItem, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const GET_CHAT_ROOMS = gql`
     query GetChatRooms {
@@ -44,6 +45,7 @@ const ChatRoom = ({ id, participantIds }) => {
 };
 
 const ChatList = () => {
+    const {t} = useTranslation();
     const { loading, error, data } = useQuery(GET_CHAT_ROOMS, {
         fetchPolicy: 'network-only', // ignore cache
     });
@@ -53,7 +55,7 @@ const ChatList = () => {
 
     return (
         <div>
-            <Typography variant="h3">Chat List</Typography>
+            <Typography variant="h3">{t('chatList')}</Typography>
             <List>
                 {data.getChatRooms.map(({ id, participantIds }) => (
                     <ChatRoom key={id} id={id} participantIds={participantIds} />

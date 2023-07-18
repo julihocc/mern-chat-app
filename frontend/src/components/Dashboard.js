@@ -9,6 +9,7 @@ import SendContactRequest from "./Dashboard/SendContactRequest";
 import ContactRequests from "./Dashboard/ContactRequests";
 import CreateGroupConversation from "./Dashboard/CreateGroupConversation";
 import gql from "graphql-tag";
+import { useTranslation } from "react-i18next";
 
 export const GET_CURRENT_USER = gql`
     query GetCurrentUser {
@@ -21,6 +22,7 @@ export const GET_CURRENT_USER = gql`
 
 
 const Dashboard = ({ handleLogout }) => {
+    const {t} = useTranslation();
     const { loading, error, data } = useQuery(GET_CURRENT_USER);
 
     if (loading) return <CircularProgress />;
@@ -31,11 +33,11 @@ const Dashboard = ({ handleLogout }) => {
     return (
         <Grid container spacing={3} direction="column">
             <Grid item>
-                <Typography variant="h2">Dashboard</Typography>
+                <Typography variant="h2">{t('dashboard')}</Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body1">Welcome, {getCurrentUser.email}!</Typography>
-                <Typography variant="body1">Your user ID is: {getCurrentUser.id}</Typography>
+                <Typography variant="body1">{t('welcome')}, {getCurrentUser.email}!</Typography>
+                <Typography variant="body1">{t('yourUserIdIs')}{getCurrentUser.id}</Typography>
             </Grid>
             <Grid item>
                 <ContactRequests userId={getCurrentUser.id} />

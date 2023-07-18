@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material'; // Import MUI components
+import { useTranslation } from 'react-i18next'; // Import MUI components
 
 const SIGNUP = gql`
     mutation SignUp($username: String!, $email: String!, $password: String!) {
@@ -24,7 +25,8 @@ const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState(''); // Add confirm password state
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const { t } = useTranslation();
 
     const [signUp, { error }] = useMutation(SIGNUP, {
         onError(err) {
@@ -60,33 +62,33 @@ const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
 
     return (
         <div>
-            <h2>Signup</h2>
+            <h2>{t('signup')}</h2>
             <form onSubmit={handleSubmit}>
                 <TextField
-                    label="Username"
+                    label={t('username')}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <TextField
                     type="email"
-                    label="Email"
+                    label={t('email')}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                     type="password"
-                    label="Password"
+                    label={t('password')}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <TextField
                     type="password"
-                    label="Confirm Password"
+                    label={t('confirmPassword')}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <Button type="submit" variant="contained" color="primary">
-                    Signup
+                    {t('signup')}
                 </Button>
             </form>
         </div>

@@ -25,18 +25,18 @@ const MainRoutes = () => {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" style={{ flexGrow: 1 }}>
-                        {t('greeting')}
+                        {t('welcome')}
                     </Typography>
                     <LanguageSwitcher />
                     {isLoggedIn ? (
-                        <Button color="inherit" onClick={handleLogout}>{t('Logout')}</Button>
+                        <Button color="inherit" onClick={handleLogout}>{t('logout')}</Button>
                     ) : (
                         <>
                             <Button color="inherit" component={Link} to="/login">
-                                {t('Login')}
+                                {t('login')}
                             </Button>
                             <Button color="inherit" component={Link} to="/signup">
-                                {t('Sign Up')}
+                                {t('signup')}
                             </Button>
                         </>
                     )}
