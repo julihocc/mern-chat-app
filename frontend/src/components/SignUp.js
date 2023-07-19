@@ -7,9 +7,22 @@ import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material'; // Import MUI components
 import { useTranslation } from 'react-i18next'; // Import MUI components
 
+// const SIGNUP = gql`
+//     mutation SignUp($username: String!, $email: String!, $password: String!) {
+//         signUp(username: $username, email: $email, password: $password) {
+//             token
+//             user {
+//                 id
+//                 username
+//                 email
+//             }
+//         }
+//     }
+// `;
+
 const SIGNUP = gql`
-    mutation SignUp($username: String!, $email: String!, $password: String!) {
-        signUp(username: $username, email: $email, password: $password) {
+    mutation SignUp($username: String!, $email: String!, $password: String!, $confirmPassword: String!) {
+        signUp(username: $username, email: $email, password: $password, confirmPassword: $confirmPassword) {
             token
             user {
                 id
@@ -31,7 +44,7 @@ const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
     const [signUp, { error }] = useMutation(SIGNUP, {
         onError(err) {
             console.error('Signup Error:', err.message);
-            alert('Failed to signup. Please check your inputs.');
+            alert(err.message);
         },
         onCompleted(data) {
             document.cookie = `token=${data.signUp.token}; path=/; max-age=3600`;
@@ -51,13 +64,17 @@ const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
             return;
         }
 
+        // try {
+        //     await signUp({ variables: { username, email, password } });
+        // } catch (err) {
+        //     console.error('handleSubmit Error:', err.message);
+        // }
         try {
-            await signUp({ variables: { username, email, password } });
+            await signUp({ variables: { username, email, password, confirmPassword } });
         } catch (err) {
-            // Error handling here is redundant since onError in useMutation
-            // will take care of it?
             console.error('handleSubmit Error:', err.message);
         }
+
     };
 
     return (

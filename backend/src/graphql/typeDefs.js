@@ -53,7 +53,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        signUp(email: String!, username: String!, password: String!): SignupPayload!
+        signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
         sendMessage(senderId:ID!, chatRoomId: ID!,  body: String!): Message!
         sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
