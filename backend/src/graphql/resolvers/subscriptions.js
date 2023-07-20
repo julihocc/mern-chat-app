@@ -1,5 +1,7 @@
-const { PubSub } = require('graphql-subscriptions');
-const pubSub = new PubSub()
+// backend\src\graphql\resolvers\subscriptions.js
+
+// const { PubSub } = require('graphql-subscriptions');
+// const pubSub = new PubSub()
 
 const subscriptions = {
     messageAdded: {

@@ -1,4 +1,4 @@
-// backend/scr/backend.js
+// backend/scr/server.js
 const express = require('express');
 const { ApolloServer} = require('apollo-server-express');
 const { PubSub } = require('graphql-subscriptions');
@@ -45,11 +45,11 @@ async function startServer() {
         context: ({ req, connection }) => {
             if (connection) {
                 // For WebSocket connections
-                return { ...connection.context, pubsub: pubSub };
+                return { ...connection.context, pubSub };
             } else {
                 // For HTTP requests
                 const token = req.headers.authorization || '';
-                return { req, pubsub: pubSub, token };
+                return { req, pubSub, token };
             }
         },
     });

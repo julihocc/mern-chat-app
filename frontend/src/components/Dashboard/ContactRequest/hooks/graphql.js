@@ -1,7 +1,12 @@
+// Path: frontend\src\components\Dashboard\ContactRequest\hooks\graphql.js
+// Compare this snippet from backend\src\graphql\resolvers\mutations\acceptContactRequest.js:
+// // backend\src\graphql\resolvers\mutations\acceptContactRequest.js
+//
+
 import {gql} from '@apollo/client';
 
 export const GET_CONTACT_REQUESTS = gql`
-    query GetContactRequests($userId: ID!) {
+    query GetContactRequests($userId: ID!) {    
         getContactRequests(userId: $userId) {
             id
             senderId
@@ -13,8 +18,8 @@ export const GET_CONTACT_REQUESTS = gql`
 `;
 
 export const ACCEPT_CONTACT_REQUEST = gql`
-    mutation AcceptContactRequest($senderId: ID!, $recipientId: ID!) {
-        acceptContactRequest(senderId: $senderId, recipientId: $recipientId) {
+    mutation AcceptContactRequest($requestId: ID!) {
+        acceptContactRequest(requestId: $requestId) {
             createdAt
             id
             recipientId
@@ -25,8 +30,8 @@ export const ACCEPT_CONTACT_REQUEST = gql`
 `;
 
 export const REJECT_CONTACT_REQUEST = gql`
-    mutation RejectContactRequest($senderId: ID!, $recipientId: ID!) {
-        rejectContactRequest(senderId: $senderId, recipientId: $recipientId) {
+    mutation RejectContactRequest($requestId: ID!) {
+        rejectContactRequest(requestId: $requestId) {
             createdAt
             id
             recipientId
