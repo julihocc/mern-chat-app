@@ -9,7 +9,7 @@ const {getUserFromToken} = require('./utils/utils');
 
 const queries = {
 
-    getMessagesByChatRoomId: async (parent, args, context) => {
+    getMessagesByChatRoomId: async (parent, args) => {
         const {chatRoomId} = args;
         const messages = await Message.find({chatRoomId});
         if (!messages) {
@@ -66,9 +66,10 @@ const queries = {
         return user;
     },
 
-    getContactRequests: async (_, {userId}, context) => {
+    getContactRequests: async (_, __, context) => {
         try {
-            const contactRequests = await ContactRequest.find({recipientId: userId})
+            const user = await getUserFromToken(context.token);
+            const contactRequests = await ContactRequest.find({recipientId: user.id})
             // .populate('senderId')
             // .populate('recipientId');
             console.log('contactRequests', new Date(), contactRequests)
@@ -79,13 +80,17 @@ const queries = {
         }
     },
 
-    getChatRoom: async (parent, {chatRoomId}, context) => {
+    getChatRoom: async (parent, {chatRoomId}) => {
         return await ChatRoom.findById(chatRoomId);
     },
 
 
     getUserByEmail: async (parent, {email}) => {
         return await User.findOne({email});
+    },
+
+    getUserByEmails: async (parent, {emails}) => {
+        return await User.find({email: {$in: emails}});
     },
 
     getUsersById: async (parent, {userIds}) => {

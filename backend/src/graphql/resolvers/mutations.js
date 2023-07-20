@@ -1,3 +1,5 @@
+// backend\src\graphql\resolvers\mutations.js
+
 const signUp = require('./mutations/signUp');
 const login = require('./mutations/login');
 const sendContactRequest = require('./mutations/sendContactRequest');

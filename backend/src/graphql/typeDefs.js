@@ -60,6 +60,7 @@ const typeDefs = gql`
         getChatRoomsByUserId(userId: ID!): [ChatRoom]
         getMessageById(messageId: ID!): Message
         getUsersById(userIds: [ID!]!): [User]
+        getUserByEmails(emails: [String!]!): [User]
     }
     
     type Mutation {
@@ -67,14 +68,15 @@ const typeDefs = gql`
         login(email: String!, password: String!): LoginPayload!
         sendMessage(senderId:ID!, chatRoomId: ID!,  body: String!): Message!
         sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
-        acceptContactRequest(senderId: ID!, recipientId:ID!): ContactRequest!
-        rejectContactRequest(senderId: ID!, recipientId:ID!): ContactRequest!
+        acceptContactRequest(requestId: ID!): ContactRequest!
+        rejectContactRequest(requestId: ID!): ContactRequest!
         createChatRoom(participantIds: [ID!]!): ChatRoom!
         createGroupConversation(emails: [String!]!): ChatRoom!
     }
 
     type Subscription {
         messageAdded(chatRoomId: ID!): Message!
+        friendRequestUpdated(userId: ID!): ContactRequest!  # new subscription
     }
 `;
 
