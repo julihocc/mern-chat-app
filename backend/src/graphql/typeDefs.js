@@ -45,7 +45,7 @@ const typeDefs = gql`
         id: ID!
         senderId: ID!
         recipientId: ID!
-        status: String!
+        status: ContactRequestStatus! # updated field
         createdAt: String!
     }
 
