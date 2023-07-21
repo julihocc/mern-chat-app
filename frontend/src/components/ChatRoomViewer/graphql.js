@@ -5,8 +5,8 @@ export const GET_CHAT_ROOM = gql`
     query GetChatRoom($chatRoomId: ID!) {
         getChatRoom(chatRoomId: $chatRoomId) {
             id
-            messagesIds
             participantIds
+            messageIds
         }
     }
 `;

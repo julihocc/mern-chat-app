@@ -11,6 +11,7 @@ const GET_CHAT_ROOMS = gql`
         getChatRooms{
             id
             participantIds
+            messageIds
         }
     }
 `;
@@ -52,6 +53,7 @@ const ChatList = () => {
 
     if (loading) return <CircularProgress />;
     if (error) return <Alert severity="error">Error: {error.message}</Alert>;
+
 
     return (
         <div>

@@ -3,7 +3,7 @@ const ChatRoom = require("../../../models/ChatRoom");
 const Message = require("../../../models/Message");
 const { getUserById } = require("../utils/user-utils");
 
-const sendMessage = async (_, { senderId, chatRoomId, body: body}) => {
+const sendMessage = async (_, { senderId, chatRoomId, body: body}, { pubSub }) => {
     console.log('loading sendMessage')
     console.log('sendMessage: ', senderId)
     console.log('sendMessage: ', chatRoomId)
@@ -25,6 +25,9 @@ const sendMessage = async (_, { senderId, chatRoomId, body: body}) => {
     console.log('chatRoom.messageIds: ', chatRoom.messageIds)
     chatRoom.messageIds.push(message.id);
     await chatRoom.save();
+
+    // this publishes the new message to the subscription
+    pubSub.publish(`NEW_MESSAGE_${chatRoomId}`, { newMessage: message });
 
     return message;
 };

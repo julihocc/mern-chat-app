@@ -30,7 +30,12 @@ const MainRoutes = () => {
                     </Typography>
                     <LanguageSwitcher />
                     {isLoggedIn ? (
+                        <>
                         <Button color="inherit" onClick={handleLogout}>{t('logout')}</Button>
+                        <Button color="inherit" component={Link} to="/dashboard">
+                            {t('dashboard')}
+                        </Button>
+                        </>
                     ) : (
                         <>
                             <Button color="inherit" component={Link} to="/login">

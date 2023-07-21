@@ -20,7 +20,7 @@ const typeDefs = gql`
     type ChatRoom {
         id: ID!
         participantIds: [ID!]!
-        messagesIds: [ID]
+        messageIds: [ID]
     }
 
     type Message {
@@ -75,6 +75,7 @@ const typeDefs = gql`
     }
 
     type Subscription {
+        newMessage(chatRoomId: ID!): Message!
         messageAdded(chatRoomId: ID!): Message!
         friendRequestUpdated(userId: ID!): ContactRequest!  # new subscription
     }

@@ -1,4 +1,5 @@
 // frontend/src/index.js
+// This is the entry point for frontend application.
 import '@mui/material/styles';
 import {ThemeProvider} from '@mui/material/styles';
 import {ApolloProvider} from '@apollo/client';
