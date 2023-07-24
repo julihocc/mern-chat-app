@@ -29,6 +29,7 @@ const typeDefs = gql`
         body: String!
         createdAt: String!
         chatRoomId: ID!
+        imageUrl: String
     }
     
     type SignupPayload {
@@ -66,7 +67,7 @@ const typeDefs = gql`
     type Mutation {
         signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
-        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String!): Message!
+        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String!, imageUrl:String): Message!
         sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
         acceptContactRequest(requestId: ID!): ContactRequest!
         rejectContactRequest(requestId: ID!): ContactRequest!
@@ -76,7 +77,6 @@ const typeDefs = gql`
 
     type Subscription {
         newMessage(chatRoomId: ID!): Message!
-        messageAdded(chatRoomId: ID!): Message!
         friendRequestUpdated(userId: ID!): ContactRequest!  # new subscription
     }
 `;

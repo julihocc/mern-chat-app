@@ -1,4 +1,5 @@
 // backend/scr/server.js
+// this is the entry point for the backend
 const express = require('express');
 const { ApolloServer} = require('apollo-server-express');
 const { PubSub } = require('graphql-subscriptions');

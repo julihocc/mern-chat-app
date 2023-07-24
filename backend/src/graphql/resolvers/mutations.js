@@ -1,4 +1,5 @@
 // backend\src\graphql\resolvers\mutations.js
+// Describe the mutations that can be executed against the GraphQL schema
 
 const signUp = require('./mutations/signUp');
 const login = require('./mutations/login');

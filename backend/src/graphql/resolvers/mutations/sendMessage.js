@@ -1,9 +1,11 @@
+// Path: backend\src\graphql\resolvers\mutations\sendMessage.js
 require("../../../models/User");
 const ChatRoom = require("../../../models/ChatRoom");
 const Message = require("../../../models/Message");
 const { getUserById } = require("../utils/user-utils");
 
-const sendMessage = async (_, { senderId, chatRoomId, body: body}, { pubSub }) => {
+// Add 'imageUrl' to the destructuring assignment
+const sendMessage = async (_, { senderId, chatRoomId, body, imageUrl}, { pubSub }) => {
     console.log('loading sendMessage')
     console.log('sendMessage: ', senderId)
     console.log('sendMessage: ', chatRoomId)
@@ -15,8 +17,14 @@ const sendMessage = async (_, { senderId, chatRoomId, body: body}, { pubSub }) =
 
     const sender = await getUserById(senderId);
 
+    // Modify the creation of the new Message to include imageUrl
     const message = new Message({
-        chatRoomId: chatRoom.id, senderId: sender.id, body: body,
+        chatRoomId: chatRoom.id,
+        senderId: sender.id,
+        // If imageUrl is provided, body will be an empty string
+        body: imageUrl ? '' : body,
+        // imageUrl will be undefined if not provided
+        imageUrl: imageUrl,
     });
 
     await message.save();

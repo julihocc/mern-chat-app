@@ -1,3 +1,6 @@
+// Path: backend\src\graphql\resolvers\queries.js
+// Describe the queries that can be executed against the GraphQL schema
+
 const {
     UserInputError, AuthenticationError
 } = require("apollo-server-express");
