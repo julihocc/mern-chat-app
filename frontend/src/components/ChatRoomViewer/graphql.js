@@ -1,4 +1,5 @@
 // useChatRoomQuery.js
+// Path: frontend\src\components\ChatRoomViewer\useChatRoomQuery.js
 import gql from 'graphql-tag';
 
 export const GET_CHAT_ROOM = gql`
@@ -24,12 +25,13 @@ export const GET_MESSAGES_BY_CHAT_ROOM_ID = gql`
 `;
 
 export const SEND_MESSAGE = gql`
-    mutation SendMessage($senderId: ID!, $chatRoomId: ID!, $body: String!) {
-        sendMessage(senderId: $senderId, chatRoomId: $chatRoomId, body: $body) {
+    mutation SendMessage($senderId: ID!, $chatRoomId: ID!, $body: String!, $file: Upload) {
+        sendMessage(senderId: $senderId, chatRoomId: $chatRoomId, body: $body, file: $file) {
             id
             senderId
             chatRoomId
             body
+            imageUrl
             createdAt
         }
     }

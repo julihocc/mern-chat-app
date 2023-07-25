@@ -18,7 +18,7 @@
         "graphql": "^15.3.0",
         "graphql-subscriptions": "^2.0.0",
         "graphql-type-json": "^0.3.2",
-        "graphql-upload": "^16.0.2",
+        "graphql-upload": "11.0.0",
         "install": "^0.13.0",
         "jsonwebtoken": "^9.0.0",
         "mongoose": "^7.0.3",

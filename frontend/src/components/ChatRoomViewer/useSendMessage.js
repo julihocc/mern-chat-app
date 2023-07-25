@@ -1,4 +1,6 @@
 // useSendMessage.js
+// Path: frontend\src\components\ChatRoomViewer\useSendMessage.js
+
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from '@apollo/client';
 import { SEND_MESSAGE } from './graphql';
@@ -6,6 +8,14 @@ import {useState} from "react";
 
 const useSendMessage = () => {
     const [messageBody, setMessageBody] = useState('');
+    const [file, setFile] = useState(null);
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFile(file);
+        }
+    }
 
     const [sendMessageMutation, {
         loading: sendMessageLoading,
@@ -50,7 +60,7 @@ const useSendMessage = () => {
             console.log('messageBody: ', messageBody)
 
             await sendMessageMutation({
-                variables: { senderId, chatRoomId, body: messageBody },
+                variables: { senderId, chatRoomId, body: messageBody, file },
             });
 
             setMessageBody('');
@@ -62,6 +72,9 @@ const useSendMessage = () => {
     return {
         messageBody,
         setMessageBody,
+        file,
+        setFile,
+        handleFileChange,
         sendMessage,
         sendMessageData,
         sendMessageLoading,

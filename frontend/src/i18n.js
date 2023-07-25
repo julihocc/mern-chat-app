@@ -3,32 +3,6 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { fetchTranslations } from './components/translationService';
-//
-// const resources = {
-//     en: {
-//         translation: {
-//             greeting: 'Hello!',
-//             farewell: 'Goodbye!',
-//             welcome: 'Welcome to our application!',
-//             // other translation keys...
-//         },
-//     },
-//     fr: {
-//         translation: {
-//             greeting: 'Bonjour!',
-//             farewell: 'Au revoir!',
-//             welcome: 'Bienvenue dans notre application!',
-//             // other translation keys...
-//         },
-//     },
-//     es: {
-//         translation: {
-//             greeting: '¡Hola!',
-//             farewell: '¡Adiós!',
-//             welcome: '¡Bienvenido a nuestra aplicación!',
-//         }
-//     }
-// };
 
 const resources = await fetchTranslations();
 console.log(resources)

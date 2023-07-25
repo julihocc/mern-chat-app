@@ -29,7 +29,7 @@ async function uploadFile(file) {
 
 
 // Add 'imageUrl' to the destructuring assignment
-const sendMessage = async (_, { senderId, chatRoomId, body, image }, { pubSub }) => {
+const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) => {
     console.log('loading sendMessage')
     console.log('sendMessage: ', senderId)
     console.log('sendMessage: ', chatRoomId)
@@ -46,8 +46,8 @@ const sendMessage = async (_, { senderId, chatRoomId, body, image }, { pubSub })
     let imageUrl;
 
     // Check if image was sent
-    if (image) {
-        const uploadedImage = await uploadFile(image);
+    if (file) {
+        const uploadedImage = await uploadFile(file);
         imageUrl = uploadedImage.Location; // This is the URL of the uploaded image
     }
 

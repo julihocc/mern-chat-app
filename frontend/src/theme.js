@@ -1,35 +1,27 @@
 // frontend\src\theme.js
 
-// import { createTheme } from '@mui/material/styles';
-//
-// const theme = createTheme();
-//
-// export default theme;
-
-// frontend\src\theme.js
-
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#3f51b5', // Your primary color
+            main: '#075E54', // WhatsApp green
         },
         secondary: {
-            main: '#f50057', // Your secondary color
+            main: '#128C7E', // WhatsApp light green
         },
         error: {
-            main: '#f44336', // Your error color
+            main: '#d80000', // Generic error color
         },
         background: {
-            default: '#f5f5f5', // Your background color
+            default: '#ECE5DD', // WhatsApp chat background color
         },
     },
     typography: {
-        fontFamily: 'Roboto, Arial, sans-serif', // Your font family
-        fontSize: 14, // Your base font size
+        fontFamily: '"Helvetica Neue", Arial, sans-serif', // Closest free font to WhatsApp's custom San Francisco font
+        fontSize: 14,
         button: {
-            textTransform: 'none' // This can make your buttons use normal casing rather than uppercase
+            textTransform: 'none'
         }
     },
     breakpoints: {

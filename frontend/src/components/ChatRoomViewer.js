@@ -77,9 +77,13 @@ const ChatRoomViewer = () => {
     const {t} = useTranslation();
     const { id } = useParams();
     const { chatRoom, currentUser } = useChatRoomQuery(id);
-    const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError } = useMessageSender();
+    // const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError } = useMessageSender();
+    // Note: Destructuring file and setFile from useMessageSender
+    const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError, file, setFile } = useMessageSender();
 
     const [messages, setMessages] = useState([]);
+
+    // Removed: const [selectedFile, setSelectedFile] = useState(null);
 
     const { data: newMessageData } = useSubscription(NEW_MESSAGE_SUBSCRIPTION, {
         variables: { chatRoomId: id },
@@ -145,6 +149,22 @@ const ChatRoomViewer = () => {
                     ))}
                 </Stack>
             </Box>
+
+            {/*<form onSubmit={(e) => handleSendMessage(e, currentUser.data.getCurrentUser.id, chatRoom.data.getChatRoom.id)}>*/}
+            {/*    <Stack direction="row" spacing={1}>*/}
+            {/*        <TextField*/}
+            {/*            type="body"*/}
+            {/*            label={t('newMessage')}*/}
+            {/*            fullWidth*/}
+            {/*            value={messageBody}*/}
+            {/*            onChange={(e) => setMessageBody(e.target.value)}*/}
+            {/*        />*/}
+            {/*        <input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} />*/}
+            {/*        <Button type="submit" variant="contained" color="primary">*/}
+            {/*            {t('sendMessage')}*/}
+            {/*        </Button>*/}
+            {/*    </Stack>*/}
+            {/*</form>*/}
             <form onSubmit={(e) => handleSendMessage(e, currentUser.data.getCurrentUser.id, chatRoom.data.getChatRoom.id)}>
                 <Stack direction="row" spacing={1}>
                     <TextField
@@ -154,6 +174,8 @@ const ChatRoomViewer = () => {
                         value={messageBody}
                         onChange={(e) => setMessageBody(e.target.value)}
                     />
+                    {/* Note: Changed the onChange event handler to setFile */}
+                    <input type="file" onChange={(e) => setFile(e.target.files[0])} />
                     <Button type="submit" variant="contained" color="primary">
                         {t('sendMessage')}
                     </Button>
