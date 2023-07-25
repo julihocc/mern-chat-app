@@ -53,6 +53,7 @@ async function startServer() {
                 return { req, pubSub, token };
             }
         },
+        uploads: false,
     });
 
     await apolloServer.start();
