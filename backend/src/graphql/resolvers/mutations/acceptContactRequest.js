@@ -1,14 +1,10 @@
-// backend\src\graphql\resolvers\mutations\acceptContactRequest.js
-
 const { getUserFromToken } = require('../utils/utils');
-const { getUserById } = require('../utils/user-utils');
-const { getContactRequest } = require('../utils/contact-request-utils');
 const ContactRequest = require("../../../models/ContactRequest");
 const ChatRoom = require("../../../models/ChatRoom");
 const { AuthenticationError } = require('apollo-server-express');
+const logger = require("../../../config/logger"); // Import the logger
 
 const acceptContactRequest = async (parent, { requestId }, context ) => {
-
     const { token } = context;
     const user = await getUserFromToken(token);
 
@@ -43,7 +39,7 @@ const acceptContactRequest = async (parent, { requestId }, context ) => {
 
         return contactRequest;
     } catch (err) {
-        console.error(err);
+        logger.error(err); // Use the logger here
     }
 };
 

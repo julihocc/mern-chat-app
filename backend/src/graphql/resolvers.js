@@ -1,5 +1,6 @@
 // Path: backend\src\graphql\resolvers.js
 // Define the resolvers for the GraphQL schema
+
 const queries = require('./resolvers/queries');
 const mutations = require('./resolvers/mutations');
 const subscriptions = require('./resolvers/subscriptions');
