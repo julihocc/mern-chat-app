@@ -100,7 +100,44 @@ const queries = {
         const users = await User.find({_id: {$in: userIds}});
         console.log('users', !!users)
         return users;
+    },
+
+    getContacts: async (parent, args, context) => {
+        console.log("Calling getContacts")
+        const {token} = context;
+        console.log('token', token)
+        const user = await getUserFromToken(token);
+        console.log('user', !!user)
+        if (!user) {
+            throw new AuthenticationError('Invalid token');
+        }
+
+        // Find all contact requests related to the user which are accepted
+        const contactRequests = await ContactRequest.find({
+            $or: [{senderId: user.id}, {recipientId: user.id}],
+            status: 'accepted'
+        });
+
+        logger.info(`Contacts fetched for user with id: ${user.id}`); // Log this info
+
+
+        // Extract the user IDs from the contact requests
+        const contactIdsFromRequests = contactRequests.map(request =>
+            request.senderId.toString() === user.id ? request.recipientId : request.senderId
+        );
+
+        logger.info(`Contact IDs: ${contactIdsFromRequests}`); // Log this info
+
+        // Fetch all contacts
+        const userContacts = await User.find({_id: {$in: contactIdsFromRequests}}); // Fetch only 'email' field
+        logger.info(`Contacts: ${userContacts}`); // Log this info
+
+        console.log('userContacts', !!userContacts)
+        const contactEmails = userContacts.map(user => user.email); // Return the email addresses only
+        logger.info(`Contact emails: ${contactEmails}`); // Log this info
+        return userContacts;
     }
+
 };
 
 module.exports = queries;

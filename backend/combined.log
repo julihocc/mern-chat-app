@@ -372,3 +372,337 @@
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact request rejected: 64c2acd723a28cbe1c3fc5b7"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: { _id: new ObjectId(\"645433394979094d96aae4a1\"), email: 'jcc@jcc.com' }"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContacts"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: { _id: new ObjectId(\"645433394979094d96aae4a1\"), email: 'jcc@jcc.com' }"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
+{"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getContacts"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: { _id: new ObjectId(\"645433394979094d96aae4a1\"), email: 'jcc@jcc.com' }"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
+{"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getContacts"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
+{"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"Contact emails: jcc@jcc.com"}

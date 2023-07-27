@@ -7,6 +7,7 @@ import ChatList from "./ChatList";
 import SendContactRequest from "./SendContactRequest";
 import ContactRequests from "./ContactRequests";
 import CreateGroupConversation from "./CreateGroupConversation";
+import ContactList from "./ContactList";
 import gql from "graphql-tag";
 import { useTranslation } from "react-i18next";
 
@@ -53,6 +54,9 @@ const Dashboard = ({ handleLogout }) => {
             </Grid>
             <Grid item>
                 <ChatList />
+            </Grid>
+            <Grid item>
+                <ContactList userId={getCurrentUser.id} />
             </Grid>
         </Grid>
     );

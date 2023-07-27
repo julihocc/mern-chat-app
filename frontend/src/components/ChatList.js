@@ -1,30 +1,11 @@
 // Path: frontend\src\components\dashboardUtils\ChatList.js
 import React from 'react';
-import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/client';  // updated the import from '@apollo/react-hooks' to '@apollo/client'
 import { Link } from "react-router-dom";
 import { CircularProgress, Alert, List, ListItem, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import log from '../utils/logger';  // importing the logger
-
-const GET_CHAT_ROOMS = gql`
-    query GetChatRooms {
-        getChatRooms{
-            id
-            participantIds
-            messageIds
-        }
-    }
-`;
-
-const GET_USERS_BY_ID = gql`
-    query GetUsersById($userIds: [ID!]!) {
-        getUsersById(userIds: $userIds) {
-            id
-            email
-        }
-    }
-`;
+import { GET_CHAT_ROOMS, GET_USERS_BY_ID } from './dashboardUtils/gql';  // importing the query
 
 const ChatRoom = ({ id, participantIds }) => {
     const { loading, error, data } = useQuery(GET_USERS_BY_ID, {

@@ -58,6 +58,7 @@ const typeDefs = gql`
         getMessageById(messageId: ID!): Message
         getUsersById(userIds: [ID!]!): [User]
         getUserByEmails(emails: [String!]!): [User]
+        getContacts(userId: ID!): [User]
     }
     
     type Mutation {
