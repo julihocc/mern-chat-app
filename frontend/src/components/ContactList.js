@@ -1,6 +1,6 @@
 // frontend\src\components\ContactList.js
 import React from 'react';
-import { useGetContacts } from './dashboardUtils/hooks';
+import { useGetContacts } from './utils/hooks';
 import log from "loglevel";
 
 const ContactList = ({userId}) => {

@@ -2,10 +2,11 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { fetchTranslations } from '../components/translationService';
+import { fetchTranslations } from './translationService';
+import logger from './logger';
 
 const resources = await fetchTranslations();
-console.log(resources)
+logger.info(resources)
 
 i18n
     .use(LanguageDetector)

@@ -8,21 +8,14 @@ import SendContactRequest from "./SendContactRequest";
 import ContactRequests from "./ContactRequests";
 import CreateGroupConversation from "./CreateGroupConversation";
 import ContactList from "./ContactList";
-import gql from "graphql-tag";
+import { GET_CURRENT_USER } from "./utils/gql";
 import { useTranslation } from "react-i18next";
 
 import log from '../utils/logger'; // Imported the custom logger
 
-export const GET_CURRENT_USER = gql`
-    query GetCurrentUser {
-        getCurrentUser {
-            id
-            email
-        }
-    }
-`;
 
-const Dashboard = ({ handleLogout }) => {
+
+const Dashboard = () => {
     const {t} = useTranslation();
     const { loading, error, data } = useQuery(GET_CURRENT_USER);
 

@@ -1,5 +1,5 @@
-// chatRoomViewerUtils component
-// Path: frontend\src\components\chatRoomViewerUtils.js
+// utils component
+// Path: frontend\src\components\utils.js
 import { Box, Stack, Paper, TextField, Button, Typography, CssBaseline, Container, List, ListItem, ListItemAvatar, ListItemText, Avatar } from '@mui/material';
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
@@ -7,10 +7,10 @@ import { useSubscription, useQuery } from '@apollo/client';
 import PersonIcon from '@mui/icons-material/Person';
 import Loading from './Loading';
 import Error from './Error';
-import useChatRoomQuery from './chatRoomViewerUtils/useChatRoomQuery';
-import useMessageSender from './chatRoomViewerUtils/useMessageSender';
+import useChatRoomQuery from './utils/useChatRoomQuery';
+import useMessageSender from './utils/useMessageSender';
 import { useTranslation } from "react-i18next";
-import { GET_MESSAGES_BY_CHATROOM_ID, GET_USER_BY_ID, GET_USERS_BY_IDS, NEW_MESSAGE_SUBSCRIPTION } from './chatRoomViewerUtils/gql';
+import { GET_MESSAGES_BY_CHATROOM_ID, GET_USER_BY_ID, GET_USERS_BY_IDS, NEW_MESSAGE_SUBSCRIPTION } from './utils/gql';
 
 const Message = ({ message, isCurrentUser }) => {
     const { loading, error, data } = useQuery(GET_USER_BY_ID, {

@@ -6,19 +6,7 @@ import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material'; // Import MUI components
 import { useTranslation } from 'react-i18next'; // Import MUI components
-
-// const SIGNUP = gql`
-//     mutation SignUp($username: String!, $email: String!, $password: String!) {
-//         signUp(username: $username, email: $email, password: $password) {
-//             token
-//             user {
-//                 id
-//                 username
-//                 email
-//             }
-//         }
-//     }
-// `;
+import logger from '../utils/logger';
 
 const SIGNUP = gql`
     mutation SignUp($username: String!, $email: String!, $password: String!, $confirmPassword: String!) {
@@ -43,7 +31,7 @@ const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
 
     const [signUp, { error }] = useMutation(SIGNUP, {
         onError(err) {
-            console.error('Signup Error:', err.message);
+            logger.error('Signup Error:', err.message);
             alert(err.message);
         },
         onCompleted(data) {
@@ -64,11 +52,6 @@ const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
             return;
         }
 
-        // try {
-        //     await signUp({ variables: { username, email, password } });
-        // } catch (err) {
-        //     console.error('handleSubmit Error:', err.message);
-        // }
         try {
             await signUp({ variables: { username, email, password, confirmPassword } });
         } catch (err) {

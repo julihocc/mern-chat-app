@@ -1,13 +1,14 @@
 // translationService.js
 
 import Papa from 'papaparse';
+import logger   from "./logger";
 
 export async function fetchTranslations() {
     try {
         const response = await fetch('/resources.csv');
         // console.log(response.text())
         const csvData = await response.text();
-        console.log('csvData: ', csvData)
+        logger.info('csvData: ', csvData)
 
         let csvParsed = Papa.parse(csvData, {
             header: true,
@@ -37,7 +38,7 @@ export async function fetchTranslations() {
 
         return resources;
     } catch (err) {
-        console.error(err);
+        logger.error(err);
         return null;
     }
 }

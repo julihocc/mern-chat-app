@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { CircularProgress, Alert, List, ListItem, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import log from '../utils/logger';  // importing the logger
-import { GET_CHAT_ROOMS, GET_USERS_BY_ID } from './dashboardUtils/gql';  // importing the query
+import { GET_CHAT_ROOMS, GET_USERS_BY_ID } from './utils/gql';  // importing the query
 
 const ChatRoom = ({ id, participantIds }) => {
     const { loading, error, data } = useQuery(GET_USERS_BY_ID, {

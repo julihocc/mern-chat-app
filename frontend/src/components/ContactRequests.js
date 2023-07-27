@@ -1,6 +1,6 @@
 // frontend\src\components\dashboardUtils\ContactRequests.js
 import React from 'react';
-import {useGetContactRequests, useAcceptContactRequest, useRejectContactRequest} from './dashboardUtils/hooks';
+import {useGetContactRequests, useAcceptContactRequest, useRejectContactRequest} from './utils/hooks';
 import { useTranslation } from "react-i18next";
 import log from "loglevel";
 

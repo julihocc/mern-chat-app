@@ -23,17 +23,17 @@ const queries = {
     },
 
     getChatRooms: async (parent, args, context) => {
-        console.log("Calling getChatRooms")
-        // console.log('context', context)
+        logger.info("Calling getChatRooms")
+        // logger.info('context', context)
         const {token} = context;
-        console.log('token', token)
+        logger.info('token', token)
 
         if (!token) {
             throw new AuthenticationError('You must be logged in');
         }
 
         const user = await getUserFromToken(token);
-        console.log('user', !!user)
+        logger.info('user', !!user)
 
         // Check if the user is logged in
         if (!user) {
@@ -45,16 +45,16 @@ const queries = {
     },
 
     getCurrentUser: async (parent, args, context) => {
-        console.log("Calling getCurrentUser")
+        logger.info("Calling getCurrentUser")
         const {token} = context;
-        console.log('token', token)
+        logger.info('token', token)
 
         if (!token) {
             throw new AuthenticationError('You must be logged in');
         }
 
         const user = await getUserFromToken(token);
-        console.log('user', !!user)
+        logger.info('user', !!user)
 
         if (!user) {
             throw new AuthenticationError('Invalid token');
@@ -64,9 +64,9 @@ const queries = {
     },
 
     getUserById: async (parent, {userId}) => {
-        console.log("Calling getUserById", userId);
+        logger.info("Calling getUserById", userId);
         const user = User.findById(userId);
-        console.log('user', !!user)
+        logger.info('user', !!user)
         return user;
     },
 
@@ -96,18 +96,18 @@ const queries = {
     },
 
     getUsersById: async (parent, {userIds}) => {
-        console.log("Calling getUsersById", userIds)
+        logger.info("Calling getUsersById", userIds)
         const users = await User.find({_id: {$in: userIds}});
-        console.log('users', !!users)
+        logger.info('users', !!users)
         return users;
     },
 
     getContacts: async (parent, args, context) => {
-        console.log("Calling getContacts")
+        logger.info("Calling getContacts")
         const {token} = context;
-        console.log('token', token)
+        logger.info('token', token)
         const user = await getUserFromToken(token);
-        console.log('user', !!user)
+        logger.info('user', !!user)
         if (!user) {
             throw new AuthenticationError('Invalid token');
         }
@@ -132,7 +132,7 @@ const queries = {
         const userContacts = await User.find({_id: {$in: contactIdsFromRequests}}); // Fetch only 'email' field
         logger.info(`Contacts: ${userContacts}`); // Log this info
 
-        console.log('userContacts', !!userContacts)
+        logger.info('userContacts', !!userContacts)
         const contactEmails = userContacts.map(user => user.email); // Return the email addresses only
         logger.info(`Contact emails: ${contactEmails}`); // Log this info
         return userContacts;

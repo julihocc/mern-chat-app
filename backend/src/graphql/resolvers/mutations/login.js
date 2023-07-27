@@ -2,7 +2,6 @@
 const User = require('../../../models/User');
 const jwt = require('jsonwebtoken');
 const {comparePassword} = require('../utils/utils');
-// const logger = require('../../../logger'); // add this line to import the logger
 const logger = require('../../../logger'); // add this line to import the logger
 
 const login = async (parent, {email, password}) => {

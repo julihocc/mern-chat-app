@@ -11,7 +11,7 @@ import Signup from "./components/SignUp";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 
 const MainRoutes = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(document.cookie.includes('your_token_name')); // Checks cookie to see if user is logged in
+    const [isLoggedIn, setIsLoggedIn] = useState(document.cookie.includes('Bearer')); // Checks cookie to see if user is logged in
     const navigate = useNavigate();
     const { t } = useTranslation();
 

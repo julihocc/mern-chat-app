@@ -32,8 +32,8 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
     const chatRoom = await ChatRoom.findById(chatRoomId);
 
     if (!chatRoom) {
-        logger.error('chatRoomViewerUtils not found'); // Log this error
-        throw new Error('chatRoomViewerUtils not found');
+        logger.error('utils not found'); // Log this error
+        throw new Error('utils not found');
     }
 
     const sender = await getUserById(senderId);
