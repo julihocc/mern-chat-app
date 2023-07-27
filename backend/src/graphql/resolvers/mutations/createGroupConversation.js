@@ -1,20 +1,23 @@
+// backend\src\graphql\resolvers\mutations\createGroupConversation.js
 const User = require("../../../models/User");
 const ChatRoom = require("../../../models/ChatRoom");
 
 const createGroupConversation = async (_, {emails}) => {
+    // Get users whose emails are in the provided list
+    const users = await User.find({email: {$in: emails}});
 
-    console.log('createGroupConversation: emails: ', emails)
+    // Check if all emails found a user
+    if (users.length !== emails.length) {
+        throw new Error('Some emails not found');
+    }
 
-    const participantIds = await User.find({email: {$in: emails}}).select('_id');
+    // Extract _id from users to form participantIds
+    const participantIds = users.map(user => user._id);
 
-    console.log('createGroupConversation: participantIds: ', participantIds)
-
-    const participants = await User.find({_id: {$in: participantIds}});
-
-    console.log('createGroupConversation: participants: ', participants)
-
-    if (participants.length !== participantIds.length) {
-        throw new Error('Some participantIds not found');
+    // Check if chatRoom already exists with the same participantIds
+    const existingChatRoom = await ChatRoom.findOne({ participantIds: { $all: participantIds } });
+    if (existingChatRoom) {
+        throw new Error('ChatRoom with these participants already exists');
     }
 
     const chatRoom = new ChatRoom({participantIds});

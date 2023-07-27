@@ -1,6 +1,8 @@
-//backend\src\config\connectDB.js
+// Initialize the connection to MongoDB
+// path: backend\src\connectDB.js
 const mongoose = require('mongoose');
 require('dotenv').config();
+const logger = require('./logger'); // Import the logger
 
 const connectDB = async () => {
     try {
@@ -8,9 +10,9 @@ const connectDB = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        console.log('Connected to MongoDB');
+        logger.info('Connected to MongoDB'); // Log the info
     } catch (err) {
-        console.error('Error connecting to MongoDB:', err);
+        logger.error('Error connecting to MongoDB:', err); // Log the error
         throw err;
     }
 };

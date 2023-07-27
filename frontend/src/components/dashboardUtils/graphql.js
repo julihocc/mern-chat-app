@@ -1,8 +1,4 @@
-// Path: frontend\src\components\Dashboard\ContactRequest\hooks\graphql.js
-// Compare this snippet from backend\src\graphql\resolvers\mutations\acceptContactRequest.js:
-// // backend\src\graphql\resolvers\mutations\acceptContactRequest.js
-//
-
+// Path: frontend\src\components\dashboardUtils\graphql.js
 import {gql} from '@apollo/client';
 
 export const GET_CONTACT_REQUESTS = gql`

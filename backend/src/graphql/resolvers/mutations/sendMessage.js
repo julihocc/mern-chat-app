@@ -3,6 +3,7 @@ require("../../../models/User");
 const ChatRoom = require("../../../models/ChatRoom");
 const Message = require("../../../models/Message");
 const { getUserById } = require("../utils/user-utils");
+const logger = require('../../../logger');
 
 const s3 = require('./s3'); // Adjust the path according to your file structure
 
@@ -27,18 +28,12 @@ async function uploadFile(file) {
     });
 }
 
-
-// Add 'imageUrl' to the destructuring assignment
 const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) => {
-    console.log('loading sendMessage')
-    console.log('sendMessage: ', senderId)
-    console.log('sendMessage: ', chatRoomId)
-    console.log('sendMessage: ', body)
-
     const chatRoom = await ChatRoom.findById(chatRoomId);
 
     if (!chatRoom) {
-        throw new Error('ChatRoomViewer not found');
+        logger.error('chatRoomViewerUtils not found'); // Log this error
+        throw new Error('chatRoomViewerUtils not found');
     }
 
     const sender = await getUserById(senderId);
@@ -47,8 +42,12 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
 
     // Check if image was sent
     if (file) {
-        const uploadedImage = await uploadFile(file);
-        imageUrl = uploadedImage.Location; // This is the URL of the uploaded image
+        try {
+            const uploadedImage = await uploadFile(file);
+            imageUrl = uploadedImage.Location; // This is the URL of the uploaded image
+        } catch (err) {
+            logger.error(`Failed to upload image: ${err}`); // Log this error
+        }
     }
 
     const message = new Message({
@@ -58,10 +57,12 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
         imageUrl: imageUrl, // The imageUrl field will be undefined if no image was uploaded
     });
 
-    await message.save();
-
-    console.log('message.id: ', message.id)
-    console.log('chatRoom.messageIds: ', chatRoom.messageIds)
+    try {
+        await message.save();
+        logger.info(`Message saved with id: ${message.id}`); // Log this info
+    } catch (err) {
+        logger.error(`Failed to save message: ${err}`); // Log this error
+    }
 
     chatRoom.messageIds.push(message.id);
     await chatRoom.save();

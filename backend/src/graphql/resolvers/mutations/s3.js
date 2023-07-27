@@ -1,4 +1,9 @@
+// path: backend\src\graphql\resolvers\mutations\s3.js
+// description: This file contains the code for the s3 resolver.
+// The s3 resolver is used to upload files to AWS S3.
+
 const AWS = require('aws-sdk');
+const logger = require('../../../logger');
 
 // Set the AWS region
 AWS.config.update({
@@ -15,5 +20,7 @@ const s3 = new AWS.S3({
     // This is required for LocalStack
     s3ForcePathStyle: true,
 });
+
+logger.info('S3 instance created.'); // log the info
 
 module.exports = s3;

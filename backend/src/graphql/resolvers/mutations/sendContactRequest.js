@@ -1,5 +1,7 @@
+// path: backend\src\graphql\resolvers\mutations\sendContactRequest.js
 const { getUserById } = require('../utils/user-utils');
 const ContactRequest = require("../../../models/ContactRequest");
+const logger = require('../../../logger');
 
 const sendContactRequest = async (parent, {senderId, recipientId}) => {
     const sender = await getUserById(senderId);
@@ -13,9 +15,11 @@ const sendContactRequest = async (parent, {senderId, recipientId}) => {
         });
         await contactRequest.save();
 
+        logger.info(`Contact request sent from ${senderId} to ${recipientId}`); // log the info
+
         return contactRequest;
     } catch (err) {
-        console.error(err);
+        logger.error(`Failed to send contact request from ${senderId} to ${recipientId}: ${err}`); // log the error
         throw new Error("Failed to send contact request");
     }
 };

@@ -1,10 +1,11 @@
-// frontend\src\components\Dashboard\ChatList.js
+// Path: frontend\src\components\dashboardUtils\ChatList.js
 import React from 'react';
 import { gql } from '@apollo/client';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';  // updated the import from '@apollo/react-hooks' to '@apollo/client'
 import { Link } from "react-router-dom";
 import { CircularProgress, Alert, List, ListItem, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import log from '../utils/logger';  // importing the logger
 
 const GET_CHAT_ROOMS = gql`
     query GetChatRooms {
@@ -31,7 +32,10 @@ const ChatRoom = ({ id, participantIds }) => {
     });
 
     if (loading) return <CircularProgress />;
-    if (error) return <Alert severity="error">Error: {error.message}</Alert>;
+    if (error) {
+        log.error(`Error when trying to get users by id: ${error.message}`);  // using logger
+        return <Alert severity="error">Error: {error.message}</Alert>;
+    }
 
     return (
         <ListItem>
@@ -52,7 +56,10 @@ const ChatList = () => {
     });
 
     if (loading) return <CircularProgress />;
-    if (error) return <Alert severity="error">Error: {error.message}</Alert>;
+    if (error) {
+        log.error(`Error when trying to get chat rooms: ${error.message}`);  // using logger
+        return <Alert severity="error">Error: {error.message}</Alert>;
+    }
 
 
     return (

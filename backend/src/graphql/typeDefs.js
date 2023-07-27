@@ -12,12 +12,6 @@ const typeDefs = gql`
         contacts: [User]! # new field
     }
     
-    # ContactRequest Status Enum
-    enum ContactRequestStatus {
-        PENDING
-        ACCEPTED
-        REJECTED
-    }
     
     type ChatRoom {
         id: ID!
@@ -48,7 +42,7 @@ const typeDefs = gql`
         id: ID!
         senderId: ID!
         recipientId: ID!
-        status: ContactRequestStatus! # updated field
+        status: String!
         createdAt: String!
     }
 

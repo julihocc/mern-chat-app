@@ -1,4 +1,4 @@
-// frontend\src\components\Dashboard\CreateGroupConversation.js
+// frontend\src\components\dashboardUtils\CreateGroupConversation.js
 
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';

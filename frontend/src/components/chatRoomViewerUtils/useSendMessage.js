@@ -1,5 +1,5 @@
 // useSendMessage.js
-// Path: frontend\src\components\ChatRoomViewer\useSendMessage.js
+// Path: frontend\src\components\chatRoomViewerUtils\useSendMessage.js
 
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from '@apollo/client';

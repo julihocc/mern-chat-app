@@ -1,5 +1,8 @@
+// path: backend\src\errorHandler.js
+const logger = require('./logger'); // Import the logger
+
 const errorHandler = (err, req, res, next) => {
-    console.error(err.stack);
+    logger.error(err.stack); // Log the error
     res.status(500).send('Something went wrong');
     next();
 };

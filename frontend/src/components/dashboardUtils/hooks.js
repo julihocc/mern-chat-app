@@ -1,5 +1,6 @@
+// path: frontend\src\components\dashboardUtils\hooks.js
 import {useMutation, useQuery} from '@apollo/react-hooks';
-import {GET_CONTACT_REQUESTS, ACCEPT_CONTACT_REQUEST, REJECT_CONTACT_REQUEST} from './hooks/graphql';
+import {GET_CONTACT_REQUESTS, ACCEPT_CONTACT_REQUEST, REJECT_CONTACT_REQUEST} from './graphql';
 
 export const useGetContactRequests = (userId) => {
     const {loading, error, data} = useQuery(GET_CONTACT_REQUESTS, {

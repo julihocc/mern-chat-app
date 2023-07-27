@@ -1,3 +1,4 @@
+// backend\src\graphql\resolvers\mutations\createChatRoom.js
 const User = require("../../../models/User");
 const ChatRoom = require("../../../models/ChatRoom");
 
@@ -8,7 +9,13 @@ const createChatRoom = async (_, {participantIds}) => {
         throw new Error('Some participantIds not found');
     }
 
-    const chatRoom = new ChatRoom({participants});
+    // Check if chatRoom already exists with the same participantIds
+    const existingChatRoom = await ChatRoom.findOne({ participantIds: { $all: participantIds } }); // Added this line
+    if (existingChatRoom) { // And this line
+        throw new Error('ChatRoom with these participants already exists'); // And this line
+    } // And this line
+
+    const chatRoom = new ChatRoom({participantIds}); // participantIds instead of participants
     await chatRoom.save();
     return chatRoom;
 };

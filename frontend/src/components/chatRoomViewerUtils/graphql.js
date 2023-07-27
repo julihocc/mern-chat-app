@@ -1,5 +1,5 @@
 // useChatRoomQuery.js
-// Path: frontend\src\components\ChatRoomViewer\useChatRoomQuery.js
+// Path: frontend\src\components\chatRoomViewerUtils\useChatRoomQuery.js
 import gql from 'graphql-tag';
 
 export const GET_CHAT_ROOM = gql`

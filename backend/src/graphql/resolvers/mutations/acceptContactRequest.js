@@ -1,11 +1,22 @@
+// Path: backend\src\graphql\resolvers\mutations\acceptContactRequest.js
 const { getUserFromToken } = require('../utils/utils');
 const ContactRequest = require("../../../models/ContactRequest");
 const ChatRoom = require("../../../models/ChatRoom");
 const { AuthenticationError } = require('apollo-server-express');
-const logger = require("../../../config/logger"); // Import the logger
+const logger = require("../../../logger"); // Import the logger
 
 const acceptContactRequest = async (parent, { requestId }, context ) => {
-    const { token } = context;
+
+    const { token, pubSub } = context; // Added pubSub here
+
+    if (!token) {
+        throw new AuthenticationError('You must be logged in');
+    }
+
+    if (!requestId) {
+        throw new Error('Request ID is required');
+    }
+
     const user = await getUserFromToken(token);
 
     if (!user) {
@@ -36,6 +47,10 @@ const acceptContactRequest = async (parent, { requestId }, context ) => {
 
         contactRequest.chatRoomId = chatRoom.id;
         await contactRequest.save();
+
+        // Furthermore, pubSub publish here for both sender and recipient
+        pubSub.publish(`FRIEND_REQUEST_UPDATED_${contactRequest.senderId}`, { friendRequestUpdated: contactRequest });
+        pubSub.publish(`FRIEND_REQUEST_UPDATED_${contactRequest.recipientId}`, { friendRequestUpdated: contactRequest });
 
         return contactRequest;
     } catch (err) {

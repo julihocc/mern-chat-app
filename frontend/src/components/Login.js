@@ -1,11 +1,13 @@
-// frontend\src\components\Login.js
+// CST - 2023-07-27 15:30
+// path: frontend\src\components\Login.js
 import React, { useState } from 'react';
 import { useApolloClient } from '@apollo/client';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
-import {useTranslation} from "react-i18next"; // Import MUI components
+import {useTranslation} from "react-i18next";
+import log from '../utils/logger'; // import the logger
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
@@ -27,9 +29,7 @@ const LOGIN_USER = gql`
     }
 `;
 
-// const Login = () => {
-const Login = ({ onLogin }) => {  // Pass setIsLoggedIn prop
-
+const Login = ({ onLogin }) => {
     const navigate = useNavigate();
     const client = useApolloClient();
     const { t } = useTranslation();
@@ -38,34 +38,25 @@ const Login = ({ onLogin }) => {  // Pass setIsLoggedIn prop
     const [password, setPassword] = useState('');
 
     const [loginUser, { error }] = useMutation(LOGIN_USER, {
-
         onError(err) {
-            // Handle error by showing a more user-friendly message
-            console.error('Login Error:', err.message);
+            log.error('Login Error:', err.message); // Replaced console.error with log.error
             alert('Failed to login. Please check your email and password.');
         },
-
         onCompleted(data) {
-
-            // Set isLoggedIn to true on successful login
-            // setIsLoggedIn(true);
             onLogin();
 
-            console.log('Calling onCompleted(data)');
-            console.log('data', data);
-            // Set JWT token as a cookie
-            console.log('data.login.token', data.login.token);
-            console.log('data.login.user', data.login.user.email);
+            log.debug('Calling onCompleted(data)'); // Replaced console.log with log.debug
+            log.debug('data', data);
+            log.debug('data.login.token', data.login.token);
+            log.debug('data.login.user', data.login.user.email);
             document.cookie = `token=${data.login.token}; path=/; max-age=3600`;
-            console.log('document.cookie', document.cookie);
+            log.debug('document.cookie', document.cookie);
 
-            // Refetch the GET_CURRENT_USER query after login
             client.query({
                 query: GET_CURRENT_USER,
-                fetchPolicy: 'network-only', // ignore cache
+                fetchPolicy: 'network-only',
             });
 
-            // Navigate to the dashboard
             navigate('/dashboard');
         },
     });
@@ -80,11 +71,10 @@ const Login = ({ onLogin }) => {  // Pass setIsLoggedIn prop
             return;
         }
 
-
         try {
             await loginUser({ variables: { email, password } });
         } catch (err) {
-            console.error(err);
+            log.error(err); // Replaced console.error with log.error
         }
     };
 

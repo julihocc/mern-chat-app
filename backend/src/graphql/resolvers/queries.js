@@ -9,6 +9,7 @@ const ChatRoom = require('../../models/ChatRoom');
 const User = require('../../models/User');
 const ContactRequest = require('../../models/ContactRequest');
 const {getUserFromToken} = require('./utils/utils');
+const logger = require('../../logger');
 
 const queries = {
 
@@ -73,12 +74,10 @@ const queries = {
         try {
             const user = await getUserFromToken(context.token);
             const contactRequests = await ContactRequest.find({recipientId: user.id})
-            // .populate('senderId')
-            // .populate('recipientId');
-            console.log('contactRequests', new Date(), contactRequests)
+            logger.info(`Contact requests fetched for user with id: ${user.id}`); // Log this info
             return contactRequests;
         } catch (err) {
-            console.error("Error loading contact requests: ", err);
+            logger.error("Error loading contact requests: ", err); // Log the error
             throw new Error('Error fetching contact requests');
         }
     },

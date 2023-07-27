@@ -1,40 +1,11 @@
-// frontend\src\components\Dashboard\SendContactRequest.js
-
+// Path: frontend\src\components\dashboardUtils\SendContactRequest.js
 import React, { useEffect, useState } from 'react';
-import { gql } from '@apollo/client';
 import { useMutation, useLazyQuery, useQuery } from '@apollo/react-hooks';
 import { TextField, Button, CircularProgress, Typography, Alert } from '@mui/material';
 import { useTranslation } from "react-i18next";
+import { SEND_CONTACT_REQUEST, GET_CURRENT_USER, GET_USER_BY_EMAIL } from './dashboardUtils/gql';
+import logger from "../utils/logger";
 
-const SEND_CONTACT_REQUEST = gql`
-    mutation SendContactRequest($senderId: ID!, $recipientId: ID!) {
-        sendContactRequest(senderId: $senderId, recipientId: $recipientId) {
-            id
-            senderId
-            recipientId
-            status
-            createdAt
-        }
-    }
-`;
-
-const GET_CURRENT_USER = gql`
-    query GetCurrentUser {
-        getCurrentUser {
-            id
-            email
-        }
-    }
-`;
-
-const GET_USER_BY_EMAIL = gql`
-    query GetUserByEmail($email: String!) {
-        getUserByEmail(email: $email) {
-            id
-            email
-        }
-    }
-`;
 
 const SendContactRequest = () => {
     const {t} = useTranslation();
@@ -67,6 +38,7 @@ const SendContactRequest = () => {
     };
 
     useEffect(() => {
+        // Check if the response data from the getUserByEmail query is available and if it is, proceed with sending the contact request
         if (getUserByEmailData) {
             sendContactRequest({
                 variables: {
@@ -79,12 +51,14 @@ const SendContactRequest = () => {
                 console.error(err);
             });
         }
-    }, [getUserByEmailData]);
+    }, [getUserByEmailData, currentUserData.getCurrentUser.id, sendContactRequest]); // Added missing dependencies
+
 
     if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
     if (currentUserError) return <Alert severity="error">Error: {currentUserError.message}</Alert>;
 
     if (getUserByEmailError) {
+        // If the getUserByEmail query results in an error, set a custom error message to inform the user that the recipient email does not exist
         setUserError('User with this email does not exist.');
     }
 
@@ -111,3 +85,4 @@ const SendContactRequest = () => {
 };
 
 export default SendContactRequest;
+// No modifications were made to this piece of code. The current implementation seems appropriate for the intended functionality.

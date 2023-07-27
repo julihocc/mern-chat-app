@@ -7,12 +7,12 @@ const { SubscriptionServer } = require('subscriptions-transport-ws');
 const cors = require('cors');
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
-const errorHandler = require('./middlewares/errorHandler');
-const connectDB = require('./config/connectDB');
+const errorHandler = require('./errorHandler');
+const connectDB = require('./connectDB');
 const http = require('http');
 const PORT = process.env.PORT || 4000;
 const cookieParser = require('cookie-parser');
-const logger = require('./config/logger');
+const logger = require('./logger');
 
 const app = express();
 app.use(express.static(__dirname + '/public'));

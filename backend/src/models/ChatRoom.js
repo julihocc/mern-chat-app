@@ -1,8 +1,9 @@
-// backend/models/ChatRoomViewer.js
+// backend/models/ChatRoom.js
 const { Schema, model } = require('mongoose');
+const logger = require('../logger'); // Import the logger
 
 function arrayLimit(val) {
-    console.log('arrayLimit: val: ', val)
+    logger.info(`arrayLimit: val: ${val}`); // Replace console.log with logger.info
     return val.length >= 2;
 }
 
