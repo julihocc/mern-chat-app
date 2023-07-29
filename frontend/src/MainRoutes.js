@@ -1,5 +1,6 @@
-// Path: frontend\src\App.js
-import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from 'react-router-dom'; // Removed useState import
+// path: frontend\src\MainRoutes.js
+import { useContext } from 'react';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppBar, Toolbar, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -8,19 +9,16 @@ import Dashboard from './components/Dashboard';
 import ChatRoomViewer from "./components/ChatRoomViewer";
 import Signup from "./components/SignUp";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import AuthProvider from "./AuthProvider";
-
-import {useContext} from "react";
 import AuthContext from "./AuthContext";
+
 const MainRoutes = () => {
-    const { isLoggedIn, onLogin, onLogout } = useContext(AuthContext); // Added onLogin to the context values
+    const { isLoggedIn, onLogin, onLogout } = useContext(AuthContext);
     const navigate = useNavigate();
     const { t } = useTranslation();
 
     const handleLogout = () => {
-        // Erases cookie and sets isLoggedIn to false, then redirects to login page
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        onLogout(); // Changed setIsLoggedIn(false) to onLogout()
+        onLogout();
         navigate('/login');
     };
 
@@ -52,9 +50,7 @@ const MainRoutes = () => {
                 </Toolbar>
             </AppBar>
             <Routes>
-                {/*Changed setIsLoggedIn(true) to onLogin*/}
                 <Route path="/signup" element={<Signup onLogin={onLogin} />} />
-                {/*Changed setIsLoggedIn(true) to onLogin*/}
                 <Route path="/login" element={<Login onLogin={onLogin} />} />
                 <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/login" replace />} />
                 <Route path="/chat/:id" element={<ChatRoomViewer />} />
@@ -63,16 +59,4 @@ const MainRoutes = () => {
     );
 };
 
-function App() {
-    return (
-        <div className="App">
-            <AuthProvider>
-                <Router>
-                    <MainRoutes />
-                </Router>
-            </AuthProvider>
-        </div>
-    );
-}
-
-export default App;
+export default MainRoutes;

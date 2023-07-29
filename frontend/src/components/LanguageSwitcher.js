@@ -1,15 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import logger from "../utils/logger";
 
 const LanguageSwitcher = () => {
-    console.log('LanguageSwitcher')
     const { i18n } = useTranslation();
     const changeLanguage = (language) => {
-        console.log('Changing language to: ' + language)
+        logger.info('Changing language to: ' + language)
         i18n.changeLanguage(language)
-            .then(r => console.log('Language changed to: ' + language)) // Success
+            .then(() => logger.info('Language changed to: ' + language)) // Success
             .catch(
-                err => console.error('Error changing language to: ' + language + ' - ' + err) // Error
+                err => logger.error('Error changing language to: ' + language + ' - ' + err) // Error
             )// ;
     };
 

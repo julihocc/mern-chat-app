@@ -3,19 +3,15 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+    scalar Upload
+    
     type User {
         id: ID!
         email: String!
         username: String!
-        contacts: [User]! # new field
+        contacts: [ID] # new field
     }
     
-    # ContactRequest Status Enum
-    enum ContactRequestStatus {
-        PENDING
-        ACCEPTED
-        REJECTED
-    }
     
     type ChatRoom {
         id: ID!
@@ -29,6 +25,7 @@ const typeDefs = gql`
         body: String!
         createdAt: String!
         chatRoomId: ID!
+        imageUrl: String
     }
     
     type SignupPayload {
@@ -43,9 +40,9 @@ const typeDefs = gql`
 
     type ContactRequest {
         id: ID!
-        senderId: ID!
-        recipientId: ID!
-        status: ContactRequestStatus! # updated field
+        senderId: ID! # modified
+        recipientId: ID! 
+        status: String!
         createdAt: String!
     }
 
@@ -54,19 +51,21 @@ const typeDefs = gql`
         getChatRooms: [ChatRoom]
         getCurrentUser: User
         getUserById(userId: ID!): User
-        getContactRequests(userId: ID!): [ContactRequest]
+        getContactRequests(userId: ID!): [ContactRequest] # modified
+        getContactRequestsByContext: [ContactRequest] # new
         getChatRoom(chatRoomId: ID!): ChatRoom
         getUserByEmail(email: String!): User
         getChatRoomsByUserId(userId: ID!): [ChatRoom]
         getMessageById(messageId: ID!): Message
         getUsersById(userIds: [ID!]!): [User]
         getUserByEmails(emails: [String!]!): [User]
+        getContacts(userId: ID!): [User]
     }
     
     type Mutation {
         signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
-        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String!): Message!
+        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String,  file: Upload): Message!
         sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
         acceptContactRequest(requestId: ID!): ContactRequest!
         rejectContactRequest(requestId: ID!): ContactRequest!
@@ -76,7 +75,6 @@ const typeDefs = gql`
 
     type Subscription {
         newMessage(chatRoomId: ID!): Message!
-        messageAdded(chatRoomId: ID!): Message!
         friendRequestUpdated(userId: ID!): ContactRequest!  # new subscription
     }
 `;

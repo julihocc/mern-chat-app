@@ -1,17 +1,18 @@
-// backend/scr/server.js
+// Path: backend\src\server.js
 const express = require('express');
-const { ApolloServer} = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
 const { PubSub } = require('graphql-subscriptions');
 const { execute, subscribe } = require('graphql');
 const { SubscriptionServer } = require('subscriptions-transport-ws');
 const cors = require('cors');
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
-const errorHandler = require('./middlewares/errorHandler');
-const connectDB = require('./config/connectDB');
+const errorHandler = require('./errorHandler');
+const connectDB = require('./connectDB');
 const http = require('http');
 const PORT = process.env.PORT || 4000;
 const cookieParser = require('cookie-parser');
+const logger = require('./logger');
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
@@ -24,16 +25,15 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-// connectDB();
 app.use(errorHandler);
 
 app.use(cookieParser());
 async function startServer() {
     try {
         await connectDB();
-        console.log('Connected to MongoDB');
+        logger.info('Connected to MongoDB'); // Changed this line
     } catch (err) {
-        console.error('Error connecting to MongoDB:', err);
+        logger.error('Error connecting to MongoDB:', err); // And this line
     }
 
     const pubSub = new PubSub();
@@ -44,14 +44,13 @@ async function startServer() {
         introspection: true,
         context: ({ req, connection }) => {
             if (connection) {
-                // For WebSocket connections
                 return { ...connection.context, pubSub };
             } else {
-                // For HTTP requests
                 const token = req.headers.authorization || '';
                 return { req, pubSub, token };
             }
         },
+        uploads: false,
     });
 
     await apolloServer.start();
@@ -59,7 +58,6 @@ async function startServer() {
 
     const httpServer = http.createServer(app);
 
-    // Set up the SubscriptionServer
     SubscriptionServer.create(
         {
             schema: apolloServer.schema,
@@ -73,8 +71,8 @@ async function startServer() {
     );
 
     httpServer.listen(PORT, () => {
-        console.log(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`);
-        console.log(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`);
+        logger.info(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // Changed this line
+        logger.info(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // And this line
     });
 
 }
@@ -83,6 +81,6 @@ async function startServer() {
     try {
         await startServer();
     } catch (err) {
-        console.error('Error starting the backend:', err);
+        logger.error('Error starting the backend:', err); // Changed this line
     }
 })();

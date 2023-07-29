@@ -1,53 +1,16 @@
-// ChatRoomViewer component
-// Path: frontend\src\components\ChatRoomViewer.js
+// utils component
+// Path: frontend\src\components\utils.js
 import { Box, Stack, Paper, TextField, Button, Typography, CssBaseline, Container, List, ListItem, ListItemAvatar, ListItemText, Avatar } from '@mui/material';
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { useSubscription, gql, useQuery } from '@apollo/client';
+import { useSubscription, useQuery } from '@apollo/client';
 import PersonIcon from '@mui/icons-material/Person';
-import Loading from './ChatRoomViewer/Loading';
-import Error from './ChatRoomViewer/Error';
-import useChatRoomQuery from './ChatRoomViewer/useChatRoomQuery';
-import useMessageSender from './ChatRoomViewer/useMessageSender';
+import Loading from './Loading';
+import Error from './Error';
+import useChatRoomQuery from './utils/useChatRoomQuery';
+import useMessageSender from './utils/useMessageSender';
 import { useTranslation } from "react-i18next";
-
-const NEW_MESSAGE_SUBSCRIPTION = gql`
-    subscription OnNewMessage($chatRoomId: ID!) {
-        newMessage(chatRoomId: $chatRoomId) {
-            id
-            body
-            senderId
-        }
-    }
-`;
-
-const GET_MESSAGES_BY_CHATROOM_ID = gql`
-    query GetMessagesByChatRoomId($chatRoomId: ID!) {
-        getMessagesByChatRoomId(chatRoomId: $chatRoomId) {
-            id
-            body
-            senderId
-        }
-    }
-`;
-
-const GET_USER_BY_ID = gql`
-    query GetUserById($userId: ID!) {
-        getUserById(userId: $userId) {
-            id
-            email
-        }
-    }
-`;
-
-const GET_USERS_BY_IDS = gql`
-    query GetUsersById($userIds: [ID!]!) {
-        getUsersById(userIds: $userIds) {
-            id
-            email
-        }
-    }
-`;
+import { GET_MESSAGES_BY_CHATROOM_ID, GET_USER_BY_ID, GET_USERS_BY_IDS, NEW_MESSAGE_SUBSCRIPTION } from './utils/gql';
 
 const Message = ({ message, isCurrentUser }) => {
     const { loading, error, data } = useQuery(GET_USER_BY_ID, {
@@ -77,9 +40,13 @@ const ChatRoomViewer = () => {
     const {t} = useTranslation();
     const { id } = useParams();
     const { chatRoom, currentUser } = useChatRoomQuery(id);
-    const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError } = useMessageSender();
+    // const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError } = useMessageSender();
+    // Note: Destructuring file and setFile from useMessageSender
+    const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError, setFile } = useMessageSender();
 
     const [messages, setMessages] = useState([]);
+
+    // Removed: const [selectedFile, setSelectedFile] = useState(null);
 
     const { data: newMessageData } = useSubscription(NEW_MESSAGE_SUBSCRIPTION, {
         variables: { chatRoomId: id },
@@ -89,7 +56,7 @@ const ChatRoomViewer = () => {
         variables: { chatRoomId: id },
     });
 
-    const { loading: usersLoading, error: usersError, data: usersData } = useQuery(GET_USERS_BY_IDS, {
+    const {data: usersData } = useQuery(GET_USERS_BY_IDS, {
         variables: { userIds: chatRoom.data?.getChatRoom?.participantIds },
         skip: chatRoom.loading || chatRoom.error,
     });
@@ -145,6 +112,7 @@ const ChatRoomViewer = () => {
                     ))}
                 </Stack>
             </Box>
+
             <form onSubmit={(e) => handleSendMessage(e, currentUser.data.getCurrentUser.id, chatRoom.data.getChatRoom.id)}>
                 <Stack direction="row" spacing={1}>
                     <TextField
@@ -154,6 +122,7 @@ const ChatRoomViewer = () => {
                         value={messageBody}
                         onChange={(e) => setMessageBody(e.target.value)}
                     />
+                    <input type="file" onChange={(e) => setFile(e.target.files[0])} />
                     <Button type="submit" variant="contained" color="primary">
                         {t('sendMessage')}
                     </Button>
