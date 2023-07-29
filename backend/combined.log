@@ -3448,3 +3448,138 @@
 {"level":"info","message":["64c44d14fe3bc46726698d44"]}
 {"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA1ODg2NjksImV4cCI6MTY5MDU5MjI2OX0.CE6k-jGO8N9oMH78_PhfPnJ2U3pDMT5Otk9f9LJeKAo"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA1ODg4MTIsImV4cCI6MTY5MDU5MjQxMn0.MIXZf1_dCuiR67fcqEENJvTr8u-nQXLZ6WKy-7QCFAA"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA1ODg4MzMsImV4cCI6MTY5MDU5MjQzM30.1cVGrkthWUWT-N51G3a4fF03R6CBMom1e_Z7n8U61Uo"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA1ODkwNzAsImV4cCI6MTY5MDU5MjY3MH0.61X80kp-tA7lStdIQ0z0CWEkzdiJjGNI0LclpfEBsfk"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
