@@ -1,4 +1,4 @@
-// backend/models/ChatRoom.js
+// backend/models/ChatRoomModel.js
 const { Schema, model } = require('mongoose');
 const logger = require('../logger'); // Import the logger
 

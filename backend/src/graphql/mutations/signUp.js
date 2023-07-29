@@ -1,10 +1,10 @@
 // backend\src\graphql\resolvers\mutations\signUp.js
 
 const { UserInputError } = require("apollo-server-express");
-const User = require('../../../models/User');
+const User = require('../../models/UserModel');
 const jwt = require('jsonwebtoken');
 const {encryptPassword} = require('../utils/utils');
-const logger = require('../../../logger');
+const logger = require('../../logger');
 
 const signUp = async (parent, { email, username, password, confirmPassword }) => {
 

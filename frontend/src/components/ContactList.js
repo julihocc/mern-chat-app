@@ -1,25 +1,22 @@
 // frontend\src\components\ContactList.js
 import React from 'react';
-import { useGetContacts } from './utils/hooks';
-import log from "loglevel";
+import logger from "loglevel";
+import { useGetCurrentUser } from "./utils/hooks";
 
-const ContactList = ({userId}) => {
-    const {loading, error, data} = useGetContacts(userId);
+
+const ContactList = () => {
+    const {loading, error, data} = useGetCurrentUser();
 
     if (loading) return <p>Loading...</p>;
-    if (error) {
-        log.error('Error getting contacts: ', error.message)
-        return <p>Error : {error.message} </p>;
-    }
+    if (error) return <p>Error : {error.message} </p>;
 
-    // Assuming that data.getContacts is the array of contacts.
-    const contacts = data.getContacts;
-
+    const contacts = data.getCurrentUser.contacts
+    logger.info(contacts);
     return (
         <div>
-            <h3>Contacts</h3>
+            <h3> Contacts </h3>
             <ul>
-                {contacts.map(({id}) => (
+                {contacts.map(id => (
                     <li key={id}>
                         <p>id: {id}</p>
                     </li>
@@ -27,6 +24,7 @@ const ContactList = ({userId}) => {
             </ul>
         </div>
     );
+
 }
 
 export default ContactList;

@@ -9,7 +9,7 @@ const typeDefs = gql`
         id: ID!
         email: String!
         username: String!
-        contacts: [User]! # new field
+        contacts: [ID] # new field
     }
     
     
@@ -40,8 +40,8 @@ const typeDefs = gql`
 
     type ContactRequest {
         id: ID!
-        senderId: ID!
-        recipientId: ID!
+        senderId: ID! # modified
+        recipientId: ID! 
         status: String!
         createdAt: String!
     }
@@ -51,7 +51,8 @@ const typeDefs = gql`
         getChatRooms: [ChatRoom]
         getCurrentUser: User
         getUserById(userId: ID!): User
-        getContactRequests(userId: ID!): [ContactRequest]
+        getContactRequests(userId: ID!): [ContactRequest] # modified
+        getContactRequestsByContext: [ContactRequest] # new
         getChatRoom(chatRoomId: ID!): ChatRoom
         getUserByEmail(email: String!): User
         getChatRoomsByUserId(userId: ID!): [ChatRoom]

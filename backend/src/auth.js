@@ -1,6 +1,6 @@
 // path: backend\src\auth.js
 
-const User = require('./models/User');
+const User = require('./models/UserModel');
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
 const logger = require('./logger'); // Import the logger

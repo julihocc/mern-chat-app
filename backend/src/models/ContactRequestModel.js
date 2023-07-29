@@ -14,6 +14,6 @@ const ContactRequestSchema = new Schema({
     }
 });
 
-const ContactRequest = model('ContactRequest', ContactRequestSchema);
+const ContactRequestModel = model('ContactRequestModel', ContactRequestSchema);
 
-module.exports = ContactRequest;
+module.exports = ContactRequestModel;

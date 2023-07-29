@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { Typography, Grid, CircularProgress, Alert } from '@mui/material';
 import ChatList from "./ChatList";
 import SendContactRequest from "./SendContactRequest";
-import ContactRequests from "./ContactRequests";
+import PendingContactRequestsList from "./PendingContactRequestsList";
 import CreateGroupConversation from "./CreateGroupConversation";
 import ContactList from "./ContactList";
 import { GET_CURRENT_USER } from "./utils/gql";
@@ -37,7 +37,7 @@ const Dashboard = () => {
                 <Typography variant="body1">{t('yourUserIdIs')}{getCurrentUser.id}</Typography>
             </Grid>
             <Grid item>
-                <ContactRequests userId={getCurrentUser.id} />
+                <PendingContactRequestsList userId={getCurrentUser.id} />
             </Grid>
             <Grid item>
                 <CreateGroupConversation userEmail={getCurrentUser.email} />
@@ -49,7 +49,7 @@ const Dashboard = () => {
                 <ChatList />
             </Grid>
             <Grid item>
-                <ContactList userId={getCurrentUser.id} />
+                <ContactList />
             </Grid>
         </Grid>
     );

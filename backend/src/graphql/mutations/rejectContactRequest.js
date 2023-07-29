@@ -1,8 +1,9 @@
 // backend\src\graphql\resolvers\mutations\rejectContactRequest.js
 const { getUserFromToken } = require('../utils/utils');
-const ContactRequest = require("../../../models/ContactRequest");
+const User = require("../../models/UserModel");
+const ContactRequest = require("../../models/ContactRequestModel");
 const { AuthenticationError } = require('apollo-server-express');
-const logger = require('../../../logger');
+const logger = require('../../logger');
 
 const rejectContactRequest = async (parent, { requestId }, context ) => {
 
@@ -22,7 +23,7 @@ const rejectContactRequest = async (parent, { requestId }, context ) => {
     }
 
     // Ensure that the authenticated user is involved in the contact request
-    if (user.id !== contactRequest.senderId.toString() && user.id !== contactRequest.recipientId.toString()) {
+    if (user.id !== contactRequest.recipientId.toString()) {
         logger.error(`Unauthorized access attempt by user: ${user.id}`); // log the error
         throw new AuthenticationError('You are not authorized to perform this action');
     }

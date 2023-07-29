@@ -1,6 +1,6 @@
 // backend\src\graphql\resolvers\mutations\createGroupConversation.js
-const User = require("../../../models/User");
-const ChatRoom = require("../../../models/ChatRoom");
+const User = require("../../models/UserModel");
+const ChatRoom = require("../../models/ChatRoomModel");
 
 const createGroupConversation = async (_, {emails}) => {
     // Get users whose emails are in the provided list

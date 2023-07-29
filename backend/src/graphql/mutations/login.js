@@ -1,8 +1,8 @@
 // backend\src\graphql\resolvers\mutations\login.js
-const User = require('../../../models/User');
+const User = require('../../models/UserModel');
 const jwt = require('jsonwebtoken');
 const {comparePassword} = require('../utils/utils');
-const logger = require('../../../logger'); // add this line to import the logger
+const logger = require('../../logger'); // add this line to import the logger
 
 const login = async (parent, {email, password}) => {
     const user = await User.findOne({email});

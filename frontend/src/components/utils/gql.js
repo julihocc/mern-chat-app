@@ -4,7 +4,6 @@ import gql from 'graphql-tag';
 export const SEND_CONTACT_REQUEST = gql`
     mutation SendContactRequest($senderId: ID!, $recipientId: ID!) {
         sendContactRequest(senderId: $senderId, recipientId: $recipientId) {
-            id
             senderId
             recipientId
             status
@@ -64,11 +63,22 @@ export const GET_CONTACT_REQUESTS = gql`
     }
 `;
 
+export const GET_CONTACT_REQUESTS_BY_CONTEXT = gql`
+    query GetContactRequestsByContext {
+        getContactRequestsByContext {
+            id
+            senderId
+            recipientId
+            status
+            createdAt
+        }
+    }
+`;
+
 export const ACCEPT_CONTACT_REQUEST = gql`
     mutation AcceptContactRequest($requestId: ID!) {
         acceptContactRequest(requestId: $requestId) {
             createdAt
-            id
             recipientId
             senderId
             status
@@ -80,7 +90,6 @@ export const REJECT_CONTACT_REQUEST = gql`
     mutation RejectContactRequest($requestId: ID!) {
         rejectContactRequest(requestId: $requestId) {
             createdAt
-            id
             recipientId
             senderId
             status
@@ -131,6 +140,7 @@ export const GET_USER_BY_ID = gql`
         getUserById(userId: $userId) {
             id
             email
+            username
         }   
     }
 `;
@@ -175,6 +185,8 @@ export const GET_CURRENT_USER = gql`
         getCurrentUser {
             id
             email
+            username
+            contacts
         }
     }
 `;

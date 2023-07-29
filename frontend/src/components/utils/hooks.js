@@ -5,17 +5,19 @@ import {
     ACCEPT_CONTACT_REQUEST,
     REJECT_CONTACT_REQUEST,
     GET_CONTACTS,
+    GET_CONTACT_REQUESTS_BY_CONTEXT,
+    GET_CURRENT_USER
 } from './gql';
 
-const useGetContactRequests = (userId) => {
-    const {loading, error, data} = useQuery(GET_CONTACT_REQUESTS, {
-        variables: {userId}, fetchPolicy: 'network-only',
+export const useGetContactRequestsByContext = () => {
+    const {loading, error, data} = useQuery(GET_CONTACT_REQUESTS_BY_CONTEXT, {
+        fetchPolicy: 'network-only',
     });
 
     return {loading, error, data};
 }
 
-const useAcceptContactRequest = (userId) => {
+export const useAcceptContactRequest = (userId) => {
     const [acceptContactRequest] = useMutation(ACCEPT_CONTACT_REQUEST, {
         refetchQueries: [{query: GET_CONTACT_REQUESTS, variables: {userId}}],
     });
@@ -23,7 +25,7 @@ const useAcceptContactRequest = (userId) => {
     return acceptContactRequest;
 }
 
-const useRejectContactRequest = (userId) => {
+export const useRejectContactRequest = (userId) => {
     const [rejectContactRequest] = useMutation(REJECT_CONTACT_REQUEST, {
         refetchQueries: [{query: GET_CONTACT_REQUESTS, variables: {userId}}],
     });
@@ -31,7 +33,7 @@ const useRejectContactRequest = (userId) => {
     return rejectContactRequest;
 }
 
-const useGetContacts = (userId) => {
+export const useGetContacts = (userId) => {
     const {loading, error, data} = useQuery(GET_CONTACTS, {
         variables: {userId}, fetchPolicy: 'network-only',
     });
@@ -39,9 +41,10 @@ const useGetContacts = (userId) => {
     return {loading, error, data};
 }
 
-export {
-    useGetContactRequests,
-    useAcceptContactRequest,
-    useRejectContactRequest,
-    useGetContacts,
-};
+export const useGetCurrentUser = () => {
+    const {loading, error, data} = useQuery(GET_CURRENT_USER, {
+        fetchPolicy: 'network-only',
+    });
+
+    return {loading, error, data};
+}

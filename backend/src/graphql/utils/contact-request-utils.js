@@ -1,6 +1,6 @@
 // path: backend\src\graphql\resolvers\utils\contact-request-utils.js
-const ContactRequest = require("../../../models/ContactRequest");
-const logger = require('../../../logger');
+const ContactRequest = require("../../models/ContactRequestModel");
+const logger = require('../../logger');
 async function getContactRequest(senderId, recipientId) {
     const contactRequest = await ContactRequest.findOne({senderId, recipientId});
     if (!contactRequest) {

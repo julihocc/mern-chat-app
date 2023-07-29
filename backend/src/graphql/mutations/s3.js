@@ -3,7 +3,7 @@
 // The s3 resolver is used to upload files to AWS S3.
 
 const AWS = require('aws-sdk');
-const logger = require('../../../logger');
+const logger = require('../../logger');
 
 // Set the AWS region
 AWS.config.update({

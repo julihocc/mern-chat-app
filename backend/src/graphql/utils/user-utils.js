@@ -1,6 +1,6 @@
 // path: backend\src\graphql\resolvers\utils\user-utils.js
-const User = require('../../../models/User');
-const logger = require('../../../logger'); // Import the logger
+const User = require('../../models/UserModel');
+const logger = require('../../logger'); // Import the logger
 
 async function getUserById(id) {
     const user = await User.findById(id);

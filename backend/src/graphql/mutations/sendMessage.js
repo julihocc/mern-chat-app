@@ -1,9 +1,9 @@
 // Path: backend\src\graphql\resolvers\mutations\sendMessage.js
-require("../../../models/User");
-const ChatRoom = require("../../../models/ChatRoom");
-const Message = require("../../../models/Message");
+require("../../models/UserModel");
+const ChatRoom = require("../../models/ChatRoomModel");
+const Message = require("../../models/MessageModel");
 const { getUserById } = require("../utils/user-utils");
-const logger = require('../../../logger');
+const logger = require('../../logger');
 
 const s3 = require('./s3'); // Adjust the path according to your file structure
 

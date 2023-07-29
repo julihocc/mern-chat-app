@@ -1,9 +1,10 @@
 // Path: backend\src\graphql\resolvers\mutations\acceptContactRequest.js
 const { getUserFromToken } = require('../utils/utils');
-const ContactRequest = require("../../../models/ContactRequest");
-const ChatRoom = require("../../../models/ChatRoom");
+const User = require("../../models/UserModel");
+const ContactRequest = require("../../models/ContactRequestModel");
+const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require('apollo-server-express');
-const logger = require("../../../logger"); // Import the logger
+const logger = require("../../logger"); // Import the logger
 
 const acceptContactRequest = async (parent, { requestId }, context ) => {
 
@@ -30,7 +31,7 @@ const acceptContactRequest = async (parent, { requestId }, context ) => {
     }
 
     // Ensure that the authenticated user is involved in the contact request
-    if (user.id !== contactRequest.senderId.toString() && user.id !== contactRequest.recipientId.toString()) {
+    if (user.id !== contactRequest.recipientId.toString()) {
         throw new AuthenticationError('You are not authorized to perform this action');
     }
 
@@ -47,6 +48,17 @@ const acceptContactRequest = async (parent, { requestId }, context ) => {
 
         contactRequest.chatRoomId = chatRoom.id;
         await contactRequest.save();
+
+        const recipient = await User.findById(contactRequest.recipientId);
+        const sender = await User.findById(contactRequest.senderId);
+
+        recipient.contacts.push(contactRequest.senderId);
+        await recipient.save();
+
+        sender.contacts.push(contactRequest.recipientId);
+        await sender.save();
+
+
 
         // Furthermore, pubSub publish here for both sender and recipient
         pubSub.publish(`FRIEND_REQUEST_UPDATED_${contactRequest.senderId}`, { friendRequestUpdated: contactRequest });

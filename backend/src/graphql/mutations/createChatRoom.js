@@ -1,6 +1,6 @@
 // backend\src\graphql\resolvers\mutations\createChatRoom.js
-const User = require("../../../models/User");
-const ChatRoom = require("../../../models/ChatRoom");
+const User = require("../../models/UserModel");
+const ChatRoom = require("../../models/ChatRoomModel");
 
 const createChatRoom = async (_, {participantIds}) => {
     const participants = await User.find({_id: {$in: participantIds}});

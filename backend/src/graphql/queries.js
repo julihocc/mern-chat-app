@@ -4,12 +4,12 @@
 const {
     UserInputError, AuthenticationError
 } = require("apollo-server-express");
-const Message = require('../../models/Message');
-const ChatRoom = require('../../models/ChatRoom');
-const User = require('../../models/User');
-const ContactRequest = require('../../models/ContactRequest');
+const Message = require('../models/MessageModel');
+const ChatRoom = require('../models/ChatRoomModel');
+const User = require('../models/UserModel');
+const ContactRequest = require('../models/ContactRequestModel');
 const {getUserFromToken} = require('./utils/utils');
-const logger = require('../../logger');
+const logger = require('../logger');
 
 const queries = {
 
@@ -41,7 +41,7 @@ const queries = {
         }
 
         // Fetch all chat rooms where the user is a participant
-        return await ChatRoom.find({participantIds: user.id});
+        return ChatRoom.find({participantIds: user.id});
     },
 
     getCurrentUser: async (parent, args, context) => {
@@ -70,11 +70,45 @@ const queries = {
         return user;
     },
 
-    getContactRequests: async (_, __, context) => {
+    getContactRequestsByContext: async (parent, args, context) => {
+        logger.info("Calling getContactRequests")
+        const {token} = context;
+        logger.info(token)
+
+        if (!token) {
+            throw new AuthenticationError('You must be logged in');
+        }
+
+        const recipient = await getUserFromToken(token);
+        logger.info('user', !!recipient)
+
+        // Check if the user is logged in
+        if (!recipient) {
+            throw new AuthenticationError('You must be logged in');
+        }
+
+        logger.info(recipient)
+        logger.info(recipient.id)
+        // Fetch all contact requests where the user is the recipient
+        const contactRequest = ContactRequest.find({recipientId: recipient.id});
+        logger.info(!!contactRequest)
+        if (!contactRequest) {
+            throw new Error('Contact requests not found');
+        }
+        return contactRequest;
+
+    },
+    getContactRequests: async (_, {userId}, __) => {
+
+        const user = await User.findById(userId);
+
+        if (!user) {
+            throw new Error('User not found')
+        }
+
         try {
-            const user = await getUserFromToken(context.token);
-            const contactRequests = await ContactRequest.find({recipientId: user.id})
-            logger.info(`Contact requests fetched for user with id: ${user.id}`); // Log this info
+            const contactRequests = await ContactRequest.find({recipientId: userId})
+            logger.info(`Contact requests fetched for user with id: ${userId}`); // Log this info
             return contactRequests;
         } catch (err) {
             logger.error("Error loading contact requests: ", err); // Log the error
@@ -83,16 +117,12 @@ const queries = {
     },
 
     getChatRoom: async (parent, {chatRoomId}) => {
-        return await ChatRoom.findById(chatRoomId);
+        return ChatRoom.findById(chatRoomId);
     },
 
 
     getUserByEmail: async (parent, {email}) => {
-        return await User.findOne({email});
-    },
-
-    getUserByEmails: async (parent, {emails}) => {
-        return await User.find({email: {$in: emails}});
+        return User.findOne({email});
     },
 
     getUsersById: async (parent, {userIds}) => {
@@ -102,40 +132,18 @@ const queries = {
         return users;
     },
 
-    getContacts: async (parent, args, context) => {
+    getContacts: async (parent, {userId}, context) => {
         logger.info("Calling getContacts")
-        const {token} = context;
-        logger.info('token', token)
-        const user = await getUserFromToken(token);
-        logger.info('user', !!user)
+        logger.info(userId)
+        const user = await User.findById(userId);
         if (!user) {
-            throw new AuthenticationError('Invalid token');
+            throw new UserInputError('User not found');
         }
-
-        // Find all contact requests related to the user which are accepted
-        const contactRequests = await ContactRequest.find({
-            $or: [{senderId: user.id}, {recipientId: user.id}],
-            status: 'accepted'
-        });
-
-        logger.info(`Contacts fetched for user with id: ${user.id}`); // Log this info
-
-
-        // Extract the user IDs from the contact requests
-        const contactIdsFromRequests = contactRequests.map(request =>
-            request.senderId.toString() === user.id ? request.recipientId : request.senderId
-        );
-
-        logger.info(`Contact IDs: ${contactIdsFromRequests}`); // Log this info
-
-        // Fetch all contacts
-        const userContacts = await User.find({_id: {$in: contactIdsFromRequests}}); // Fetch only 'email' field
-        logger.info(`Contacts: ${userContacts}`); // Log this info
-
-        logger.info('userContacts', !!userContacts)
-        const contactEmails = userContacts.map(user => user.email); // Return the email addresses only
-        logger.info(`Contact emails: ${contactEmails}`); // Log this info
-        return userContacts;
+        if (!user.contacts) {
+            throw new UserInputError('Contacts not found');
+        }
+        logger.info(user.contacts)
+        return user.contacts;
     }
 
 };
