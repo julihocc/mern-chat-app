@@ -1,5 +1,4 @@
 // Path: frontend\src\components\dashboardUtils.js
-
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Typography, Grid, CircularProgress, Alert } from '@mui/material';
@@ -8,17 +7,19 @@ import SendContactRequest from "./SendContactRequest";
 import PendingContactRequestsList from "./PendingContactRequestsList";
 import CreateGroupConversation from "./CreateGroupConversation";
 import ContactList from "./ContactList";
-import { GET_CURRENT_USER } from "./utils/gql";
+import { GET_CURRENT_USER } from "./gql/gqlHub";
 import { useTranslation } from "react-i18next";
 
 import log from '../utils/logger'; // Imported the custom logger
 
-
-
 const Dashboard = () => {
     const {t} = useTranslation();
-    const { loading, error, data } = useQuery(GET_CURRENT_USER);
-
+    // const { loading, error, data } = useQuery(GET_CURRENT_USER);
+    const { loading, error, data } = useQuery(GET_CURRENT_USER, {
+        onError: (error) => {
+            log.error(`GET_CURRENT_USER Error: ${error.message}`); // Replaced console.error with custom logger
+        },
+    });
     if (loading) return <CircularProgress />;
     if (error) {
         log.error(`GET_CURRENT_USER Error: ${error.message}`); // Replaced console.error with custom logger
@@ -33,8 +34,7 @@ const Dashboard = () => {
                 <Typography variant="h2">{t('dashboard')}</Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body1">{t('welcome')}, {getCurrentUser.email}!</Typography>
-                <Typography variant="body1">{t('yourUserIdIs')}{getCurrentUser.id}</Typography>
+                <Typography variant="body1">{t('welcome')}, {getCurrentUser.username}!</Typography>
             </Grid>
             <Grid item>
                 <PendingContactRequestsList userId={getCurrentUser.id} />

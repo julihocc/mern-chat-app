@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useMutation, useLazyQuery, useQuery } from '@apollo/react-hooks';
 import { TextField, Button, CircularProgress, Typography, Alert } from '@mui/material';
 import { useTranslation } from "react-i18next";
-import { SEND_CONTACT_REQUEST, GET_CURRENT_USER, GET_USER_BY_EMAIL } from './utils/gql';
+import { SEND_CONTACT_REQUEST, GET_CURRENT_USER, GET_USER_BY_EMAIL } from './gql/gqlHub';
 
 const SendContactRequest = () => {
     const {t} = useTranslation();

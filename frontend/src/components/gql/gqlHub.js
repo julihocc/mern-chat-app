@@ -1,0 +1,37 @@
+// path: frontend\src\components\dashboardUtils\gqlHub.js
+import { SEND_CONTACT_REQUEST } from "./mutations/SEND_CONTACT_REQUEST";
+import { GET_USER_BY_EMAIL } from "./queries/GET_USER_BY_EMAIL";
+import { GET_CHAT_ROOMS } from "./queries/GET_CHAT_ROOMS";
+import { GET_USERS_BY_ID} from "./queries/GET_USERS_BY_ID";
+import { GET_CONTACTS } from "./queries/GET_CONTACTS";
+import { GET_CONTACT_REQUESTS } from "./queries/GET_CONTACT_REQUESTS";
+import { GET_CONTACT_REQUESTS_BY_CONTEXT } from "./queries/GET_CONTACT_REQUESTS_BY_CONTEXT";
+import { ACCEPT_CONTACT_REQUEST } from "./mutations/ACCEPT_CONTACT_REQUEST";
+import { REJECT_CONTACT_REQUEST } from "./mutations/REJECT_CONTACT_REQUEST";
+import { GET_CHAT_ROOM } from "./queries/GET_CHAT_ROOM";
+import { GET_MESSAGES_BY_CHAT_ROOM_ID } from "./queries/GET_MESSAGES_BY_CHAT_ROOM_ID";
+import { SEND_MESSAGE } from "./mutations/SEND_MESSAGE";
+import { GET_USER_BY_ID } from "./queries/GET_USER_BY_ID";
+import { GET_MESSAGES_BY_CHATROOM_ID } from "./queries/GET_MESSAGES_BY_CHATROOM_ID";
+import { NEW_MESSAGE_SUBSCRIPTION } from "./subscriptions/NEW_MESSAGE_SUBSCRIPTION";
+import { GET_CURRENT_USER} from "./queries/GET_CURRENT_USER";
+
+
+export {
+    SEND_CONTACT_REQUEST,
+    GET_USER_BY_EMAIL,
+    GET_CHAT_ROOMS,
+    GET_USERS_BY_ID,
+    GET_CONTACTS,
+    GET_CONTACT_REQUESTS,
+    GET_CONTACT_REQUESTS_BY_CONTEXT,
+    ACCEPT_CONTACT_REQUEST,
+    REJECT_CONTACT_REQUEST,
+    GET_CHAT_ROOM,
+    GET_MESSAGES_BY_CHAT_ROOM_ID,
+    SEND_MESSAGE,
+    GET_USER_BY_ID,
+    GET_MESSAGES_BY_CHATROOM_ID,
+    NEW_MESSAGE_SUBSCRIPTION,
+    GET_CURRENT_USER
+};

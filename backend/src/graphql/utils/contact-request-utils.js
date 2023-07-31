@@ -1,4 +1,4 @@
-// path: backend\src\graphql\resolvers\utils\contact-request-utils.js
+// path: backend\src\graphql\resolvers\hooks\contact-request-hooksHub.js
 const ContactRequest = require("../../models/ContactRequestModel");
 const logger = require('../../logger');
 async function getContactRequest(senderId, recipientId) {

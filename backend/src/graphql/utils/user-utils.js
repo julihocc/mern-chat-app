@@ -1,4 +1,4 @@
-// path: backend\src\graphql\resolvers\utils\user-utils.js
+// path: backend\src\graphql\resolvers\hooks\user-hooksHub.js
 const User = require('../../models/UserModel');
 const logger = require('../../logger'); // Import the logger
 

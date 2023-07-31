@@ -1,9 +1,9 @@
 // useSendMessage.js
-// Path: frontend\src\components\utils\useSendMessage.js
+// Path: frontend\src\components\hooks\useSendMessage.js
 
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from '@apollo/client';
-import { SEND_MESSAGE } from './gql';
+import { SEND_MESSAGE } from '../../gql/gqlHub';
 import {useState} from "react";
 
 const useSendMessage = () => {

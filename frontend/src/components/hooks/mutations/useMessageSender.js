@@ -1,5 +1,5 @@
 // useMessageSender.js is a custom hook that is used to send messages to the chat room.
-// Path: frontend\src\components\utils\useMessageSender.js
+// Path: frontend\src\components\hooks\useMessageSender.js
 import useSendMessage from './useSendMessage';
 export default function useMessageSender() {
     const {

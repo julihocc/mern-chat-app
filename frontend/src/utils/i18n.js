@@ -35,6 +35,13 @@ i18n
             // only detect languages that are in the whitelist
             checkWhitelist: true,
         },
-    });
+    })
+    .then((t) => {
+        return t;
+    })
+    .catch((error) => {
+        logger.error(error);
+    })
+;
 
 export default i18n;

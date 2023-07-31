@@ -3583,3 +3583,203 @@
 {"level":"info","message":"user"}
 {"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4MDk5MTcsImV4cCI6MTY5MDgxMzUxN30.k1dpGmK7XTGPrGemAVKUq9zyje49721wjnREbXGS5Lk"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4MjEzOTIsImV4cCI6MTY5MDgyNDk5Mn0.U7Yd_Clqm2-6X817I00IboiD4biLgxfp9PTSQjcKuow"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4MjI0NzAsImV4cCI6MTY5MDgyNjA3MH0.b9X0K7k9NER_a6vKmKrFvJj3YVrC4VPDyrRAHBfvDaM"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4MjI2MjMsImV4cCI6MTY5MDgyNjIyM30.W-BCwNje40tnc9RSaTlH33zF3wqSJKrdGbKV64Q_T3o"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4MjM0NjYsImV4cCI6MTY5MDgyNzA2Nn0.ubskhpUHO8xGvzXkeTPD-Op7NVIiIyFOySt33kuvowo"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}

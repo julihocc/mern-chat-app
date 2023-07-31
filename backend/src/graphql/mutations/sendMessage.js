@@ -32,8 +32,8 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
     const chatRoom = await ChatRoom.findById(chatRoomId);
 
     if (!chatRoom) {
-        logger.error('utils not found'); // Log this error
-        throw new Error('utils not found');
+        logger.error('hooks not found'); // Log this error
+        throw new Error('hooks not found');
     }
 
     const sender = await getUserById(senderId);

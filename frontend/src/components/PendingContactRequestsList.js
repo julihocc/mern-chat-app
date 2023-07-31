@@ -4,7 +4,7 @@ import {
     useGetContactRequestsByContext,
     useAcceptContactRequest,
     useRejectContactRequest,
-} from './utils/hooks';
+} from './hooks/hooksHub';
 import { useTranslation } from "react-i18next";
 import logger from "loglevel";
 
