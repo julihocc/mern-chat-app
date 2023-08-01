@@ -1,7 +1,7 @@
-// backend\src\graphql\resolvers\subscriptions.js
+// backend\src\graphql\resolvers\subscriptionsHub.js
 const logger = require('../logger'); // Import the logger
 
-const subscriptions = {
+const subscriptionsHub = {
     newMessage: {
         subscribe: (parent, { chatRoomId }, { pubSub }) => {
             logger.info('loading newMessage'); // Log the info
@@ -19,4 +19,4 @@ const subscriptions = {
     }
 };
 
-module.exports = subscriptions;
+module.exports = subscriptionsHub;

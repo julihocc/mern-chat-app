@@ -310,10 +310,10 @@
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Contact requests fetched for user with id: 64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Calling getUserFromToken"}
-{"expiredAt":"2023-05-08T14:30:46.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\utils\\utils.js:21:29)\n    at Object.acceptContactRequest (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\mutations\\acceptContactRequest.js:19:24)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)"}
+{"expiredAt":"2023-05-08T14:30:46.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\utils\\utils.js:21:29)\n    at Object.acceptContactRequest (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\mutationsHub\\acceptContactRequest.js:19:24)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)"}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getUserFromToken"}
-{"expiredAt":"2023-05-08T14:30:46.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\utils\\utils.js:21:29)\n    at Object.acceptContactRequest (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\mutations\\acceptContactRequest.js:19:24)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)"}
+{"expiredAt":"2023-05-08T14:30:46.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\utils\\utils.js:21:29)\n    at Object.acceptContactRequest (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\mutationsHub\\acceptContactRequest.js:19:24)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Contact requests fetched for user with id: 64c283f8b86c32b8036d1531"}
 {"level":"info","message":"S3 instance created."}
@@ -325,12 +325,12 @@
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"acceptContactRequest resolver"}
 {"level":"info","message":"64c294e2e22194579dbdf2c8"}
-{"level":"info","message":{"pubSub":{"ee":{"_events":{},"_eventsCount":0},"subIdCounter":0,"subscriptions":{}},"req":{"_body":true,"_consuming":true,"_dumped":false,"_events":{},"_eventsCount":1,"_parsedUrl":{"_raw":"/graphql","auth":null,"hash":null,"host":null,"hostname":null,"href":"/graphql","path":"/graphql","pathname":"/graphql","port":null,"protocol":null,"query":null,"search":null,"slashes":null},"_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":true,"closed":true,"constructed":true,"dataEmitted":true,"decoder":null,"defaultEncoding":"utf8","destroyed":true,"emitClose":true,"emittedReadable":false,"encoding":null,"endEmitted":true,"ended":true,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":false,"objectMode":false,"pipes":[],"readableListening":false,"reading":false,"readingMore":false,"resumeScheduled":false,"sync":false},"aborted":false,"baseUrl":"/graphql","body":{"operationName":"AcceptContactRequest","query":"mutation AcceptContactRequest($requestId: ID!) {\n  acceptContactRequest(requestId: $requestId) {\n    status\n    recipientId\n    senderId\n  }\n}","variables":{"email":"abc@abc.com","password":"abc123","requestId":"64c294e2e22194579dbdf2c8"}},"client":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"complete":true,"cookies":{},"httpVersion":"1.1","httpVersionMajor":1,"httpVersionMinor":1,"method":"POST","originalUrl":"/graphql","params":{},"query":{},"rawHeaders":["Host","localhost:4000","Connection","keep-alive","Content-Length","294","sec-ch-ua","\"Not/A)Brand\";v=\"99\", \"Google Chrome\";v=\"115\", \"Chromium\";v=\"115\"","content-type","application/json","DNT","1","sec-ch-ua-mobile","?0","Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTQzMzM5NDk3OTA5NGQ5NmFhZTRhMSIsImVtYWlsIjoiamNjQGpjYyIsImlhdCI6MTY4MzU1MjY0NiwiZXhwIjoxNjgzNTU2MjQ2fQ.a3LBOttdEKqmiFUBGcSsYnRkm9Ra1oTga8JBjPfz41s","User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36","sec-ch-ua-platform","\"Windows\"","Accept","*/*","Origin","https://studio.apollographql.com","Sec-Fetch-Site","cross-site","Sec-Fetch-Mode","cors","Sec-Fetch-Dest","empty","Accept-Encoding","gzip, deflate, br","Accept-Language","en-US,en;q=0.9"],"rawTrailers":[],"res":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":"[Circular]","_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"useChunkedEncodingByDefault":true,"writable":true},"signedCookies":{},"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"statusCode":null,"statusMessage":null,"upgrade":false,"url":"/"},"token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTQzMzM5NDk3OTA5NGQ5NmFhZTRhMSIsImVtYWlsIjoiamNjQGpjYyIsImlhdCI6MTY4MzU1MjY0NiwiZXhwIjoxNjgzNTU2MjQ2fQ.a3LBOttdEKqmiFUBGcSsYnRkm9Ra1oTga8JBjPfz41s"}}
+{"level":"info","message":{"pubSub":{"ee":{"_events":{},"_eventsCount":0},"subIdCounter":0,"subscriptionsHub":{}},"req":{"_body":true,"_consuming":true,"_dumped":false,"_events":{},"_eventsCount":1,"_parsedUrl":{"_raw":"/graphql","auth":null,"hash":null,"host":null,"hostname":null,"href":"/graphql","path":"/graphql","pathname":"/graphql","port":null,"protocol":null,"query":null,"search":null,"slashes":null},"_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":true,"closed":true,"constructed":true,"dataEmitted":true,"decoder":null,"defaultEncoding":"utf8","destroyed":true,"emitClose":true,"emittedReadable":false,"encoding":null,"endEmitted":true,"ended":true,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":false,"objectMode":false,"pipes":[],"readableListening":false,"reading":false,"readingMore":false,"resumeScheduled":false,"sync":false},"aborted":false,"baseUrl":"/graphql","body":{"operationName":"AcceptContactRequest","query":"mutation AcceptContactRequest($requestId: ID!) {\n  acceptContactRequest(requestId: $requestId) {\n    status\n    recipientId\n    senderId\n  }\n}","variables":{"email":"abc@abc.com","password":"abc123","requestId":"64c294e2e22194579dbdf2c8"}},"client":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"complete":true,"cookies":{},"httpVersion":"1.1","httpVersionMajor":1,"httpVersionMinor":1,"method":"POST","originalUrl":"/graphql","params":{},"query":{},"rawHeaders":["Host","localhost:4000","Connection","keep-alive","Content-Length","294","sec-ch-ua","\"Not/A)Brand\";v=\"99\", \"Google Chrome\";v=\"115\", \"Chromium\";v=\"115\"","content-type","application/json","DNT","1","sec-ch-ua-mobile","?0","Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTQzMzM5NDk3OTA5NGQ5NmFhZTRhMSIsImVtYWlsIjoiamNjQGpjYyIsImlhdCI6MTY4MzU1MjY0NiwiZXhwIjoxNjgzNTU2MjQ2fQ.a3LBOttdEKqmiFUBGcSsYnRkm9Ra1oTga8JBjPfz41s","User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36","sec-ch-ua-platform","\"Windows\"","Accept","*/*","Origin","https://studio.apollographql.com","Sec-Fetch-Site","cross-site","Sec-Fetch-Mode","cors","Sec-Fetch-Dest","empty","Accept-Encoding","gzip, deflate, br","Accept-Language","en-US,en;q=0.9"],"rawTrailers":[],"res":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":"[Circular]","_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"useChunkedEncodingByDefault":true,"writable":true},"signedCookies":{},"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"statusCode":null,"statusMessage":null,"upgrade":false,"url":"/"},"token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTQzMzM5NDk3OTA5NGQ5NmFhZTRhMSIsImVtYWlsIjoiamNjQGpjYyIsImlhdCI6MTY4MzU1MjY0NiwiZXhwIjoxNjgzNTU2MjQ2fQ.a3LBOttdEKqmiFUBGcSsYnRkm9Ra1oTga8JBjPfz41s"}}
 {"level":"info","message":"Calling getUserFromToken"}
-{"expiredAt":"2023-05-08T14:30:46.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\utils\\utils.js:21:29)\n    at Object.acceptContactRequest (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\mutations\\acceptContactRequest.js:25:24)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)"}
+{"expiredAt":"2023-05-08T14:30:46.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\utils\\utils.js:21:29)\n    at Object.acceptContactRequest (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\mutationsHub\\acceptContactRequest.js:25:24)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)"}
 {"level":"info","message":"acceptContactRequest resolver"}
 {"level":"info","message":"64c294e2e22194579dbdf2c8"}
-{"level":"info","message":{"pubSub":{"ee":{"_events":{},"_eventsCount":0},"subIdCounter":0,"subscriptions":{}},"req":{"_body":true,"_consuming":true,"_dumped":false,"_events":{},"_eventsCount":1,"_parsedUrl":{"_raw":"/graphql","auth":null,"hash":null,"host":null,"hostname":null,"href":"/graphql","path":"/graphql","pathname":"/graphql","port":null,"protocol":null,"query":null,"search":null,"slashes":null},"_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":true,"closed":true,"constructed":true,"dataEmitted":true,"decoder":null,"defaultEncoding":"utf8","destroyed":true,"emitClose":true,"emittedReadable":false,"encoding":null,"endEmitted":true,"ended":true,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":false,"objectMode":false,"pipes":[],"readableListening":false,"reading":false,"readingMore":false,"resumeScheduled":false,"sync":false},"aborted":false,"baseUrl":"/graphql","body":{"operationName":"AcceptContactRequest","query":"mutation AcceptContactRequest($requestId: ID!) {\n  acceptContactRequest(requestId: $requestId) {\n    status\n    recipientId\n    senderId\n  }\n}","variables":{"email":"abc@abc.com","password":"abc123","requestId":"64c294e2e22194579dbdf2c8"}},"client":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"complete":true,"cookies":{},"httpVersion":"1.1","httpVersionMajor":1,"httpVersionMinor":1,"method":"POST","originalUrl":"/graphql","params":{},"query":{},"rawHeaders":["Host","localhost:4000","Connection","keep-alive","Content-Length","294","sec-ch-ua","\"Not/A)Brand\";v=\"99\", \"Google Chrome\";v=\"115\", \"Chromium\";v=\"115\"","content-type","application/json","DNT","1","sec-ch-ua-mobile","?0","Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzI4M2Y4Yjg2YzMyYjgwMzZkMTUzMSIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA0NzkyMDMsImV4cCI6MTY5MDQ4MjgwM30.NYY2-my1mM5zwS4WY9U1r1MqqcKT0K9JHoFd1eIhac8","User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36","sec-ch-ua-platform","\"Windows\"","Accept","*/*","Origin","https://studio.apollographql.com","Sec-Fetch-Site","cross-site","Sec-Fetch-Mode","cors","Sec-Fetch-Dest","empty","Accept-Encoding","gzip, deflate, br","Accept-Language","en-US,en;q=0.9"],"rawTrailers":[],"res":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":"[Circular]","_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"useChunkedEncodingByDefault":true,"writable":true},"signedCookies":{},"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"statusCode":null,"statusMessage":null,"upgrade":false,"url":"/"},"token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzI4M2Y4Yjg2YzMyYjgwMzZkMTUzMSIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA0NzkyMDMsImV4cCI6MTY5MDQ4MjgwM30.NYY2-my1mM5zwS4WY9U1r1MqqcKT0K9JHoFd1eIhac8"}}
+{"level":"info","message":{"pubSub":{"ee":{"_events":{},"_eventsCount":0},"subIdCounter":0,"subscriptionsHub":{}},"req":{"_body":true,"_consuming":true,"_dumped":false,"_events":{},"_eventsCount":1,"_parsedUrl":{"_raw":"/graphql","auth":null,"hash":null,"host":null,"hostname":null,"href":"/graphql","path":"/graphql","pathname":"/graphql","port":null,"protocol":null,"query":null,"search":null,"slashes":null},"_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":true,"closed":true,"constructed":true,"dataEmitted":true,"decoder":null,"defaultEncoding":"utf8","destroyed":true,"emitClose":true,"emittedReadable":false,"encoding":null,"endEmitted":true,"ended":true,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":false,"objectMode":false,"pipes":[],"readableListening":false,"reading":false,"readingMore":false,"resumeScheduled":false,"sync":false},"aborted":false,"baseUrl":"/graphql","body":{"operationName":"AcceptContactRequest","query":"mutation AcceptContactRequest($requestId: ID!) {\n  acceptContactRequest(requestId: $requestId) {\n    status\n    recipientId\n    senderId\n  }\n}","variables":{"email":"abc@abc.com","password":"abc123","requestId":"64c294e2e22194579dbdf2c8"}},"client":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"complete":true,"cookies":{},"httpVersion":"1.1","httpVersionMajor":1,"httpVersionMinor":1,"method":"POST","originalUrl":"/graphql","params":{},"query":{},"rawHeaders":["Host","localhost:4000","Connection","keep-alive","Content-Length","294","sec-ch-ua","\"Not/A)Brand\";v=\"99\", \"Google Chrome\";v=\"115\", \"Chromium\";v=\"115\"","content-type","application/json","DNT","1","sec-ch-ua-mobile","?0","Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzI4M2Y4Yjg2YzMyYjgwMzZkMTUzMSIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA0NzkyMDMsImV4cCI6MTY5MDQ4MjgwM30.NYY2-my1mM5zwS4WY9U1r1MqqcKT0K9JHoFd1eIhac8","User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36","sec-ch-ua-platform","\"Windows\"","Accept","*/*","Origin","https://studio.apollographql.com","Sec-Fetch-Site","cross-site","Sec-Fetch-Mode","cors","Sec-Fetch-Dest","empty","Accept-Encoding","gzip, deflate, br","Accept-Language","en-US,en;q=0.9"],"rawTrailers":[],"res":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":"[Circular]","_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"useChunkedEncodingByDefault":true,"writable":true},"signedCookies":{},"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":false,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":2,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"timeout":0},"statusCode":null,"statusMessage":null,"upgrade":false,"url":"/"},"token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzI4M2Y4Yjg2YzMyYjgwMzZkMTUzMSIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA0NzkyMDMsImV4cCI6MTY5MDQ4MjgwM30.NYY2-my1mM5zwS4WY9U1r1MqqcKT0K9JHoFd1eIhac8"}}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"arrayLimit: val: 645433394979094d96aae4a1,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"S3 instance created."}
@@ -946,7 +946,7 @@
 {"level":"info","message":"users"}
 {"level":"info","message":"users"}
 {"level":"info","message":"Calling getUserFromToken"}
-{"expiredAt":"2023-07-27T18:33:23.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\utils\\utils.js:21:29)\n    at Object.acceptContactRequest (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\mutations\\acceptContactRequest.js:20:24)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)"}
+{"expiredAt":"2023-07-27T18:33:23.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\utils\\utils.js:21:29)\n    at Object.acceptContactRequest (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\resolvers\\mutationsHub\\acceptContactRequest.js:20:24)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)"}
 {"level":"info","message":"User logged in: lcr@lcr"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2135,7 +2135,7 @@
 {"level":"info","message":"Calling getContactRequests"}
 {"level":"info","message":"token"}
 {"level":"info","message":"Calling getUserFromToken"}
-{"expiredAt":"2023-07-28T21:25:03.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\utils\\utils.js:21:29)\n    at Object.getContactRequestsByContext (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\queries.js:83:33)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at executeFields (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:292:18)\n    at executeOperation (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:236:122)\n    at executeImpl (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:116:14)"}
+{"expiredAt":"2023-07-28T21:25:03.000Z","level":"error","message":"Error in getUserFromToken jwt expired","name":"TokenExpiredError","stack":"TokenExpiredError: jwt expired\n    at F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:190:21\n    at getSecret (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:97:14)\n    at Object.module.exports [as verify] (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:101:10)\n    at getUserFromToken (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\utils\\utils.js:21:29)\n    at Object.getContactRequestsByContext (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\graphql\\queriesHub.js:83:33)\n    at field.resolve (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at executeFields (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:292:18)\n    at executeOperation (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:236:122)\n    at executeImpl (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:116:14)"}
 {"level":"info","message":"user"}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
@@ -3783,3 +3783,730 @@
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Server is running at http://localhost:4000/graphql"}
 {"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4Mjc3NzUsImV4cCI6MTY5MDgzMTM3NX0.69T6PI0rRlzpTziikvao1PP90RpZtCjduhOinnK5wj8"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4Mjc3NzUsImV4cCI6MTY5MDgzMTM3NX0.69T6PI0rRlzpTziikvao1PP90RpZtCjduhOinnK5wj8"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDM0MDQsImV4cCI6MTY5MDg0NzAwNH0.C11t5gYAU2S_FTqdRCT4_D5bMP_KiW-QE5WAjxhJqBM"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"error","message":"Error starting the backend: Resolver Query.getContactsWithFullDetails must be object or function","stack":"Error: Resolver Query.getContactsWithFullDetails must be object or function\n    at addResolversToSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\@graphql-tools\\schema\\cjs\\addResolversToSchema.js:80:35)\n    at makeExecutableSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\@graphql-tools\\schema\\cjs\\makeExecutableSchema.js:80:65)\n    at ApolloServer.constructSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\ApolloServer.js:361:50)\n    at new ApolloServerBase (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\ApolloServer.js:165:75)\n    at new ApolloServer (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-express\\dist\\ApolloServer.js:13:1)\n    at startServer (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\server.js:41:26)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\server.js:82:9"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"error","message":"Error starting the backend: Resolver Query.getContactsWithFullDetails must be object or function","stack":"Error: Resolver Query.getContactsWithFullDetails must be object or function\n    at addResolversToSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\@graphql-tools\\schema\\cjs\\addResolversToSchema.js:80:35)\n    at makeExecutableSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\@graphql-tools\\schema\\cjs\\makeExecutableSchema.js:80:65)\n    at ApolloServer.constructSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\ApolloServer.js:361:50)\n    at new ApolloServerBase (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\ApolloServer.js:165:75)\n    at new ApolloServer (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-express\\dist\\ApolloServer.js:13:1)\n    at startServer (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\server.js:41:26)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\server.js:82:9"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDQ5MzEsImV4cCI6MTY5MDg0ODUzMX0.pdqWkwJlefnJjdEcMwKr0S5Px_oiFAyiM1Cwhz2mlI0"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"error","message":"Error starting the backend: Query.getContactsWithFullDetails defined in resolvers, but not in schema","stack":"Error: Query.getContactsWithFullDetails defined in resolvers, but not in schema\n    at addResolversToSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\@graphql-tools\\schema\\cjs\\addResolversToSchema.js:73:35)\n    at makeExecutableSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\@graphql-tools\\schema\\cjs\\makeExecutableSchema.js:80:65)\n    at ApolloServer.constructSchema (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\ApolloServer.js:361:50)\n    at new ApolloServerBase (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\ApolloServer.js:165:75)\n    at new ApolloServer (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\node_modules\\apollo-server-express\\dist\\ApolloServer.js:13:1)\n    at startServer (F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\server.js:41:26)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async F:\\jcc30986@gmail.com\\chat-app-sandbox\\chat-app\\backend\\src\\server.js:82:9"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDYzNDAsImV4cCI6MTY5MDg0OTk0MH0.S3IyAEidxZQK-Hh_RzCNM_RFa73rxyDkuzAxQhIe1Lo"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDY1MDUsImV4cCI6MTY5MDg1MDEwNX0.JQHhnGy3YH4kmytODbZJPZkTFDwo3IvjqEa0Rdtso3k"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDc2NDEsImV4cCI6MTY5MDg1MTI0MX0._MouWBW99jX_XLdkyRqzUUh2aPfTlgonjg5LpL01Gog"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDg2NzksImV4cCI6MTY5MDg1MjI3OX0.9rDxNgMr3Aaw43RJEoE0-ePXpTFz4NmpthHPyAfguKo"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDg2OTcsImV4cCI6MTY5MDg1MjI5N30.ditjrn7mXy5hL45Id76eHWKx8C_2EpA5d8v7q6xiiuU"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDg3ODMsImV4cCI6MTY5MDg1MjM4M30.BjMgdFElIM8Vq4Z7n10lRH75RKYa6UPFtEQ9IuxV1cY"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDkwNzcsImV4cCI6MTY5MDg1MjY3N30.rkLFTyls6Euld6nD77P03cJprY0HdSMnKdpCfPyuaok"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDkyNzgsImV4cCI6MTY5MDg1Mjg3OH0.vmo64tpCAxrd2Dpug6fNBPCgLnUyv-N3FNHWpFgKoy8"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDkzMTYsImV4cCI6MTY5MDg1MjkxNn0.lJ0ZxDw1fD2SA6XXZEtzTS9S69XxC4GNcEypbdtgI7A"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDkzNTcsImV4cCI6MTY5MDg1Mjk1N30.3CVQbQkLqT0khz0jLzgXazYM5bJnThRnVX-nFF3GkHc"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDk1NjYsImV4cCI6MTY5MDg1MzE2Nn0.sd_cXSviX5h_d1lCf9ExC-hSCjyX-_l6z7ZXs1W6IZw"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NDk3OTksImV4cCI6MTY5MDg1MzM5OX0.xzT129RE_voUEWTHTYTLVGC-lUiHE1ORxK1ji5SBW7E"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NTAwODEsImV4cCI6MTY5MDg1MzY4MX0.mQ_oc49TKvh7hXcTXvNZKJe3Z2EyV7THiUX1o7Poqew"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"getContactsWithFullDetails()"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"contacts"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NTAxNTEsImV4cCI6MTY5MDg1Mzc1MX0.fgu0LuicPFVNTgVwtPqWUsbQbZlOwY02bPrCgagFBg0"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"getContactsWithFullDetails()"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"contacts"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NTAyMTksImV4cCI6MTY5MDg1MzgxOX0.n5hqx3UIWjxYGSwEJ9IotVQN_tLT-XAOZ6EhSNfAqko"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"getContactsWithFullDetails()"}
+{"level":"info","message":"context","pubSub":{"ee":{"_events":{},"_eventsCount":0},"subIdCounter":0,"subscriptions":{}},"req":{"_body":true,"_consuming":true,"_dumped":false,"_events":{},"_eventsCount":1,"_parsedUrl":{"_raw":"/graphql","auth":null,"hash":null,"host":null,"hostname":null,"href":"/graphql","path":"/graphql","pathname":"/graphql","port":null,"protocol":null,"query":null,"search":null,"slashes":null},"_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":true,"closed":true,"constructed":true,"dataEmitted":true,"decoder":null,"defaultEncoding":"utf8","destroyed":true,"emitClose":true,"emittedReadable":false,"encoding":null,"endEmitted":true,"ended":true,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":false,"objectMode":false,"pipes":[],"readableListening":false,"reading":false,"readingMore":false,"resumeScheduled":false,"sync":false},"aborted":false,"baseUrl":"/graphql","body":{"operationName":"GetContactsWithFullDetails","query":"query GetContactsWithFullDetails {\n  getContactsWithFullDetails {\n    id\n    email\n    username\n    __typename\n  }\n}\n","variables":{}},"client":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":4,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":true,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":4,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0}},"complete":true,"cookies":{},"httpVersion":"1.1","httpVersionMajor":1,"httpVersionMinor":1,"method":"POST","originalUrl":"/graphql","params":{},"query":{},"rawHeaders":["Host","localhost:4000","Connection","keep-alive","Content-Length","197","sec-ch-ua","\"Not/A)Brand\";v=\"99\", \"Google Chrome\";v=\"115\", \"Chromium\";v=\"115\"","DNT","1","sec-ch-ua-mobile","?0","authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NTAyMTksImV4cCI6MTY5MDg1MzgxOX0.n5hqx3UIWjxYGSwEJ9IotVQN_tLT-XAOZ6EhSNfAqko","User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36","content-type","application/json","accept","*/*","sec-ch-ua-platform","\"Windows\"","Origin","http://localhost:3000","Sec-Fetch-Site","same-site","Sec-Fetch-Mode","cors","Sec-Fetch-Dest","empty","Referer","http://localhost:3000/","Accept-Encoding","gzip, deflate, br","Accept-Language","en-US,en;q=0.9"],"rawTrailers":[],"res":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":"[Circular]","_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":4,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":true,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":4,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0}},"useChunkedEncodingByDefault":true,"writable":true},"signedCookies":{},"socket":{"_events":{"close":[null,null],"end":[null,null]},"_eventsCount":8,"_hadError":false,"_host":null,"_httpMessage":{"_closed":false,"_contentLength":null,"_defaultKeepAlive":true,"_events":{},"_eventsCount":1,"_expect_continue":false,"_hasBody":true,"_header":null,"_headerSent":false,"_keepAliveTimeout":5000,"_last":false,"_removedConnection":false,"_removedContLen":false,"_removedTE":false,"_sent100":false,"_trailer":"","chunkedEncoding":false,"destroyed":false,"finished":false,"locals":{},"maxRequestsOnConnectionReached":false,"outputData":[],"outputSize":0,"req":"[Circular]","sendDate":true,"shouldKeepAlive":true,"socket":"[Circular]","useChunkedEncodingByDefault":true,"writable":true},"_parent":null,"_paused":false,"_pendingData":null,"_pendingEncoding":"","_readableState":{"autoDestroy":true,"awaitDrainWriters":null,"buffer":{"head":null,"length":0,"tail":null},"closeEmitted":false,"closed":false,"constructed":true,"dataEmitted":false,"decoder":null,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"emittedReadable":false,"encoding":null,"endEmitted":false,"ended":false,"errorEmitted":false,"errored":null,"flowing":true,"highWaterMark":16384,"length":0,"multiAwaitDrain":false,"needReadable":true,"objectMode":false,"pipes":[],"readableListening":false,"reading":true,"readingMore":false,"resumeScheduled":false,"sync":false},"_server":{"_connectionKey":"6::::4000","_connections":4,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0},"_sockname":null,"_writableState":{"afterWriteTickInfo":null,"allBuffers":true,"allNoop":true,"autoDestroy":true,"bufferProcessing":false,"buffered":[],"bufferedIndex":0,"closeEmitted":false,"closed":false,"constructed":true,"corked":0,"decodeStrings":false,"defaultEncoding":"utf8","destroyed":false,"emitClose":false,"ended":false,"ending":false,"errorEmitted":false,"errored":null,"finalCalled":false,"finished":false,"highWaterMark":16384,"length":0,"needDrain":false,"objectMode":false,"pendingcb":0,"prefinished":false,"sync":true,"writecb":null,"writelen":0,"writing":false},"allowHalfOpen":true,"connecting":false,"parser":{"_consumed":true,"_headers":[],"_url":"","incoming":"[Circular]","maxHeaderPairs":2000,"outgoing":null,"socket":"[Circular]"},"server":{"_connectionKey":"6::::4000","_connections":4,"_events":{},"_eventsCount":5,"_handle":{"reading":false},"_unref":false,"_usingWorkers":false,"_workers":[],"allowHalfOpen":true,"headersTimeout":60000,"httpAllowHalfOpen":false,"keepAlive":false,"keepAliveInitialDelay":0,"keepAliveTimeout":5000,"maxHeadersCount":null,"maxRequestsPerSocket":0,"noDelay":false,"pauseOnConnect":false,"requestTimeout":0,"timeout":0}},"statusCode":null,"statusMessage":null,"upgrade":false,"url":"/"},"token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NTAyMTksImV4cCI6MTY5MDg1MzgxOX0.n5hqx3UIWjxYGSwEJ9IotVQN_tLT-XAOZ6EhSNfAqko"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"contacts"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NTA0NjMsImV4cCI6MTY5MDg1NDA2M30.6rR-qjK-lpz3J5j5pd9pGSKqoNZc7vIYJS77RaMwj7E"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"getContactsWithFullDetails()"}
+{"level":"info","message":"context"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"contacts"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NTA2OTYsImV4cCI6MTY5MDg1NDI5Nn0.cuabxdT9h6kuXB_58JTjpwsAijdtBFXV4rvpuxu7NTk"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"getContactsWithFullDetails()"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"S3 instance created."}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"User logged in: abc@abc.com"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getContactRequests"}
+{"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA4NTA3NTksImV4cCI6MTY5MDg1NDM1OX0.qDydkFlN7Z_O2GUREnxisf88aL9pqn2bz7NzH3v9RPU"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"getContactsWithFullDetails()"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"currentUser"}
+{"level":"info","message":"user"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":"64c44cfafe3bc46726698d38"}
+{"level":"info","message":true}
+{"level":"info","message":"user"}
+{"0":"64c44d14fe3bc46726698d44","1":"64c44cfafe3bc46726698d38","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}

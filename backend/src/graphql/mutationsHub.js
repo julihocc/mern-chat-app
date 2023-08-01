@@ -1,5 +1,5 @@
-// backend\src\graphql\resolvers\mutations.js
-// Describe the mutations that can be executed against the GraphQL schema
+// backend\src\graphql\resolvers\mutationsHub.js
+// Describe the mutationsHub that can be executed against the GraphQL schema
 
 const signUp = require('./mutations/signUp');
 const login = require('./mutations/login');
@@ -10,7 +10,7 @@ const createChatRoom = require('./mutations/createChatRoom');
 const sendMessage = require('./mutations/sendMessage');
 const createGroupConversation = require('./mutations/createGroupConversation');
 
-const mutations = {
+const mutationsHub = {
     signUp,
     login,
     sendContactRequest,
@@ -21,4 +21,4 @@ const mutations = {
     createGroupConversation
 };
 
-module.exports = mutations;
+module.exports = mutationsHub;

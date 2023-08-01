@@ -7,10 +7,10 @@ import { useSubscription, useQuery } from '@apollo/client';
 import PersonIcon from '@mui/icons-material/Person';
 import Loading from './Loading';
 import Error from './Error';
-import useGetChatRoomQueries from './hooks/queries/useGetChatRoomQueries';
-import useMessageSender from './hooks/mutations/useMessageSender';
+import useGetChatRoomQueries from '../hooks/queries/useGetChatRoomQueries';
+import useMessageSender from '../hooks/mutations/useMessageSender';
 import { useTranslation } from "react-i18next";
-import { GET_MESSAGES_BY_CHATROOM_ID, GET_USER_BY_ID, GET_USERS_BY_ID, NEW_MESSAGE_SUBSCRIPTION } from './gql/gqlHub';
+import { GET_MESSAGES_BY_CHATROOM_ID, GET_USER_BY_ID, GET_USERS_BY_ID, NEW_MESSAGE_SUBSCRIPTION } from '../gql/gqlHub';
 
 const Message = ({ message, isCurrentUser }) => {
     const { loading, error, data } = useQuery(GET_USER_BY_ID, {

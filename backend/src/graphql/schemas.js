@@ -1,18 +1,18 @@
-// backend\src\graphql\typeDefs.js
+// backend\src\graphql\schemas.js
 
 const { gql } = require('apollo-server-express');
 
-const typeDefs = gql`
+const schemas = gql`
     scalar Upload
-    
+
     type User {
         id: ID!
         email: String!
         username: String!
         contacts: [ID] # new field
     }
-    
-    
+
+
     type ChatRoom {
         id: ID!
         participantIds: [ID!]!
@@ -27,7 +27,7 @@ const typeDefs = gql`
         chatRoomId: ID!
         imageUrl: String
     }
-    
+
     type SignupPayload {
         token: String!
         user: User!
@@ -41,7 +41,7 @@ const typeDefs = gql`
     type ContactRequest {
         id: ID!
         senderId: ID! # modified
-        recipientId: ID! 
+        recipientId: ID!
         status: String!
         createdAt: String!
     }
@@ -60,8 +60,9 @@ const typeDefs = gql`
         getUsersById(userIds: [ID!]!): [User]
         getUserByEmails(emails: [String!]!): [User]
         getContacts(userId: ID!): [User]
+        getContactsWithFullDetails: [User]
     }
-    
+
     type Mutation {
         signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
@@ -79,4 +80,4 @@ const typeDefs = gql`
     }
 `;
 
-module.exports = typeDefs;
+module.exports = schemas;

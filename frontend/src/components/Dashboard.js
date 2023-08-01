@@ -6,18 +6,18 @@ import ChatList from "./ChatList";
 import SendContactRequest from "./SendContactRequest";
 import PendingContactRequestsList from "./PendingContactRequestsList";
 import CreateGroupConversation from "./CreateGroupConversation";
-import ContactList from "./ContactList";
-import { GET_CURRENT_USER } from "./gql/gqlHub";
+import { GET_CURRENT_USER } from "../gql/gqlHub";
 import { useTranslation } from "react-i18next";
 
-import log from '../utils/logger'; // Imported the custom logger
+import log from '../utils/logger';
+import {ContactListWithFullDetails} from "./ContactListWithFullDetails"; // Imported the custom logger
 
 const Dashboard = () => {
     const {t} = useTranslation();
     // const { loading, error, data } = useQuery(GET_CURRENT_USER);
     const { loading, error, data } = useQuery(GET_CURRENT_USER, {
         onError: (error) => {
-            log.error(`GET_CURRENT_USER Error: ${error.message}`); // Replaced console.error with custom logger
+            log.error(`GET_CURRENT_USER Error: ${error.message}`);
         },
     });
     if (loading) return <CircularProgress />;
@@ -49,7 +49,7 @@ const Dashboard = () => {
                 <ChatList />
             </Grid>
             <Grid item>
-                <ContactList />
+                <ContactListWithFullDetails />
             </Grid>
         </Grid>
     );
