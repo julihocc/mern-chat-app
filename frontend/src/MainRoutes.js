@@ -53,7 +53,7 @@ const MainRoutes = () => {
                 <Route path="/signup" element={<Signup onLogin={onLogin} />} />
                 <Route path="/login" element={<Login onLogin={onLogin} />} />
                 <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/login" replace />} />
-                <Route path="/chat/:id" element={<ChatRoomViewer />} />
+                <Route path="/chat/:chatRoomId" element={<ChatRoomViewer />} />
             </Routes>
         </>
     );

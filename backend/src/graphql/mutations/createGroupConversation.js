@@ -25,4 +25,4 @@ const createGroupConversation = async (_, {emails}) => {
     return chatRoom;
 };
 
-module.exports = createGroupConversation;
+module.exports = {createGroupConversation};

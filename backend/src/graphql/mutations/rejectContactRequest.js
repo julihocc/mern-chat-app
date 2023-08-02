@@ -1,5 +1,5 @@
 // backend\src\graphql\resolvers\mutations\rejectContactRequest.js
-const { getUserFromToken } = require('../utils/utils');
+const { getUserFromToken } = require('../utils');
 const ContactRequest = require("../../models/ContactRequestModel");
 const { AuthenticationError } = require('apollo-server-express');
 const logger = require('../../logger');
@@ -30,7 +30,7 @@ const rejectContactRequest = async (parent, { requestId }, context ) => {
     try {
         contactRequest.status = 'rejected';
         await contactRequest.save();
-        logger.info(`Contact request rejected: ${requestId}`); // log the info
+        //logger.info(`Contact request rejected: ${requestId}`); // log the info
 
         // Added pubSub publish here for both sender and recipient
         pubSub.publish(`FRIEND_REQUEST_UPDATED_${contactRequest.senderId}`, { friendRequestUpdated: contactRequest });
@@ -42,4 +42,4 @@ const rejectContactRequest = async (parent, { requestId }, context ) => {
     }
 };
 
-module.exports = rejectContactRequest;
+module.exports = {rejectContactRequest};

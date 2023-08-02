@@ -59,7 +59,7 @@ const Login = ({ onLogin }) => {
                 ({ data }) => {
                     log.debug('client.query data', data);
                     log.debug('client.query data.getCurrentUser', data.getCurrentUser);
-                    log.debug('client.query data.getCurrentUser.id', data.getCurrentUser.id);
+                    log.debug('client.query data.getCurrentUser.chatRoomId', data.getCurrentUser.id);
                 },
                 (err) => {
                     log.error('client.query Error:', err.message); // Replaced console.error with log.error

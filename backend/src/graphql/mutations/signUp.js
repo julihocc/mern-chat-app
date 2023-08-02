@@ -3,7 +3,7 @@
 const { UserInputError } = require("apollo-server-express");
 const User = require('../../models/UserModel');
 const jwt = require('jsonwebtoken');
-const {encryptPassword} = require('../utils/utils');
+const {encryptPassword} = require('../utils');
 const logger = require('../../logger');
 
 const signUp = async (parent, { email, username, password, confirmPassword }) => {
@@ -40,7 +40,7 @@ const signUp = async (parent, { email, username, password, confirmPassword }) =>
 
     try {
         await user.save();
-        logger.info(`User created with id: ${user.id}`); // Log this info
+        //logger.info(`User created with id: ${user.id}`); // Log this info
     } catch (err) {
         logger.error(`Failed to save user: ${err}`); // Log this error
     }
@@ -52,4 +52,4 @@ const signUp = async (parent, { email, username, password, confirmPassword }) =>
     return { token, user };
 };
 
-module.exports = signUp;
+module.exports = {signUp};

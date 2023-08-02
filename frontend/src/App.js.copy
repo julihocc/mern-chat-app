@@ -57,7 +57,7 @@ const MainRoutes = () => {
                 {/*Changed setIsLoggedIn(true) to onLogin*/}
                 <Route path="/login" element={<Login onLogin={onLogin} />} />
                 <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/login" replace />} />
-                <Route path="/chat/:id" element={<ChatRoomViewer />} />
+                <Route path="/chat/:chatRoomId" element={<ChatRoomViewer />} />
             </Routes>
         </>
     );

@@ -1,7 +1,7 @@
 // backend\src\graphql\resolvers\mutations\login.js
 const User = require('../../models/UserModel');
 const jwt = require('jsonwebtoken');
-const {comparePassword} = require('../utils/utils');
+const {comparePassword} = require('../utils');
 const logger = require('../../logger'); // add this line to import the logger
 
 const login = async (parent, {email, password}) => {
@@ -17,10 +17,10 @@ const login = async (parent, {email, password}) => {
     }
     const payload = {id: user._id, email: user.email};
     const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1h'});
-    logger.info(`User logged in: ${email}`); // log successful login
+    //logger.info(`User logged in: ${email}`); // log successful login
     return {
         token, user
     };
 };
 
-module.exports = login;
+module.exports = {login};

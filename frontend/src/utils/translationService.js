@@ -8,7 +8,7 @@ export async function fetchTranslations() {
         const response = await fetch('/resources.csv');
         // console.log(response.text())
         const csvData = await response.text();
-        logger.info('csvData: ', csvData)
+        //logger.info('csvData: ', csvData)
 
         let csvParsed = Papa.parse(csvData, {
             header: true,

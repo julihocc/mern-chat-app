@@ -2,11 +2,11 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Typography, Grid, CircularProgress, Alert } from '@mui/material';
-import ChatList from "./ChatList";
-import SendContactRequest from "./SendContactRequest";
+import ChatRoomList from "./ChatRoomList";
+import SendContactRequestForm from "./SendContactRequestForm";
 import PendingContactRequestsList from "./PendingContactRequestsList";
 import CreateGroupConversation from "./CreateGroupConversation";
-import { GET_CURRENT_USER } from "../gql/gqlHub";
+import { GET_CURRENT_USER } from "../gql/queries/GET_CURRENT_USER";
 import { useTranslation } from "react-i18next";
 
 import log from '../utils/logger';
@@ -43,10 +43,10 @@ const Dashboard = () => {
                 <CreateGroupConversation userEmail={getCurrentUser.email} />
             </Grid>
             <Grid item>
-                <SendContactRequest />
+                <SendContactRequestForm />
             </Grid>
             <Grid item>
-                <ChatList />
+                <ChatRoomList />
             </Grid>
             <Grid item>
                 <ContactListWithFullDetails />

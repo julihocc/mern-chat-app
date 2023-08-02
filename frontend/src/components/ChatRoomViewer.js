@@ -3,63 +3,30 @@
 import { Box, Stack, Paper, TextField, Button, Typography, CssBaseline, Container, List, ListItem, ListItemAvatar, ListItemText, Avatar } from '@mui/material';
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { useSubscription, useQuery } from '@apollo/client';
 import PersonIcon from '@mui/icons-material/Person';
 import Loading from './Loading';
 import Error from './Error';
-import useGetChatRoomQueries from '../hooks/queries/useGetChatRoomQueries';
 import useMessageSender from '../hooks/mutations/useMessageSender';
+import useGetMessagesByChatRoomId from '../hooks/queries/useGetMessagesByChatRoomId';
+import useNewMessageSubscription from '../hooks/subscriptions/useNewMessageSubscription';
 import { useTranslation } from "react-i18next";
-import { GET_MESSAGES_BY_CHATROOM_ID, GET_USER_BY_ID, GET_USERS_BY_ID, NEW_MESSAGE_SUBSCRIPTION } from '../gql/gqlHub';
+import { Message } from './Message';
+import { useGetChatRoomById } from '../hooks/queries/useGetChatRoomById';
+import { useGetChatRoomUsers } from '../hooks/queries/useGetChatRoomUsers';
+import { useGetCurrentUser } from '../hooks/queries/useGetCurrentUser';
 
-const Message = ({ message, isCurrentUser }) => {
-    const { loading, error, data } = useQuery(GET_USER_BY_ID, {
-        variables: { userId: message.senderId },
-    });
-
-    if (loading) return <p>Loading sender info...</p>;
-    if (error) return <p>GET_USER)BY_ID Error: {error.message}</p>;
-
-    return (
-        <Box
-            sx={{
-                mb: 1,
-                p: 1,
-                backgroundColor: isCurrentUser ? 'primary.light' : 'grey.300',
-                color: isCurrentUser ? 'primary.contrastText' : 'grey.900',
-                alignSelf: isCurrentUser ? 'flex-end' : 'flex-start',
-            }}
-        >
-            <Typography variant="subtitle2">{data.getUserById.email}</Typography>
-            <Typography variant="body2">{message.body}</Typography>
-        </Box>
-    );
-};
 
 const ChatRoomViewer = () => {
+
     const {t} = useTranslation();
-    const { id } = useParams();
-    const { useChatRoom, useCurrentUser } = useGetChatRoomQueries(id);
-    // const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError } = useMessageSender();
-    // Note: Destructuring file and setFile from useMessageSender
+    const { chatRoomId } = useParams();
+    const useGetCurrentUserObject = useGetCurrentUser();
+    const useGetChatRoomByIdObject = useGetChatRoomById(chatRoomId);
+    const useGetChatRoomUsersObject = useGetChatRoomUsers(chatRoomId);
     const { messageBody, setMessageBody, handleSendMessage, sendMessageLoading, sendMessageError, setFile } = useMessageSender();
-
+    const { messageData, messageLoading, messageError } = useGetMessagesByChatRoomId(chatRoomId);
+    const { newMessageData } = useNewMessageSubscription();
     const [messages, setMessages] = useState([]);
-
-    // Removed: const [selectedFile, setSelectedFile] = useState(null);
-
-    const { data: newMessageData } = useSubscription(NEW_MESSAGE_SUBSCRIPTION, {
-        variables: { chatRoomId: id },
-    });
-
-    const { data: messageData, loading: messageLoading, error: messageError } = useQuery(GET_MESSAGES_BY_CHATROOM_ID, {
-        variables: { chatRoomId: id },
-    });
-
-    const {data: usersData } = useQuery(GET_USERS_BY_ID, {
-        variables: { userIds: useChatRoom.data?.getChatRoom?.participantIds },
-        skip: useChatRoom.loading || useChatRoom.error,
-    });
 
     useEffect(() => {
         if (messageData?.getMessagesByChatRoomId) {
@@ -73,26 +40,26 @@ const ChatRoomViewer = () => {
         }
     }, [newMessageData]);
 
-    const isLoading = useChatRoom.loading || messageLoading || useCurrentUser.loading || sendMessageLoading;
+    const isLoading = useGetChatRoomByIdObject.loading || messageLoading || useGetCurrentUserObject.loading || sendMessageLoading;
 
     if (isLoading) {
         return <Loading queryName="Loading" />;
     }
 
-    if (useChatRoom.error)  return <Error queryName="chatRoom" message={useChatRoom.error.message} />;
+    if (useGetChatRoomByIdObject.error)  return <Error queryName="chatRoom" message={useGetChatRoomByIdObject.error.message} />;
     if (messageError)  return <Error queryName="messages" message={messageError.message} />;
-    if (useCurrentUser.error)  return <Error queryName="currentUser" message={useCurrentUser.error.message} />;
+    if (useGetCurrentUserObject.error)  return <Error queryName="currentUser" message={useGetCurrentUserObject.error.message} />;
     if (sendMessageError)  return <Error queryName="sendMessage" message={sendMessageError.message} />;
 
     return (
         <Container component={Paper} sx={{ height: '90vh', mt: 2, display: 'flex', flexDirection: 'column', p: 2 }}>
             <CssBaseline />
-            <Typography variant="h2" sx={{ mb: 2 }}>{t('chatRoom')}: {useChatRoom.data.getChatRoom.id}</Typography>
+            <Typography variant="h2" sx={{ mb: 2 }}>{t('chatRoom')}: {useGetChatRoomByIdObject.data.getChatRoomById.id}</Typography>
 
             <Box sx={{ mb: 2 }}>
                 <Typography variant="h5">{t('users')}</Typography>
                 <List>
-                    {usersData?.getUsersById.map((user) => (
+                    {useGetChatRoomUsersObject.data.getChatRoomUsers.map((user) => (
                         <ListItem key={user.id}>
                             <ListItemAvatar>
                                 <Avatar>
@@ -108,12 +75,16 @@ const ChatRoomViewer = () => {
             <Box sx={{ overflow: 'auto', flexGrow: 1 }}>
                 <Stack>
                     {messages.map((message) => (
-                        <Message key={message.id} message={message} isCurrentUser={message.senderId === useCurrentUser.data.getCurrentUser.id} />
+                        <Message key={message.id} message={message} isCurrentUser={message.senderId === useGetCurrentUserObject.data.getCurrentUser.id} />
                     ))}
                 </Stack>
             </Box>
 
-            <form onSubmit={(e) => handleSendMessage(e, useCurrentUser.data.getCurrentUser.id, useChatRoom.data.getChatRoom.id)}>
+            <form onSubmit={(e) => handleSendMessage(
+                e,
+                useGetCurrentUserObject.data.getCurrentUser.id,
+                useGetChatRoomByIdObject.data.getChatRoomById.id
+            )}>
                 <Stack direction="row" spacing={1}>
                     <TextField
                         type="body"

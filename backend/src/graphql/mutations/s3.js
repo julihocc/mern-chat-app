@@ -21,6 +21,6 @@ const s3 = new AWS.S3({
     s3ForcePathStyle: true,
 });
 
-logger.info('S3 instance created.'); // log the info
+//logger.info('S3 instance created.'); // log the info
 
-module.exports = s3;
+module.exports = {s3};

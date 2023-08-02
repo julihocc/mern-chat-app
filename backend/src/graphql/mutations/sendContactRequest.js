@@ -1,11 +1,11 @@
 // path: backend\src\graphql\resolvers\mutations\sendContactRequest.js
-const { getUserById } = require('../utils/user-utils');
+const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const logger = require('../../logger');
 
 const sendContactRequest = async (parent, {senderId, recipientId}) => {
-    const sender = await getUserById(senderId);
-    const recipient = await getUserById(recipientId);
+    const sender = await User.findById(senderId);
+    const recipient = await User.findById(recipientId);
 
     if (!sender) {
         throw new Error(`Sender not found: ${senderId}`);
@@ -24,7 +24,7 @@ const sendContactRequest = async (parent, {senderId, recipientId}) => {
 
         await contactRequest.save();
 
-        logger.info(`Contact request sent from ${senderId} to ${recipientId}`); // log the info
+        //logger.info(`Contact request sent from ${senderId} to ${recipientId}`); // log the info
 
         return contactRequest;
     } catch (err) {
@@ -33,4 +33,4 @@ const sendContactRequest = async (parent, {senderId, recipientId}) => {
     }
 };
 
-module.exports = sendContactRequest;
+module.exports = {sendContactRequest};

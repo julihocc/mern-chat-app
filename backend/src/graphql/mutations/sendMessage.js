@@ -1,9 +1,9 @@
 // Path: backend\src\graphql\resolvers\mutations\sendMessage.js
-require("../../models/UserModel");
+// require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const Message = require("../../models/MessageModel");
-const { getUserById } = require("../utils/user-utils");
 const logger = require('../../logger');
+const User = require('../../models/UserModel');
 
 const s3 = require('./s3'); // Adjust the path according to your file structure
 
@@ -36,7 +36,7 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
         throw new Error('hooks not found');
     }
 
-    const sender = await getUserById(senderId);
+    const sender = await User.findById(senderId);
 
     let imageUrl;
 
@@ -59,7 +59,7 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
 
     try {
         await message.save();
-        logger.info(`Message saved with id: ${message.id}`); // Log this info
+        //logger.info(`Message saved with id: ${message.id}`); // Log this info
     } catch (err) {
         logger.error(`Failed to save message: ${err}`); // Log this error
     }
@@ -73,4 +73,4 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
     return message;
 };
 
-module.exports = sendMessage;
+module.exports = {sendMessage};

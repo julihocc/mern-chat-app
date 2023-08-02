@@ -1,5 +1,5 @@
 // Path: backend\src\graphql\resolvers\mutations\acceptContactRequest.js
-const { getUserFromToken } = require('../utils/utils');
+const { getUserFromToken } = require('../utils');
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const ChatRoom = require("../../models/ChatRoomModel");
@@ -70,4 +70,4 @@ const acceptContactRequest = async (parent, { requestId }, context ) => {
     }
 };
 
-module.exports = acceptContactRequest;
+module.exports = {acceptContactRequest};

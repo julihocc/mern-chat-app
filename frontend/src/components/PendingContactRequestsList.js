@@ -1,10 +1,8 @@
-// frontend\src\components\dashboardUtils\PendingContactRequestsList.js
+// path: frontend/src/components/PendingContactRequestsList.js
 import React from 'react';
-import {
-    useGetContactRequestsByContext,
-    useAcceptContactRequest,
-    useRejectContactRequest,
-} from '../hooks/hooksHub';
+import { useGetContactRequestsByContext } from '../hooks/queries/useGetContactRequestsByContext';
+import { useAcceptContactRequest } from '../hooks/mutations/useAcceptContactRequest';
+import { useRejectContactRequest } from '../hooks/mutations/useRejectContactRequest';
 import { useTranslation } from "react-i18next";
 import logger from "loglevel";
 
@@ -37,7 +35,7 @@ const PendingContactRequestsList = ({userId}) => {
                         <div>
                             <button onClick={async () => { // This becomes an async function
                                 try {
-                                    logger.info('Accept contact request');
+                                    //logger.info('Accept contact request');
                                     await acceptContactRequestHandler({variables: {requestId: id}}); // Use the handler here with the requestId
                                 } catch (error) {
                                     logger.error('Error accepting contact request:', error);
@@ -46,7 +44,7 @@ const PendingContactRequestsList = ({userId}) => {
                             </button>
                             <button onClick={async () => { // This becomes an async function
                                 try {
-                                    logger.info('Reject contact request');
+                                    //logger.info('Reject contact request');
                                     await rejectContactRequestHandler({variables: {requestId: id}}); // Use the handler here with the requestId
                                 } catch (error) {
                                     logger.error('Error rejecting contact request:', error);

@@ -20,4 +20,4 @@ const createChatRoom = async (_, {participantIds}) => {
     return chatRoom;
 };
 
-module.exports = createChatRoom;
+module.exports = {createChatRoom};

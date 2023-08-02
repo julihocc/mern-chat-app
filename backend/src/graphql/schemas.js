@@ -53,7 +53,7 @@ const schemas = gql`
         getUserById(userId: ID!): User
         getContactRequests(userId: ID!): [ContactRequest] # modified
         getContactRequestsByContext: [ContactRequest] # new
-        getChatRoom(chatRoomId: ID!): ChatRoom
+        getChatRoomById(chatRoomId: ID!): ChatRoom
         getUserByEmail(email: String!): User
         getChatRoomsByUserId(userId: ID!): [ChatRoom]
         getMessageById(messageId: ID!): Message
@@ -61,6 +61,8 @@ const schemas = gql`
         getUserByEmails(emails: [String!]!): [User]
         getContacts(userId: ID!): [User]
         getContactsWithFullDetails: [User]
+        getChatRoomUsers(chatRoomId: ID!): [User]
+        getChatRoomsForCurrentUser: [ChatRoom]
     }
 
     type Mutation {

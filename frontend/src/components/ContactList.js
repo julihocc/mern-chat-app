@@ -1,7 +1,7 @@
 // frontend\src\components\ContactList.js
 import React from 'react';
 import logger from "loglevel";
-import { useGetCurrentUser } from "../hooks/hooksHub";
+import { useGetCurrentUser } from "../hooks/queries/useGetCurrentUser";
 
 
 const ContactList = () => {
@@ -11,10 +11,10 @@ const ContactList = () => {
     if (error) return <p>Error : {error.message} </p>;
 
     const contacts = data.getCurrentUser.contacts
-    logger.info(contacts);
+    //logger.info(contacts);
     return (
         <div>
-            <h3> Contacts </h3>
+            <h2> Contacts </h2>
             <ul>
                 {contacts.map(id => (
                     <li key={id}>
