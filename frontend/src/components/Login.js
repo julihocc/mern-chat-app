@@ -55,7 +55,20 @@ const Login = ({ onLogin }) => {
             client.query({
                 query: GET_CURRENT_USER,
                 fetchPolicy: 'network-only',
-            });
+            }).then(
+                ({ data }) => {
+                    log.debug('client.query data', data);
+                    log.debug('client.query data.getCurrentUser', data.getCurrentUser);
+                    log.debug('client.query data.getCurrentUser.chatRoomId', data.getCurrentUser.id);
+                },
+                (err) => {
+                    log.error('client.query Error:', err.message); // Replaced console.error with log.error
+                },
+            ).catch(
+                (err) => {
+                    log.error('client.query Error:', err.message); // Replaced console.error with log.error
+                },
+            );
 
             navigate('/dashboard');
         },

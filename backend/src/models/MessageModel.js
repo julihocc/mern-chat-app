@@ -19,6 +19,10 @@ const messageSchema = new mongoose.Schema({
         ref: 'ChatRoom',
         required: true
     },
+    fileUrl: {
+        type: String,
+        default: null
+    },
 },
     {timestamps: true}
 );

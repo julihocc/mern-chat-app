@@ -18,13 +18,13 @@ if (root) {
     ReactDOM.createRoot(root).render(
         // I've added React.StrictMode here
         <React.StrictMode>
-            <ThemeProvider theme={theme}>
                 <ApolloProvider client={apolloClient}>
                     <I18nextProvider i18n={i18n}>
-                        <App/>
+                        <ThemeProvider theme={theme}>
+                            <App/>
+                        </ThemeProvider>
                     </I18nextProvider>
                 </ApolloProvider>
-            </ThemeProvider>
         </React.StrictMode>);
 } else {
     // Instead of using console.error, I've used our custom logger to handle the error message

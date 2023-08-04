@@ -5,7 +5,7 @@ const { PubSub } = require('graphql-subscriptions');
 const { execute, subscribe } = require('graphql');
 const { SubscriptionServer } = require('subscriptions-transport-ws');
 const cors = require('cors');
-const typeDefs = require('./graphql/typeDefs');
+const typeDefs = require('./graphql/schemas');
 const resolvers = require('./graphql/resolvers');
 const errorHandler = require('./errorHandler');
 const connectDB = require('./connectDB');
@@ -31,7 +31,7 @@ app.use(cookieParser());
 async function startServer() {
     try {
         await connectDB();
-        logger.info('Connected to MongoDB'); // Changed this line
+        //logger.info('Connected to MongoDB'); // Changed this line
     } catch (err) {
         logger.error('Error connecting to MongoDB:', err); // And this line
     }

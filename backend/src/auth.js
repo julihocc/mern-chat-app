@@ -8,18 +8,18 @@ const logger = require('./logger'); // Import the logger
 async function getUserById(userId) {
     try {
         const user = await User.findById(userId);
-        logger.info('User found: ' + userId); // Log the info
-        logger.info(user);
+        //logger.info('User found: ' + userId); // Log the info
+        //logger.info(user);
         return user;
     } catch (err) {
         logger.error(err); // Log the error
-        logger.info('User not found: ', userId); // Log the info
+        //logger.info('User not found: ', userId); // Log the info
         return null;
     }
 }
 
 const verifyToken = token => {
-    logger.info('verifyToken: ' + token); // Log the info
+    //logger.info('verifyToken: ' + token); // Log the info
     try {
         const payload = jwt.verify(token, process.env.JWT_SECRET);
         return { valid: true, payload };

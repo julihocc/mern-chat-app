@@ -6,7 +6,7 @@ import { fetchTranslations } from './translationService';
 import logger from './logger';
 
 const resources = await fetchTranslations();
-logger.info(resources)
+//logger.info(resources)
 
 i18n
     .use(LanguageDetector)
@@ -35,6 +35,13 @@ i18n
             // only detect languages that are in the whitelist
             checkWhitelist: true,
         },
-    });
+    })
+    .then((t) => {
+        return t;
+    })
+    .catch((error) => {
+        logger.error(error);
+    })
+;
 
 export default i18n;

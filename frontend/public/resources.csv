@@ -11,7 +11,7 @@ password,Password,Mot de passe,Contraseña
 confirmPassword,Confirm password,Confirmez le mot de passe,Confirmar contraseña
 bothFieldsRequired,Both fields are required!,Les deux champs sont requis!,¡Ambos campos son obligatorios!
 dashboard,Dashboard,Tableau de bord,Tablero
-yourUserIdIs,Your user id is:,Votre identifiant d'utilisateur est:,Tu identificación de usuario es:
+yourUserIdIs,Your user chatRoomId is:,Votre identifiant d'utilisateur est:,Tu identificación de usuario es:
 chatRoom,Chat room,Salle de chat,Sala de chat
 newMessage,New message,Nouveau message,Nuevo mensaje
 sendMessage,Send message,Envoyer le message,Enviar mensaje
