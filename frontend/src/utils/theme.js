@@ -1,9 +1,9 @@
 // frontend\src\theme.js
-
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
+        mode: 'light', // Explicitly set the mode to 'light'
         primary: {
             main: '#075E54', // WhatsApp green
         },
@@ -21,8 +21,8 @@ const theme = createTheme({
         fontFamily: '"Helvetica Neue", Arial, sans-serif', // Closest free font to WhatsApp's custom San Francisco font
         fontSize: 14,
         button: {
-            textTransform: 'none'
-        }
+            textTransform: 'none',
+        },
     },
     breakpoints: {
         values: {

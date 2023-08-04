@@ -9,7 +9,6 @@ const { createChatRoom } = require("./mutations/createChatRoom");
 const { createGroupConversation } = require("./mutations/createGroupConversation");
 const { login } = require("./mutations/login");
 const { rejectContactRequest } = require("./mutations/rejectContactRequest");
-const { s3 } = require("./mutations/s3");
 const { sendContactRequest } = require("./mutations/sendContactRequest");
 const { signUp } = require("./mutations/signUp");
 const { sendMessage } = require("./mutations/sendMessage");
