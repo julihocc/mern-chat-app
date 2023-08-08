@@ -1,7 +1,6 @@
 // Path: backend\src\graphql\resolvers.js
 // Define the resolvers for the GraphQL schema
 
-const subscriptions = require('./subscriptions');
 const { GraphQLUpload } = require('graphql-upload');
 // Mutations
 const { acceptContactRequest } = require("./mutations/acceptContactRequest");
@@ -12,6 +11,7 @@ const { rejectContactRequest } = require("./mutations/rejectContactRequest");
 const { sendContactRequest } = require("./mutations/sendContactRequest");
 const { signUp } = require("./mutations/signUp");
 const { sendMessage } = require("./mutations/sendMessage");
+const { uploadFileToS3 } = require("./mutations/uploadFileToS3");
 // Queries
 const  { getChatRoomById } = require("./queries/getChatRoomById");
 const { getChatRooms } = require("./queries/getChatRooms");
@@ -26,11 +26,19 @@ const { getUserByEmail } = require("./queries/getUserByEmail");
 const { getUserById } = require("./queries/getUserById");
 const { getUsersById } = require("./queries/getUsersById");
 const { getChatRoomsForCurrentUser } = require("./queries/getChatRoomsForCurrentUser");
-
+// Subscriptions
+const { newMessage } = require("./subscriptions/newMessage");
+const {friendRequestUpdated } = require("./subscriptions/friendRequestUpdated");
+const { fileUploaded } = require("./subscriptions/fileUploaded");
 
 const resolvers = {
     Upload: GraphQLUpload,
-    Subscription: subscriptions,
+    // Subscription: subscriptions,
+    Subscription: {
+        newMessage,
+        friendRequestUpdated,
+        fileUploaded
+    },
     Mutation: {
         acceptContactRequest,
         createChatRoom,
@@ -39,7 +47,8 @@ const resolvers = {
         rejectContactRequest,
         sendContactRequest,
         signUp,
-        sendMessage
+        sendMessage,
+        uploadFileToS3
     },
     Query: {
         getChatRoomById,

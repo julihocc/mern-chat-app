@@ -74,11 +74,13 @@ const schemas = gql`
         rejectContactRequest(requestId: ID!): ContactRequest!
         createChatRoom(participantIds: [ID!]!): ChatRoom!
         createGroupConversation(emails: [String!]!): ChatRoom!
+        uploadFileToS3(file: Upload!, chatRoomId: ID!): Message! # new mutation
     }
 
     type Subscription {
         newMessage(chatRoomId: ID!): Message!
-        friendRequestUpdated(userId: ID!): ContactRequest!  # new subscription
+        friendRequestUpdated(userId: ID!): ContactRequest! 
+        fileUploaded(chatRoomId: ID!): Message!# new subscription
     }
 `;
 

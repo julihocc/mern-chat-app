@@ -1,4 +1,5 @@
 // Importing the dotenv package to load environment variables
+// frontend/src/s3.js
 const AWS = require('aws-sdk');
 const logger = require('loglevel');
 
@@ -6,8 +7,8 @@ const logger = require('loglevel');
 const region = 'us-east-1';
 const host = 'localhost';
 const port = 4566; // default port for localstack
-const accessKeyId = 'test'; // dummy credentials
-const secretAccessKey = 'test'; // dummy credentials
+const accessKeyId = 'test'; // fake credentials
+const secretAccessKey = 'test'; // fake credentials
 
 // Set the AWS region
 AWS.config.update({
