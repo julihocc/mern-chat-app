@@ -1,12 +1,13 @@
-// Signup component
 // Path: frontend\src\components\SignUp.js
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'; // Import useDispatch
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material'; // Import MUI components
-import { useTranslation } from 'react-i18next'; // Import MUI components
-import logger from '../utils/logger';
+import { useTranslation } from 'react-i18next'; // Import i18next
+import logger from '../utils/logger'; // Import logger
+import { loginUser } from '../actions'; // Import loginUser action
 
 const SIGNUP = gql`
     mutation SignUp($username: String!, $email: String!, $password: String!, $confirmPassword: String!) {
@@ -21,8 +22,9 @@ const SIGNUP = gql`
     }
 `;
 
-const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
+const Signup = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch(); // Use Redux dispatch
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -36,8 +38,7 @@ const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
         },
         onCompleted(data) {
             document.cookie = `token=${data.signUp.token}; path=/; max-age=3600`;
-            // setIsLoggedIn(true); // Update the user state
-            onLogin(); // Call onLogin() to update the user state
+            dispatch(loginUser()); // Dispatch loginUser action
             navigate('/dashboard');
         },
     });
@@ -57,7 +58,6 @@ const Signup = ({ onLogin }) => { // Pass setIsLoggedIn as a prop
         } catch (err) {
             console.error('handleSubmit Error:', err.message);
         }
-
     };
 
     return (
