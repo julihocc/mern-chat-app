@@ -1,22 +1,21 @@
-import { useState, useEffect } from 'react';
-import AuthContext from './AuthContext';  // Assume AuthContext is in the same directory
+// frontend/src/AuthProvider.js
+
+import React from 'react';
+import AuthContext from './AuthContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser, logoutUser } from './actions';
 
 const AuthProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        // Check the cookie for login status when the component mounts
-        setIsLoggedIn(document.cookie.includes('Bearer'));
-    }, []);
+    const dispatch = useDispatch();
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
     const handleLogin = () => {
-        setIsLoggedIn(true);
+        dispatch(loginUser());
     };
 
     const handleLogout = () => {
-        // Erase the cookie and set isLoggedIn to false
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        setIsLoggedIn(false);
+        dispatch(logoutUser());
     };
 
     return (
