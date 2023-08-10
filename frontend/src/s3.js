@@ -1,30 +1,22 @@
-// Importing the dotenv package to load environment variables
 const AWS = require('aws-sdk');
 const logger = require('loglevel');
 
-// Retrieve the port from the environment variable
-const region = 'us-east-1';
-const host = 'localhost';
-const port = 4566; // default port for localstack
-const accessKeyId = 'test'; // dummy credentials
-const secretAccessKey = 'test'; // dummy credentials
+// Retrieve AWS_SDK_LOAD_CONFIG from environment variables
+const awsSdkLoadConfig = process.env.AWS_SDK_LOAD_CONFIG;
 
-// Set the AWS region
+// Set the AWS region and credentials
 AWS.config.update({
-    region: `${region}`,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID, // Obtained from environment variable
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY, // Obtained from environment variable
+    region: process.env.AWS_REGION || 'us-east-1', // Use environment variable or default to 'us-east-1'
+    sdkLoadConfig: awsSdkLoadConfig // Optional: Include AWS_SDK_LOAD_CONFIG for future use
 });
 
-const s3 = new AWS.S3({
-    // The endpoint should now include the port retrieved from the .env file
-    endpoint: `http://${host}:${port}`,
-    accessKeyId: `${accessKeyId}`,
-    secretAccessKey: `${secretAccessKey}`,
-    s3ForcePathStyle: true,
-});
+const s3 = new AWS.S3();
 
 logger.info('S3 client created');
 
-const bucketName = 'my-bucket'; // Replace with your bucket name
+const bucketName = process.env.REACT_APP_S3_BUCKET_NAME; // Updated this line
 
 const corsParams = {
     Bucket: bucketName,
@@ -47,4 +39,4 @@ s3.putBucketCors(corsParams).promise()
         logger.error('Error setting CORS', err.message, err.stack);
     });
 
-module.exports = {s3};
+module.exports = { s3 };
