@@ -1,8 +1,9 @@
-// frontend\src\apolloClient.js
-import { ApolloClient, InMemoryCache, split, HttpLink } from '@apollo/client';
+// path: frontend\src\apolloClient.js
+import { ApolloClient, InMemoryCache, split } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { setContext } from '@apollo/client/link/context';
+import { createUploadLink } from 'apollo-upload-client'; // Import createUploadLink
 
 // const HTTP_URL = "http://localhost:4000";
 // const WS_URL = "ws://localhost:4000";
@@ -10,7 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 const HTTP_URL = process.env.REACT_APP_BACKEND_HTTP_URL;
 const WS_URL = process.env.REACT_APP_BACKEND_WS_URL;
 
-const httpLink = new HttpLink({
+const httpLink = createUploadLink({ // Use createUploadLink instead of HttpLink
     uri: HTTP_URL + "/graphql",
 });
 
@@ -20,7 +21,6 @@ const wsLink = new WebSocketLink({
         reconnect: true,
     },
 });
-
 
 const authLink = setContext((_, { headers }) => {
     const tokenCookie = document.cookie.split('; ').find((row) => row.startsWith('token='));
