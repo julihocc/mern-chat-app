@@ -5,7 +5,7 @@ import {ApolloProvider} from '@apollo/client';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import apolloClient from './utils/apolloClient';
+import apolloClient from './apolloClient';
 import theme from './utils/theme'; // Import your custom MUI theme file
 import {I18nextProvider} from "react-i18next";
 import i18n from './utils/i18n';

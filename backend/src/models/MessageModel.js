@@ -12,7 +12,7 @@ const messageSchema = new mongoose.Schema({
     },
     body: {
         type: String,
-        required: true
+        default: ""
     },
     chatRoomId: {
         type: mongoose.Schema.Types.ObjectId,

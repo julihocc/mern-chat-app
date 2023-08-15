@@ -5480,3 +5480,112 @@
 {"level":"info","message":"getChatRoomsForCurrentUser"}
 {"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
 {"level":"info","message":[{"__v":42,"_id":"64c45066ee0f93295bd5e82a","createdAt":"2023-07-28T23:33:58.668Z","messageIds":["64c94d9373dda543436f24fc","64c94da373dda543436f250c","64cad13456a1eba5476dd9dc","64cad13556a1eba5476dd9e1","64cad13556a1eba5476dd9e6","64cad13556a1eba5476dd9eb","64cad13656a1eba5476dd9f0","64cad13656a1eba5476dd9f5","64cad14356a1eba5476dd9fa","64cad14356a1eba5476dd9ff","64cad14456a1eba5476dda04","64cad14456a1eba5476dda09","64cad14856a1eba5476dda13","64cad14856a1eba5476dda17","64cad1e156a1eba5476dda27","64cad1f956a1eba5476dda37","64cad36b56a1eba5476dda48","64cad7dd56a1eba5476dda8c","64cc21154b1ce3a271a70fa7","64cc239b4b1ce3a271a70fbd","64cc27dc4b1ce3a271a70fe1","64cc30674b1ce3a271a71012","64cc31cc4b1ce3a271a7101d","64cc33ac4b1ce3a271a71025","64cc33d44b1ce3a271a7103b","64cc34df4b1ce3a271a71040","64cc35824b1ce3a271a71045","64cd22c10dc7b58a4d831808","64cd22d90dc7b58a4d83180d","64cd23f59615d668ca089f73","64cd290b9615d668ca089f79","64cd3a9f9615d668ca089f8f","64cd413c9615d668ca089fc3","64d104ee813fc01d3e6fdb05","64d134df4bf3383ded7297f0","64d139144bf3383ded729803","64d139204bf3383ded729808","64d139274bf3383ded72980d","64d139354bf3383ded729815","64d13c844d26995a54a99b89","64d2731b4ed83731c02636c6","64d2cef0d162ae94a7f6c71e"],"participantIds":["64c44d14fe3bc46726698d44","64c44cfafe3bc46726698d38"],"updatedAt":"2023-08-08T23:25:36.889Z"}]}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":[{"__v":42,"_id":"64c45066ee0f93295bd5e82a","createdAt":"2023-07-28T23:33:58.668Z","messageIds":["64c94d9373dda543436f24fc","64c94da373dda543436f250c","64cad13456a1eba5476dd9dc","64cad13556a1eba5476dd9e1","64cad13556a1eba5476dd9e6","64cad13556a1eba5476dd9eb","64cad13656a1eba5476dd9f0","64cad13656a1eba5476dd9f5","64cad14356a1eba5476dd9fa","64cad14356a1eba5476dd9ff","64cad14456a1eba5476dda04","64cad14456a1eba5476dda09","64cad14856a1eba5476dda13","64cad14856a1eba5476dda17","64cad1e156a1eba5476dda27","64cad1f956a1eba5476dda37","64cad36b56a1eba5476dda48","64cad7dd56a1eba5476dda8c","64cc21154b1ce3a271a70fa7","64cc239b4b1ce3a271a70fbd","64cc27dc4b1ce3a271a70fe1","64cc30674b1ce3a271a71012","64cc31cc4b1ce3a271a7101d","64cc33ac4b1ce3a271a71025","64cc33d44b1ce3a271a7103b","64cc34df4b1ce3a271a71040","64cc35824b1ce3a271a71045","64cd22c10dc7b58a4d831808","64cd22d90dc7b58a4d83180d","64cd23f59615d668ca089f73","64cd290b9615d668ca089f79","64cd3a9f9615d668ca089f8f","64cd413c9615d668ca089fc3","64d104ee813fc01d3e6fdb05","64d134df4bf3383ded7297f0","64d139144bf3383ded729803","64d139204bf3383ded729808","64d139274bf3383ded72980d","64d139354bf3383ded729815","64d13c844d26995a54a99b89","64d2731b4ed83731c02636c6","64d2cef0d162ae94a7f6c71e"],"participantIds":["64c44d14fe3bc46726698d44","64c44cfafe3bc46726698d38"],"updatedAt":"2023-08-08T23:25:36.889Z"}]}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":[{"__v":42,"_id":"64c45066ee0f93295bd5e82a","createdAt":"2023-07-28T23:33:58.668Z","messageIds":["64c94d9373dda543436f24fc","64c94da373dda543436f250c","64cad13456a1eba5476dd9dc","64cad13556a1eba5476dd9e1","64cad13556a1eba5476dd9e6","64cad13556a1eba5476dd9eb","64cad13656a1eba5476dd9f0","64cad13656a1eba5476dd9f5","64cad14356a1eba5476dd9fa","64cad14356a1eba5476dd9ff","64cad14456a1eba5476dda04","64cad14456a1eba5476dda09","64cad14856a1eba5476dda13","64cad14856a1eba5476dda17","64cad1e156a1eba5476dda27","64cad1f956a1eba5476dda37","64cad36b56a1eba5476dda48","64cad7dd56a1eba5476dda8c","64cc21154b1ce3a271a70fa7","64cc239b4b1ce3a271a70fbd","64cc27dc4b1ce3a271a70fe1","64cc30674b1ce3a271a71012","64cc31cc4b1ce3a271a7101d","64cc33ac4b1ce3a271a71025","64cc33d44b1ce3a271a7103b","64cc34df4b1ce3a271a71040","64cc35824b1ce3a271a71045","64cd22c10dc7b58a4d831808","64cd22d90dc7b58a4d83180d","64cd23f59615d668ca089f73","64cd290b9615d668ca089f79","64cd3a9f9615d668ca089f8f","64cd413c9615d668ca089fc3","64d104ee813fc01d3e6fdb05","64d134df4bf3383ded7297f0","64d139144bf3383ded729803","64d139204bf3383ded729808","64d139274bf3383ded72980d","64d139354bf3383ded729815","64d13c844d26995a54a99b89","64d2731b4ed83731c02636c6","64d2cef0d162ae94a7f6c71e"],"participantIds":["64c44d14fe3bc46726698d44","64c44cfafe3bc46726698d38"],"updatedAt":"2023-08-08T23:25:36.889Z"}]}
+{"level":"info","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: hola"}
+{"level":"info","message":"Message saved with id: 64da826501fdb6edd6d3fdf5"}
+{"level":"info","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: y mi archivo?"}
+{"level":"info","message":"Message saved with id: 64da827e01fdb6edd6d3fdfb"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":[{"__v":44,"_id":"64c45066ee0f93295bd5e82a","createdAt":"2023-07-28T23:33:58.668Z","messageIds":["64c94d9373dda543436f24fc","64c94da373dda543436f250c","64cad13456a1eba5476dd9dc","64cad13556a1eba5476dd9e1","64cad13556a1eba5476dd9e6","64cad13556a1eba5476dd9eb","64cad13656a1eba5476dd9f0","64cad13656a1eba5476dd9f5","64cad14356a1eba5476dd9fa","64cad14356a1eba5476dd9ff","64cad14456a1eba5476dda04","64cad14456a1eba5476dda09","64cad14856a1eba5476dda13","64cad14856a1eba5476dda17","64cad1e156a1eba5476dda27","64cad1f956a1eba5476dda37","64cad36b56a1eba5476dda48","64cad7dd56a1eba5476dda8c","64cc21154b1ce3a271a70fa7","64cc239b4b1ce3a271a70fbd","64cc27dc4b1ce3a271a70fe1","64cc30674b1ce3a271a71012","64cc31cc4b1ce3a271a7101d","64cc33ac4b1ce3a271a71025","64cc33d44b1ce3a271a7103b","64cc34df4b1ce3a271a71040","64cc35824b1ce3a271a71045","64cd22c10dc7b58a4d831808","64cd22d90dc7b58a4d83180d","64cd23f59615d668ca089f73","64cd290b9615d668ca089f79","64cd3a9f9615d668ca089f8f","64cd413c9615d668ca089fc3","64d104ee813fc01d3e6fdb05","64d134df4bf3383ded7297f0","64d139144bf3383ded729803","64d139204bf3383ded729808","64d139274bf3383ded72980d","64d139354bf3383ded729815","64d13c844d26995a54a99b89","64d2731b4ed83731c02636c6","64d2cef0d162ae94a7f6c71e","64da826501fdb6edd6d3fdf5","64da827e01fdb6edd6d3fdfb"],"participantIds":["64c44d14fe3bc46726698d44","64c44cfafe3bc46726698d38"],"updatedAt":"2023-08-14T19:37:34.482Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":[{"__v":44,"_id":"64c45066ee0f93295bd5e82a","createdAt":"2023-07-28T23:33:58.668Z","messageIds":["64c94d9373dda543436f24fc","64c94da373dda543436f250c","64cad13456a1eba5476dd9dc","64cad13556a1eba5476dd9e1","64cad13556a1eba5476dd9e6","64cad13556a1eba5476dd9eb","64cad13656a1eba5476dd9f0","64cad13656a1eba5476dd9f5","64cad14356a1eba5476dd9fa","64cad14356a1eba5476dd9ff","64cad14456a1eba5476dda04","64cad14456a1eba5476dda09","64cad14856a1eba5476dda13","64cad14856a1eba5476dda17","64cad1e156a1eba5476dda27","64cad1f956a1eba5476dda37","64cad36b56a1eba5476dda48","64cad7dd56a1eba5476dda8c","64cc21154b1ce3a271a70fa7","64cc239b4b1ce3a271a70fbd","64cc27dc4b1ce3a271a70fe1","64cc30674b1ce3a271a71012","64cc31cc4b1ce3a271a7101d","64cc33ac4b1ce3a271a71025","64cc33d44b1ce3a271a7103b","64cc34df4b1ce3a271a71040","64cc35824b1ce3a271a71045","64cd22c10dc7b58a4d831808","64cd22d90dc7b58a4d83180d","64cd23f59615d668ca089f73","64cd290b9615d668ca089f79","64cd3a9f9615d668ca089f8f","64cd413c9615d668ca089fc3","64d104ee813fc01d3e6fdb05","64d134df4bf3383ded7297f0","64d139144bf3383ded729803","64d139204bf3383ded729808","64d139274bf3383ded72980d","64d139354bf3383ded729815","64d13c844d26995a54a99b89","64d2731b4ed83731c02636c6","64d2cef0d162ae94a7f6c71e","64da826501fdb6edd6d3fdf5","64da827e01fdb6edd6d3fdfb"],"participantIds":["64c44d14fe3bc46726698d44","64c44cfafe3bc46726698d38"],"updatedAt":"2023-08-14T19:37:34.482Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"}}
+{"level":"info","message":[{"__v":44,"_id":"64c45066ee0f93295bd5e82a","createdAt":"2023-07-28T23:33:58.668Z","messageIds":["64c94d9373dda543436f24fc","64c94da373dda543436f250c","64cad13456a1eba5476dd9dc","64cad13556a1eba5476dd9e1","64cad13556a1eba5476dd9e6","64cad13556a1eba5476dd9eb","64cad13656a1eba5476dd9f0","64cad13656a1eba5476dd9f5","64cad14356a1eba5476dd9fa","64cad14356a1eba5476dd9ff","64cad14456a1eba5476dda04","64cad14456a1eba5476dda09","64cad14856a1eba5476dda13","64cad14856a1eba5476dda17","64cad1e156a1eba5476dda27","64cad1f956a1eba5476dda37","64cad36b56a1eba5476dda48","64cad7dd56a1eba5476dda8c","64cc21154b1ce3a271a70fa7","64cc239b4b1ce3a271a70fbd","64cc27dc4b1ce3a271a70fe1","64cc30674b1ce3a271a71012","64cc31cc4b1ce3a271a7101d","64cc33ac4b1ce3a271a71025","64cc33d44b1ce3a271a7103b","64cc34df4b1ce3a271a71040","64cc35824b1ce3a271a71045","64cd22c10dc7b58a4d831808","64cd22d90dc7b58a4d83180d","64cd23f59615d668ca089f73","64cd290b9615d668ca089f79","64cd3a9f9615d668ca089f8f","64cd413c9615d668ca089fc3","64d104ee813fc01d3e6fdb05","64d134df4bf3383ded7297f0","64d139144bf3383ded729803","64d139204bf3383ded729808","64d139274bf3383ded72980d","64d139354bf3383ded729815","64d13c844d26995a54a99b89","64d2731b4ed83731c02636c6","64d2cef0d162ae94a7f6c71e","64da826501fdb6edd6d3fdf5","64da827e01fdb6edd6d3fdfb"],"participantIds":["64c44d14fe3bc46726698d44","64c44cfafe3bc46726698d38"],"updatedAt":"2023-08-14T19:37:34.482Z"}]}
+{"level":"info","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: ss"}
+{"level":"info","message":"Message saved with id: 64da84a901fdb6edd6d3fe2b"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Message saved with id: 64da8fa46012e6844873ae23"}
+{"level":"info","message":"Message saved with id: 64da8fe46012e6844873ae29"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"debug","message":"sendMessage: "}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","createdAt":"init","messageIds":"init","participantIds":"init","updatedAt":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"createdAt":true,"messageIds":true,"participantIds":true,"updatedAt":true}}},"skipId":true},"$isNew":false,"_doc":{"__v":49,"_id":"64c45066ee0f93295bd5e82a","createdAt":"2023-07-28T23:33:58.668Z","messageIds":["64c94d9373dda543436f24fc","64c94da373dda543436f250c","64cad13456a1eba5476dd9dc","64cad13556a1eba5476dd9e1","64cad13556a1eba5476dd9e6","64cad13556a1eba5476dd9eb","64cad13656a1eba5476dd9f0","64cad13656a1eba5476dd9f5","64cad14356a1eba5476dd9fa","64cad14356a1eba5476dd9ff","64cad14456a1eba5476dda04","64cad14456a1eba5476dda09","64cad14856a1eba5476dda13","64cad14856a1eba5476dda17","64cad1e156a1eba5476dda27","64cad1f956a1eba5476dda37","64cad36b56a1eba5476dda48","64cad7dd56a1eba5476dda8c","64cc21154b1ce3a271a70fa7","64cc239b4b1ce3a271a70fbd","64cc27dc4b1ce3a271a70fe1","64cc30674b1ce3a271a71012","64cc31cc4b1ce3a271a7101d","64cc33ac4b1ce3a271a71025","64cc33d44b1ce3a271a7103b","64cc34df4b1ce3a271a71040","64cc35824b1ce3a271a71045","64cd22c10dc7b58a4d831808","64cd22d90dc7b58a4d83180d","64cd23f59615d668ca089f73","64cd290b9615d668ca089f79","64cd3a9f9615d668ca089f8f","64cd413c9615d668ca089fc3","64d104ee813fc01d3e6fdb05","64d134df4bf3383ded7297f0","64d139144bf3383ded729803","64d139204bf3383ded729808","64d139274bf3383ded72980d","64d139354bf3383ded729815","64d13c844d26995a54a99b89","64d2731b4ed83731c02636c6","64d2cef0d162ae94a7f6c71e","64da826501fdb6edd6d3fdf5","64da827e01fdb6edd6d3fdfb","64da84a901fdb6edd6d3fe2b","64da86ea96319136d1a78025","64da876d96319136d1a7802b","64da8fa46012e6844873ae23","64da8fe46012e6844873ae29"],"participantIds":["64c44d14fe3bc46726698d44","64c44cfafe3bc46726698d38"],"updatedAt":"2023-08-14T20:34:44.658Z"},"level":"debug","message":"sendMessage chatRoom: "}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","contacts":"init","email":"init","password":"init","username":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"contacts":true,"email":true,"password":true,"username":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"},"level":"debug","message":"sendMessage sender: "}
+{"level":"error","message":"Failed to save message: ValidationError: body: Path `body` is required."}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"debug","message":"sendMessage: "}
+{"level":"debug","message":"sendMessage chatRoom: "}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","contacts":"init","email":"init","password":"init","username":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"contacts":true,"email":true,"password":true,"username":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"},"level":"debug","message":"sendMessage sender: "}
+{"level":"info","message":"Message saved with id: 64da947ec49a953dacf3e9dd"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"debug","message":"sendMessage: "}
+{"level":"debug","message":"sendMessage chatRoom: "}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","contacts":"init","email":"init","password":"init","username":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"contacts":true,"email":true,"password":true,"username":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":1,"_id":"64c44cfafe3bc46726698d38","contacts":["64c44d14fe3bc46726698d44"],"email":"abc@abc.com","password":"$2a$10$BInxxwvErh0dbrKuCa1/O.UlPEWqV/PH2Ddt.J3IBBll.DOuKog0.","username":"abc"},"level":"debug","message":"sendMessage sender: "}
+{"level":"info","message":"Message saved with id: 64daa62036a0fb34f5d3b8d5"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-15T00:17:12.929Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-15T00:23:58.148Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-15T11:35:43.476Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-15T11:39:44.693Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}

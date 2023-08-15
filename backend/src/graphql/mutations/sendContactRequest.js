@@ -28,7 +28,6 @@ const sendContactRequest = async (parent, {senderId, recipientId}) => {
 
         return contactRequest;
     } catch (err) {
-        logger.error(); // log the error
         throw new Error(`Failed to send contact request from ${senderId} to ${recipientId}: ${err}`);
     }
 };

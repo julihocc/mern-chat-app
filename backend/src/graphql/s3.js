@@ -9,9 +9,11 @@ const port = 4566; // default port for localstack
 const accessKeyId = 'test'; // dummy credentials
 const secretAccessKey = 'test'; // dummy credentials
 
-// Set the AWS region
+// Configure AWS with credentials
 AWS.config.update({
-    region: `${region}`,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION,
 });
 
 const s3 = new AWS.S3({
@@ -22,7 +24,7 @@ const s3 = new AWS.S3({
     s3ForcePathStyle: true,
 });
 
-logger.info('S3 client created');
+//logger.info('S3 client created');
 
 const bucketName = 'my-bucket'; // Replace with your bucket name
 
@@ -41,10 +43,10 @@ const corsParams = {
 
 s3.putBucketCors(corsParams).promise()
     .then(data => {
-        logger.info('CORS set successfully', data);
+        logger.debug('CORS set successfully', data);
     })
     .catch(err => {
         logger.error('Error setting CORS', err.message, err.stack);
     });
 
-module.exports = {s3};
+module.exports = { s3 };
