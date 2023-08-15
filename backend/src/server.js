@@ -13,8 +13,10 @@ const http = require('http');
 const PORT = process.env.PORT || 4000;
 const cookieParser = require('cookie-parser');
 const logger = require('./logger');
+const { graphqlUploadExpress } = require('graphql-upload');
 
 const app = express();
+
 app.use(express.static(__dirname + '/public'));
 
 const corsOptions = {
@@ -24,6 +26,9 @@ const corsOptions = {
     allowedHeaders: ['Content-Type', 'Authorization'],
 }
 app.use(cors(corsOptions));
+
+// Add the following lines to apply the graphqlUploadExpress middleware
+app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
 app.use(errorHandler);
 
