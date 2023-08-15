@@ -4,7 +4,7 @@ const {getUserFromToken} = require("../utils");
 const ChatRoom = require("../../models/ChatRoomModel");
  const getChatRooms = async (parent, args, context) => {
     //logger.info("Calling getChatRooms")
-    // logger.info('context', context)
+    // //logger.info('context', context)
     const {token} = context;
     //logger.info('token', token)
 

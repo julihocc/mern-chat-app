@@ -15,7 +15,6 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
-    "apollo-upload-client": "^17.0.0",
     "aws-sdk": "^2.1429.0",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.12.6",
