@@ -25,7 +25,7 @@ const schemas = gql`
         body: String
         createdAt: String!
         chatRoomId: ID!
-        fileUrl: String
+        fileContent: String # Base64 encoded file content
     }
 
     type SignupPayload {
@@ -68,7 +68,7 @@ const schemas = gql`
     type Mutation {
         signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
-        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String,  fileUrl: String): Message!
+        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String,  file: Upload): Message!
         sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
         acceptContactRequest(requestId: ID!): ContactRequest!
         rejectContactRequest(requestId: ID!): ContactRequest!

@@ -7,7 +7,7 @@ export const GET_MESSAGES_BY_CHATROOM_ID = gql`
             senderId
             chatRoomId
             body
-            fileUrl
+            fileContent
             createdAt
         }
     }

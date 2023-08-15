@@ -15,10 +15,8 @@ import { useTranslation } from "react-i18next";
 import { useGetChatRoomById } from "../hooks/queries/useGetChatRoomById";
 import { useGetCurrentUser } from "../hooks/queries/useGetCurrentUser";
 import logger from "loglevel";
-import { s3 } from "../s3";
 import { useMutation } from "@apollo/react-hooks";
 import { SEND_MESSAGE } from "../gql/mutations/SEND_MESSAGE";
-import { gql } from "@apollo/client";
 import {GET_MESSAGES_BY_CHAT_ROOM_ID} from "../gql/queries/GET_MESSAGES_BY_CHAT_ROOM_ID";
 
 const ChatRoomViewer = () => {
@@ -49,45 +47,27 @@ const ChatRoomViewer = () => {
     const isLoading = chatRoom.loading || messageLoading || currentUser.loading || sendMessageLoading;
 
     const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
+        const tempFile = e.target.files[0];
+        logger.debug('typeof tempFile: ', typeof tempFile);
+        setFile(tempFile);
     };
 
     // Log user and chat room data
-    logger.info("Current user data:", currentUser);
-    logger.info("Chat room data:", chatRoom);
-
-    const uploadFileToS3 = (file) => {
-        return new Promise((resolve, reject) => {
-            const params = { Bucket: 'my-bucket', Key: file.name, Body: file };
-            s3.upload(params, (err, data) => {
-                if (err) {
-                    logger.error("File upload error:", err); // Log the error
-                    reject(err);
-                } else {
-                    resolve(data.Location);
-                }
-            });
-        });
-    };
-
-    const sendMessage = async (senderId, chatRoomId, fileUrl) => {
-        logger.info("Sending message:", { senderId, chatRoomId, body: messageBody, fileUrl }); // Log the message data
-        try {
-            await sendMessageMutation({ variables: { senderId, chatRoomId, body: messageBody, fileUrl } });
-            setMessageBody("");
-        } catch (err) {
-            console.error("sendMessage error: ", err);
-        }
-    };
+    // logger.debug("Current user data:", currentUser);
+    // logger.debug("Chat room data:", chatRoom);
 
     const handleSendMessage = async (e, senderId, chatRoomId) => {
         e.preventDefault();
-        let fileUrl = file ? await uploadFileToS3(file) : null;
-        if (messageBody.trim() !== "") {
-            await sendMessage(senderId, chatRoomId, fileUrl);
-            setFile(null);
-        }
+        await sendMessageMutation({
+            variables: {
+                senderId: senderId,
+                chatRoomId: chatRoomId,
+                body: messageBody,
+                file: file, // Including the file in the mutation
+            }
+        })
     };
+
 
     useEffect(() => {
         logger.info("Messages from server:", messageData?.getMessagesByChatRoomId); // Log messages
@@ -121,12 +101,15 @@ const ChatRoomViewer = () => {
                             <Avatar><PersonIcon /></Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={message.body} secondary={message.senderId} sx={{ textAlign: message.senderId === currentUserId ? "right" : "left" }} />
-                        {message.fileUrl && (
-                            <Button variant="outlined" color="primary" component="a" href={message.fileUrl} download>Download File</Button>
+                        {message.fileContent && (
+                            // Assuming the file is an image, render it as an image tag
+                            <img src={`data:${message.mimeType};base64,${message.fileContent}`} alt="Uploaded content" />
+                            // For other file types, you can create a download link with the appropriate MIME type
                         )}
                     </ListItem>
                 ))}
             </List>
+
             <form onSubmit={(e) => handleSendMessage(e, currentUserId, chatRoomId)}>
                 <Stack direction="row" spacing={1}>
                     <TextField type="body" label={t("newMessage")} fullWidth value={messageBody} onChange={(e) => setMessageBody(e.target.value)} />

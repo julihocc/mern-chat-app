@@ -8,7 +8,7 @@ export const NEW_MESSAGE_SUBSCRIPTION = gql`
             senderId
             chatRoomId
             body
-            fileUrl
+            fileContent
             createdAt
         }
     }
