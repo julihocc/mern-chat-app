@@ -15,10 +15,8 @@ import { useTranslation } from "react-i18next";
 import { useGetChatRoomById } from "../hooks/queries/useGetChatRoomById";
 import { useGetCurrentUser } from "../hooks/queries/useGetCurrentUser";
 import logger from "loglevel";
-import { s3 } from "../s3";
 import { useMutation } from "@apollo/react-hooks";
 import { SEND_MESSAGE } from "../gql/mutations/SEND_MESSAGE";
-import { gql } from "@apollo/client";
 import {GET_MESSAGES_BY_CHAT_ROOM_ID} from "../gql/queries/GET_MESSAGES_BY_CHAT_ROOM_ID";
 
 const ChatRoomViewer = () => {
@@ -56,38 +54,18 @@ const ChatRoomViewer = () => {
     logger.info("Current user data:", currentUser);
     logger.info("Chat room data:", chatRoom);
 
-    const uploadFileToS3 = (file) => {
-        return new Promise((resolve, reject) => {
-            const params = { Bucket: 'my-bucket', Key: file.name, Body: file };
-            s3.upload(params, (err, data) => {
-                if (err) {
-                    logger.error("File upload error:", err); // Log the error
-                    reject(err);
-                } else {
-                    resolve(data.Location);
-                }
-            });
-        });
-    };
-
-    const sendMessage = async (senderId, chatRoomId, fileUrl) => {
-        logger.info("Sending message:", { senderId, chatRoomId, body: messageBody, fileUrl }); // Log the message data
-        try {
-            await sendMessageMutation({ variables: { senderId, chatRoomId, body: messageBody, fileUrl } });
-            setMessageBody("");
-        } catch (err) {
-            console.error("sendMessage error: ", err);
-        }
-    };
-
     const handleSendMessage = async (e, senderId, chatRoomId) => {
         e.preventDefault();
-        let fileUrl = file ? await uploadFileToS3(file) : null;
-        if (messageBody.trim() !== "") {
-            await sendMessage(senderId, chatRoomId, fileUrl);
-            setFile(null);
-        }
+        await sendMessageMutation({
+            variables: {
+                senderId: senderId,
+                chatRoomId: chatRoomId,
+                body: messageBody,
+                file: file, // Including the file in the mutation
+            }
+        })
     };
+
 
     useEffect(() => {
         logger.info("Messages from server:", messageData?.getMessagesByChatRoomId); // Log messages
