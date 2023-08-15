@@ -47,12 +47,14 @@ const ChatRoomViewer = () => {
     const isLoading = chatRoom.loading || messageLoading || currentUser.loading || sendMessageLoading;
 
     const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
+        const tempFile = e.target.files[0];
+        logger.debug('typeof tempFile: ', typeof tempFile);
+        setFile(tempFile);
     };
 
     // Log user and chat room data
-    logger.info("Current user data:", currentUser);
-    logger.info("Chat room data:", chatRoom);
+    // logger.debug("Current user data:", currentUser);
+    // logger.debug("Chat room data:", chatRoom);
 
     const handleSendMessage = async (e, senderId, chatRoomId) => {
         e.preventDefault();
