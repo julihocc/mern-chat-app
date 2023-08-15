@@ -1,6 +1,8 @@
 // frontend\src\components\ContactList.js
 import React from 'react';
+import logger from "loglevel";
 import { useGetCurrentUser } from "../hooks/queries/useGetCurrentUser";
+
 
 const ContactList = () => {
     const {loading, error, data} = useGetCurrentUser();
