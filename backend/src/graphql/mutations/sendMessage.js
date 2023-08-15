@@ -10,23 +10,16 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
     logger.info(`Received sendMessage request with senderId: ${senderId}, chatRoomId: ${chatRoomId}, body: ${body}`);
 
     // Handle file upload if provided
-    let fileUrl = null;
+    let fileContent = null;
     if (file) {
-        const { createReadStream, filename } = await file;
+        const { createReadStream } = await file;
         const stream = createReadStream();
-
-        // Create GridFS bucket
-        const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
-            bucketName: "uploads",
-        });
-
-        // Create a write stream and save the file
-        const uploadStream = bucket.openUploadStream(filename);
-        stream.pipe(uploadStream);
-
-        // Wait for the stream to finish to get the file URL
-        await new Promise(resolve => uploadStream.once('finish', resolve));
-        fileUrl = `/uploads/${uploadStream.id}`; // Generate the file URL
+        const chunks = [];
+        for await (const chunk of stream) {
+            chunks.push(chunk);
+        }
+        fileContent = Buffer.concat(chunks).toString('base64');
+        // Convert the file content to Base64
     }
 
     // Existing logic for sending a message
@@ -42,7 +35,7 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) 
         chatRoomId: chatRoom.id,
         senderId: sender.id,
         body: body,
-        fileUrl: fileUrl, // Include file URL
+        fileContent: fileContent, // Include file URL
     });
 
     try {

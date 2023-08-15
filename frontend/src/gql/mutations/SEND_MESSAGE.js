@@ -8,7 +8,7 @@ export const SEND_MESSAGE = gql`
             senderId
             chatRoomId
             body
-            fileUrl
+            fileContent
             createdAt
         }
     }

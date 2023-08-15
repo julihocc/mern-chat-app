@@ -25,7 +25,7 @@ const schemas = gql`
         body: String
         createdAt: String!
         chatRoomId: ID!
-        fileUrl: String
+        fileContent: String # Base64 encoded file content
     }
 
     type SignupPayload {
