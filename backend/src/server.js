@@ -76,6 +76,8 @@ async function startServer() {
     );
 
     httpServer.listen(PORT, () => {
+        const now = new Date();
+        logger.info(`Server started at ${now.toISOString()}`); // Changed this line
         logger.info(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // Changed this line
         logger.info(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // And this line
     });
