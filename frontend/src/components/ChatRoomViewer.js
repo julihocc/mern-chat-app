@@ -101,12 +101,15 @@ const ChatRoomViewer = () => {
                             <Avatar><PersonIcon /></Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={message.body} secondary={message.senderId} sx={{ textAlign: message.senderId === currentUserId ? "right" : "left" }} />
-                        {message.fileUrl && (
-                            <Button variant="outlined" color="primary" component="a" href={message.fileUrl} download>Download File</Button>
+                        {message.fileContent && (
+                            // Assuming the file is an image, render it as an image tag
+                            <img src={`data:${message.mimeType};base64,${message.fileContent}`} alt="Uploaded content" />
+                            // For other file types, you can create a download link with the appropriate MIME type
                         )}
                     </ListItem>
                 ))}
             </List>
+
             <form onSubmit={(e) => handleSendMessage(e, currentUserId, chatRoomId)}>
                 <Stack direction="row" spacing={1}>
                     <TextField type="body" label={t("newMessage")} fullWidth value={messageBody} onChange={(e) => setMessageBody(e.target.value)} />
