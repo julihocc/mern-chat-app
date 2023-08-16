@@ -2,5 +2,7 @@ node_modules/
 .idea/
 .env
 *.js.copy
+*.copy.js
+*.modified.js
 *.zip
 *.log
