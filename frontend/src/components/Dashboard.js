@@ -1,32 +1,36 @@
-// Path: frontend\src\components\dashboardUtils.js
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React, { useEffect } from 'react'; // Import useEffect
+import { useDispatch, useSelector } from 'react-redux'; // Import Redux hooks
+import { fetchCurrentUser } from '../actions'; // Import the fetchCurrentUser thunk
 import { Typography, Grid, CircularProgress, Alert } from '@mui/material';
 import ChatRoomList from "./ChatRoomList";
 import SendContactRequestForm from "./SendContactRequestForm";
 import PendingContactRequestsList from "./PendingContactRequestsList";
 import CreateGroupConversation from "./CreateGroupConversation";
-import { GET_CURRENT_USER } from "../gql/queries/GET_CURRENT_USER";
 import { useTranslation } from "react-i18next";
-
 import log from '../utils/logger';
-import {ContactListWithFullDetails} from "./ContactListWithFullDetails"; // Imported the custom logger
+import { ContactListWithFullDetails } from "./ContactListWithFullDetails"; // Make sure the import is correct
 
 const Dashboard = () => {
-    const {t} = useTranslation();
-    // const { loading, error, data } = useQuery(GET_CURRENT_USER);
-    const { loading, error, data } = useQuery(GET_CURRENT_USER, {
-        onError: (error) => {
-            log.error(`GET_CURRENT_USER Error: ${error.message}`);
-        },
-    });
+    const { t } = useTranslation();
+    const dispatch = useDispatch(); // Get dispatch function
+    const { loading, user, error } = useSelector(state => state.currentUser); // Select user data from Redux store
+
+    useEffect(() => {
+        // Dispatch the thunk to fetch the current user's data when the component mounts
+        dispatch(fetchCurrentUser());
+    }, [dispatch]);
+
     if (loading) return <CircularProgress />;
     if (error) {
-        log.error(`GET_CURRENT_USER Error: ${error.message}`); // Replaced console.error with custom logger
-        return <Alert severity="error">GET_CURRENT_USER Error: {error.message}</Alert>; // Keep error message display
+        log.error(`GET_CURRENT_USER Error: ${error}`);
+        return <Alert severity="error">GET_CURRENT_USER Error: {error}</Alert>;
     }
 
-    const { getCurrentUser } = data;
+    if (!user) {
+        // Handle the case where user is null or undefined
+        // You can return a loading indicator, an error message, or any other appropriate content
+        return <div>Loading user data...</div>;
+    }
 
     return (
         <Grid container spacing={3} direction="column">
@@ -34,13 +38,13 @@ const Dashboard = () => {
                 <Typography variant="h2">{t('dashboard')}</Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body1">{t('welcome')}, {getCurrentUser.username}!</Typography>
+                <Typography variant="body1">{t('welcome')}, {user.username}!</Typography>
             </Grid>
             <Grid item>
-                <PendingContactRequestsList userId={getCurrentUser.id} />
+                <PendingContactRequestsList userId={user.id} />
             </Grid>
             <Grid item>
-                <CreateGroupConversation userEmail={getCurrentUser.email} />
+                <CreateGroupConversation userEmail={user.email} />
             </Grid>
             <Grid item>
                 <SendContactRequestForm />
@@ -56,5 +60,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-// I replaced instances of console.error with our custom logger. The Alert component remains to handle user notifications in case of errors.
