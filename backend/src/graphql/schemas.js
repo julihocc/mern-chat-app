@@ -1,6 +1,6 @@
 // backend\src\graphql\schemas.js
 
-const { gql } = require('apollo-server-express');
+const {gql} = require('apollo-server-express');
 
 const schemas = gql`
     scalar Upload
@@ -25,7 +25,7 @@ const schemas = gql`
         body: String
         createdAt: String!
         chatRoomId: ID!
-        fileUrl: String
+        fileContent: String # Base64 encoded file content
     }
 
     type SignupPayload {
@@ -68,7 +68,7 @@ const schemas = gql`
     type Mutation {
         signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
-        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String,  fileToUpload: Upload): Message!
+        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String,  fileContent: String): Message!
         sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
         acceptContactRequest(requestId: ID!): ContactRequest!
         rejectContactRequest(requestId: ID!): ContactRequest!
