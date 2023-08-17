@@ -98,6 +98,21 @@ const ChatRoomViewer = () => {
   if (chatRoomError)
     return <p>Chat Room Error: {JSON.stringify(chatRoomError)}</p>;
 
+  // if (messages) {
+  //   return messages.map((message, index) => (
+  //     <div>
+  //       <p>
+  //         {typeof message.fileContent}
+  //         {JSON.stringify(message.fileContent)}
+  //       </p>
+  //       <img
+  //         src={`data:${message.mimeType};base64,${message.fileContent}`}
+  //         alt="Uploaded content"
+  //       />
+  //     </div>
+  //   ));
+  // }
+
   return (
     <Container
       component={Paper}
@@ -141,7 +156,7 @@ const ChatRoomViewer = () => {
               />
               {message.fileContent && (
                 <img
-                  src={`data:${message.mimeType};base64,${message.fileContent}`}
+                  src={`${message.fileContent}`}
                   alt="Uploaded content"
                 />
               )}
