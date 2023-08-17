@@ -18,9 +18,9 @@ spec:
           image: jdk2py/frontend:latest
           env:
             - name: REACT_APP_BACKEND_HTTP_URL
-              value: "http://a8736b4a9e0b04186b1c10b82a42be46-1178283415.us-east-1.elb.amazonaws.com:4000"
+              value: "http://a152f8e43d5d14a8ab7c076b1892f8ce-1930540454.us-east-1.elb.amazonaws.com:4000"
             - name: REACT_APP_BACKEND_WS_URL
-              value: "ws://a8736b4a9e0b04186b1c10b82a42be46-1178283415.us-east-1.elb.amazonaws.com:4000"
+              value: "ws://a152f8e43d5d14a8ab7c076b1892f8ce-1930540454.us-east-1.elb.amazonaws.com:4000"
             - name: REACT_APP_S3_BUCKET_NAME
               value: "marbles4078"
             - name: AWS_ACCESS_KEY_ID

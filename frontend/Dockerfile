@@ -7,7 +7,7 @@ WORKDIR /usr/app
 
 # Install app dependencies
 COPY package*.json ./
-RUN npm install
+RUN yarn install
 
 # Copy app to container
 COPY . .
@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3000
 
 # Run the "start" script in package.json
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
