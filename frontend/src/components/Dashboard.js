@@ -13,7 +13,8 @@ import { ContactListWithFullDetails } from "./ContactListWithFullDetails"; // Ma
 const Dashboard = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch(); // Get dispatch function
-    const { loading, user, error } = useSelector(state => state.currentUser); // Select user data from Redux store
+    const { loading, user, error } = useSelector(state => state.currentUser); 
+    // Select user data from Redux store
 
     useEffect(() => {
         // Dispatch the thunk to fetch the current user's data when the component mounts
@@ -21,6 +22,7 @@ const Dashboard = () => {
     }, [dispatch]);
 
     if (loading) return <CircularProgress />;
+    
     if (error) {
         log.error(`GET_CURRENT_USER Error: ${error}`);
         return <Alert severity="error">GET_CURRENT_USER Error: {error}</Alert>;
@@ -29,7 +31,7 @@ const Dashboard = () => {
     if (!user) {
         // Handle the case where user is null or undefined
         // You can return a loading indicator, an error message, or any other appropriate content
-        return <div>Loading user data...</div>;
+        return <div>Not user at all...</div>;
     }
 
     return (

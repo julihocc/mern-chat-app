@@ -5673,3 +5673,6 @@
 {"level":"info","message":"2023-08-17T13:37:11.728Z"}
 {"level":"info","message":"Server is running at http://localhost:4000/graphql"}
 {"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-18T22:08:47.544Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
