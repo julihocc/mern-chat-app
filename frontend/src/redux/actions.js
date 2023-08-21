@@ -1,7 +1,7 @@
-import apolloClient from './apolloClient'; // Import your existing Apollo Client instance
-import { GET_CURRENT_USER } from './gql/queries/GET_CURRENT_USER';
-import { GET_MESSAGES_BY_CHATROOM_ID } from './gql/queries/GET_MESSAGES_BY_CHATROOM_ID';
-import { GET_CHAT_ROOM_BY_ID } from './gql/queries/GET_CHAT_ROOM_BY_ID'; // Make sure to define this query
+import apolloClient from '../apolloClient'; // Import your existing Apollo Client instance
+import { GET_CURRENT_USER } from '../gql/queries/GET_CURRENT_USER';
+import { GET_MESSAGES_BY_CHATROOM_ID } from '../gql/queries/GET_MESSAGES_BY_CHATROOM_ID';
+import { GET_CHAT_ROOM_BY_ID } from '../gql/queries/GET_CHAT_ROOM_BY_ID'; // Make sure to define this query
 
 export const actionType = {
     SET_USER: 'SET_USER',

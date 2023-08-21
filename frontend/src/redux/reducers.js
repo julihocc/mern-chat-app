@@ -1,5 +1,5 @@
 // frontend/src/reducers.js
-import logger from './utils/logger';
+import logger from '../utils/logger';
 import { combineReducers } from 'redux';
 import { actionType } from './actions';
 
