@@ -35,9 +35,7 @@ const ChatRoomViewer = () => {
   const chatRoom = useSelector((state) => state.chat.chatRoom); // Getting chatRoom data from the Redux store
   const messages = useSelector((state) => state.chat.messages); // Getting messages from the Redux store
   const currentUser = useSelector((state) => state.currentUser.user); // Getting the current user from the Redux store
-  const isLoading = useSelector(
-      (state) => state.chat.loading || state.currentUser.loading
-  ); // Checking loading status
+  const isLoading = useSelector((state) => state.chat.loading || state.currentUser.loading); // Checking loading status
   const chatRoomError = useSelector((state) => state.chat.error); // Getting any chat room error from the Redux store
 
   const [messageBody, setMessageBody] = useState(""); // State to hold the message being typed
@@ -50,8 +48,8 @@ const ChatRoomViewer = () => {
     const tempFile = e.target.files[0];
     const maxSize = 2097152; // 2MB
     if (tempFile.size > maxSize) {
-        alert("File too large");
-        return;
+      alert("File too large");
+      return;
     }
     logger.debug("typeof tempFile: ", typeof tempFile);
     setFile(tempFile); // Setting the selected file
@@ -60,7 +58,6 @@ const ChatRoomViewer = () => {
   // Async function to handle sending messages
   const handleSendMessage = async (e, senderId, chatRoomId) => {
     e.preventDefault();
-
     let fileContent = null;
 
     if (file) {
@@ -87,6 +84,8 @@ const ChatRoomViewer = () => {
           logger.debug("fileContent: ", fileContent);
           logger.debug("res: ", res);
           dispatch(sendMessage(res.data.sendMessage)); // Dispatching the sendMessage action with the response data
+          setMessageBody(""); // Clearing the text field
+          setFile(null); // Resetting the file input if any
         })
         .catch((err) => {
           logger.error("err: ", err);
@@ -172,9 +171,10 @@ const ChatRoomViewer = () => {
               onChange={handleFileChange} // Handling changes to the file input
           />
           <Button
+              type="submit"
               variant="contained"
               color="primary"
-              onClick={(e) => handleSendMessage(e, currentUser.id, chatRoomId)} // Handling the click event for sending messages
+              onClick={(e) => handleSendMessage(e, currentUser.id, chatRoomId)} // Sending message on button click
           >
             {t("send")}
           </Button>
