@@ -1,5 +1,4 @@
 // frontend/src/components/Login.js
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'; // Import useDispatch to dispatch Redux actions
 import { useApolloClient } from '@apollo/client';
@@ -9,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import log from '../utils/logger'; // Import the logger
-import { setUser } from '../actions'; // Import the setUser action
+import { setUser } from '../redux/slices/userSlice'; // Import the setUser action from the userSlice
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
@@ -48,11 +47,6 @@ const Login = () => {
         onCompleted(data) {
             log.debug('Login successful. Setting user in Redux store.');
             dispatch(setUser(data.login.user)); // Dispatching setUser action
-
-            log.debug('Calling onCompleted(data)');
-            log.debug('data', data);
-            log.debug('data.login.token', data.login.token);
-            log.debug('data.login.user', data.login.user.email);
 
             // Setting cookie with SameSite attribute
             document.cookie = `token=${data.login.token}; path=/; max-age=3600; SameSite=Lax`;

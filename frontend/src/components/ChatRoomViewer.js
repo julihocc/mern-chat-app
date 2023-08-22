@@ -20,7 +20,9 @@ import Loading from "./Loading";
 import { useTranslation } from "react-i18next";
 import logger from "loglevel";
 import { useDispatch, useSelector } from "react-redux";
-import { sendMessage, fetchMessages, fetchChatRoom } from "../actions"; // Import the necessary actions
+import { fetchMessages, fetchChatRoom } from "../redux/actions"; // Import the necessary actions
+import { sendMessage } from '../redux/slices/chatSlice';
+
 
 import { useMutation } from "@apollo/client";
 import { SEND_MESSAGE } from "../gql/mutations/SEND_MESSAGE";
@@ -113,7 +115,7 @@ const ChatRoomViewer = () => {
     >
       <CssBaseline />
       <Typography variant="h2" sx={{ mb: 2 }}>
-        {t("chatRoom")}: {chatRoom.id}
+        {t("chatRoom")}: {chatRoom ? chatRoom.id : 'Loading...'} {/* Check if chatRoom is null before accessing its id */}
       </Typography>
       <Typography variant="h5" sx={{ mb: 2 }}>
         {t("messages")}

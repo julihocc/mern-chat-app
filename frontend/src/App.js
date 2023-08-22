@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import AuthProvider from "./AuthProvider";
 import MainRoutes from "./MainRoutes"; // Import MainRoutes
 import {Provider} from 'react-redux';
-import store from './store'; // Importing the Redux store
+import store from './redux/store'; // Importing the Redux store
 
 // Define the App component
 function App() {
