@@ -1,5 +1,6 @@
 // path: frontend\src\MainRoutes.js
-import { useContext } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux'; // Import Redux hooks
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppBar, Toolbar, Button, Typography } from '@mui/material';
@@ -9,17 +10,22 @@ import Dashboard from './components/Dashboard';
 import ChatRoomViewer from "./components/ChatRoomViewer";
 import Signup from "./components/SignUp";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import AuthContext from "./AuthContext";
+import { logoutUser, loginUser } from './redux/slices/userSlice'; // Make sure the actions are defined
 
 const MainRoutes = () => {
-    const { isLoggedIn, onLogin, onLogout } = useContext(AuthContext);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn); // Assuming `isLoggedIn` is in the user part of the state
 
     const handleLogout = () => {
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        onLogout();
+        dispatch(logoutUser()); // Dispatch logout action
         navigate('/login');
+    };
+
+    const handleLogin = (userData) => {
+        dispatch(loginUser(userData)); // Dispatch login action with user data
     };
 
     return (
@@ -50,8 +56,8 @@ const MainRoutes = () => {
                 </Toolbar>
             </AppBar>
             <Routes>
-                <Route path="/signup" element={<Signup onLogin={onLogin} />} />
-                <Route path="/login" element={<Login onLogin={onLogin} />} />
+                <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
+                <Route path="/login" element={<Login onLogin={handleLogin} />} />
                 <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/login" replace />} />
                 <Route path="/chat/:chatRoomId" element={<ChatRoomViewer />} />
             </Routes>

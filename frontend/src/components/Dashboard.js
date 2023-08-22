@@ -1,3 +1,5 @@
+// frontend/src/components/Dashboard.js
+
 import React, {useEffect} from 'react'; // Import useEffect
 import {useDispatch, useSelector} from 'react-redux'; // Import Redux hooks
 import {fetchCurrentUser} from '../redux/actions'; // Import the fetchCurrentUser thunk
@@ -15,11 +17,15 @@ const Dashboard = () => {
     const dispatch = useDispatch(); // Get dispatch function
     const {loading, user, error} = useSelector(state => state.currentUser);
     // Select user data from Redux store
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
     useEffect(() => {
         // Dispatch the thunk to fetch the current user's data when the component mounts
-        dispatch(fetchCurrentUser());
-    }, [dispatch]);
+        // Using 'isLoggedIn' instead of 'token', but you might need to modify this logic based on your requirements
+        if (isLoggedIn) {
+            dispatch(fetchCurrentUser());
+        }
+    }, [dispatch, isLoggedIn]);
 
     if (loading) return <CircularProgress/>;
 

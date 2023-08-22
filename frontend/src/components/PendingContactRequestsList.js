@@ -9,7 +9,7 @@ import logger from "loglevel";
 const PendingContactRequestsList = ({userId}) => {
 
     const {t} = useTranslation();
-    const {loading, error, data} = useGetContactRequestsByContext();
+    const {loading, error, data, refetch} = useGetContactRequestsByContext(); // Assuming refetch is returned here
     const acceptContactRequestHandler = useAcceptContactRequest(userId);
     const rejectContactRequestHandler = useRejectContactRequest(userId);
 
@@ -33,19 +33,19 @@ const PendingContactRequestsList = ({userId}) => {
                         <p>status: {status}</p>
                         <p>createdAt: {createdAt}</p>
                         <div>
-                            <button onClick={async () => { // This becomes an async function
+                            <button onClick={async () => {
                                 try {
-                                    //logger.info('Accept contact request');
-                                    await acceptContactRequestHandler({variables: {requestId: id}}); // Use the handler here with the requestId
+                                    await acceptContactRequestHandler({variables: {requestId: id}});
+                                    refetch(); // Refetch data after accepting
                                 } catch (error) {
                                     logger.error('Error accepting contact request:', error);
                                 }
                             }}>Accept
                             </button>
-                            <button onClick={async () => { // This becomes an async function
+                            <button onClick={async () => {
                                 try {
-                                    //logger.info('Reject contact request');
-                                    await rejectContactRequestHandler({variables: {requestId: id}}); // Use the handler here with the requestId
+                                    await rejectContactRequestHandler({variables: {requestId: id}});
+                                    refetch(); // Refetch data after rejecting
                                 } catch (error) {
                                     logger.error('Error rejecting contact request:', error);
                                 }
