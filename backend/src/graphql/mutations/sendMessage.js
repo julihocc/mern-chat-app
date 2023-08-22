@@ -1,11 +1,11 @@
 // Path: backend/src/graphql/mutations/sendMessage.js
-const mongoose = require('mongoose'); // Import mongoose
+
 const ChatRoom = require("../../models/ChatRoomModel");
 const Message = require("../../models/MessageModel");
 const logger = require('../../logger');
 const User = require('../../models/UserModel');
 
-const sendMessage = async (_, { senderId, chatRoomId, body, fileContent }, { pubSub }) => {
+const sendMessage = async (_, {senderId, chatRoomId, body, fileContent}, {pubSub}) => {
     // Log the inputs without fileUrl, as it's not defined yet
     logger.debug(`Received sendMessage request with senderId: ${senderId}, chatRoomId: ${chatRoomId}, body: ${!!body}, fileContent: ${!!fileContent}`);
 
@@ -24,10 +24,7 @@ const sendMessage = async (_, { senderId, chatRoomId, body, fileContent }, { pub
     }
 
     const message = new Message({
-        chatRoomId: chatRoom.id,
-        senderId: sender.id,
-        body: body||null,
-        fileContent: fileContent||null, // Include file URL
+        chatRoomId: chatRoom.id, senderId: sender.id, body: body || null, fileContent: fileContent || null, // Include file URL
     });
 
     try {
@@ -43,7 +40,7 @@ const sendMessage = async (_, { senderId, chatRoomId, body, fileContent }, { pub
         await chatRoom.save();
         logger.debug(`Chat room updated with message id: ${message.id}`); // Log this info
         // This publishes the new message to the subscription
-        pubSub.publish(`NEW_MESSAGE_${chatRoomId}`, { newMessage: message });
+        pubSub.publish(`NEW_MESSAGE_${chatRoomId}`, {newMessage: message});
 
         return message;
     } catch (err) {

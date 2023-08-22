@@ -5695,3 +5695,45 @@
 {"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: true"}
 {"level":"debug","message":"Message saved with id: 64e4e6aef044f89030e61da7"}
 {"level":"debug","message":"Chat room updated with message id: 64e4e6aef044f89030e61da7"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: false"}
+{"level":"debug","message":"Message saved with id: 64e4ede7f044f89030e61db6"}
+{"level":"debug","message":"Chat room updated with message id: 64e4ede7f044f89030e61db6"}
+{"level":"info","message":"Server started at 2023-08-22T17:31:38.931Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: false, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64e4f13277528419f9aa0052"}
+{"level":"debug","message":"Chat room updated with message id: 64e4f13277528419f9aa0052"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: false, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64e4f13377528419f9aa0057"}
+{"level":"debug","message":"Chat room updated with message id: 64e4f13377528419f9aa0057"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64e4f14277528419f9aa005c"}
+{"level":"debug","message":"Chat room updated with message id: 64e4f14277528419f9aa005c"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64e4f16677528419f9aa0061"}
+{"level":"debug","message":"Chat room updated with message id: 64e4f16677528419f9aa0061"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64e4f16b77528419f9aa0066"}
+{"level":"debug","message":"Chat room updated with message id: 64e4f16b77528419f9aa0066"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64e4f17077528419f9aa006b"}
+{"level":"debug","message":"Chat room updated with message id: 64e4f17077528419f9aa006b"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64e4f21c77528419f9aa0070"}
+{"level":"debug","message":"Chat room updated with message id: 64e4f21c77528419f9aa0070"}
+{"level":"info","message":"Server started at 2023-08-22T17:40:30.643Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-22T18:04:38.213Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-22T18:05:04.484Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: false"}
+{"level":"debug","message":"Message saved with id: 64e4f8f4855f5b19e98b601b"}
+{"level":"error","message":"Failed to update chat room: ReferenceError: message is not defined"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: false"}
+{"level":"debug","message":"Message saved with id: 64e4f8f8855f5b19e98b601f"}
+{"level":"error","message":"Failed to update chat room: ReferenceError: message is not defined"}

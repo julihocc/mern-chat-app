@@ -1,3 +1,5 @@
+// backend/src/server.js
+
 // Path: backend\src\server.js
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
@@ -13,7 +15,7 @@ const http = require('http');
 const PORT = process.env.PORT || 4000;
 const cookieParser = require('cookie-parser');
 const logger = require('./logger');
-const { graphqlUploadExpress } = require('graphql-upload');
+const { graphqlUploadExpress } = require('graphql-upload'); // I've kept this line, as it might be used for other configurations
 
 const app = express();
 
@@ -24,10 +26,10 @@ const corsOptions = {
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-}
+};
 app.use(cors(corsOptions));
 
-// Add the following lines to apply the graphqlUploadExpress middleware
+// I've updated the maxFileSize value to 10MB
 app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
 app.use(errorHandler);
@@ -36,9 +38,9 @@ app.use(cookieParser());
 async function startServer() {
     try {
         await connectDB();
-        //logger.info('Connected to MongoDB'); // Changed this line
+        //logger.info('Connected to MongoDB'); // No change here
     } catch (err) {
-        logger.error('Error connecting to MongoDB:', err); // And this line
+        logger.error('Error connecting to MongoDB:', err); // No change here
     }
 
     const pubSub = new PubSub();
@@ -55,7 +57,7 @@ async function startServer() {
                 return { req, pubSub, token };
             }
         },
-        uploads: false,
+        uploads: false, // Keeping this line as-is, assuming you have other handling for uploads
     });
 
     await apolloServer.start();
@@ -77,9 +79,9 @@ async function startServer() {
 
     httpServer.listen(PORT, () => {
         const now = new Date();
-        logger.info(`Server started at ${now.toISOString()}`); // Changed this line
-        logger.info(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // Changed this line
-        logger.info(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // And this line
+        logger.info(`Server started at ${now.toISOString()}`); // No change here
+        logger.info(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // No change here
+        logger.info(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // No change here
     });
 
 }
@@ -88,6 +90,6 @@ async function startServer() {
     try {
         await startServer();
     } catch (err) {
-        logger.error('Error starting the backend:', err); // Changed this line
+        logger.error('Error starting the backend:', err); // No change here
     }
 })();

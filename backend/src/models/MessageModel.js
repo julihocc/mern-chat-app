@@ -15,7 +15,7 @@ const messageSchema = new mongoose.Schema({
         ref: 'ChatRoom',
         required: true
     },
-    fileUrl: {
+    fileContent: {
         type: String,
         default: null
     },

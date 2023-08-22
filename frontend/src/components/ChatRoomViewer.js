@@ -48,6 +48,11 @@ const ChatRoomViewer = () => {
   // Function to handle changes in the file input
   const handleFileChange = (e) => {
     const tempFile = e.target.files[0];
+    const maxSize = 2097152; // 2MB
+    if (tempFile.size > maxSize) {
+        alert("File too large");
+        return;
+    }
     logger.debug("typeof tempFile: ", typeof tempFile);
     setFile(tempFile); // Setting the selected file
   };
