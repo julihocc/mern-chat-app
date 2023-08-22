@@ -5777,3 +5777,6 @@
 {"level":"debug","message":"Received sendMessage request with senderId: 64c44cfafe3bc46726698d38, chatRoomId: 64c45066ee0f93295bd5e82a, body: true, fileContent: true"}
 {"level":"debug","message":"Message saved with id: 64e508fe44804d92141fd3d4"}
 {"level":"debug","message":"Chat room updated with message id: 64e508fe44804d92141fd3d4"}
+{"level":"info","message":"Server started at 2023-08-22T22:20:06.137Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}

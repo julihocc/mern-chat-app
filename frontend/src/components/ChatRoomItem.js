@@ -1,15 +1,15 @@
 
-import {Alert, CircularProgress,  ListItem} from "@mui/material";
+import {Alert, CircularProgress, List, ListItem} from "@mui/material";
 import logger from "../utils/logger";
 import {Link} from "react-router-dom";
 import React from "react";
-// import {useGetUsersById} from "../hooks/queries/useGetUsersById";
 import {useGetCurrentUser} from "../hooks/queries/useGetCurrentUser";
+import {useGetChatRoomById} from "../hooks/queries/useGetChatRoomById";
 
 export const ChatRoomItem = ({ chatRoomId }) => {
 
-    const { loading: loadingCurrentUser, error: errorCurrentUser } = useGetCurrentUser();
-
+    const { loading: loadingCurrentUser, error: errorCurrentUser, data: dataCurrentUser } = useGetCurrentUser();
+    const { loading, error, data } = useGetChatRoomById(chatRoomId)
 
     if (loadingCurrentUser) return <CircularProgress />;
     if (errorCurrentUser) {
@@ -17,18 +17,25 @@ export const ChatRoomItem = ({ chatRoomId }) => {
         return <Alert severity="error">Error: {errorCurrentUser.message}</Alert>;
     }
 
+    // const users = JSON.stringify(data?.getChatRoomById.participantIds)
+    // return (
+    //     <div>
+    //         {users}
+    //     </div>
+    // )
 
+    const users = data?.getChatRoomById.participantIds
 
     return (
         <ListItem>
             <Link to={`/chat/${chatRoomId}`}> Chat ID: {chatRoomId}
-                {/*<List>*/}
-                    {/*{data.getUsersById.map((user) => (*/}
-                    {/*    <ListItem key={user.id}>*/}
-                    {/*        {user.id === dataCurrentUser.getCurrentUser.id ? 'You' : user.username}*/}
-                    {/*    </ListItem>*/}
-                    {/*))}*/}
-                {/*</List>*/}
+                <List>
+                    {users.map((user) => (
+                        <ListItem key={user}>
+                            {user}
+                        </ListItem>
+                    ))}
+                </List>
             </Link>
 
         </ListItem>
