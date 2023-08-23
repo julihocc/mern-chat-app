@@ -17,7 +17,7 @@ const ChatRoomList = () => {
 
     return (
         <div>
-            <Typography variant="h3">{t('chatList')}</Typography>
+            <Typography variant="h4">{t('chatList')}</Typography>
             <List>
                 {data.getChatRoomsForCurrentUser.map(({ id, participantIds }) => (
                     <ChatRoomItem key={id} chatRoomId={id} participantIds={participantIds} />

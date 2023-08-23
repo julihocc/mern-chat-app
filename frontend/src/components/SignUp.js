@@ -35,6 +35,7 @@ const Signup = () => {
         onError(err) {
             logger.error('Signup Error:', err.message);
             alert(err.message);
+            navigate('/signup');
         },
         onCompleted(data) {
             document.cookie = `token=${data.signUp.token}; path=/; max-age=3600`;

@@ -17,25 +17,19 @@ export const ChatRoomItem = ({ chatRoomId }) => {
         return <Alert severity="error">Error: {errorCurrentUser.message}</Alert>;
     }
 
-    // const users = JSON.stringify(data?.getChatRoomById.participantIds)
-    // return (
-    //     <div>
-    //         {users}
-    //     </div>
-    // )
 
     const users = data?.getChatRoomById.participantIds || []
 
     return (
         <ListItem>
             <Link to={`/chat/${chatRoomId}`}> Chat ID: {chatRoomId}
-                <List>
+                {/* <List>
                     {users.map((user) => (
                         <ListItem key={user}>
                             {user}
                         </ListItem>
                     ))}
-                </List>
+                </List> */}
             </Link>
 
         </ListItem>

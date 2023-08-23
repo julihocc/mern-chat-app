@@ -64,7 +64,7 @@ const SendContactRequestForm = () => {
 
     return (
         <div>
-            <Typography variant="h3">{t('sendContactRequest')}</Typography>
+            <Typography variant="h4">{t('sendContactRequest')}</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
                     type="email"

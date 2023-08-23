@@ -5780,3 +5780,56 @@
 {"level":"info","message":"Server started at 2023-08-22T22:20:06.137Z"}
 {"level":"info","message":"Server is running at http://localhost:4000/graphql"}
 {"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T13:55:37.692Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T14:43:41.584Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T14:54:33.980Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T14:55:26.730Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T14:55:28.901Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T15:03:22.999Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T15:03:24.431Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T15:03:27.129Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T15:03:29.206Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T15:03:31.140Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T15:03:34.352Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T15:03:36.260Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server started at 2023-08-23T15:03:39.933Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"debug","message":"ChatRoom with these participants already exists"}
+{"level":"debug","message":"ChatRoom id: 64e610c213bc53758eaae3a6"}
+{"level":"debug","message":"ChatRoom participantIds: 64e50c0c44804d92141fd3e7,64e6107013bc53758eaae398,64e50c2844804d92141fd3f2"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64e50c0c44804d92141fd3e7, chatRoomId: 64e61ff4a8c0ee05d4934187, body: false, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64e6333ca8c0ee05d49341ac"}
+{"level":"debug","message":"Chat room updated with message id: 64e6333ca8c0ee05d49341ac"}
+{"level":"error","message":"Invalid password for email: abc@abc.com"}
+{"level":"error","message":"Invalid password for email: abc@abc.com"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64e50c0c44804d92141fd3e7, chatRoomId: 64e50c8644804d92141fd420, body: true, fileContent: false"}
+{"level":"debug","message":"Message saved with id: 64e63722a8c0ee05d49341d0"}
+{"level":"debug","message":"Chat room updated with message id: 64e63722a8c0ee05d49341d0"}
+{"level":"debug","message":"ChatRoom with these participants already exists"}
+{"level":"debug","message":"ChatRoom id: 64e50c8644804d92141fd420"}
+{"level":"debug","message":"ChatRoom participantIds: 64e50c2844804d92141fd3f2,64e50c0c44804d92141fd3e7"}

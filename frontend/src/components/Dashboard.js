@@ -46,13 +46,13 @@ const Dashboard = () => {
                 <Typography variant="h2">{t('dashboard')}</Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body1">{t('welcome')}, {user.username}!</Typography>
+                <Typography variant="h3">{t('welcome')}, {user.username}!</Typography>
             </Grid>
             <Grid item>
                 <PendingContactRequestsList userId={user.id}/>
             </Grid>
             <Grid item>
-                // TODO: Verify that group conversation is working as expected
+                {/* TODO: Improve filtering of existing chatrooms */}
                 <CreateGroupConversation userEmail={user.email}/>
             </Grid>
             <Grid item>

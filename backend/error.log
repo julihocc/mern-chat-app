@@ -36,3 +36,5 @@
 {"level":"error","message":"Failed to update chat room: ReferenceError: message is not defined"}
 {"level":"error","message":"Failed to update chat room: ReferenceError: message is not defined"}
 {"level":"error","message":"Invalid email: abc@abc.com"}
+{"level":"error","message":"Invalid password for email: abc@abc.com"}
+{"level":"error","message":"Invalid password for email: abc@abc.com"}

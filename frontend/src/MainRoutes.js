@@ -29,39 +29,60 @@ const MainRoutes = () => {
     };
 
     return (
-        <>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" style={{ flexGrow: 1 }}>
-                        {t('welcome')}
-                    </Typography>
-                    <LanguageSwitcher />
-                    {isLoggedIn ? (
-                        <>
-                            <Button color="inherit" onClick={handleLogout}>{t('logout')}</Button>
-                            <Button color="inherit" component={Link} to="/dashboard">
-                                {t('dashboard')}
-                            </Button>
-                        </>
-                    ) : (
-                        <>
-                            <Button color="inherit" component={Link} to="/login">
-                                {t('login')}
-                            </Button>
-                            <Button color="inherit" component={Link} to="/signup">
-                                {t('signup')}
-                            </Button>
-                        </>
-                    )}
-                </Toolbar>
-            </AppBar>
-            <Routes>
-                <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
-                <Route path="/login" element={<Login onLogin={handleLogin} />} />
-                <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/login" replace />} />
-                <Route path="/chat/:chatRoomId" element={<ChatRoomViewer />} />
-            </Routes>
-        </>
+      <>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" style={{ flexGrow: 1 }}>
+              {t("welcome")}
+            </Typography>
+            <LanguageSwitcher />
+            {isLoggedIn ? (
+              <>
+                <Button color="inherit" onClick={handleLogout}>
+                  {t("logout")}
+                </Button>
+                <Button color="inherit" component={Link} to="/dashboard">
+                  {t("dashboard")}
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button color="inherit" component={Link} to="/login">
+                  {t("login")}
+                </Button>
+                <Button color="inherit" component={Link} to="/signup">
+                  {t("signup")}
+                </Button>
+              </>
+            )}
+          </Toolbar>
+        </AppBar>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              isLoggedIn ? (
+                <Dashboard onLogout={handleLogout} />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
+          />
+          <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route
+            path="/dashboard"
+            element={
+              isLoggedIn ? (
+                <Dashboard onLogout={handleLogout} />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
+          />
+          <Route path="/chat/:chatRoomId" element={<ChatRoomViewer />} />
+        </Routes>
+      </>
     );
 };
 

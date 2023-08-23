@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import log from '../utils/logger'; // Import the logger
+import logger from '../utils/logger'; // Import the logger
 import { setUser } from '../redux/slices/userSlice'; // Import the setUser action from the userSlice
 
 const GET_CURRENT_USER = gql`
@@ -41,41 +41,50 @@ const Login = () => {
 
     const [loginUser, { error }] = useMutation(LOGIN_USER, {
         onError(err) {
-            log.error('Login Error:', err.message); // Logging error message
-            alert('Failed to login. Please check your email and password.');
+            logger.error('Login Error:', err.message);
+            alert(t('loginFailed'));            
+            navigate("/dashboard");    
         },
         onCompleted(data) {
-            log.debug('Login successful. Setting user in Redux store.');
-            dispatch(setUser(data.login.user)); // Dispatching setUser action
+          logger.debug("Login successful. Setting user in Redux store.");
+          dispatch(setUser(data.login.user)); // Dispatching setUser action
 
-            // Setting cookie with SameSite attribute
-            document.cookie = `token=${data.login.token}; path=/; max-age=3600; SameSite=Lax`;
-            log.debug('document.cookie', document.cookie);
+          // Storing the token in local storage
+          localStorage.setItem("authToken", data.login.token); // Change made here
 
-            // Querying current user
-            client.query({
-                query: GET_CURRENT_USER,
-                fetchPolicy: 'network-only',
+          // Setting cookie with SameSite attribute
+          document.cookie = `token=${data.login.token}; path=/; max-age=3600; SameSite=Lax`;
+          logger.debug("document.cookie", document.cookie);
+
+          // Querying current user
+          client
+            .query({
+              query: GET_CURRENT_USER,
+              fetchPolicy: "network-only",
             })
-                .then(
-                    ({ data }) => {
-                        log.debug('client.query data', data);
-                        log.debug('client.query data.getCurrentUser', data.getCurrentUser);
-                        log.debug('client.query data.getCurrentUser.chatRoomId', data.getCurrentUser.id);
-                    },
-                    (err) => {
-                        log.error('client.query Error:', err.message); // Logging query error
-                    },
-                )
-                .catch(
-                    (err) => {
-                        log.error('client.query Error:', err.message); // Logging catch block error
-                    },
+            .then(
+              ({ data }) => {
+                logger.debug("client.query data", data);
+                logger.debug(
+                  "client.query data.getCurrentUser",
+                  data.getCurrentUser
                 );
+                logger.debug(
+                  "client.query data.getCurrentUser.chatRoomId",
+                  data.getCurrentUser.id
+                );
+              },
+              (err) => {
+                logger.error("client.query Error:", err.message); // Logging query error
+              }
+            )
+            .catch((err) => {
+              logger.error("client.query Error:", err.message); // Logging catch block error
+            });
 
-            // Navigating to dashboard
-            log.debug('Navigating to dashboard');
-            navigate('/dashboard');
+          // Navigating to dashboard
+          logger.debug("Navigating to dashboard");
+          navigate("/dashboard");
         },
     });
 
@@ -83,7 +92,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        log.debug('Handling form submit'); // Logging form submit
+        logger.debug('Handling form submit'); // Logging form submit
 
         if (email === "" || password === "") {
             alert(t('bothFieldsRequired'));
@@ -91,10 +100,10 @@ const Login = () => {
         }
 
         try {
-            log.debug('Attempting login with email:', email); // Logging login attempt
+            logger.debug('Attempting login with email:', email); // Logging login attempt
             await loginUser({ variables: { email, password } });
         } catch (err) {
-            log.error('Login attempt failed:', err); // Logging error on login attempt
+            logger.error('Login attempt failed:', err); // Logging error on login attempt
         }
     };
 

@@ -1,10 +1,23 @@
 // frontend/src/redux/store.js
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './reducers';
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./reducers";
+import { rehydrateState } from "./rehydrateState";
 
-const store = configureStore({
+// const store = configureStore({
+//     reducer: rootReducer,
+//     // Thunk middleware is included by default in configureStore
+// });
+
+// export default store;
+
+const initializeStore = async () => {
+  const initialState = await rehydrateState(); // Get the rehydrated state
+
+  return configureStore({
     reducer: rootReducer,
-    // Thunk middleware is included by default in configureStore
-});
+    initialState, // Use the rehydrated state as initial state
+    // Apply any necessary middleware
+  });
+};
 
-export default store;
+export default initializeStore;

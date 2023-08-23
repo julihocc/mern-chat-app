@@ -16,7 +16,7 @@ export const ContactListWithFullDetails = () => {
     //logger.info(contacts);
     return (
         <div>
-            <Typography variant="h3">{t('contacts')}</Typography>
+            <Typography variant="h4">{t('contacts')}</Typography>
             <ul>
                 {contacts.map(contact => (
                     <li key={contact.id}>
