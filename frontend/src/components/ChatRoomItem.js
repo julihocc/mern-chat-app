@@ -24,7 +24,7 @@ export const ChatRoomItem = ({ chatRoomId }) => {
     //     </div>
     // )
 
-    const users = data?.getChatRoomById.participantIds
+    const users = data?.getChatRoomById.participantIds || []
 
     return (
         <ListItem>

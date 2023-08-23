@@ -29,7 +29,7 @@ const Dashboard = () => {
 
     if (loading) return <CircularProgress/>;
 
-    // FIXME: Even when user is logged in, it still shows the error message
+
     if (error) {
         log.error(`GET_CURRENT_USER Error: ${error}`);
         return <Alert severity="error">GET_CURRENT_USER Error: {error}</Alert>;
@@ -52,6 +52,7 @@ const Dashboard = () => {
                 <PendingContactRequestsList userId={user.id}/>
             </Grid>
             <Grid item>
+                // TODO: Verify that group conversation is working as expected
                 <CreateGroupConversation userEmail={user.email}/>
             </Grid>
             <Grid item>
