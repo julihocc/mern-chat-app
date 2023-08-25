@@ -12,7 +12,7 @@ const createGroupConversation = async (_, {emails}) => {
     if (users.length !== emails.length) {
         throw new Error('Some emails not found');
     }
-
+ 
     // Extract _id from users to form participantIds
     const participantIds = users.map(user => user._id);
 
