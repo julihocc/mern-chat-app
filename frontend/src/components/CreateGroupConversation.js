@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { TextField, Button, CircularProgress, Typography, Alert, Snackbar } from '@mui/material';
+import { TextField, Button, CircularProgress, Typography,Snackbar } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import logger from "../utils/logger";
 
@@ -51,7 +51,7 @@ const CreateGroupConversation = ({ userEmail }) => {
                 <Button type="submit" variant="contained" color="primary" disabled={loading}>{t('create')}</Button>
             </form>
             {loading && <CircularProgress />}
-            {error && <Alert severity="error">CREATE_GROUP_CONVERSATION Error: {error.message}</Alert>}
+            {error && <p>CREATE_GROUP_CONVERSATION Error: {error.message}</p>}
             <Snackbar
                 open={openSnackbar}
                 autoHideDuration={6000}

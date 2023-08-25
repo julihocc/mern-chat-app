@@ -42,7 +42,6 @@ const Login = () => {
     const [loginUser, { error }] = useMutation(LOGIN_USER, {
         onError(err) {
             logger.error('Login Error:', err.message);
-            alert(t('loginFailed'));            
             navigate("/dashboard");    
         },
         onCompleted(data) {
@@ -95,7 +94,7 @@ const Login = () => {
         logger.debug('Handling form submit'); // Logging form submit
 
         if (email === "" || password === "") {
-            alert(t('bothFieldsRequired'));
+            logger.error(t('bothFieldsRequired'));
             return;
         }
 

@@ -3,7 +3,7 @@
 import React, {useEffect} from 'react'; // Import useEffect
 import {useDispatch, useSelector} from 'react-redux'; // Import Redux hooks
 import {fetchCurrentUser} from '../redux/actions'; // Import the fetchCurrentUser thunk
-import {Alert, CircularProgress, Grid, Typography} from '@mui/material';
+import {CircularProgress, Grid, Typography} from '@mui/material';
 import ChatRoomList from "./ChatRoomList";
 import SendContactRequestForm from "./SendContactRequestForm";
 import PendingContactRequestsList from "./PendingContactRequestsList";
@@ -32,7 +32,6 @@ const Dashboard = () => {
 
     if (error) {
         log.error(`GET_CURRENT_USER Error: ${error}`);
-        return <Alert severity="error">GET_CURRENT_USER Error: {error}</Alert>;
     }
 
     if (!user) {

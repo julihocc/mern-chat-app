@@ -1,5 +1,5 @@
 
-import {Alert, CircularProgress, List, ListItem} from "@mui/material";
+import {CircularProgress, List, ListItem} from "@mui/material";
 import logger from "../utils/logger";
 import {Link} from "react-router-dom";
 import React from "react";
@@ -14,7 +14,7 @@ export const ChatRoomItem = ({ chatRoomId }) => {
     if (loadingCurrentUser) return <CircularProgress />;
     if (errorCurrentUser) {
         logger.error(`Error when trying to get current user: ${errorCurrentUser.message}`);  // using logger
-        return <Alert severity="error">Error: {errorCurrentUser.message}</Alert>;
+        return <p>Error: {errorCurrentUser.message}</p>;
     }
 
 

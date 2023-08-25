@@ -1,7 +1,7 @@
 // path: frontend/src/components/SendContactRequestForm.js
 import React, { useEffect, useState } from 'react';
 import { useMutation, useLazyQuery, useQuery } from '@apollo/react-hooks';
-import { TextField, Button, CircularProgress, Typography, Alert } from '@mui/material';
+import { TextField, Button, CircularProgress, Typography} from '@mui/material';
 import { useTranslation } from "react-i18next";
 import { SEND_CONTACT_REQUEST } from "../gql/mutations/SEND_CONTACT_REQUEST";
 import { GET_CURRENT_USER } from "../gql/queries/GET_CURRENT_USER";
@@ -55,7 +55,7 @@ const SendContactRequestForm = () => {
 
 
     if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
-    if (currentUserError) return <Alert severity="error">Error: {currentUserError.message}</Alert>;
+    if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 
     if (getUserByEmailError) {
         // If the getUserByEmail query results in an error, set a custom error message to inform the user that the recipient email does not exist
@@ -78,8 +78,8 @@ const SendContactRequestForm = () => {
                     {sendContactLoading ? t('sending') : t('send')}
                 </Button>
             </form>
-            {userError && <Alert severity="error">{userError}</Alert>}
-            {sendContactError && <Alert severity="error">Error: {sendContactError.message}</Alert>}
+            {userError && <p>{userError}</p>}
+            {sendContactError && <p>Error: {sendContactError.message}</p>}
         </div>
     );
 };

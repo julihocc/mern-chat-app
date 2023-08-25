@@ -34,7 +34,6 @@ const Signup = () => {
     const [signUp, { error }] = useMutation(SIGNUP, {
         onError(err) {
             logger.error('Signup Error:', err.message);
-            alert(err.message);
             navigate('/signup');
         },
         onCompleted(data) {
@@ -50,7 +49,7 @@ const Signup = () => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            alert("Passwords don't match!");
+            logger.error("Passwords don't match!");
             return;
         }
 

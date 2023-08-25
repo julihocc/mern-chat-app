@@ -48,7 +48,7 @@ const ChatRoomViewer = () => {
     const tempFile = e.target.files[0];
     const maxSize = 2097152; // 2MB
     if (tempFile.size > maxSize) {
-      alert("File too large");
+      logger.error("File too large");
       return;
     }
     logger.debug("typeof tempFile: ", typeof tempFile);
