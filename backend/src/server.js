@@ -82,6 +82,7 @@ async function startServer() {
         logger.info(`Server started at ${now.toISOString()}`); // No change here
         logger.info(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // No change here
         logger.info(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // No change here
+        logger.info(`MongoDV: ${process.env.MONGODB_URL}`);
     });
 
 }
