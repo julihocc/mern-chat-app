@@ -1,8 +1,10 @@
 // frontend/src/redux/actions.js
+
+// Importing Apollo client for executing GraphQL queries
 import apolloClient from '../apolloClient';
-import { GET_CURRENT_USER } from '../gql/queries/GET_CURRENT_USER';
-import { GET_MESSAGES_BY_CHATROOM_ID } from '../gql/queries/GET_MESSAGES_BY_CHATROOM_ID';
-import { GET_CHAT_ROOM_BY_ID } from '../gql/queries/GET_CHAT_ROOM_BY_ID';
+import { GET_CURRENT_USER, GET_MESSAGES_BY_CHATROOM_ID, GET_CHAT_ROOM_BY_ID } from '../gql/queries';
+
+// Importing action creators from individual slices
 import {
     fetchMessagesRequest,
     fetchMessagesSuccess,
@@ -10,47 +12,51 @@ import {
     fetchChatRoomRequest,
     fetchChatRoomSuccess,
     fetchChatRoomFailure
-} from './slices/chatSlice'; // Import chat actions from chat slice
-import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './slices/currentUserSlice'; // Import user actions from current user slice
+} from './slices/chatSlice';
+import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './slices/currentUserSlice';
+
+// Utility function to handle common GraphQL query logic
+const handleGraphQLQuery = async (query, variables = {}) => {
+    try {
+        const { data } = await apolloClient.query({ query, variables });
+        return [null, data];
+    } catch (error) {
+        return [error, null];
+    }
+};
 
 // Thunk to fetch messages for a given chat room
-export const fetchMessages = (chatRoomId) => {
-    return async (dispatch) => {
-        dispatch(fetchMessagesRequest());
+export const fetchMessages = (chatRoomId) => async (dispatch) => {
+    dispatch(fetchMessagesRequest());
+    const [error, data] = await handleGraphQLQuery(GET_MESSAGES_BY_CHATROOM_ID, { chatRoomId });
 
-        try {
-            const { data } = await apolloClient.query({ query: GET_MESSAGES_BY_CHATROOM_ID, variables: { chatRoomId } });
-            dispatch(fetchMessagesSuccess(data.getMessagesByChatRoomId));
-        } catch (error) {
-            dispatch(fetchMessagesFailure(error.message));
-        }
-    };
+    if (error) {
+        dispatch(fetchMessagesFailure(error.message));
+    } else {
+        dispatch(fetchMessagesSuccess(data.getMessagesByChatRoomId));
+    }
 };
 
-// Thunk to fetch chat room for a given chat room ID
-export const fetchChatRoom = (chatRoomId) => {
-    return async (dispatch) => {
-        dispatch(fetchChatRoomRequest());
+// Thunk to fetch a chat room by its ID
+export const fetchChatRoom = (chatRoomId) => async (dispatch) => {
+    dispatch(fetchChatRoomRequest());
+    const [error, data] = await handleGraphQLQuery(GET_CHAT_ROOM_BY_ID, { chatRoomId });
 
-        try {
-            const { data } = await apolloClient.query({ query: GET_CHAT_ROOM_BY_ID, variables: { chatRoomId } });
-            dispatch(fetchChatRoomSuccess(data.getChatRoomById));
-        } catch (error) {
-            dispatch(fetchChatRoomFailure(error.message));
-        }
-    };
+    if (error) {
+        dispatch(fetchChatRoomFailure(error.message));
+    } else {
+        dispatch(fetchChatRoomSuccess(data.getChatRoomById));
+    }
 };
 
-// Existing thunk to fetch current user's data
-export const fetchCurrentUser = () => {
-    return async (dispatch) => {
-        dispatch(fetchUserRequest());
+// Thunk to fetch the current user's data
+export const fetchCurrentUser = () => async (dispatch) => {
+    dispatch(fetchUserRequest());
+    const [error, data] = await handleGraphQLQuery(GET_CURRENT_USER);
 
-        try {
-            const { data } = await apolloClient.query({ query: GET_CURRENT_USER });
-            dispatch(fetchUserSuccess(data.getCurrentUser));
-        } catch (error) {
-            dispatch(fetchUserFailure(error.message));
-        }
-    };
+    if (error) {
+        dispatch(fetchUserFailure(error.message));
+    } else {
+        dispatch(fetchUserSuccess(data.getCurrentUser));
+    }
 };
