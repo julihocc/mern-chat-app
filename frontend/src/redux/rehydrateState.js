@@ -1,21 +1,23 @@
 // frontend/src/redux/rehydrateState.js
 
-import apolloClient from "../apolloClient"; // Import Apollo client if needed
+import apolloClient from "../apolloClient";
 import gql from "graphql-tag";
 
 const GET_CURRENT_USER = gql`
-    query GetCurrentUser {
-        getCurrentUser {
-            id
-            email
-            username
-        }
+  query GetCurrentUser {
+    getCurrentUser {
+      id
+      email
+      username
     }
+  }
 `;
 
 export const rehydrateState = async () => {
+  // Retrieve the auth token from local storage
   const token = localStorage.getItem("authToken");
 
+  // If a token exists, try to fetch the current user
   if (token) {
     try {
       const { data } = await apolloClient.query({
@@ -24,7 +26,12 @@ export const rehydrateState = async () => {
       });
 
       return {
-        user: data.getCurrentUser, // Initial state for user slice
+        user: {
+          user: data.getCurrentUser, // Setting the user object
+          isLoggedIn: true, // Assuming the user is logged in
+          loading: false, // No loading since data is fetched
+          error: null, // No errors
+        },
         // Add other slices' initial state if needed
       };
     } catch (err) {
@@ -32,5 +39,6 @@ export const rehydrateState = async () => {
     }
   }
 
-  return {}; // Return an empty object if no token found
+  // If no token is found, return an empty object
+  return {};
 };

@@ -1,67 +1,41 @@
-// path: frontend/src/components/SendContactRequestForm.js
-import React, { useEffect, useState } from 'react';
-import { useMutation, useLazyQuery, useQuery } from '@apollo/react-hooks';
-import { TextField, Button, CircularProgress, Typography} from '@mui/material';
+// frontend/src/components/SendContactRequestForm.js
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { TextField, Button, CircularProgress, Typography } from '@mui/material';
 import { useTranslation } from "react-i18next";
-import { SEND_CONTACT_REQUEST } from "../gql/mutations/SEND_CONTACT_REQUEST";
-import { GET_CURRENT_USER } from "../gql/queries/GET_CURRENT_USER";
-import { GET_USER_BY_EMAIL } from "../gql/queries/GET_USER_BY_EMAIL";
+import { sendContactRequest, getUserByEmail } from '../redux/slices/contactRequestSlice';
+import { selectCurrentUser } from '../redux/slices/userSlice'; // Assuming you have a selector for the current user
 
 const SendContactRequestForm = () => {
-    const {t} = useTranslation();
-    const [email, setEmail] = useState('');
-    const [userError, setUserError] = useState(null);
-
-    const {
-        data: currentUserData,
-        loading: currentUserLoading,
-        error: currentUserError,
-    } = useQuery(GET_CURRENT_USER);
-
-    const [sendContactRequest, {
-        loading: sendContactLoading,
-        error: sendContactError,
-    }] = useMutation(SEND_CONTACT_REQUEST);
-
-    const [getUserByEmail, {
-        loading: getUserByEmailLoading,
-        error: getUserByEmailError,
-        data: getUserByEmailData,
-    }] = useLazyQuery(GET_USER_BY_EMAIL);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setUserError(null);
-
-        // Load recipient user when form is submitted
-        await getUserByEmail({ variables: { email } });
-    };
-
+    const { t } = useTranslation();
+    const [email, setEmail] = useState(''); // Initialize local state for email input
+    const dispatch = useDispatch();
+    
+    // Using selectors to get state from Redux store
+    const { userByEmail, loading: contactLoading, error: contactError } = useSelector((state) => state.contact);
+    const currentUser = useSelector(selectCurrentUser); // Assuming you have a selector for this
+    
     useEffect(() => {
-        // Check if the response data from the getUserByEmail query is available and if it is, proceed with sending the contact request
-        if (getUserByEmailData) {
-            sendContactRequest({
-                variables: {
-                    senderId: currentUserData.getCurrentUser.id,
-                    recipientId: getUserByEmailData.getUserByEmail.id,
-                },
-            }).then(() => {
-                setEmail('');
-            }).catch((err) => {
-                console.error(err);
-            });
+        // Check if userByEmail and currentUser are not null or undefined
+        if (userByEmail && currentUser) {
+            // Dispatch action to send contact request
+            dispatch(sendContactRequest({
+                senderId: currentUser.id,
+                recipientId: userByEmail.id,
+            }));
         }
-    }, [getUserByEmailData, currentUserData.getCurrentUser.id, sendContactRequest]); // Added missing dependencies
-
-
-    if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
-    if (currentUserError) return <p>Error: {currentUserError.message}</p>;
-
-    if (getUserByEmailError) {
-        // If the getUserByEmail query results in an error, set a custom error message to inform the user that the recipient email does not exist
-        setUserError('User with this email does not exist.');
-    }
-
+    }, [userByEmail, dispatch, currentUser]);
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Dispatch Redux action to get user by email
+        dispatch(getUserByEmail(email));
+    };
+    
+    // Handling loading and error states
+    if (contactLoading) return <CircularProgress />;
+    if (contactError) return <p>Error: {contactError.message}</p>;
+    
     return (
         <div>
             <Typography variant="h4">{t('sendContactRequest')}</Typography>
@@ -74,15 +48,13 @@ const SendContactRequestForm = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <Button type="submit" variant="contained" color="primary" disabled={sendContactLoading}>
-                    {sendContactLoading ? t('sending') : t('send')}
+                <Button type="submit" variant="contained" color="primary">
+                    {contactLoading ? t('sending') : t('send')}
                 </Button>
             </form>
-            {userError && <p>{userError}</p>}
-            {sendContactError && <p>Error: {sendContactError.message}</p>}
+            {contactError && <p>{contactError.message}</p>}
         </div>
     );
 };
 
 export default SendContactRequestForm;
-// No modifications were made to this piece of code. The current implementation seems appropriate for the intended functionality.

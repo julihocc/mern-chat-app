@@ -15,7 +15,7 @@ import {ContactListWithFullDetails} from "./ContactListWithFullDetails"; // Make
 const Dashboard = () => {
     const {t} = useTranslation();
     const dispatch = useDispatch(); // Get dispatch function
-    const {loading, user, error} = useSelector(state => state.currentUser);
+    const {loading, user, error} = useSelector(state => state.user);
     // Select user data from Redux store
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
