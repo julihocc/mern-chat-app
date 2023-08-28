@@ -11,12 +11,12 @@ import { rehydrateState } from "./rehydrateState";
 // export default store;
 
 const initializeStore = async () => {
+  
   const initialState = await rehydrateState(); // Get the rehydrated state
 
   return configureStore({
     reducer: rootReducer,
     initialState, // Use the rehydrated state as initial state
-    // Apply any necessary middleware
   });
 };
 

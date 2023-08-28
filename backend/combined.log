@@ -5845,3 +5845,9 @@
 {"level":"debug","message":"Received sendMessage request with senderId: 64e50c0c44804d92141fd3e7, chatRoomId: 64e50c8644804d92141fd420, body: false, fileContent: true"}
 {"level":"debug","message":"Message saved with id: 64e8db67059ef6b0315a8703"}
 {"level":"debug","message":"Chat room updated with message id: 64e8db67059ef6b0315a8703"}
+{"level":"info","message":"Server started at 2023-08-25T23:41:51.065Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"MongoDV: mongodb://localhost:27017/my-chat-app"}
+{"level":"error","message":"Invalid email: abc@abc.com"}
+{"level":"error","message":"Invalid email: abc@abc.com"}

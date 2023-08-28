@@ -38,3 +38,5 @@
 {"level":"error","message":"Invalid email: abc@abc.com"}
 {"level":"error","message":"Invalid password for email: abc@abc.com"}
 {"level":"error","message":"Invalid password for email: abc@abc.com"}
+{"level":"error","message":"Invalid email: abc@abc.com"}
+{"level":"error","message":"Invalid email: abc@abc.com"}
