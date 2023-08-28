@@ -2,4 +2,6 @@ node_modules/
 .idea/
 .env
 *.js.copy
-*.zip
+*.zip             # Retained from current branch (HEAD)
+.history/         # Added from the rebasing branch
+*.code-workspace  # Added from the rebasing branch

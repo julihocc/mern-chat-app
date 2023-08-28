@@ -1,9 +1,9 @@
 // frontend/src/AuthProvider.js
 
 import React from 'react';
-import AuthContext from './AuthContext';
+import AuthContext from './AuthContext.copy';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, logoutUser } from './actions';
+import { loginUser, logoutUser } from  './redux/slices/userSlice';
 
 const AuthProvider = ({ children }) => {
     const dispatch = useDispatch();

@@ -2,22 +2,18 @@
 
 // Importing required dependencies, including React Router, Redux Provider, AuthProvider, and the MainRoutes component
 import {BrowserRouter as Router} from 'react-router-dom';
-import AuthProvider from "./AuthProvider";
 import MainRoutes from "./MainRoutes"; // Import MainRoutes
-import {Provider} from 'react-redux';
-import store from './store'; // Importing the Redux store
+import useInitializeAuth from './hooks/useInitializeAuth';
 
 // Define the App component
 function App() {
+    useInitializeAuth(); // Calling the useInitializeAuth hook 
+
     return (// Div with className "App" to wrap the entire application
         <div className="App">
-            <Provider store={store}>
-                <AuthProvider>
                     <Router>
                         <MainRoutes/>
                     </Router>
-                </AuthProvider>
-            </Provider>
         </div>);
 }
 

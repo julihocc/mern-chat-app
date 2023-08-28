@@ -35,6 +35,6 @@
         "nodemon": "^2.0.22"
     },
     "scripts": {
-        "start": "nodemon ./src/server.js"
+        "start": "set TZ=America/Mexico_City && nodemon ./src/server.js"
     }
 }

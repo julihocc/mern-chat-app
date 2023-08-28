@@ -1,60 +1,69 @@
-// Path: frontend\src\components\dashboardUtils.js
-import React from 'react';
-import { useQuery } from '@apollo/client';
-import { Typography, Grid, CircularProgress, Alert } from '@mui/material';
+// frontend/src/components/Dashboard.js
+
+import React, {useEffect} from 'react'; // Import useEffect
+import {useDispatch, useSelector} from 'react-redux'; // Import Redux hooks
+import {fetchCurrentUser} from '../redux/actions'; // Import the fetchCurrentUser thunk
+import {CircularProgress, Grid, Typography} from '@mui/material';
 import ChatRoomList from "./ChatRoomList";
 import SendContactRequestForm from "./SendContactRequestForm";
 import PendingContactRequestsList from "./PendingContactRequestsList";
 import CreateGroupConversation from "./CreateGroupConversation";
-import { GET_CURRENT_USER } from "../gql/queries/GET_CURRENT_USER";
-import { useTranslation } from "react-i18next";
-
+import {useTranslation} from "react-i18next";
 import log from '../utils/logger';
-import {ContactListWithFullDetails} from "./ContactListWithFullDetails"; // Imported the custom logger
+import {ContactListWithFullDetails} from "./ContactListWithFullDetails"; // Make sure the import is correct
 
 const Dashboard = () => {
     const {t} = useTranslation();
-    // const { loading, error, data } = useQuery(GET_CURRENT_USER);
-    const { loading, error, data } = useQuery(GET_CURRENT_USER, {
-        onError: (error) => {
-            log.error(`GET_CURRENT_USER Error: ${error.message}`);
-        },
-    });
-    if (loading) return <CircularProgress />;
+    const dispatch = useDispatch(); // Get dispatch function
+    const {loading, user, error} = useSelector(state => state.currentUser);
+    // Select user data from Redux store
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+
+    useEffect(() => {
+        // Dispatch the thunk to fetch the current user's data when the component mounts
+        // Using 'isLoggedIn' instead of 'token', but you might need to modify this logic based on your requirements
+        if (isLoggedIn) {
+            dispatch(fetchCurrentUser());
+        }
+    }, [dispatch, isLoggedIn]);
+
+    if (loading) return <CircularProgress/>;
+
+
     if (error) {
-        log.error(`GET_CURRENT_USER Error: ${error.message}`); // Replaced console.error with custom logger
-        return <Alert severity="error">GET_CURRENT_USER Error: {error.message}</Alert>; // Keep error message display
+        log.error(`GET_CURRENT_USER Error: ${error}`);
     }
 
-    const { getCurrentUser } = data;
+    if (!user) {
+        // Handle the case where user is null or undefined
+        // You can return a loading indicator, an error message, or any other appropriate content
+        return <div>Not user at all...</div>;
+    }
 
-    return (
-        <Grid container spacing={3} direction="column">
+    return (<Grid container spacing={3} direction="column">
             <Grid item>
                 <Typography variant="h2">{t('dashboard')}</Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body1">{t('welcome')}, {getCurrentUser.username}!</Typography>
+                <Typography variant="h3">{t('welcome')}, {user.username}!</Typography>
             </Grid>
             <Grid item>
-                <PendingContactRequestsList userId={getCurrentUser.id} />
+                <PendingContactRequestsList userId={user.id}/>
             </Grid>
             <Grid item>
-                <CreateGroupConversation userEmail={getCurrentUser.email} />
+                {/* TODO: Improve filtering of existing chatrooms */}
+                <CreateGroupConversation userEmail={user.email}/>
             </Grid>
             <Grid item>
-                <SendContactRequestForm />
+                <SendContactRequestForm/>
             </Grid>
             <Grid item>
-                <ChatRoomList />
+                <ChatRoomList/>
             </Grid>
             <Grid item>
-                <ContactListWithFullDetails />
+                <ContactListWithFullDetails/>
             </Grid>
-        </Grid>
-    );
+        </Grid>);
 };
 
 export default Dashboard;
-
-// I replaced instances of console.error with our custom logger. The Alert component remains to handle user notifications in case of errors.
