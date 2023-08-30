@@ -1,8 +1,8 @@
-// frontend/src/redux/rehydrateState.js
-
-import apolloClient from "../apolloClient"; // Import Apollo client if needed
+// Importing required dependencies and configurations
+import apolloClient from "../apolloClient";
 import gql from "graphql-tag";
 
+// Defining GraphQL query to get the current user
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
         getCurrentUser {
@@ -13,24 +13,31 @@ const GET_CURRENT_USER = gql`
     }
 `;
 
+// Async function to rehydrate state from the Apollo client
 export const rehydrateState = async () => {
-  const token = localStorage.getItem("authToken");
+    // Attempt to fetch the token from local storage
+    const token = localStorage.getItem("authToken");
 
-  if (token) {
-    try {
-      const { data } = await apolloClient.query({
-        query: GET_CURRENT_USER,
-        fetchPolicy: "network-only",
-      });
+    // Check if the token exists
+    if (token) {
+        try {
+            // Perform Apollo client query to fetch current user data
+            const { data } = await apolloClient.query({
+                query: GET_CURRENT_USER,
+                fetchPolicy: "network-only",
+            });
 
-      return {
-        user: data.getCurrentUser, // Initial state for user slice
-        // Add other slices' initial state if needed
-      };
-    } catch (err) {
-      console.error("Error retrieving current user:", err.message);
+            // Populate initial state for the 'user' slice using the fetched data
+            return {
+                user: data.getCurrentUser,
+                // Add other slices' initial state here if needed
+            };
+        } catch (err) {
+            // Log any errors that occur during the fetch operation
+            console.error("Error retrieving current user:", err.message);
+        }
     }
-  }
 
-  return {}; // Return an empty object if no token found
+    // Return an empty object if no token is found, effectively initializing the store with empty state
+    return {};
 };

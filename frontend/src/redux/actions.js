@@ -9,17 +9,18 @@ import {
     fetchMessagesFailure,
     fetchChatRoomRequest,
     fetchChatRoomSuccess,
-    fetchChatRoomFailure
-} from './slices/chatSlice'; // Import chat actions from chat slice
-import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './slices/currentUserSlice'; // Import user actions from current user slice
+    fetchChatRoomFailure,
+} from './slices/chatSlice';
 
-// Thunk to fetch messages for a given chat room
+// Thunk to fetch messages
 export const fetchMessages = (chatRoomId) => {
     return async (dispatch) => {
         dispatch(fetchMessagesRequest());
-
         try {
-            const { data } = await apolloClient.query({ query: GET_MESSAGES_BY_CHATROOM_ID, variables: { chatRoomId } });
+            const { data } = await apolloClient.query({
+                query: GET_MESSAGES_BY_CHATROOM_ID,
+                variables: { chatRoomId },
+            });
             dispatch(fetchMessagesSuccess(data.getMessagesByChatRoomId));
         } catch (error) {
             dispatch(fetchMessagesFailure(error.message));
@@ -27,13 +28,15 @@ export const fetchMessages = (chatRoomId) => {
     };
 };
 
-// Thunk to fetch chat room for a given chat room ID
+// Thunk to fetch a chat room
 export const fetchChatRoom = (chatRoomId) => {
     return async (dispatch) => {
         dispatch(fetchChatRoomRequest());
-
         try {
-            const { data } = await apolloClient.query({ query: GET_CHAT_ROOM_BY_ID, variables: { chatRoomId } });
+            const { data } = await apolloClient.query({
+                query: GET_CHAT_ROOM_BY_ID,
+                variables: { chatRoomId },
+            });
             dispatch(fetchChatRoomSuccess(data.getChatRoomById));
         } catch (error) {
             dispatch(fetchChatRoomFailure(error.message));
@@ -41,16 +44,9 @@ export const fetchChatRoom = (chatRoomId) => {
     };
 };
 
-// Existing thunk to fetch current user's data
+// Thunk to fetch the current user
 export const fetchCurrentUser = () => {
     return async (dispatch) => {
-        dispatch(fetchUserRequest());
-
-        try {
-            const { data } = await apolloClient.query({ query: GET_CURRENT_USER });
-            dispatch(fetchUserSuccess(data.getCurrentUser));
-        } catch (error) {
-            dispatch(fetchUserFailure(error.message));
-        }
+        dispatch({ type: 'FETCH_CURRENT_USER_SAGA' });
     };
 };
