@@ -16,6 +16,10 @@ const chatSlice = createSlice({
     name: 'chat', // Slice name
     initialState: initialChatState, // Initial state
     reducers: {
+        // New action for Saga to listen to
+        fetchMessagesSaga: (state, action) => {
+            // This would be empty as the saga will handle the side-effects
+        },
         // Action to indicate that fetching messages has started
         fetchMessagesRequest: (state) => { state.loading = true; },
         // Action to handle the successful fetching of messages
@@ -54,6 +58,7 @@ const chatSlice = createSlice({
 
 // Exporting actions created by reducers to be used in other parts of the application
 export const {
+    fetchMessagesSaga,  // <-- Export the new action
     fetchMessagesRequest,
     fetchMessagesSuccess,
     fetchChatRoomRequest,

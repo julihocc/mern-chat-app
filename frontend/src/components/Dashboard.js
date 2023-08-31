@@ -7,7 +7,7 @@ import PendingContactRequestsList from "./PendingContactRequestsList";
 import CreateGroupConversation from "./CreateGroupConversation";
 import { useTranslation } from "react-i18next";
 import log from '../utils/logger';
-import ContactListWithFullDetails from "./ContactListWithFullDetails"; // Ensure the import is correct
+import {ContactListWithFullDetails} from "./ContactListWithFullDetails"; // Ensure the import is correct
 
 // Import the fetchCurrentUser saga action
 import { fetchCurrentUser } from '../redux/actions';
