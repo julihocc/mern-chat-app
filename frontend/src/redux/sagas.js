@@ -3,10 +3,12 @@ import { takeLatest, put, call, all } from 'redux-saga/effects';
 import apolloClient from '../apolloClient';
 import { GET_CURRENT_USER } from '../gql/queries/GET_CURRENT_USER';
 import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './slices/userSlice';
-import { fetchMessagesRequest, fetchMessagesSuccess, fetchMessagesFailure, fetchMessagesSaga } from './slices/chatSlice';  // Added fetchMessagesSaga
 import {
-    GET_MESSAGES_BY_CHATROOM_ID
-} from "../gql/queries/GET_MESSAGES_BY_CHATROOM_ID";
+    fetchMessagesRequest,
+    fetchMessagesSuccess,
+    fetchMessagesFailure,
+} from './slices/chatSlice';
+import { GET_MESSAGES_BY_CHATROOM_ID } from "../gql/queries/GET_MESSAGES_BY_CHATROOM_ID";
 
 // Worker saga to fetch current user
 function* fetchCurrentUserSaga() {
@@ -28,8 +30,11 @@ export function* watchFetchCurrentUser() {
 function* fetchChatMessagesSaga(action) {
     yield put(fetchMessagesRequest());
     try {
-        const { data } = yield call(apolloClient.query, { query: GET_MESSAGES_BY_CHATROOM_ID, variables: { chatRoomId: action.payload } });
-        yield put(fetchMessagesSuccess(data.getMessagesByChatroomId));
+        const { data } = yield call(apolloClient.query, {
+            query: GET_MESSAGES_BY_CHATROOM_ID,
+            variables: { chatRoomId: action.payload.chatRoomId }
+        });
+        yield put(fetchMessagesSuccess(data.getMessagesByChatRoomId));
     } catch (error) {
         yield put(fetchMessagesFailure(error.message));
     }
@@ -37,12 +42,7 @@ function* fetchChatMessagesSaga(action) {
 
 // Watcher saga for chat messages
 export function* watchFetchChatMessages() {
-    yield takeLatest('FETCH_CHAT_MESSAGES_SAGA', fetchChatMessagesSaga);
-}
-
-// New watcher saga for chat messages using fetchMessagesSaga action
-export function* watchFetchChatMessagesWithSagaAction() {
-    yield takeLatest(fetchMessagesSaga.type, fetchChatMessagesSaga);  // New watcher saga using fetchMessagesSaga
+    yield takeLatest('FETCH_MESSAGES_REQUEST', fetchChatMessagesSaga);
 }
 
 // Root saga
@@ -50,6 +50,5 @@ export default function* rootSaga() {
     yield all([
         watchFetchCurrentUser(),
         watchFetchChatMessages(),  // Existing watcher saga for chat messages
-        watchFetchChatMessagesWithSagaAction()  // New watcher saga for chat messages
     ]);
 }
