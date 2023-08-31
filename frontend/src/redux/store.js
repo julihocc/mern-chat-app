@@ -1,44 +1,38 @@
 // frontend/src/redux/store.js
+
 // Importing required modules and utilities
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducers";
 import { rehydrateState } from "./rehydrateState";
 import rootSaga from "./sagas";
-import createSagaMiddleware from 'redux-saga';  // <--
-// Make sure this line exists
+import createSagaMiddleware from 'redux-saga';  // Importing Redux Saga middleware
 
-// Configure middleware
+// Initialize Redux Saga middleware
 const sagaMiddleware = createSagaMiddleware();
+
 // Function to initialize the Redux store
 const initializeStore = async () => {
-    // Rehydrate state from local storage or other persistent layers
+    // Rehydrate initial state from persistent storage
     const preloadedState = await rehydrateState();
 
     // Optional Redux configurations, fetched from environment variables
     const optionalConfig = {
         devTools: process.env.NODE_ENV !== 'production',
-        // Add more configurations here as needed
     };
 
-    // Configuring and creating Redux store
+    // Configure and create Redux store
     const store = configureStore({
-        // Root reducer containing all the application reducers
-        reducer: rootReducer,
-        middleware: [sagaMiddleware],
-
-        // Initial state fetched through the rehydration process,
-        // using `preloadedState`
-        preloadedState,
-
-        // Spreading optional configuration
-        ...optionalConfig
+        reducer: rootReducer,  // Root reducer
+        middleware: [sagaMiddleware],  // Redux Saga middleware
+        preloadedState,  // Initial state
+        ...optionalConfig  // Spreading optional configurations
     });
 
-    // Run sagas
+    // Run the root saga
     sagaMiddleware.run(rootSaga);
 
     return store;
 };
 
-// Export the initialization function
+// Export the store initialization function
 export default initializeStore;

@@ -1,4 +1,5 @@
 // Importing required dependencies and configurations
+// frontend/src/redux/rehydrateState.js
 import apolloClient from "../apolloClient";
 import gql from "graphql-tag";
 

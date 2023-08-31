@@ -10,9 +10,8 @@ const logger = require("../../logger");
     }
 
     try {
-        const contactRequests = await ContactRequest.find({recipientId: userId})
         //logger.info(`Contact requests fetched for user with id: ${userId}`); // Log this info
-        return contactRequests;
+        return await ContactRequest.find({recipientId: userId});
     } catch (err) {
         logger.error("Error loading contact requests: ", err); // Log the error
         throw new Error('Error fetching contact requests');

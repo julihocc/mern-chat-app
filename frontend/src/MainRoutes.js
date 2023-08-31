@@ -10,7 +10,7 @@ import Dashboard from './components/Dashboard';
 import ChatRoomViewer from "./components/ChatRoomViewer";
 import Signup from "./components/SignUp";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import { logoutUser, loginUser } from './redux/slices/userSlice'; // Make sure the actions are defined
+import { logoutUser, setUser } from './redux/slices/userSlice'; // Make sure the actions are defined
 
 const MainRoutes = () => {
     const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const MainRoutes = () => {
     };
 
     const handleLogin = (userData) => {
-        dispatch(loginUser(userData)); // Dispatch login action with user data
+        dispatch(setUser(userData)); // Dispatch login action with user data
     };
 
     return (

@@ -13,7 +13,7 @@ const user = await getUserFromToken(token);
   if (!user) {
     throw new AuthenticationError('You must be logged in to get contacts');
   }
-  return await User.find({_id: {$in: user.contacts}}).populate('contacts');
+  return User.find({_id: {$in: user.contacts}}).populate('contacts');
 };
 
 module.exports = {getContactsWithFullDetails};

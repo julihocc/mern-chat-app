@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material'; // Import MUI components
 import { useTranslation } from 'react-i18next'; // Import i18next
 import logger from '../utils/logger'; // Import logger
-import { loginUser } from '../redux/slices/userSlice';
+import { setUser } from '../redux/slices/userSlice';
 
 const SIGNUP = gql`
     mutation SignUp($username: String!, $email: String!, $password: String!, $confirmPassword: String!) {
@@ -38,7 +38,7 @@ const Signup = () => {
         },
         onCompleted(data) {
             document.cookie = `token=${data.signUp.token}; path=/; max-age=3600`;
-            dispatch(loginUser()); // Dispatch loginUser action
+            dispatch(setUser()); // Dispatch loginUser action
             navigate('/dashboard');
         },
     });

@@ -13,14 +13,10 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        // Reducer for setting the user
+        // Reducer for setting the user and marking as logged in
         setUser: (state, action) => {
             state.user = action.payload;
-            state.isLoggedIn = true;
-        },
-        // Reducer for logging in the user
-        loginUser: (state) => {
-            state.isLoggedIn = true;
+            state.isLoggedIn = true;  // Mark user as logged in
         },
         // Reducer for logging out the user
         logoutUser: (state) => {
@@ -50,8 +46,7 @@ const userSlice = createSlice({
 
 // Exporting action creators
 export const {
-    setUser,
-    loginUser,
+    setUser,  // Only setUser remains, loginUser is removed
     logoutUser,
     fetchUserRequest,
     fetchUserSuccess,

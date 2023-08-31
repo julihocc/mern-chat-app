@@ -2,8 +2,7 @@ const logger = require("../../logger");
 const User = require("../../models/UserModel");
  const getUserById = async (parent, {userId}) => {
     //logger.info("Calling getUserById", userId);
-    const user = User.findById(userId);
-    //logger.info('user', !!user)
-    return user;
+     //logger.info('user', !!user)
+    return User.findById(userId);
 }
 module.exports = {getUserById};

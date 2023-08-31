@@ -5849,3 +5849,7 @@
 {"level":"info","message":"Server is running at http://localhost:4000/graphql"}
 {"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
 {"level":"info","message":"MongoDV: mongodb://localhost:27017/my-chat-app"}
+{"level":"info","message":"Server started at 2023-08-31T14:51:06.357Z"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"MongoDV: mongodb://localhost:27017/my-chat-app"}

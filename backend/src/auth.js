@@ -7,10 +7,9 @@ const logger = require('./logger'); // Import the logger
 
 async function getUserById(userId) {
     try {
-        const user = await User.findById(userId);
         //logger.info('User found: ' + userId); // Log the info
         //logger.info(user);
-        return user;
+        return await User.findById(userId);
     } catch (err) {
         logger.error(err); // Log the error
         //logger.info('User not found: ', userId); // Log the info
