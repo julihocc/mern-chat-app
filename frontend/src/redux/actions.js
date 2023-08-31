@@ -1,52 +1,22 @@
 // frontend/src/redux/actions.js
-import apolloClient from '../apolloClient';
-import { GET_CURRENT_USER } from '../gql/queries/GET_CURRENT_USER';
-import { GET_MESSAGES_BY_CHATROOM_ID } from '../gql/queries/GET_MESSAGES_BY_CHATROOM_ID';
-import { GET_CHAT_ROOM_BY_ID } from '../gql/queries/GET_CHAT_ROOM_BY_ID';
+
+// Action creators related to chat
 import {
     fetchMessagesRequest,
-    fetchMessagesSuccess,
-    fetchMessagesFailure,
     fetchChatRoomRequest,
-    fetchChatRoomSuccess,
-    fetchChatRoomFailure,
 } from './slices/chatSlice';
 
-// Thunk to fetch messages
+// Action to trigger fetching messages saga
 export const fetchMessages = (chatRoomId) => {
-    return async (dispatch) => {
-        dispatch(fetchMessagesRequest());
-        try {
-            const { data } = await apolloClient.query({
-                query: GET_MESSAGES_BY_CHATROOM_ID,
-                variables: { chatRoomId },
-            });
-            dispatch(fetchMessagesSuccess(data.getMessagesByChatRoomId));
-        } catch (error) {
-            dispatch(fetchMessagesFailure(error.message));
-        }
-    };
+    return fetchMessagesRequest({ chatRoomId });
 };
 
-// Thunk to fetch a chat room
+// Action to trigger fetching a chat room saga
 export const fetchChatRoom = (chatRoomId) => {
-    return async (dispatch) => {
-        dispatch(fetchChatRoomRequest());
-        try {
-            const { data } = await apolloClient.query({
-                query: GET_CHAT_ROOM_BY_ID,
-                variables: { chatRoomId },
-            });
-            dispatch(fetchChatRoomSuccess(data.getChatRoomById));
-        } catch (error) {
-            dispatch(fetchChatRoomFailure(error.message));
-        }
-    };
+    return fetchChatRoomRequest({ chatRoomId });
 };
 
-// Thunk to fetch the current user
+// Action to trigger fetching the current user saga
 export const fetchCurrentUser = () => {
-    return async (dispatch) => {
-        dispatch({ type: 'FETCH_CURRENT_USER_SAGA' });
-    };
+    return { type: 'FETCH_CURRENT_USER_SAGA' };
 };
