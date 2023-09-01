@@ -13,6 +13,10 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        // New action for Saga to listen to (for fetching user)
+        fetchUserSaga: (state, action) => {
+            // This will be empty as the saga will handle the side-effects
+        },
         // Reducer for setting the user and marking as logged in
         setUser: (state, action) => {
             state.user = action.payload;
@@ -46,6 +50,7 @@ const userSlice = createSlice({
 
 // Exporting action creators
 export const {
+    fetchUserSaga, // New action for Saga to listen to
     setUser,  // Only setUser remains, loginUser is removed
     logoutUser,
     fetchUserRequest,

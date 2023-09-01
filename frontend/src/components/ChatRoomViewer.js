@@ -1,6 +1,5 @@
 // frontend/src/components/ChatRoomViewer.js
 
-// Importing necessary components, icons, and hooks
 import {
   Avatar,
   Button,
@@ -15,35 +14,36 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react"; // Importing React and hooks
-import { useParams } from "react-router-dom"; // Importing useParams to get parameters from the URL
-import PersonIcon from "@mui/icons-material/Person"; // Importing an icon to display with messages
-import Loading from "./Loading"; // Importing a loading component to show while data is loading
-import { useTranslation } from "react-i18next"; // Importing a hook to handle translations
-import logger from "loglevel"; // Importing a logger for debugging
-import { useDispatch, useSelector } from "react-redux"; // Importing Redux hooks
-import { fetchMessages, fetchChatRoom } from "../redux/actions"; // Importing the necessary actions
-import { sendMessage } from '../redux/slices/chatSlice'; // Importing the sendMessage action
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import PersonIcon from "@mui/icons-material/Person";
+import Loading from "./Loading";
+import { useTranslation } from "react-i18next";
+import logger from "loglevel";
+import { useDispatch, useSelector } from "react-redux";
+// Updated imports for saga-based actions
+import { initiateFetchMessages, initiateFetchChatRoom } from "../redux/actions";
+import { sendMessage } from '../redux/slices/chatSlice';
 
-import { useMutation } from "@apollo/client"; // Importing Apollo Client's mutation hook
-import { SEND_MESSAGE } from "../gql/mutations/SEND_MESSAGE"; // Importing the GraphQL mutation to send messages
+import { useMutation } from "@apollo/client";
+import { SEND_MESSAGE } from "../gql/mutations/SEND_MESSAGE";
 
 const ChatRoomViewer = () => {
-  const { t } = useTranslation(); // Hook to handle translations
-  const { chatRoomId } = useParams(); // Getting the chatRoomId from the URL
-  const dispatch = useDispatch(); // Hook to dispatch Redux actions
-  const chatRoom = useSelector((state) => state.chat.chatRoom); // Getting chatRoom data from the Redux store
-  const messages = useSelector((state) => state.chat.messages); // Getting messages from the Redux store
-  const currentUser = useSelector((state) => state.currentUser.user); // Getting the current user from the Redux store
-  const isLoading = useSelector((state) => state.chat.loading || state.currentUser.loading); // Checking loading status
-  const chatRoomError = useSelector((state) => state.chat.error); // Getting any chat room error from the Redux store
+  const { t } = useTranslation();
+  const { chatRoomId } = useParams();
+  const dispatch = useDispatch();
+  const chatRoom = useSelector((state) => state.chat.chatRoom);
+  const messages = useSelector((state) => state.chat.messages);
+  const currentUser = useSelector((state) => state.user);
+  const isLoading = useSelector(
+      (state) => state.chat.loading
+  );
+  const chatRoomError = useSelector((state) => state.chat.error);
 
-  const [messageBody, setMessageBody] = useState(""); // State to hold the message being typed
-  const [file, setFile] = useState(null); // State to hold a file to be sent
-  const [sendMessageMutation] = useMutation(SEND_MESSAGE); // Mutation to send messages
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn); // Getting the login status from the Redux store
-
-  // Function to handle changes in the file input
+  const [messageBody, setMessageBody] = useState("");
+  const [file, setFile] = useState(null);
+  const [sendMessageMutation] = useMutation(SEND_MESSAGE);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const handleFileChange = (e) => {
     const tempFile = e.target.files[0];
     const maxSize = 2097152; // 2MB
@@ -92,10 +92,10 @@ const ChatRoomViewer = () => {
         });
   };
 
-  // Using the useEffect hook to dispatch actions to fetch messages and chat room data when the component mounts
+  // Updated useEffect to dispatch new saga-based actions
   useEffect(() => {
-    dispatch(fetchMessages(chatRoomId));
-    dispatch(fetchChatRoom(chatRoomId));
+    dispatch(initiateFetchMessages(chatRoomId));
+    dispatch(initiateFetchChatRoom(chatRoomId));
   }, [chatRoomId, dispatch]);
 
   // Rendering different UI based on loading status, errors, and login status

@@ -9,7 +9,8 @@ import CreateGroupConversation from './CreateGroupConversation';
 import { useTranslation } from 'react-i18next';
 import log from '../utils/logger';
 import { ContactListWithFullDetails } from './ContactListWithFullDetails';
-import { fetchCurrentUser } from '../redux/actions';
+// Import the new action creator
+import { initiateFetchCurrentUser } from '../redux/actions';
 
 const Dashboard = () => {
     // Using react-i18next for translations
@@ -22,7 +23,8 @@ const Dashboard = () => {
     // Fetch current user details if logged in
     useEffect(() => {
         if (isLoggedIn) {
-            dispatch(fetchCurrentUser());
+            // Use the new action creator
+            dispatch(initiateFetchCurrentUser());
         }
     }, [dispatch, isLoggedIn]);
 
@@ -35,6 +37,16 @@ const Dashboard = () => {
         return <Alert severity="error">{t('An error occurred')}</Alert>;
     }
 
+    // Handle case when user data is unavailable but is supposed to be logged in
+    if (isLoggedIn && !user) {
+        return <div>Loading user data...</div>; // This could also be a spinner
+    }
+
+    // Handle case when user data is unavailable and not logged in
+    if (!isLoggedIn) {
+        return <div>Please log in.</div>;
+    }
+
     // Handle case when user data is unavailable
     if (!user) {
         return <div>No user at all...</div>;
@@ -44,11 +56,11 @@ const Dashboard = () => {
     return (
         <Grid container spacing={3} direction="column">
             <Grid item>
-                <Typography variant="h2">{t('dashboard')}</Typography>
+                <Typography variant="h1">{t('dashboard')}</Typography>
             </Grid>
             <Grid item>
                 <Typography variant="h3">
-                    {t('welcome')}, {user.username}!
+                    {t('welcome')}, {user?.username || user?.email || t('guest')}!
                 </Typography>
             </Grid>
             <Grid item>

@@ -2,7 +2,12 @@
 import { takeLatest, put, call, all } from 'redux-saga/effects';
 import apolloClient from '../apolloClient';
 import { GET_CURRENT_USER } from '../gql/queries/GET_CURRENT_USER';
-import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './slices/userSlice';
+import {
+    fetchUserRequest,
+    fetchUserSuccess,
+    fetchUserFailure,
+    fetchUserSaga,
+} from './slices/userSlice';
 import {
     fetchMessagesRequest,
     fetchMessagesSuccess,
@@ -21,11 +26,6 @@ function* fetchCurrentUserSaga() {
     }
 }
 
-// Watcher saga to capture dispatched actions of a particular type
-export function* watchFetchCurrentUser() {
-    yield takeLatest('FETCH_CURRENT_USER_SAGA', fetchCurrentUserSaga);
-}
-
 // Worker saga for chat messages
 function* fetchChatMessagesSaga(action) {
     yield put(fetchMessagesRequest());
@@ -41,14 +41,19 @@ function* fetchChatMessagesSaga(action) {
 }
 
 // Watcher saga for chat messages
-export function* watchFetchChatMessages() {
+function* watchFetchChatMessages() {
     yield takeLatest('FETCH_MESSAGES_REQUEST', fetchChatMessagesSaga);
+}
+
+// Watcher saga to capture dispatched particular actions
+function* watchFetchUserWithSagaAction() {
+    yield takeLatest(fetchUserSaga.toString(), fetchCurrentUserSaga);
 }
 
 // Root saga
 export default function* rootSaga() {
     yield all([
-        watchFetchCurrentUser(),
         watchFetchChatMessages(),  // Existing watcher saga for chat messages
+        watchFetchUserWithSagaAction(),  // New watcher saga for fetching user
     ]);
 }
