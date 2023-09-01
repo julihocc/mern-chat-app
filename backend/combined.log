@@ -5853,3 +5853,9 @@
 {"level":"info","message":"Server is running at http://localhost:4000/graphql"}
 {"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
 {"level":"info","message":"MongoDV: mongodb://localhost:27017/my-chat-app"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64f111c21ccbcf4697205239, chatRoomId: 64f1227b1ccbcf4697205297, body: true, fileContent: false"}
+{"level":"debug","message":"Message saved with id: 64f12a731ccbcf46972052e6"}
+{"level":"debug","message":"Chat room updated with message id: 64f12a731ccbcf46972052e6"}
+{"level":"debug","message":"Received sendMessage request with senderId: 64f111c21ccbcf4697205239, chatRoomId: 64f1227b1ccbcf4697205297, body: false, fileContent: true"}
+{"level":"debug","message":"Message saved with id: 64f12a811ccbcf46972052eb"}
+{"level":"debug","message":"Chat room updated with message id: 64f12a811ccbcf46972052eb"}
