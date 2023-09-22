@@ -2,8 +2,19 @@
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const logger = require('../../logger');
+const {AuthenticationError} = require("apollo-server-express");
+const {getUserFromToken} = require("../utils");
 
-const sendContactRequest = async (parent, {senderId, recipientId}) => {
+const sendContactRequest = async (parent, {senderId, recipientId}, context) => {
+
+    const {token} = context;
+    const user = await getUserFromToken(token);
+
+    if (!user) {
+        logger.error('Attempted unauthorized access.'); // log the error
+        throw new AuthenticationError('You must be logged in');
+    }
+
     const sender = await User.findById(senderId);
     const recipient = await User.findById(recipientId);
 
@@ -23,8 +34,6 @@ const sendContactRequest = async (parent, {senderId, recipientId}) => {
         });
 
         await contactRequest.save();
-
-        //logger.info(`Contact request sent from ${senderId} to ${recipientId}`); // log the info
 
         return contactRequest;
     } catch (err) {

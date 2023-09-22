@@ -1,12 +1,17 @@
 // backend\src\graphql\resolvers\mutations\createChatRoom.js
 const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
-const { AuthenticationError } = require("apollo-server-express");
+const {AuthenticationError} = require("apollo-server-express");
+const {getUserFromToken} = require("../utils");
+const logger = require("../../logger");
 
 const createChatRoom = async (_, {participantIds}, context) => {
     const {token} = context
-    if (!token) {
-        throw new AuthenticationError("You must be logged in")
+    const user = await getUserFromToken(token);
+
+    if (!user) {
+        logger.error('Attempted unauthorized access.'); // log the error
+        throw new AuthenticationError('You must be logged in');
     }
     const participants = await User.find({_id: {$in: participantIds}});
 
@@ -14,13 +19,12 @@ const createChatRoom = async (_, {participantIds}, context) => {
         throw new Error('Some participantIds not found');
     }
 
-    // Check if chatRoom already exists with the same participantIds
-    const existingChatRoom = await ChatRoom.findOne({ participantIds: { $all: participantIds } }); // Added this line
-    if (existingChatRoom) { // And this line
-        throw new Error('ChatRoom with these participants already exists'); // And this line
-    } // And this line
+    const existingChatRoom = await ChatRoom.findOne({participantIds: {$all: participantIds}});
+    if (existingChatRoom) {
+        throw new Error('ChatRoom with these participants already exists');
+    }
 
-    const chatRoom = new ChatRoom({participantIds}); // participantIds instead of participants
+    const chatRoom = new ChatRoom({participantIds});
     await chatRoom.save();
     return chatRoom;
 };

@@ -10,10 +10,6 @@ const acceptContactRequest = async (parent, { requestId }, context ) => {
 
     const { token, pubSub } = context; // Added pubSub here
 
-    if (!token) {
-        throw new AuthenticationError('You must be logged in');
-    }
-
     if (!requestId) {
         throw new Error('Request ID is required');
     }
