@@ -41,7 +41,7 @@ const PendingContactRequestsList = ({ userId }) => {
                             <button onClick={async () => {
                                 try {
                                     await acceptContactRequestHandler({ variables: { requestId: id } });
-                                    refetch();
+                                    await refetch();
                                 } catch (error) {
                                     logger.error('Error accepting contact request:', error);
                                 }
@@ -50,7 +50,7 @@ const PendingContactRequestsList = ({ userId }) => {
                             <button onClick={async () => {
                                 try {
                                     await rejectContactRequestHandler({ variables: { requestId: id } });
-                                    refetch();
+                                    await refetch();
                                 } catch (error) {
                                     logger.error('Error rejecting contact request:', error);
                                 }

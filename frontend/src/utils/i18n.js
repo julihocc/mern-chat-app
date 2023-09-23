@@ -6,7 +6,7 @@ import { fetchTranslations } from './translationService';
 import logger from './logger';
 
 const resources = await fetchTranslations();
-//logger.info(resources)
+//logger.debug(resources)
 
 i18n
     .use(LanguageDetector)
@@ -32,7 +32,7 @@ i18n
             caches: ['localStorage', 'cookie'],
             excludeCacheFor: ['cimode'], // languages to not persist (cookie, localStorage)
 
-            // only detect languages that are in the whitelist
+            // only detect languages that are in the safelist
             checkWhitelist: true,
         },
     })

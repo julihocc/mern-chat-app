@@ -7,14 +7,14 @@ const { PubSub } = require('graphql-subscriptions');
 const { execute, subscribe } = require('graphql');
 const { SubscriptionServer } = require('subscriptions-transport-ws');
 const cors = require('cors');
-const typeDefs = require('./graphql/schemas');
-const resolvers = require('./graphql/resolvers');
-const errorHandler = require('./errorHandler');
-const connectDB = require('./connectDB');
+const typeDefs = require('./graphql/typeDefs');
+const resolvers = require('./graphql/resolversHub');
+const errorHandler = require('./utils/errorHandler');
+const connectDB = require('./utils/connectDB');
 const http = require('http');
 const PORT = process.env.PORT || 4000;
 const cookieParser = require('cookie-parser');
-const logger = require('./logger');
+const logger = require('./utils/logger');
 const { graphqlUploadExpress } = require('graphql-upload'); // I've kept this line, as it might be used for other configurations
 
 const app = express();
@@ -38,7 +38,7 @@ app.use(cookieParser());
 async function startServer() {
     try {
         await connectDB();
-        //logger.info('Connected to MongoDB'); // No change here
+        //logger.debug('Connected to MongoDB'); // No change here
     } catch (err) {
         logger.error('Error connecting to MongoDB:', err); // No change here
     }
@@ -57,7 +57,7 @@ async function startServer() {
                 return { req, pubSub, token };
             }
         },
-        uploads: false, // Keeping this line as-is, assuming you have other handling for uploads
+        uploads: false, // Keeping this line as-is, assuming you have another handling for uploads
     });
 
     await apolloServer.start();
@@ -79,10 +79,10 @@ async function startServer() {
 
     httpServer.listen(PORT, () => {
         const now = new Date();
-        logger.info(`Server started at ${now.toISOString()}`); // No change here
-        logger.info(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // No change here
-        logger.info(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // No change here
-        logger.info(`MongoDV: ${process.env.MONGODB_URL}`);
+        logger.debug(`Server started at ${now.toISOString()}`); // No change here
+        logger.debug(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // No change here
+        logger.debug(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // No change here
+        logger.debug(`MongoDV: ${process.env.MONGODB_URL}`);
     });
 
 }

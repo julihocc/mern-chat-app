@@ -1,5 +1,5 @@
 
-import {CircularProgress, List, ListItem} from "@mui/material";
+import {CircularProgress, ListItem} from "@mui/material";
 import logger from "../utils/logger";
 import {Link} from "react-router-dom";
 import React from "react";
@@ -31,7 +31,6 @@ export const ChatRoomItem = ({ chatRoomId }) => {
                     ))}
                 </List> */}
             </Link>
-
         </ListItem>
     );
 };

@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AppBar, Toolbar, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Login from './components/Login';
+import LoginComponent from './components/LoginComponent';
 import Dashboard from './components/Dashboard';
 import ChatRoomViewer from "./components/ChatRoomViewer";
 import Signup from "./components/SignUp";
@@ -69,7 +69,7 @@ const MainRoutes = () => {
             }
           />
           <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/login" element={<LoginComponent onLogin={handleLogin} />} />
           <Route
             path="/dashboard"
             element={
@@ -80,7 +80,7 @@ const MainRoutes = () => {
               )
             }
           />
-          <Route path="/chat/:chatRoomId" element={<ChatRoomViewer />} />
+          <Route path="/chat/:chatRoom" element={<ChatRoomViewer />} />
         </Routes>
       </>
     );

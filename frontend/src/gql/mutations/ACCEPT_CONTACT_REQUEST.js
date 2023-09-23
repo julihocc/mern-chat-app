@@ -4,8 +4,8 @@ export const ACCEPT_CONTACT_REQUEST = gql`
     mutation AcceptContactRequest($requestId: ID!) {
         acceptContactRequest(requestId: $requestId) {
             createdAt
-            recipientId
-            senderId
+            recipient
+            sender
             status
         }
     }

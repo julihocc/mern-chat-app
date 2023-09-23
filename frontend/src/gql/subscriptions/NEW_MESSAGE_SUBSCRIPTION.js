@@ -4,9 +4,13 @@ import gql from "graphql-tag";
 export const NEW_MESSAGE_SUBSCRIPTION = gql`
     subscription NewMessageSubscription($chatRoomId: ID!) {
         newMessage(chatRoomId: $chatRoomId) {
-            id
-            senderId
-            chatRoomId
+            _id
+            sender{
+                _id
+            }
+            chatRoom{
+                _id
+            }
             body
             fileContent
             createdAt

@@ -9,8 +9,8 @@ import logger from "../utils/logger";
 
 const CREATE_GROUP_CONVERSATION = gql`
     mutation CreateGroupConversation($emails: [String!]!) {
-        createGroupConversation(emails: $emails) {
-            id
+        createGroupConversation(emails: $emails){
+            _id,
         }
     }
 `;
@@ -32,7 +32,7 @@ const CreateGroupConversation = ({ userEmail }) => {
 
         if (!error) {
             setEmailsInput('');  // clear the input field after successful submission
-            setOpenSnackbar(true); // show success message
+            setOpenSnackbar(true); // show success messages
         }
     };
 

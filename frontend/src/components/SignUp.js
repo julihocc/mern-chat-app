@@ -14,7 +14,6 @@ const SIGNUP = gql`
         signUp(username: $username, email: $email, password: $password, confirmPassword: $confirmPassword) {
             token
             user {
-                id
                 username
                 email
             }

@@ -53,7 +53,7 @@ const chatSlice = createSlice({
             state.chatRoom = null;
             state.error = action.payload;
         },
-        // Action to send a message
+        // Action to send a messages
         sendMessage: (state, action) => {
             state.messages = [...state.messages, action.payload];
         }

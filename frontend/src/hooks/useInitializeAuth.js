@@ -9,7 +9,7 @@ import { setUser } from "../redux/slices/userSlice"; // Import the setUser actio
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
         getCurrentUser {
-            id
+            _id
             email
         }
     }
