@@ -32,7 +32,7 @@ const CreateGroupConversation = ({ userEmail }) => {
 
         if (!error) {
             setEmailsInput('');  // clear the input field after successful submission
-            setOpenSnackbar(true); // show success message
+            setOpenSnackbar(true); // show success messages
         }
     };
 

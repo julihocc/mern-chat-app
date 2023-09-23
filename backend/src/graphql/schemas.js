@@ -6,25 +6,24 @@ const schemas = gql`
     scalar Upload
 
     type User {
-        id: ID!
+        _id: ID!
         email: String!
         username: String!
-        contacts: [ID] # new field
+        contacts: [User] 
     }
-
-
+    
     type ChatRoom {
-        id: ID!
-        participantIds: [ID!]!
-        messageIds: [ID]
+        _id: ID!
+        participants: [User!]!
+        messages: [ID]
     }
 
     type Message {
-        id: ID!
-        senderId: ID!
+        _id: ID!
+        senders: User!
         body: String
         createdAt: String!
-        chatRoomId: ID!
+        chatRoom: ChatRoom!
         fileContent: String # Base64 encoded file content
     }
 
@@ -39,9 +38,9 @@ const schemas = gql`
     }
 
     type ContactRequest {
-        id: ID!
-        senderId: ID! # modified
-        recipientId: ID!
+        _id: ID!
+        sender: User! # modified
+        recipient: User!
         status: String!
         createdAt: String!
     }

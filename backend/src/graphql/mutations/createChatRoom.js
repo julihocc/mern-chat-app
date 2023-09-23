@@ -16,7 +16,7 @@ const createChatRoom = async (_, {participantIds}, context) => {
     const participants = await User.find({_id: {$in: participantIds}});
 
     if (participants.length !== participantIds.length) {
-        throw new Error('Some participantIds not found');
+        throw new Error('Some participants not found');
     }
 
     const existingChatRoom = await ChatRoom.findOne({participantIds: {$all: participantIds}});

@@ -116,7 +116,7 @@ const ChatRoomViewer = () => {
       >
         <CssBaseline />
         <Typography variant="h2" sx={{ mb: 2 }}>
-          {t("chatRoom")}: {chatRoom ? chatRoom.id : 'Loading...'} {/* Rendering chat room ID or loading message */}
+          {t("chatRoom")}: {chatRoom ? chatRoom.id : 'Loading...'} {/* Rendering chat room ID or loading messages */}
         </Typography>
         <Typography variant="h5" sx={{ mb: 2 }}>
           {t("messages")}
@@ -161,7 +161,7 @@ const ChatRoomViewer = () => {
               label="Message"
               name="messageBody"
               value={messageBody}
-              onChange={(e) => setMessageBody(e.target.value)} // Handling changes to the message input
+              onChange={(e) => setMessageBody(e.target.value)} // Handling changes to the messages input
           />
           <input
               type="file"
@@ -174,7 +174,7 @@ const ChatRoomViewer = () => {
               type="submit"
               variant="contained"
               color="primary"
-              onClick={(e) => handleSendMessage(e, currentUser.id, chatRoomId)} // Sending message on button click
+              onClick={(e) => handleSendMessage(e, currentUser.id, chatRoomId)} // Sending messages on button click
           >
             {t("send")}
           </Button>

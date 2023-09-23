@@ -69,7 +69,7 @@ const Login = () => {
                   data.getCurrentUser
                 );
                 logger.debug(
-                  "client.query data.getCurrentUser.chatRoomId",
+                  "client.query data.getCurrentUser.chatRoom",
                   data.getCurrentUser.id
                 );
               },

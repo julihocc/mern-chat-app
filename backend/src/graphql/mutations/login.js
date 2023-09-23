@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const {comparePassword} = require('../utils');
 const logger = require('../../logger');
 
-const login = async (parent, {email, password}) => {
+const login = async (_, {email, password}) => {
     const user = await User.findOne({email});
     if (!user) {
         logger.error(`Invalid email: ${email}`);

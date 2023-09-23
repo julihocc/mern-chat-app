@@ -80,7 +80,7 @@ const MainRoutes = () => {
               )
             }
           />
-          <Route path="/chat/:chatRoomId" element={<ChatRoomViewer />} />
+          <Route path="/chat/:chatRoom" element={<ChatRoomViewer />} />
         </Routes>
       </>
     );

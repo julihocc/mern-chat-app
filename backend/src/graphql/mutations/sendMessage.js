@@ -35,7 +35,7 @@ const sendMessage = async (_, {senderId, chatRoomId, body, fileContent}, context
         logger.debug(`Message saved with id: ${message.id}`);
     } catch (err) {
         logger.error(`Failed to save message: ${err}`);
-        throw new Error("Failed to save message");
+        throw new Error("Failed to save messages");
     }
 
     try {

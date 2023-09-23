@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const messageSchema = new mongoose.Schema({
-    senderId: {
+    sender: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
@@ -10,7 +10,7 @@ const messageSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-    chatRoomId: {
+    chatRoom: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'ChatRoom',
         required: true

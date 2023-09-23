@@ -36,7 +36,7 @@ initializeStore().then((store) => {
       </React.StrictMode>
     );
   } else {
-    // Instead of using console.error, I've used our custom logger to handle the error message
+    // Instead of using console.error, I've used our custom logger to handle the error messages
     // console.error('Error: Root element not found.'); // I've commented out the old console.error statement
     logger.error("Error: Root element not found."); // Here's where I replaced console.error with logger.error
   }

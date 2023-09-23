@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const {encryptPassword} = require('../utils');
 const logger = require('../../logger');
 
-const signUp = async (parent, { email, username, password, confirmPassword }) => {
+const signUp = async (_, { email, username, password, confirmPassword }) => {
 
     // Check if email is valid
     const emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/;
@@ -15,23 +15,17 @@ const signUp = async (parent, { email, username, password, confirmPassword }) =>
         throw new UserInputError('Email format is incorrect. Please provide a valid email address');
     }
 
-    // Check if email already exists
     const existingUserByEmail = await User.findOne({ email });
     if (existingUserByEmail) {
-        logger.error('Email already in use'); // Log this error
         throw new UserInputError('Email already in use');
     }
 
-    // Check if username already exists
     const existingUserByUsername = await User.findOne({ username });
     if (existingUserByUsername) {
-        logger.error('Username already in use'); // Log this error
         throw new UserInputError('Username already in use');
     }
 
-    // Check if password and confirmPassword match
     if (password !== confirmPassword) {
-        logger.error("Passwords don't match"); // Log this error
         throw new UserInputError("Passwords don't match");
     }
 

@@ -1,13 +1,13 @@
 const { Schema, model } = require('mongoose');
 
 const ContactRequestSchema = new Schema({
-    senderId: {
+    sender: {
         type: Schema.Types.ObjectId, ref: 'User', required: true,
-    }, recipientId: {
+    }, recipient: {
         type: Schema.Types.ObjectId, ref: 'User', required: true,
     }, status: {
         type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending',
-    }, chatRoomId: {
+    }, chatRoom: {
         type: Schema.Types.ObjectId, ref: 'ChatRoom',
     }, createdAt: {
         type: Date, default: Date.now,

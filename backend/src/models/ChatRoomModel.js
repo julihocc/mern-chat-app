@@ -1,6 +1,5 @@
 // backend/models/ChatRoomModel.js
 const { Schema, model } = require('mongoose');
-const logger = require('../logger'); // Import the logger
 
 function arrayLimit(val) {
     //logger.info(`arrayLimit: val: ${val}`); // Replace console.log with //logger.info
@@ -9,16 +8,16 @@ function arrayLimit(val) {
 
 const chatRoomSchema = new Schema(
     {
-        participantIds: {
+        participants: {
             type: [
                 {
                     type: Schema.Types.ObjectId,
                     ref: 'User',
                 },
             ],
-            validate: [arrayLimit, '{PATH} must have at least two participantIds.'],
+            validate: [arrayLimit, '{PATH} must have at least two participants.'],
         },
-        messageIds: [
+        messages: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Message',
