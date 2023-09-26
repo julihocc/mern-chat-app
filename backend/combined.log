@@ -6965,3 +6965,7 @@
 {"level":"debug","message":"Trying to reject request"}
 {"level":"info","message":"Contact request rejected: 6513665357f59b5bb965c8b6"}
 {"level":"debug","message":"Friend request updated"}
+{"level":"debug","message":"Server started at 2023-09-26T23:22:50.186Z"}
+{"level":"debug","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"debug","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"debug","message":"MongoDV: mongodb://localhost:27017"}
