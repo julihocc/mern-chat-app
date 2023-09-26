@@ -1,14 +1,14 @@
-import {useQuery} from "@apollo/client";
-import {GET_CHAT_ROOMS} from "../../gql/queries/GET_CHAT_ROOMS";
+import { GET_CHAT_ROOMS } from '../../gql/queries/GET_CHAT_ROOMS'
+import {useQuery} from "@apollo/react-hooks";
 
-export default function useGetChatRooms() {
-    const { loading, error, data } = useQuery(GET_CHAT_ROOMS, {
-        fetchPolicy: 'network-only', // ignore cache
-    });
+export const useGetChatRooms = () => {
+  const { data, loading, error } = useQuery(GET_CHAT_ROOMS, {
+    fetchPolicy: 'cache-and-network',
+  })
 
-    return {
-        loading,
-        error,
-        data
-    }
+  return {
+    data,
+    loading,
+    error,
+  }
 }

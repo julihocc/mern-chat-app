@@ -14,7 +14,6 @@ const { signUp } = require("./resolvers/mutations/signUp");
 const { sendMessage } = require("./resolvers/mutations/sendMessage");
 // Queries
 const  { getChatRoomById } = require("./resolvers/queries/getChatRoomById");
-const { getChatRooms } = require("./resolvers/queries/getChatRooms");
 const { getChatRoomUsers } = require("./resolvers/queries/getChatRoomUsers");
 const { getContactRequests } = require("./resolvers/queries/getContactRequests");
 const { getContactRequestsByContext } = require("./resolvers/queries/getContactRequestsByContext");
@@ -25,7 +24,7 @@ const { getMessagesByChatRoomId } = require("./resolvers/queries/getMessagesByCh
 const { getUserByEmail } = require("./resolvers/queries/getUserByEmail");
 const { getUserById } = require("./resolvers/queries/getUserById");
 const { getUsersById } = require("./resolvers/queries/getUsersById");
-const { getChatRoomsForCurrentUser } = require("./resolvers/queries/getChatRoomsForCurrentUser");
+const { getChatRooms } = require("./resolvers/queries/getChatRooms");
 
 
 const resolversHub = {
@@ -43,7 +42,6 @@ const resolversHub = {
     },
     Query: {
         getChatRoomById,
-        getChatRooms,
         getChatRoomUsers,
         getContactRequests,
         getContactRequestsByContext,
@@ -54,7 +52,7 @@ const resolversHub = {
         getUserByEmail,
         getUserById,
         getUsersById,
-        getChatRoomsForCurrentUser
+        getChatRooms
     }
 };
 

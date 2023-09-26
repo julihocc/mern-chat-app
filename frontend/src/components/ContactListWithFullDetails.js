@@ -20,9 +20,7 @@ export const ContactListWithFullDetails = () => {
             <ul>
                 {contacts.map(contact => (
                     <li key={contact.id}>
-                        <p>id: {contact.id}</p>
-                        <p>email: {contact.email}</p>
-                        <p>username: {contact.username}</p>
+                        {contact.email}
                     </li>
                 ))}
             </ul>

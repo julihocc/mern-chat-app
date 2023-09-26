@@ -1,27 +1,36 @@
-// const logger = require("../../logger");
-const {AuthenticationError} = require("apollo-server-express");
+// path: backend/src/graphql/queries/getChatRooms.js
+const ChatRoom = require('../../../mongodb/models/ChatRoomModel');
+// const logger = require('../../logger')
 const {getUserFromToken} = require("../../../utils/authUtils");
-const ChatRoom = require("../../../mongodb/models/ChatRoomModel");
- const getChatRooms = async (parent, args, context) => {
-    //logger.debug("Calling getChatRooms")
-    // logger.debug('context', context)
+const logger = require("../../../utils/logger");
+
+const getChatRooms = async (parent, args, context) => {
+    //logger.debug("getChatRooms")
     const {token} = context;
-    //logger.debug('token', token)
-
     if (!token) {
-        throw new AuthenticationError('You must be logged in');
+        throw new Error('Not authenticated');
+    } else {
+        logger.debug(`token: ${token}`)
     }
-
-    const user = await getUserFromToken(token);
-    //logger.debug('user', !!user)
-
-    // Check if the user is logged in
-    if (!user) {
-        throw new AuthenticationError('You must be logged in');
+    const currentUser = await getUserFromToken(token)
+    if (!currentUser) {
+        logger.error("User not found")
+        throw new Error('User not found');
+    } else {
+        logger.debug(`Current user: ${currentUser.username}`)
     }
-
-    // Fetch all chat rooms where the user is a participant
-    return ChatRoom.find({participantIds: user.id});
+    const chatRooms = await ChatRoom
+        .find({participants: currentUser._id})
+        .populate('participants')
+        .populate('messages');
+    if (!chatRooms) {
+        logger.error("Chat rooms not found")
+        throw new Error('Chat rooms not found');
+    } else {
+        logger.debug(`Chat rooms found: ${chatRooms.length}`)
+        logger.debug(`Participants by chat room: ${chatRooms.map(chatRoom => chatRoom.participants.toString())}`)
+    }
+    return chatRooms;
 };
 
- module.exports = {getChatRooms};
+module.exports = {getChatRooms};
