@@ -1,8 +1,16 @@
 // backend\src\graphql\resolvers\mutations\createChatRoom.js
 const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
+const {AuthenticationError} = require("apollo-server-express");
+const {getUserFromToken} = require("../utils");
+const logger = require("../../logger");
+const createChatRoom = async (_, {participantIds}, context) => {
+    const { token } = context
+    const user = await getUserFromToken(token)
+    if (!user) {
+        throw new AuthenticationError('You are not logged in');
+    }
 
-const createChatRoom = async (_, {participantIds}) => {
     const participants = await User.find({_id: {$in: participantIds}});
 
     if (participants.length !== participantIds.length) {
