@@ -4,8 +4,15 @@ const ChatRoom = require("../../models/ChatRoomModel");
 const Message = require("../../models/MessageModel");
 const logger = require('../../logger');
 const User = require('../../models/UserModel');
+const {AuthenticationError} = require("apollo-server-express");
 
-const sendMessage = async (_, { senderId, chatRoomId, body, file }, { pubSub }) => {
+const sendMessage = async (_, { senderId, chatRoomId, body, file }, context) => {
+
+    const {token, pubSub} = context
+    if (!token) {
+        throw new AuthenticationError("You must be logged in!")
+    }
+
     // Log the inputs without fileUrl, as it's not defined yet
     logger.info(`Received sendMessage request with senderId: ${senderId}, chatRoomId: ${chatRoomId}, body: ${body}`);
 

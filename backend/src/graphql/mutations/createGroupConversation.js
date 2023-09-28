@@ -1,8 +1,19 @@
 // backend\src\graphql\resolvers\mutations\createGroupConversation.js
 const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
+const logger = require("../../logger");
+const {AuthenticationError} = require("apollo-server-express");
+const {getUserFromToken} = require("../utils");
 
-const createGroupConversation = async (_, {emails}) => {
+const createGroupConversation = async (_, {emails}, context) => {
+
+    const {token} = context
+    const user = await getUserFromToken(token);
+    if (!user) {
+        logger.error('Attempted unauthorized access.');
+        throw new AuthenticationError('You must be logged in');
+    }
+
     // Get users whose emails are in the provided list
     const users = await User.find({email: {$in: emails}});
 
