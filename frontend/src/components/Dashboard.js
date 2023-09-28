@@ -1,46 +1,73 @@
-// Path: frontend\src\components\dashboardUtils.js
-import React from 'react';
-import { useQuery } from '@apollo/client';
-import { Typography, Grid, CircularProgress, Alert } from '@mui/material';
-import ChatRoomList from "./ChatRoomList";
-import SendContactRequestForm from "./SendContactRequestForm";
-import PendingContactRequestsList from "./PendingContactRequestsList";
-import CreateGroupConversation from "./CreateGroupConversation";
-import { GET_CURRENT_USER } from "../gql/queries/GET_CURRENT_USER";
-import { useTranslation } from "react-i18next";
-
+// frontend/src/components/Dashboard.js
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CircularProgress, Grid, Typography, Alert } from '@mui/material';
+import ChatRoomList from './ChatRoomList';
+import SendContactRequestForm from './SendContactRequestForm';
+import PendingContactRequestsList from './PendingContactRequestsList';
+import CreateGroupConversation from './CreateGroupConversation';
+import { useTranslation } from 'react-i18next';
 import log from '../utils/logger';
-import {ContactListWithFullDetails} from "./ContactListWithFullDetails"; // Imported the custom logger
+import { ContactListWithFullDetails } from './ContactListWithFullDetails';
+// Import the new action creator
+import { initiateFetchCurrentUser } from '../redux/actions';
 
 const Dashboard = () => {
-    const {t} = useTranslation();
-    // const { loading, error, data } = useQuery(GET_CURRENT_USER);
-    const { loading, error, data } = useQuery(GET_CURRENT_USER, {
-        onError: (error) => {
-            log.error(`GET_CURRENT_USER Error: ${error.message}`);
-        },
-    });
+    // Using react-i18next for translations
+    const { t } = useTranslation();
+    const dispatch = useDispatch();
+
+    // Extracting relevant pieces of the state
+    const { loading, user, error, isLoggedIn } = useSelector((state) => state.user);
+
+    // Fetch current user details if logged in
+    useEffect(() => {
+        if (isLoggedIn) {
+            // Use the new action creator
+            dispatch(initiateFetchCurrentUser());
+        }
+    }, [dispatch, isLoggedIn]);
+
+    // Show a loader while the request is in progress
     if (loading) return <CircularProgress />;
+
+    // Handle error by showing an alert and logging it
     if (error) {
-        log.error(`GET_CURRENT_USER Error: ${error.message}`); // Replaced console.error with custom logger
-        return <Alert severity="error">GET_CURRENT_USER Error: {error.message}</Alert>; // Keep error message display
+        log.error(`GET_CURRENT_USER Error: ${error}`);
+        return <Alert severity="error">{t('An error occurred')}</Alert>;
     }
 
-    const { getCurrentUser } = data;
+    // Handle case when user data is unavailable but is supposed to be logged in
+    if (isLoggedIn && !user) {
+        return <div>Loading user data...</div>; // This could also be a spinner
+    }
 
+    // Handle case when user data is unavailable and not logged in
+    if (!isLoggedIn) {
+        return <div>Please log in.</div>;
+    }
+
+    // Handle case when user data is unavailable
+    if (!user) {
+        return <div>No user at all...</div>;
+    }
+
+    // Render the main dashboard layout
     return (
         <Grid container spacing={3} direction="column">
             <Grid item>
-                <Typography variant="h2">{t('dashboard')}</Typography>
+                <Typography variant="h1">{t('dashboard')}</Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body1">{t('welcome')}, {getCurrentUser.username}!</Typography>
+                <Typography variant="h3">
+                    {t('welcome')}, {user?.username || user?.email || t('guest')}!
+                </Typography>
             </Grid>
             <Grid item>
-                <PendingContactRequestsList userId={getCurrentUser.id} />
+                <PendingContactRequestsList userId={user.id} />
             </Grid>
             <Grid item>
-                <CreateGroupConversation userEmail={getCurrentUser.email} />
+                <CreateGroupConversation userEmail={user.email} />
             </Grid>
             <Grid item>
                 <SendContactRequestForm />
@@ -56,5 +83,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-// I replaced instances of console.error with our custom logger. The Alert component remains to handle user notifications in case of errors.

@@ -5546,3 +5546,57 @@
 {"level":"info","message":"Server is running at http://localhost:4000/graphql"}
 {"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
 {"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":0,"_id":"6515bc546e76b3bcaa1ede5d","contacts":[],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":0,"_id":"6515bc546e76b3bcaa1ede5d","contacts":[],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":0,"_id":"6515c35e6e76b3bcaa1ede70","contacts":[],"email":"def@def.com","password":"$2a$10$KG.iRCX1er6qXy3a0CE/lO8DbvVrQ17NgnkxKohok7dPgoLu.iIIO","username":"def"}}
+{"level":"info","message":[]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":0,"_id":"6515c35e6e76b3bcaa1ede70","contacts":[],"email":"def@def.com","password":"$2a$10$KG.iRCX1er6qXy3a0CE/lO8DbvVrQ17NgnkxKohok7dPgoLu.iIIO","username":"def"}}
+{"level":"info","message":[]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":0,"_id":"6515bc546e76b3bcaa1ede5d","contacts":[],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":0,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":[],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:19:12.714Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":0,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":[],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:19:12.714Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":0,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":[],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:19:12.714Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":0,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":[],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:19:12.714Z"}]}
+{"level":"info","message":"Received sendMessage request with senderId: 6515bc546e76b3bcaa1ede5d, chatRoomId: 6515c3a06e76b3bcaa1ede92, body: holA"}
+{"level":"info","message":"Message saved with id: 6515c7666e76b3bcaa1edeca"}
+{"level":"info","message":"Received sendMessage request with senderId: 6515bc546e76b3bcaa1ede5d, chatRoomId: 6515c3a06e76b3bcaa1ede92, body: "}
+{"level":"info","message":"Message saved with id: 6515c7746e76b3bcaa1eded3"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":2,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":["6515c7666e76b3bcaa1edeca","6515c7746e76b3bcaa1eded3"],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:35:32.006Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":2,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":["6515c7666e76b3bcaa1edeca","6515c7746e76b3bcaa1eded3"],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:35:32.006Z"}]}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":2,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":["6515c7666e76b3bcaa1edeca","6515c7746e76b3bcaa1eded3"],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:35:32.006Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":2,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":["6515c7666e76b3bcaa1edeca","6515c7746e76b3bcaa1eded3"],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:35:32.006Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":2,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":["6515c7666e76b3bcaa1edeca","6515c7746e76b3bcaa1eded3"],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:35:32.006Z"}]}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6515bc546e76b3bcaa1ede5d","contacts":["6515c35e6e76b3bcaa1ede70"],"email":"abc@abc.com","password":"$2a$10$fe9/dYyS9UZ6DaqE/P5h6OhhiIPONNOx/Der6ldAzqscbIxH4ulpC","username":"abc"}}
+{"level":"info","message":[{"__v":2,"_id":"6515c3a06e76b3bcaa1ede92","createdAt":"2023-09-28T18:19:12.714Z","messageIds":["6515c7666e76b3bcaa1edeca","6515c7746e76b3bcaa1eded3"],"participantIds":["6515c35e6e76b3bcaa1ede70","6515bc546e76b3bcaa1ede5d"],"updatedAt":"2023-09-28T18:35:32.006Z"}]}
+{"level":"info","message":"Received sendMessage request with senderId: 6515bc546e76b3bcaa1ede5d, chatRoomId: 6515c3a06e76b3bcaa1ede92, body: no pues si"}
+{"level":"info","message":"Message saved with id: 6515cbf76e76b3bcaa1edf26"}

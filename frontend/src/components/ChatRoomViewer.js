@@ -18,20 +18,26 @@ import logger from "loglevel";
 import { useMutation } from "@apollo/react-hooks";
 import { SEND_MESSAGE } from "../gql/mutations/SEND_MESSAGE";
 import {GET_MESSAGES_BY_CHAT_ROOM_ID} from "../gql/queries/GET_MESSAGES_BY_CHAT_ROOM_ID";
+import { useDispatch, useSelector } from 'react-redux';
+import { CircularProgress, Grid, Alert } from '@mui/material';
+import ChatRoomList from './ChatRoomList';
+import SendContactRequestForm from './SendContactRequestForm';
+import PendingContactRequestsList from './PendingContactRequestsList';
+import CreateGroupConversation from './CreateGroupConversation';
+import { ContactListWithFullDetails } from './ContactListWithFullDetails';
+// Import the new action creator
+import { initiateFetchCurrentUser } from '../redux/actions';
+import log from "../utils/logger";
 
 const ChatRoomViewer = () => {
     const { t } = useTranslation();
     const { chatRoomId } = useParams();
-    logger.debug("chatRoomId: ", chatRoomId);
-    const currentUser = useGetCurrentUser();
     const chatRoom = useGetChatRoomById(chatRoomId);
     const { messageData, messageLoading, messageError } = useGetMessagesByChatRoomId(chatRoomId);
     const { newMessageData } = useNewMessageSubscription();
     const [messageBody, setMessageBody] = useState("");
     const [file, setFile] = useState(null);
     const [messages, setMessages] = useState([]);
-    const currentUserId = currentUser.data?.getCurrentUser?.id;
-
     const [sendMessageMutation, { loading: sendMessageLoading, error: sendMessageError }] = useMutation(SEND_MESSAGE, {
         refetchQueries: [
             { query: GET_MESSAGES_BY_CHAT_ROOM_ID, variables: { chatRoomId } }
@@ -44,8 +50,7 @@ const ChatRoomViewer = () => {
         }
     });
 
-
-    const isLoading = chatRoom.loading || messageLoading || currentUser.loading || sendMessageLoading;
+    const isLoading = chatRoom.loading || messageLoading || sendMessageLoading;
 
     const handleFileChange = (e) => {
         const tempFile = e.target.files[0];
@@ -68,8 +73,6 @@ const ChatRoomViewer = () => {
             }
         })
     };
-
-
     useEffect(() => {
         logger.info("Messages from server:", messageData?.getMessagesByChatRoomId); // Log messages
         setMessages(messageData?.getMessagesByChatRoomId);
@@ -82,12 +85,53 @@ const ChatRoomViewer = () => {
         }
     }, [newMessageData]);
 
+    // const currentUser = useGetCurrentUser();
+    // =======================================
+    const dispatch = useDispatch();
+
+    // Extracting relevant pieces of the state
+    const { loading, user, error, isLoggedIn } = useSelector((state) => state.user);
+
+    // Fetch current user details if logged in
+    useEffect(() => {
+        if (isLoggedIn) {
+            // Use the new action creator
+            dispatch(initiateFetchCurrentUser());
+        }
+    }, [dispatch, isLoggedIn]);
+
+    // Show a loader while the request is in progress
+    if (loading) return <CircularProgress />;
+
+    // Handle error by showing an alert and logging it
+    if (error) {
+        log.error(`GET_CURRENT_USER Error: ${error}`);
+        return <Alert severity="error">{t('An error occurred')}</Alert>;
+    }
+
+    // Handle case when user data is unavailable but is supposed to be logged in
+    if (isLoggedIn && !user) {
+        return <div>Loading user data...</div>; // This could also be a spinner
+    }
+
+    // Handle case when user data is unavailable and not logged in
+    if (!isLoggedIn) {
+        return <div>Please log in.</div>;
+    }
+
+    // Handle case when user data is unavailable
+    if (!user) {
+        return <div>No user at all...</div>;
+    }
+    logger.debug("Current user data:", user);
+    const currentUserId = user.id;
+    // =======================================
+
     if (!currentUserId) return <Typography variant="h4">Please log in to view the chat room</Typography>;
     if (isLoading) return <Loading queryName="Loading" />;
 
     if(chatRoom.error) return <p>Chat Room Error: {JSON.stringify(chatRoom.error)}</p>;
     if(messageError) return <p>Message Error: {JSON.stringify(messageError)}</p>;
-    if(currentUser.error) return <p>Current User Error: {JSON.stringify(currentUser.error)}</p>;
     if(sendMessageError) return <p>Send Message Error: {JSON.stringify(sendMessageError)}</p>;
 
     return (
