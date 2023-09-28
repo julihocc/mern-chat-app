@@ -22,6 +22,7 @@ import {GET_MESSAGES_BY_CHAT_ROOM_ID} from "../gql/queries/GET_MESSAGES_BY_CHAT_
 const ChatRoomViewer = () => {
     const { t } = useTranslation();
     const { chatRoomId } = useParams();
+    logger.debug("chatRoomId: ", chatRoomId);
     const currentUser = useGetCurrentUser();
     const chatRoom = useGetChatRoomById(chatRoomId);
     const { messageData, messageLoading, messageError } = useGetMessagesByChatRoomId(chatRoomId);
