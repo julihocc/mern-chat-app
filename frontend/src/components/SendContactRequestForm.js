@@ -1,7 +1,7 @@
 // path: frontend/src/components/SendContactRequestForm.js
 import React, { useEffect, useState } from 'react';
 import { useMutation, useLazyQuery, useQuery } from '@apollo/react-hooks';
-import { TextField, Button, CircularProgress, Typography, Alert } from '@mui/material';
+import { TextField, Button, CircularProgress, Typography} from '@mui/material';
 import { useTranslation } from "react-i18next";
 import { SEND_CONTACT_REQUEST } from "../gql/mutations/SEND_CONTACT_REQUEST";
 import { GET_CURRENT_USER } from "../gql/queries/GET_CURRENT_USER";
@@ -36,10 +36,8 @@ const SendContactRequestForm = () => {
         // Load recipient user when form is submitted
         await getUserByEmail({ variables: { email } });
     };
-
     useEffect(() => {
-        // Check if the response data from the getUserByEmail query is available and if it is, proceed with sending the contact request
-        if (getUserByEmailData) {
+        if (getUserByEmailData && currentUserData?.getCurrentUser?.id) { // Added null checks
             sendContactRequest({
                 variables: {
                     senderId: currentUserData.getCurrentUser.id,
@@ -51,11 +49,12 @@ const SendContactRequestForm = () => {
                 console.error(err);
             });
         }
-    }, [getUserByEmailData, currentUserData.getCurrentUser.id, sendContactRequest]); // Added missing dependencies
+    }, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest]); // Added optional chaining
+
 
 
     if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
-    if (currentUserError) return <Alert severity="error">Error: {currentUserError.message}</Alert>;
+    if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 
     if (getUserByEmailError) {
         // If the getUserByEmail query results in an error, set a custom error message to inform the user that the recipient email does not exist
@@ -64,7 +63,7 @@ const SendContactRequestForm = () => {
 
     return (
         <div>
-            <Typography variant="h3">{t('sendContactRequest')}</Typography>
+            <Typography variant="h4">{t('sendContactRequest')}</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
                     type="email"
@@ -78,11 +77,10 @@ const SendContactRequestForm = () => {
                     {sendContactLoading ? t('sending') : t('send')}
                 </Button>
             </form>
-            {userError && <Alert severity="error">{userError}</Alert>}
-            {sendContactError && <Alert severity="error">Error: {sendContactError.message}</Alert>}
+            {userError && <p>{userError}</p>}
+            {sendContactError && <p>Error: {sendContactError.message}</p>}
         </div>
     );
 };
 
 export default SendContactRequestForm;
-// No modifications were made to this piece of code. The current implementation seems appropriate for the intended functionality.
