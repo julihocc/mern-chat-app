@@ -5690,3 +5690,15 @@
 {"level":"info","message":"getChatRoomsForCurrentUser"}
 {"level":"info","message":{"__v":1,"_id":"6516c06599f2fd9226f56f92","contacts":["6516c02a99f2fd9226f56f85"],"email":"def@def.com","password":"$2a$10$9q3Wey5T42/ZITzEnLD6/u27Zsq/QwPCKoH9B3WmfLTaa4F.of20.","username":"def"}}
 {"level":"info","message":[{"__v":2,"_id":"6516c08899f2fd9226f56faf","createdAt":"2023-09-29T12:18:16.991Z","messageIds":["6516c09799f2fd9226f56fc6","6516c0a899f2fd9226f56fd6"],"participantIds":["6516c06599f2fd9226f56f92","6516c02a99f2fd9226f56f85"],"updatedAt":"2023-09-29T12:18:48.457Z"}]}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":"getChatRoomsForCurrentUser"}
+{"level":"info","message":{"__v":1,"_id":"6516c06599f2fd9226f56f92","contacts":["6516c02a99f2fd9226f56f85"],"email":"def@def.com","password":"$2a$10$9q3Wey5T42/ZITzEnLD6/u27Zsq/QwPCKoH9B3WmfLTaa4F.of20.","username":"def"}}
+{"level":"info","message":[{"__v":2,"_id":"6516c08899f2fd9226f56faf","createdAt":"2023-09-29T12:18:16.991Z","messageIds":["6516c09799f2fd9226f56fc6","6516c0a899f2fd9226f56fd6"],"participantIds":["6516c06599f2fd9226f56f92","6516c02a99f2fd9226f56f85"],"updatedAt":"2023-09-29T12:18:48.457Z"}]}

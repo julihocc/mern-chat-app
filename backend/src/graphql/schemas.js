@@ -17,11 +17,21 @@ const schemas = gql`
         id: ID!
         participantIds: [ID!]!
         messageIds: [ID]
+        createdAt: String!
     }
 
     type Message {
         id: ID!
         senderId: ID!
+        body: String
+        createdAt: String!
+        chatRoomId: ID!
+        fileContent: String # Base64 encoded file content
+    }
+
+    type MessagePopulated {
+        id: ID!
+        senderId: User!
         body: String
         createdAt: String!
         chatRoomId: ID!
@@ -47,7 +57,7 @@ const schemas = gql`
     }
 
     type Query {
-        getMessagesByChatRoomId(chatRoomId: ID!): [Message]
+        getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
         getChatRooms: [ChatRoom]
         getCurrentUser: User
         getUserById(userId: ID!): User

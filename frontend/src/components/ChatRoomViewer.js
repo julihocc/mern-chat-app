@@ -27,7 +27,7 @@ import {useGetChatRoomById} from "../hooks/queries/useGetChatRoomById";
 import logger from "loglevel";
 import {useMutation} from "@apollo/react-hooks";
 import {SEND_MESSAGE} from "../gql/mutations/SEND_MESSAGE";
-import {GET_MESSAGES_BY_CHAT_ROOM_ID} from "../gql/queries/GET_MESSAGES_BY_CHAT_ROOM_ID";
+import {GET_MESSAGES_BY_CHATROOM_ID} from "../gql/queries/GET_MESSAGES_BY_CHATROOM_ID";
 import {useDispatch, useSelector} from 'react-redux';
 // Import the new action creator
 import {initiateFetchCurrentUser} from '../redux/actions';
@@ -43,7 +43,7 @@ const ChatRoomViewer = () => {
     const [file, setFile] = useState(null);
     const [messages, setMessages] = useState([]);
     const [sendMessageMutation, {loading: sendMessageLoading, error: sendMessageError}] = useMutation(SEND_MESSAGE, {
-        refetchQueries: [{query: GET_MESSAGES_BY_CHAT_ROOM_ID, variables: {chatRoomId}}], onCompleted: (data) => {
+        refetchQueries: [{query: GET_MESSAGES_BY_CHATROOM_ID, variables: {chatRoomId}}], onCompleted: (data) => {
             logger.info("Message sent successfully:", data);
         }, onError: (error) => {
             logger.error("Error sending message:", error);
@@ -71,7 +71,6 @@ const ChatRoomViewer = () => {
         logger.info("Messages from server:", messageData?.getMessagesByChatRoomId);
         setMessages(messageData?.getMessagesByChatRoomId);
     }, [messageData]);
-
     useEffect(() => {
         if (newMessageData?.newMessage) {
             logger.info("New message from subscription:", newMessageData.newMessage);
@@ -129,36 +128,40 @@ const ChatRoomViewer = () => {
     if (sendMessageError) return <p>Send Message Error: {JSON.stringify(sendMessageError)}</p>;
 
     return (<Container component={Paper} sx={{height: "90vh", mt: 2, display: "flex", flexDirection: "column", p: 2}}>
-            <CssBaseline/>
-            <Typography variant="h2" sx={{mb: 2}}>{t("messages")}</Typography>
-        <Typography variant="h3" sx={{mb: 2}}>{t("chatRoom")}: {chatRoom.data.getChatRoomById.id}</Typography>
-            <List>
-                {messages && messages.slice(-5).map((message, index) => (<ListItem key={index}
-                                                                                   sx={{flexDirection: message.senderId === currentUserId ? "row-reverse" : "row"}}>
-                        <ListItemAvatar>
-                            <Avatar><PersonIcon/></Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary={message.body} secondary={message.senderId}
-                                      sx={{textAlign: message.senderId === currentUserId ? "right" : "left"}}/>
-                        {message.fileContent && (// Assuming the file is an image, render it as an image tag
-                            <img src={`data:${message.mimeType};base64,${message.fileContent}`} alt="Uploaded content"/>
-                            // For other file types, you can create a download link with the appropriate MIME type
-                        )}
-                    </ListItem>))}
-            </List>
+        <CssBaseline/>
+        <Typography variant="h2" sx={{mb: 2}}>{t("messages")}</Typography>
+        <Typography variant="h3" sx={{mb: 2}}>{t("chatRoom")}: {chatRoom.data.getChatRoomById.createdAt}</Typography>
+        <List>
+            {
+                messages && messages
+                    .slice(-5)
+                    .map((message, index) => (
+                        <ListItem key={index}
+                                  sx={{flexDirection: message.senderId.id === currentUserId ? "row-reverse" : "row"}}>
+                            <ListItemAvatar>
+                                <Avatar><PersonIcon/></Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary={message.body} secondary={message.senderId.username}
+                                          sx={{textAlign: message.senderId.id === currentUserId ? "right" : "left"}}/>
+                            {message.fileContent && (// Assuming the file is an image, render it as an image tag
+                                <img src={`data:${message.mimeType};base64,${message.fileContent}`} alt="Uploaded content"/>
+                                // For other file types, you can create a download link with the appropriate MIME type
+                            )}
+                        </ListItem>))}
+        </List>
 
-            <form onSubmit={(e) => handleSendMessage(e, currentUserId, chatRoomId)}>
-                <Stack direction="row" spacing={1}>
-                    <TextField type="body" label={t("newMessage")} fullWidth value={messageBody}
-                               onChange={(e) => setMessageBody(e.target.value)}/>
-                    <input accept="image/*" style={{display: 'none'}} id="inputForFile" type="file"
-                           onChange={handleFileChange}/>
-                    <label htmlFor="inputForFile"><Button variant="contained"
-                                                          component="span">{file ? file.name : 'Upload File'}</Button></label>
-                    <Button type="submit" variant="contained" color="primary">{t("sendMessage")}</Button>
-                </Stack>
-            </form>
-        </Container>);
+        <form onSubmit={(e) => handleSendMessage(e, currentUserId, chatRoomId)}>
+            <Stack direction="row" spacing={1}>
+                <TextField type="body" label={t("newMessage")} fullWidth value={messageBody}
+                           onChange={(e) => setMessageBody(e.target.value)}/>
+                <input accept="image/*" style={{display: 'none'}} id="inputForFile" type="file"
+                       onChange={handleFileChange}/>
+                <label htmlFor="inputForFile"><Button variant="contained"
+                                                      component="span">{file ? file.name : 'Upload File'}</Button></label>
+                <Button type="submit" variant="contained" color="primary">{t("sendMessage")}</Button>
+            </Stack>
+        </form>
+    </Container>);
 };
 
 export default ChatRoomViewer;

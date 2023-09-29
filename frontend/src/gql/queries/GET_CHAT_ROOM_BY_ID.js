@@ -6,6 +6,7 @@ export const GET_CHAT_ROOM_BY_ID = gql`
             id
             participantIds
             messageIds
+            createdAt
         }
     }
 `;

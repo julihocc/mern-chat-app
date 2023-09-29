@@ -3,7 +3,7 @@ const {UserInputError} = require("apollo-server-express");
 
 const getMessagesByChatRoomId = async (parent, args) => {
     const {chatRoomId} = args;
-    const messages = await Message.find({chatRoomId});
+    const messages = await Message.find({chatRoomId}).populate("senderId");
     if (!messages) {
         throw new UserInputError('Messages not found');
     }
