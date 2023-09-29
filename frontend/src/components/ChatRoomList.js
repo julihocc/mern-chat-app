@@ -1,10 +1,9 @@
 // path: frontend/src/components/ChatRoomList.js
 import React from 'react';
-import { CircularProgress, Alert, List, Typography } from "@mui/material";
+import { CircularProgress, Alert, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import logger from '../utils/logger';  // importing the logger
 import { useGetChatRoomsForCurrentUser } from "../hooks/queries/useGetChatRoomsForCurrentUser";
-import { ChatRoomItem } from "./ChatRoomItem";
 import {Link} from "react-router-dom";
 
 const ChatRoomList = () => {
@@ -19,11 +18,15 @@ const ChatRoomList = () => {
     return (
         <div>
             <Typography variant="h3">{t('chatList')}</Typography>
+            <ul>
             {data.getChatRoomsForCurrentUser.map((chatRoom) => (
+                <li key={chatRoom.id}>
                 <Link to={`/chat/${chatRoom.id}`} key={chatRoom.id}>
                     Chat: {Date(Number(chatRoom.createdAt))}
                 </Link>
+                </li>
             ))}
+            </ul>
         </div>
     );
 };
