@@ -62,7 +62,7 @@ const Dashboard = () => {
                 <PendingContactRequestsList userId={user.id} />
             </Grid>
             <Grid item>
-                <CreateGroupConversation userEmail={user.email} />
+                <CreateGroupConversation  />
             </Grid>
             <Grid item>
                 <SendContactRequestForm />

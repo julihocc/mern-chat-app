@@ -56,7 +56,6 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, context) => 
     chatRoom.messageIds.push(message.id);
     await chatRoom.save();
 
-    // This publishes the new message to the subscription
     pubSub.publish(`NEW_MESSAGE_${chatRoomId}`, { newMessage: message });
 
     return message;

@@ -6,20 +6,23 @@ const {AuthenticationError} = require("apollo-server-express");
 const {getUserFromToken} = require("../utils");
 
 const createGroupConversation = async (_, {emails}, context) => {
-
+    logger.debug("createGroupConversation")
     const {token} = context
     const user = await getUserFromToken(token);
     if (!user) {
         logger.error('Attempted unauthorized access.');
         throw new AuthenticationError('You must be logged in');
     }
-
     // Get users whose emails are in the provided list
-    const users = await User.find({email: {$in: emails}});
+    const otherUsers = await User.find({email: {$in: emails}});
+    const users = [user, ...otherUsers]
 
-    // Check if all emails found a user
-    if (users.length !== emails.length) {
-        throw new Error('Some emails not found');
+    if (users.length === 0) {
+        throw new Error('No users found');
+    } else {
+        for (let i = 0; i < users.length; i++) {
+            logger.debug(`createGroupConversation: ${users[i].email}`)
+        }
     }
 
     // Extract _id from users to form participantIds
@@ -32,8 +35,16 @@ const createGroupConversation = async (_, {emails}, context) => {
     }
 
     const chatRoom = new ChatRoom({participantIds});
-    await chatRoom.save();
-    return chatRoom;
+    if (!chatRoom) {
+        throw new Error('Failed to create chatRoom');
+    }
+
+    try {
+        await chatRoom.save();
+        return chatRoom;
+    } catch (error) {
+        throw new Error(`Failed to create chatRoom: ${error.message}`);
+    }
 };
 
 module.exports = {createGroupConversation};
