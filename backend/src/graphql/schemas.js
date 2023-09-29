@@ -83,7 +83,7 @@ const schemas = gql`
         acceptContactRequest(requestId: ID!): ContactRequest!
         rejectContactRequest(requestId: ID!): ContactRequest!
         createChatRoom(participantIds: [ID!]!): ChatRoom!
-        createGroupConversation(emails: [String!]!): ChatRoom!
+        createGroupConversation(additionalEmails: [String!]!): ChatRoom!
     }
 
     type Subscription {

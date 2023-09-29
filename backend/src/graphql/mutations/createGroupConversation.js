@@ -5,7 +5,7 @@ const logger = require("../../logger");
 const {AuthenticationError} = require("apollo-server-express");
 const {getUserFromToken} = require("../utils");
 
-const createGroupConversation = async (_, {emails}, context) => {
+const createGroupConversation = async (_, {additionalEmails}, context) => {
     logger.debug("createGroupConversation")
     const {token} = context
     const user = await getUserFromToken(token);
@@ -13,8 +13,8 @@ const createGroupConversation = async (_, {emails}, context) => {
         logger.error('Attempted unauthorized access.');
         throw new AuthenticationError('You must be logged in');
     }
-    // Get users whose emails are in the provided list
-    const otherUsers = await User.find({email: {$in: emails}});
+    // Get users whose additionalEmails are in the provided list
+    const otherUsers = await User.find({email: {$in: additionalEmails}});
     const users = [user, ...otherUsers]
 
     if (users.length === 0) {

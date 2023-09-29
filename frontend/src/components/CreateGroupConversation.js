@@ -9,8 +9,8 @@ import {useGetCurrentUser} from "../hooks/queries/useGetCurrentUser";
 import logger from '../utils/logger';
 
 const CREATE_GROUP_CONVERSATION = gql`
-    mutation CreateGroupConversation($emails: [String!]!) {
-        createGroupConversation(emails: $emails) {
+    mutation CreateGroupConversation($additionalEmails: [String!]!) {
+        createGroupConversation(additionalEmails: $additionalEmails) {
             id
         }
     }
@@ -20,7 +20,7 @@ const CreateGroupConversation = ( ) => {
     logger.debug('CreateGroupConversation');
     const { t } = useTranslation();
     const [emailsInput, setEmailsInput] = useState('');
-    const [createGroupConversation, { data, loading, error }] = useMutation(CREATE_GROUP_CONVERSATION);
+    const [createGroupConversation, { loading, error }] = useMutation(CREATE_GROUP_CONVERSATION);
 
     const currentUser = useGetCurrentUser();
     logger.debug('currentUser', currentUser);
@@ -32,12 +32,14 @@ const CreateGroupConversation = ( ) => {
         const additionalEmails = emailsInput
             .split(',')
             .map(email => email.trim());
-        const emails = [userEmail, ...additionalEmails];
 
-        await createGroupConversation({ variables: { emails } });
+        await createGroupConversation({ variables: { additionalEmails } });
 
         if (!error) {
             setEmailsInput('');
+        } else {
+            logger.error(error);
+            throw new Error(`CREATE_GROUP_CONVERSATION Error: ${error.message}`)
         }
     };
 
@@ -46,8 +48,8 @@ const CreateGroupConversation = ( ) => {
             <Typography variant="h3">{t('createGroupConversation')}</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
-                    id="emails"
-                    label={t('emails')}
+                    id="additionalEmails"
+                    label={t('additionalEmails')}
                     placeholder={t('enterCommaSeparatedEmails')}
                     variant="outlined"
                     value={emailsInput}

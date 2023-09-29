@@ -19,9 +19,9 @@ chatList,Chat list,Liste de chat,Lista de chat
 contactRequest,Contact request,Demande de contact,Solicitud de contacto
 createGroupConversation,Create group conversation,Créer une conversation de groupe,Crear conversación grupal
 sendContactRequest,Send contact request,Envoyer une demande de contact,Enviar solicitud de contacto
-emails,Emails,Emails,Correos electrónicos
+additionalEmails,Emails,Emails,Correos electrónicos
 create,Create,Créer,Crear
-enterCommaSeparatedEmails,Enter comma separated emails,Entrez des e-mails séparés par des virgules,Ingrese correos electrónicos separados por comas
+enterCommaSeparatedEmails,Enter comma separated additionalEmails,Entrez des e-mails séparés par des virgules,Ingrese correos electrónicos separados por comas
 enterEmail,Enter email,Entrez l'email,Ingrese correo electrónico
 sending,Sending...,Envoi...,Enviando...
 send,Send,Envoyer,Enviar

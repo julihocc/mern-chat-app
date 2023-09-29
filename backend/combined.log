@@ -543,7 +543,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -571,7 +571,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: { _id: new ObjectId(\"645433394979094d96aae4a1\"), email: 'jcc@jcc.com' }"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
@@ -598,7 +598,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: { _id: new ObjectId(\"645433394979094d96aae4a1\"), email: 'jcc@jcc.com' }"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
@@ -630,7 +630,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
@@ -650,7 +650,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"User logged in: lcr@lcr"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -661,7 +661,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -683,7 +683,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"User logged in: lcr@lcr"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -694,7 +694,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"User logged in: lcr@lcr"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -705,7 +705,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"User logged in: lcr@lcr"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -716,7 +716,7 @@
 {"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -735,30 +735,6 @@
 {"level":"info","message":"token"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"user"}
-{"level":"info","message":"user"}
-{"level":"info","message":"Calling getUserFromToken"}
-{"level":"info","message":"Calling getChatRooms"}
-{"level":"info","message":"token"}
-{"level":"info","message":"Calling getUserFromToken"}
-{"level":"info","message":"Calling getContacts"}
-{"level":"info","message":"token"}
-{"level":"info","message":"Calling getUserFromToken"}
-{"level":"info","message":"user"}
-{"level":"info","message":"user"}
-{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
-{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
-{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
-{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
-{"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
-{"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
-{"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
-{"level":"info","message":"users"}
-{"level":"info","message":"users"}
-{"level":"info","message":"User logged in: lcr@lcr"}
-{"level":"info","message":"Calling getCurrentUser"}
-{"level":"info","message":"token"}
-{"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"user"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Calling getChatRooms"}
@@ -774,7 +750,31 @@
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
+{"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
+{"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
+{"level":"info","message":"users"}
+{"level":"info","message":"users"}
+{"level":"info","message":"User logged in: lcr@lcr"}
+{"level":"info","message":"Calling getCurrentUser"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getChatRooms"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"Calling getContacts"}
+{"level":"info","message":"token"}
+{"level":"info","message":"Calling getUserFromToken"}
+{"level":"info","message":"user"}
+{"level":"info","message":"user"}
+{"level":"info","message":"Contact requests fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contacts fetched for user with id: 64596c422157a93c48c27317"}
+{"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
+{"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
+{"level":"info","message":"userContacts"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"Calling getUserById"}
 {"level":"info","message":"user"}
 {"level":"info","message":"Calling getUserById"}
@@ -808,7 +808,7 @@
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -825,7 +825,7 @@
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -853,7 +853,7 @@
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
 {"level":"info","message":"User logged in: lcr@lcr"}
@@ -879,7 +879,7 @@
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
@@ -912,7 +912,7 @@
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
@@ -940,7 +940,7 @@
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
@@ -970,7 +970,7 @@
 {"level":"info","message":"Contact IDs: 645433394979094d96aae4a1"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"645433394979094d96aae4a1\"),\n  email: 'jcc@jcc.com',\n  password: '$2a$10$CanXBaNFXx30UekVeActn.9hU0cXLFJwkSlovCRx05WpGne33Gtxm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
@@ -1003,7 +1003,7 @@
 {"level":"info","message":"Contact IDs: 64596c422157a93c48c27317,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  _id: new ObjectId(\"64596c422157a93c48c27317\"),\n  email: 'lcr@lcr',\n  password: '$2a$10$TVi7FEYY01PXCNQ/gF34kudjrLSgWg4fIUArh9pjxdsRtHLt41T4y',\n  __v: 0,\n  contacts: [ new ObjectId(\"645433394979094d96aae4a1\") ]\n},{\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: lcr@lcr,abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: lcr@lcr,abc@abc.com"}
 {"0":"645433394979094d96aae4a1","1":"645433534979094d96aae4a5","level":"info","message":"Calling getUsersById"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
@@ -1035,7 +1035,7 @@
 {"level":"info","message":"Contact IDs: 64596c422157a93c48c27317,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  _id: new ObjectId(\"64596c422157a93c48c27317\"),\n  email: 'lcr@lcr',\n  password: '$2a$10$TVi7FEYY01PXCNQ/gF34kudjrLSgWg4fIUArh9pjxdsRtHLt41T4y',\n  __v: 0,\n  contacts: [ new ObjectId(\"645433394979094d96aae4a1\") ]\n},{\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: lcr@lcr,abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: lcr@lcr,abc@abc.com"}
 {"0":"645433394979094d96aae4a1","1":"645433534979094d96aae4a5","level":"info","message":"Calling getUsersById"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
@@ -1063,7 +1063,7 @@
 {"level":"info","message":"Contact IDs: 64596c422157a93c48c27317,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  _id: new ObjectId(\"64596c422157a93c48c27317\"),\n  email: 'lcr@lcr',\n  password: '$2a$10$TVi7FEYY01PXCNQ/gF34kudjrLSgWg4fIUArh9pjxdsRtHLt41T4y',\n  __v: 0,\n  contacts: [ new ObjectId(\"645433394979094d96aae4a1\") ]\n},{\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: lcr@lcr,abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: lcr@lcr,abc@abc.com"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"arrayLimit: val: 64c283f8b86c32b8036d1531,645433394979094d96aae4a1"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -1094,7 +1094,7 @@
 {"level":"info","message":"Contact IDs: 64596c422157a93c48c27317,64c283f8b86c32b8036d1531,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  _id: new ObjectId(\"64596c422157a93c48c27317\"),\n  email: 'lcr@lcr',\n  password: '$2a$10$TVi7FEYY01PXCNQ/gF34kudjrLSgWg4fIUArh9pjxdsRtHLt41T4y',\n  __v: 0,\n  contacts: [ new ObjectId(\"645433394979094d96aae4a1\") ]\n},{\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: lcr@lcr,abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: lcr@lcr,abc@abc.com"}
 {"0":"645433394979094d96aae4a1","1":"645433534979094d96aae4a5","level":"info","message":"Calling getUsersById"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
@@ -1177,7 +1177,7 @@
 {"level":"info","message":"Contact IDs: 64596c422157a93c48c27317,64c283f8b86c32b8036d1531,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  _id: new ObjectId(\"64596c422157a93c48c27317\"),\n  email: 'lcr@lcr',\n  password: '$2a$10$TVi7FEYY01PXCNQ/gF34kudjrLSgWg4fIUArh9pjxdsRtHLt41T4y',\n  __v: 0,\n  contacts: [ new ObjectId(\"645433394979094d96aae4a1\") ]\n},{\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: lcr@lcr,abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: lcr@lcr,abc@abc.com"}
 {"0":"645433394979094d96aae4a1","1":"645433534979094d96aae4a5","level":"info","message":"Calling getUsersById"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
@@ -1247,7 +1247,7 @@
 {"level":"info","message":"Contact IDs: ,,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: abc@abc.com"}
 {"level":"info","message":"User logged in: jcc@jcc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -1267,7 +1267,7 @@
 {"level":"info","message":"Contact IDs: ,,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: abc@abc.com"}
 {"0":"645433394979094d96aae4a1","1":"645433534979094d96aae4a5","level":"info","message":"Calling getUsersById"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
@@ -1306,7 +1306,7 @@
 {"level":"info","message":"Contact IDs: ,,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: abc@abc.com"}
 {"0":"645433394979094d96aae4a1","1":"645433534979094d96aae4a5","level":"info","message":"Calling getUsersById"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
@@ -1367,7 +1367,7 @@
 {"level":"info","message":"Contact IDs: ,,64c283f8b86c32b8036d1531"}
 {"level":"info","message":"Contacts: {\n  contacts: [],\n  _id: new ObjectId(\"64c283f8b86c32b8036d1531\"),\n  email: 'abc@abc.com',\n  username: 'abc',\n  password: '$2a$10$YPuIkwumIn17W7ed/Ajr/Op0MpMsT5D6TZ/vtnfXKRph/L4mZ7tfm',\n  __v: 0\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: abc@abc.com"}
+{"level":"info","message":"Contact additionalEmails: abc@abc.com"}
 {"0":"645433394979094d96aae4a1","1":"645433534979094d96aae4a5","level":"info","message":"Calling getUsersById"}
 {"0":"645433394979094d96aae4a1","1":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
 {"0":"645433534979094d96aae4a5","1":"645433394979094d96aae4a1","2":"64596c422157a93c48c27317","level":"info","message":"Calling getUsersById"}
@@ -1423,7 +1423,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User created with id: 64c4162ffbe1527e4a6253d9"}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Calling getChatRooms"}
@@ -1439,7 +1439,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Contact request sent from 64c4160efbe1527e4a6253cd to 64c4160efbe1527e4a6253cd"}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
@@ -1469,7 +1469,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"error","message":"Failed to send contact request from 64c4162ffbe1527e4a6253d9 to 64c4160efbe1527e4a6253cd: ValidationError: senderId: Path `senderId` is required."}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
@@ -1500,7 +1500,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"error","message":"Failed to send contact request from 64c4162ffbe1527e4a6253d9 to 64c4160efbe1527e4a6253cd: ValidationError: senderId: Path `senderId` is required."}
 {"level":"error","message":"Failed to send contact request from 64c4162ffbe1527e4a6253d9 to 64c4160efbe1527e4a6253cd: ValidationError: senderId: Path `senderId` is required."}
 {"level":"info","message":"S3 instance created."}
@@ -1538,7 +1538,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Contact request sent from 64c4162ffbe1527e4a6253d9 to 64c4160efbe1527e4a6253cd"}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
@@ -1559,7 +1559,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Calling getUserFromToken"}
 {"level":"info","message":"Calling getContacts"}
 {"level":"info","message":"token"}
@@ -1570,7 +1570,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -1594,7 +1594,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -1618,7 +1618,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -1676,7 +1676,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -1702,7 +1702,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -1733,7 +1733,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -1765,7 +1765,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -1787,7 +1787,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -1813,7 +1813,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2380,7 +2380,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"0":"64c43abc2e950119ce4ef671","1":"64c43af22e950119ce4ef675","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
 {"level":"info","message":"Calling getChatRooms"}
@@ -2397,7 +2397,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Calling getContactRequests"}
 {"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQzYWJjMmU5NTAxMTljZTRlZjY3MSIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA1ODQ4OTAsImV4cCI6MTY5MDU4ODQ5MH0.2GQjTenUZX8STa8HCg21AHeLqZ4bMEwf78LElL_Np_M"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -2434,7 +2434,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2463,7 +2463,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2497,7 +2497,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"0":"64c43abc2e950119ce4ef671","1":"64c43af22e950119ce4ef675","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
 {"level":"info","message":"User logged in: abc@abc.com"}
@@ -2528,7 +2528,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2562,7 +2562,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"0":"64c43abc2e950119ce4ef671","1":"64c43af22e950119ce4ef675","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
 {"level":"info","message":"User logged in: abc@abc.com"}
@@ -2598,7 +2598,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"0":"64c43abc2e950119ce4ef671","1":"64c43af22e950119ce4ef675","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
 {"level":"info","message":"Calling getContactRequests"}
@@ -2645,7 +2645,7 @@
 {"level":"info","message":"Contact IDs: ,64c441f020fa913d8e09ae2f"}
 {"level":"info","message":"Contacts: {\n  _id: new ObjectId(\"64c441f020fa913d8e09ae2f\"),\n  email: 'jcc@jcc.com',\n  username: 'jcc',\n  password: '$2a$10$R4OfFSmC9KWUdQjSa7Y8yue8Hrywiyu7iXNqSqzo2f3kVngg9whTm',\n  contacts: [ new ObjectId(\"64c43abc2e950119ce4ef671\") ],\n  __v: 1\n}"}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: jcc@jcc.com"}
+{"level":"info","message":"Contact additionalEmails: jcc@jcc.com"}
 {"0":"64c43abc2e950119ce4ef671","1":"64c43af22e950119ce4ef675","level":"info","message":"Calling getUsersById"}
 {"0":"64c441f020fa913d8e09ae2f","1":"64c43abc2e950119ce4ef671","level":"info","message":"Calling getUsersById"}
 {"level":"info","message":"users"}
@@ -2674,7 +2674,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User created with id: 64c44afe9aa5d8321554573a"}
 {"level":"info","message":"Calling getContactRequests"}
 {"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0YWZlOWFhNWQ4MzIxNTU0NTczYSIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA1ODU4NTQsImV4cCI6MTY5MDU4OTQ1NH0.XvHc2797GfNYXGajHg2NIjGKvT-cqvXNxeZgkceKdbQ"}
@@ -2698,7 +2698,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2727,7 +2727,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Calling getContacts"}
 {"level":"info","message":"token"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -2737,7 +2737,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Contact request sent from 64c44afe9aa5d8321554573a to 64c44ace9aa5d8321554572f"}
 {"level":"error","message":"Invalid email: xyz@xyz.com"}
 {"level":"info","message":"User created with id: 64c44b5c9aa5d83215545757"}
@@ -2763,7 +2763,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Contact request sent from 64c44afe9aa5d8321554573a to 64c44ace9aa5d8321554572f"}
 {"level":"info","message":"User logged in: jcc@jcc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
@@ -2793,7 +2793,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Calling getContacts"}
 {"level":"info","message":"token"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -2803,7 +2803,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -2842,7 +2842,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: jcc@jcc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2876,7 +2876,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: jcc@jcc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2910,7 +2910,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User created with id: 64c44cfafe3bc46726698d38"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -2939,7 +2939,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User created with id: 64c44d14fe3bc46726698d44"}
 {"level":"info","message":"Calling getContactRequests"}
 {"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0ZDE0ZmUzYmM0NjcyNjY5OGQ0NCIsImVtYWlsIjoieHl6QHh5ei5jb20iLCJpYXQiOjE2OTA1ODYzODgsImV4cCI6MTY5MDU4OTk4OH0.oKINK-UYlS8sRjU5ok0cnMrQ4ILQZj47OrLQPywJ7FE"}
@@ -2963,7 +2963,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Contact request sent from 64c44cfafe3bc46726698d38 to 64c44cfafe3bc46726698d38"}
 {"level":"info","message":"User logged in: xyz@xyz.com"}
 {"level":"info","message":"Calling getCurrentUser"}
@@ -2993,7 +2993,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Calling getContacts"}
 {"level":"info","message":"token"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -3003,7 +3003,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Contact request sent from 64c44d14fe3bc46726698d44 to 64c44cfafe3bc46726698d38"}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
@@ -3033,7 +3033,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Calling getContacts"}
 {"level":"info","message":"token"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -3043,7 +3043,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -3083,7 +3083,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"S3 instance created."}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -3122,7 +3122,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -3156,7 +3156,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"User logged in: abc@abc.com"}
 {"level":"info","message":"Calling getCurrentUser"}
 {"level":"info","message":"token"}
@@ -3190,7 +3190,7 @@
 {"level":"info","message":"Contact IDs: "}
 {"level":"info","message":"Contacts: "}
 {"level":"info","message":"userContacts"}
-{"level":"info","message":"Contact emails: "}
+{"level":"info","message":"Contact additionalEmails: "}
 {"level":"info","message":"Calling getContactRequests"}
 {"level":"info","message":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzQ0Y2ZhZmUzYmM0NjcyNjY5OGQzOCIsImVtYWlsIjoiYWJjQGFiYy5jb20iLCJpYXQiOjE2OTA1ODcyMTksImV4cCI6MTY5MDU5MDgxOX0.c1lVHmR6vwQ4AnunpUOjGBeuYxudQtI5GS63SWKWWFE"}
 {"level":"info","message":"Calling getUserFromToken"}
@@ -5880,3 +5880,13 @@
 {"level":"debug","message":"createGroupConversation: ijk@ijk.com"}
 {"level":"info","message":"Server is running at http://localhost:4000/graphql"}
 {"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
+{"level":"debug","message":"createGroupConversation"}
+{"level":"error","message":"Error in getUserFromToken jwt must be provided","name":"JsonWebTokenError","stack":"JsonWebTokenError: jwt must be provided\n    at module.exports [as verify] (C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\node_modules\\jsonwebtoken\\verify.js:60:17)\n    at getUserFromToken (C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\src\\graphql\\utils.js:20:29)\n    at Object.createGroupConversation (C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\src\\graphql\\mutations\\createGroupConversation.js:11:24)\n    at field.resolve (C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:56:26)\n    at resolveField (C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:464:18)\n    at C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:261:18\n    at C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10\n    at Array.reduce (<anonymous>)\n    at promiseReduce (C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\node_modules\\graphql\\jsutils\\promiseReduce.js:20:17)\n    at executeFieldsSerially (C:\\Users\\julih\\Insync\\jcc30986@gmail.com\\Google Drive\\Sandbox\\chat-app\\backend\\node_modules\\graphql\\execution\\execute.js:258:37)"}
+{"level":"debug","message":"createGroupConversation"}
+{"level":"debug","message":"createGroupConversation: abc@abc.com"}
+{"level":"debug","message":"createGroupConversation: def@def.com"}
+{"level":"debug","message":"createGroupConversation: ijk@ijk.com"}
