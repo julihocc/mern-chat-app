@@ -37,11 +37,6 @@ const Dashboard = () => {
         return <Alert severity="error">{t('An error occurred')}</Alert>;
     }
 
-    // Handle case when user data is unavailable but is supposed to be logged in
-    if (isLoggedIn && !user) {
-        return <div>Loading user data...</div>; // This could also be a spinner
-    }
-
     // Handle case when user data is unavailable and not logged in
     if (!isLoggedIn) {
         return <div>Please log in.</div>;
@@ -59,7 +54,7 @@ const Dashboard = () => {
                 <Typography variant="h1">{t('dashboard')}</Typography>
             </Grid>
             <Grid item>
-                <Typography variant="h3">
+                <Typography variant="h2">
                     {t('welcome')}, {user?.username || user?.email || t('guest')}!
                 </Typography>
             </Grid>
