@@ -6,6 +6,7 @@ export const GET_CHAT_ROOMS_FOR_CURRENT_USER = gql`
       id, 
       participantIds,
       messageIds,
+      createdAt
     }
   }
 `
