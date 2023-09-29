@@ -1,6 +1,5 @@
 // frontend\src\components\ContactListWithFullDetails.js
 import React from 'react';
-import logger from "loglevel";
 import { useGetContactsWithFullDetails } from "../hooks/queries/useGetContactsWithFullDetails";
 import {Typography} from "@mui/material";
 import {useTranslation} from "react-i18next";
