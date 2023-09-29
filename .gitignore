@@ -4,3 +4,4 @@ node_modules/
 *.copy.js
 *.js.copy
 *.zip
+*.log

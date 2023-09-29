@@ -5890,3 +5890,5 @@
 {"level":"debug","message":"createGroupConversation: abc@abc.com"}
 {"level":"debug","message":"createGroupConversation: def@def.com"}
 {"level":"debug","message":"createGroupConversation: ijk@ijk.com"}
+{"level":"info","message":"Server is running at http://localhost:4000/graphql"}
+{"level":"info","message":"Subscriptions ready at ws://localhost:4000/graphql"}
