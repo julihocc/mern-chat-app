@@ -15,7 +15,6 @@ const comparePassword = async (password, hash) => {
 }
 
 const getUserFromToken = async (token) => {
-    //logger.info("Calling getUserFromToken"); // Log the info
     const tokenString = token.split(' ')[1];
     try {
         const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);

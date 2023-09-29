@@ -129,8 +129,12 @@ const ChatRoomViewer = () => {
 
     return (<Container component={Paper} sx={{height: "90vh", mt: 2, display: "flex", flexDirection: "column", p: 2}}>
         <CssBaseline/>
-        <Typography variant="h2" sx={{mb: 2}}>{t("messages")}</Typography>
-        <Typography variant="h3" sx={{mb: 2}}>{t("chatRoom")}: {chatRoom.data.getChatRoomById.createdAt}</Typography>
+        <Typography variant="h2" sx={{mb: 2}}>
+            {t("messages")}
+        </Typography>
+        <Typography variant="h3" sx={{mb: 2}}>
+            {t("chatRoom")}: {Date(Number(chatRoom.data.getChatRoomById.createdAt))}
+        </Typography>
         <List>
             {
                 messages && messages
@@ -149,7 +153,6 @@ const ChatRoomViewer = () => {
                             )}
                         </ListItem>))}
         </List>
-
         <form onSubmit={(e) => handleSendMessage(e, currentUserId, chatRoomId)}>
             <Stack direction="row" spacing={1}>
                 <TextField type="body" label={t("newMessage")} fullWidth value={messageBody}

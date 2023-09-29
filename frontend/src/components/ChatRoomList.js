@@ -20,7 +20,7 @@ const ChatRoomList = () => {
         <div>
             <Typography variant="h3">{t('chatList')}</Typography>
             {data.getChatRoomsForCurrentUser.map((chatRoom) => (
-                <Link to={`/chat/${chatRoom.id}`}>
+                <Link to={`/chat/${chatRoom.id}`} key={chatRoom.id}>
                     Chat: {Date(Number(chatRoom.createdAt))}
                 </Link>
             ))}
