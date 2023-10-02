@@ -12,6 +12,7 @@ const changeUsername = async (_, args, context) => {
         throw new AuthenticationError('You are not logged in');
     }
     const user = await getUserFromToken(token);
+
     if (!user) {
         throw new AuthenticationError('Not user found');
     }
