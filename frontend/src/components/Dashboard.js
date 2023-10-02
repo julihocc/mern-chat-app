@@ -19,7 +19,7 @@ const Dashboard = () => {
     const dispatch = useDispatch();
 
     // Extracting relevant pieces of the state
-    const { loading, user, error, isLoggedIn } = useSelector((state) => state.user);
+    const { loading, user, error, isLoggedIn, email, username } = useSelector((state) => state.user);
 
     // Fetch current user details if logged in
     useEffect(() => {
@@ -56,7 +56,7 @@ const Dashboard = () => {
             </Grid>
             <Grid item>
                 <Typography variant="h2">
-                    {t('welcome')}, {user?.username || user?.email || t('guest')}!
+                    {t('welcome')}, {username || email || t('guest')}!
                 </Typography>
             </Grid>
             <Grid item>
