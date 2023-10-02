@@ -12,6 +12,7 @@ const { rejectContactRequest } = require("./mutations/rejectContactRequest");
 const { sendContactRequest } = require("./mutations/sendContactRequest");
 const { signUp } = require("./mutations/signUp");
 const { sendMessage } = require("./mutations/sendMessage");
+const { changeUsername } = require("./mutations/changeUsername");
 // Queries
 const  { getChatRoomById } = require("./queries/getChatRoomById");
 const { getChatRooms } = require("./queries/getChatRooms");
@@ -39,7 +40,8 @@ const resolvers = {
         rejectContactRequest,
         sendContactRequest,
         signUp,
-        sendMessage
+        sendMessage,
+        changeUsername
     },
     Query: {
         getChatRoomById,
