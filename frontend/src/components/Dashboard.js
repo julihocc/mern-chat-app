@@ -9,6 +9,7 @@ import CreateGroupConversation from './CreateGroupConversation';
 import { useTranslation } from 'react-i18next';
 import log from '../utils/logger';
 import { ContactListWithFullDetails } from './ContactListWithFullDetails';
+import { ChangeUsername } from './ChangeUsername';
 // Import the new action creator
 import { initiateFetchCurrentUser } from '../redux/actions';
 
@@ -72,6 +73,9 @@ const Dashboard = () => {
             </Grid>
             <Grid item>
                 <ContactListWithFullDetails />
+            </Grid>
+            <Grid item>
+                <ChangeUsername />
             </Grid>
         </Grid>
     );

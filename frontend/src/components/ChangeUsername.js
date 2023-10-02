@@ -1,14 +1,23 @@
 import React, {useState} from 'react';
+import {useChangeUsername} from "../hooks/mutations/useChangeUsername";
+import { Button, TextField } from '@mui/material';
+export const ChangeUsername = () => {
+    const [newUsername, setNewUsername] = useState('');
+    const changeUsername = useChangeUsername(newUsername);
 
-const ChangeUsername = () => {
-    const [username, setUsername] = useState('');
-    const [error, setError] = useState(false);
-    const [success, setSuccess] = useState(false);
+    const handleSubmit = async () => {
+        try {
+            await changeUsername({ variables: { newUsername } });
+            // Handle success, e.g., show a success message or redirect
+        } catch (error) {
+            // Handle error, e.g., show an error message
+        }
+    };
 
     return (
         <div>
-            <h1>Change Username</h1>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+            <TextField value={newUsername} onChange={(e) => setNewUsername(e.target.value)} />
+            <Button onClick={handleSubmit}>Change Username</Button>
         </div>
     );
-}
+};
