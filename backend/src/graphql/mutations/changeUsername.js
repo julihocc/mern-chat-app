@@ -24,8 +24,8 @@ const changeUsername = async (_, args, context) => {
     try {
         logger.debug(`Updating username: ${user.username} to ${newUsername}`);
         await User.updateOne({username: user.username}, {$set: {username: newUsername}});
-        logger.debug(`Username updated to ${user.username}`);
-        return user;
+        await logger.debug(`Username updated to ${user.username}`);
+        return await User.findOne({username: newUsername});
     } catch (err) {
         throw new Error(`Error updating username: ${err.message}`);
     }
