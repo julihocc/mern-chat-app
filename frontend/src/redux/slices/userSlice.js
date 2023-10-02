@@ -38,6 +38,9 @@ const userSlice = createSlice({
             state.error = action.payload;
             state.isLoggedIn = false;
         },
+        setUserUsername: (state, action) => {
+            state.user.username = action.payload;
+        }
     },
 });
 
@@ -49,6 +52,7 @@ export const {
     fetchUserRequest,
     fetchUserSuccess,
     fetchUserFailure,
+    setUserUsername
 } = userSlice.actions;
 
 // Exporting the reducer

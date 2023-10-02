@@ -18,7 +18,6 @@ const Dashboard = () => {
     const dispatch = useDispatch();
 
     const {loading, error, isLoggedIn, email, username, user} = useSelector((state) => state.user);
-
     useEffect(() => {
         if (isLoggedIn) {
             // Use the new action creator
