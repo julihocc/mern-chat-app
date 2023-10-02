@@ -2,7 +2,7 @@ node_modules/
 .idea/
 .env
 *.js.copy
-*.zip              
-.history/          
-*.code-workspace   
+*.zip
+.history/
+*.code-workspace
 *.log
