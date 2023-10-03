@@ -32,6 +32,7 @@ import {useDispatch, useSelector} from 'react-redux';
 // Import the new action creator
 import {initiateFetchCurrentUser} from '../redux/actions';
 import log from "../utils/logger";
+import {Gravatar} from './Gravatar';
 
 const ChatRoomViewer = () => {
     const {t} = useTranslation();
@@ -139,8 +140,7 @@ const ChatRoomViewer = () => {
                         <ListItem key={index}
                                   sx={{flexDirection: message.senderId.id === currentUserId ? "row-reverse" : "row"}}>
                             <ListItemAvatar>
-                                {/*TODO Allow user to change their avatar*/}
-                                <Avatar><PersonIcon/></Avatar>
+                                <Gravatar email={message.senderId.email} />
                             </ListItemAvatar>
                             <ListItemText primary={message.body} secondary={message.senderId.username}
                                           sx={{textAlign: message.senderId.id === currentUserId ? "right" : "left"}}/>
