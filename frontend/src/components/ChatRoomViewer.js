@@ -139,7 +139,7 @@ const ChatRoomViewer = () => {
                         <ListItem key={index}
                                   sx={{flexDirection: message.senderId.id === currentUserId ? "row-reverse" : "row"}}>
                             <ListItemAvatar>
-                                # TODO Allow user to change their avatar
+                                {/*TODO Allow user to change their avatar*/}
                                 <Avatar><PersonIcon/></Avatar>
                             </ListItemAvatar>
                             <ListItemText primary={message.body} secondary={message.senderId.username}
