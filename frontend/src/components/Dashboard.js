@@ -39,11 +39,6 @@ const Dashboard = () => {
         return <div>Please log in.</div>;
     }
 
-    // Handle case when user data is unavailable
-    if (!username) {
-        return <div>No user at all...</div>;
-    }
-
     // Render the main dashboard layout
     return (<Grid container spacing={3} direction="column">
             <Grid item>

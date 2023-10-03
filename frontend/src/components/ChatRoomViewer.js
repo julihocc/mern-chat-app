@@ -112,13 +112,9 @@ const ChatRoomViewer = () => {
         return <div>Please log in.</div>;
     }
 
-    // Handle case when user data is unavailable
-    if (!user) {
-        return <div>No user at all...</div>;
-    }
-    logger.debug("Current user data:", user);
-    const currentUserId = user.id;
     // =======================================
+
+    const currentUserId = user.id;
 
     if (!currentUserId) return <Typography variant="h4">Please log in to view the chat room</Typography>;
     if (isLoading) return <Loading queryName="Loading"/>;
