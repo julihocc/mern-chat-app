@@ -7,14 +7,7 @@ const {encryptPassword} = require('../utils');
 const logger = require('../../logger');
 
 const signUp = async (parent, { email, username, password, confirmPassword }) => {
-
-    // Check if email is valid
-    const emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/;
-    if (!email.match(emailValidation)) {
-        logger.error('Email format is incorrect. Please provide a valid email address'); // Log this error
-        throw new UserInputError('Email format is incorrect. Please provide a valid email address');
-    }
-
+    
     // Check if email already exists
     const existingUserByEmail = await User.findOne({ email });
     if (existingUserByEmail) {
