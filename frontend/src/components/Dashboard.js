@@ -41,7 +41,8 @@ const Dashboard = () => {
     }
 
     // Render the main dashboard layout
-    return (<Grid container spacing={3} direction="column">
+    return (
+        <Grid container spacing={3} direction="column">
             <Grid item>
                 <Typography variant="h1">{t('dashboard')}</Typography>
             </Grid>
