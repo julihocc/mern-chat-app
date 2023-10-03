@@ -7,8 +7,9 @@ import gql from 'graphql-tag';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import logger from '../utils/logger'; // Import the logger
-import { setUser } from '../redux/slices/userSlice'; // Import the setUser action from the userSlice
+import logger from '../utils/logger';
+import { setUser } from '../redux/slices/userSlice';
+import isEmail from 'validator/lib/isEmail';
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
@@ -92,6 +93,11 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         logger.debug('Handling form submit'); // Logging form submit
+
+        if (!isEmail(email)) {
+            logger.error(t('invalidEmail'));
+            return;
+        }
 
         if (email === "" || password === "") {
             logger.error(t('bothFieldsRequired'));
