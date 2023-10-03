@@ -12,6 +12,7 @@ import {ContactListWithFullDetails} from './ContactListWithFullDetails';
 import {ChangeUsername} from './ChangeUsername';
 // Import the new action creator
 import {initiateFetchCurrentUser} from '../redux/actions';
+import {Gravatar} from './Gravatar';
 
 const Dashboard = () => {
     const {t} = useTranslation();
@@ -44,10 +45,11 @@ const Dashboard = () => {
             <Grid item>
                 <Typography variant="h1">{t('dashboard')}</Typography>
             </Grid>
-            <Grid item>
+            <Grid container justifyContent="center" alignItems="center">
                 <Typography variant="h2">
                     {t('welcome')}, {username || email || t('guest')}!
                 </Typography>
+                <Gravatar email={email}/>
             </Grid>
             <Grid item>
                 <PendingContactRequestsList userId={user.id}/>
@@ -65,6 +67,7 @@ const Dashboard = () => {
                 <ContactListWithFullDetails/>
             </Grid>
             <Grid item>
+                {/*TODO Fixed the needing of refreshing to see new username*/}
                 <ChangeUsername/>
             </Grid>
         </Grid>);
