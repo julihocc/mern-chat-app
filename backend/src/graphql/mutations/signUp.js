@@ -7,7 +7,7 @@ const {encryptPassword} = require('../utils');
 const logger = require('../../logger');
 
 const signUp = async (parent, { email, username, password, confirmPassword }) => {
-    
+
     // Check if email already exists
     const existingUserByEmail = await User.findOne({ email });
     if (existingUserByEmail) {
