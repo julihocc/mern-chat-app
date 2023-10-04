@@ -33,7 +33,7 @@ const signUp = async (parent, { email, username, password, confirmPassword }) =>
 
     try {
         await user.save();
-        //logger.info(`User created with id: ${user.id}`); // Log this info
+        //logger.debug(`User created with id: ${user.id}`); // Log this info
     } catch (err) {
         logger.error(`Failed to save user: ${err}`); // Log this error
     }

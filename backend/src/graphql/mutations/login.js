@@ -17,7 +17,7 @@ const login = async (parent, {email, password}) => {
     }
     const payload = {id: user._id, email: user.email};
     const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1h'});
-    //logger.info(`User logged in: ${email}`); // log successful login
+    //logger.debug(`User logged in: ${email}`); // log successful login
     return {
         token, user
     };

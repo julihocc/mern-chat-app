@@ -30,7 +30,7 @@ const rejectContactRequest = async (parent, { requestId }, context ) => {
     try {
         contactRequest.status = 'rejected';
         await contactRequest.save();
-        //logger.info(`Contact request rejected: ${requestId}`); // log the info
+        //logger.debug(`Contact request rejected: ${requestId}`); // log the info
 
         // Added pubSub publish here for both sender and recipient
         pubSub.publish(`FRIEND_REQUEST_UPDATED_${contactRequest.senderId}`, { friendRequestUpdated: contactRequest });

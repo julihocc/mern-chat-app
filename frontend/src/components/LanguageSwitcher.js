@@ -5,11 +5,11 @@ import logger from "../utils/logger";
 const LanguageSwitcher = () => {
     const { i18n } = useTranslation();
     const changeLanguage = (language) => {
-        //logger.info('Changing language to: ' + language)
+        //logger.debug('Changing language to: ' + language)
         i18n.changeLanguage(language)
             .then(
                 () => {
-                    //logger.info('Language changed to: ' + language)
+                    //logger.debug('Language changed to: ' + language)
                     }) // Success
             .catch(
                 err => logger.error('Error changing language to: ' + language + ' - ' + err) // Error

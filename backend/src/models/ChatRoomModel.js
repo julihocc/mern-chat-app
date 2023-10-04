@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const logger = require('../logger'); // Import the logger
 
 function arrayLimit(val) {
-    //logger.info(`arrayLimit: val: ${val}`); // Replace console.log with //logger.info
+    //logger.debug(`arrayLimit: val: ${val}`); // Replace console.log with //logger.debug
     return val.length >= 2;
 }
 

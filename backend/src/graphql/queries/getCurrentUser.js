@@ -2,9 +2,9 @@ const logger = require("../../logger");
 const {AuthenticationError} = require("apollo-server-express");
 const {getUserFromToken} = require("../utils");
  const getCurrentUser= async (parent, args, context) => {
-    //logger.info("Calling getCurrentUser")
+    //logger.debug("Calling getCurrentUser")
     const {token} = context;
-    //logger.info('token', token)
+    //logger.debug('token', token)
 
     if (!token) {
         throw new AuthenticationError('You must be logged in');

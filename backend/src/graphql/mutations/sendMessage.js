@@ -14,7 +14,7 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, context) => 
     }
 
     // Log the inputs without fileUrl, as it's not defined yet
-    logger.info(`Received sendMessage request with senderId: ${senderId}, chatRoomId: ${chatRoomId}, body: ${body}`);
+    logger.debug(`Received sendMessage request with senderId: ${senderId}, chatRoomId: ${chatRoomId}, body: ${body}`);
 
     // Handle file upload if provided
     let fileContent = null;
@@ -47,7 +47,7 @@ const sendMessage = async (_, { senderId, chatRoomId, body, file }, context) => 
 
     try {
         await message.save();
-        logger.info(`Message saved with id: ${message.id}`); // Log this info
+        logger.debug(`Message saved with id: ${message.id}`); // Log this info
     } catch (err) {
         logger.error(`Failed to save message: ${err}`); // Log this error
         throw new Error("Failed to save message"); // Propagate the error to the client

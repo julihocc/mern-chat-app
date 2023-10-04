@@ -18,11 +18,17 @@ const schemas = gql`
         username: String!
         chatRoom: ID
     }
-
-
+    
     type ChatRoom {
         id: ID!
         participantIds: [ID!]!
+        messageIds: [ID]
+        createdAt: String!
+    }
+
+    type ChatRoomPopulated {
+        id: ID!
+        participantIds: [User!]!
         messageIds: [ID]
         createdAt: String!
     }
@@ -70,7 +76,7 @@ const schemas = gql`
         getUserById(userId: ID!): User
         getContactRequests(userId: ID!): [ContactRequest] # modified
         getContactRequestsByContext: [ContactRequest] # new
-        getChatRoomById(chatRoomId: ID!): ChatRoom
+        getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
         getUserByEmail(email: String!): User
         getChatRoomsByUserId(userId: ID!): [ChatRoom]
         getMessageById(messageId: ID!): Message

@@ -3,27 +3,27 @@ const {AuthenticationError} = require("apollo-server-express");
 const {getUserFromToken} = require("../utils");
 const ContactRequest = require("../../models/ContactRequestModel");
 const getContactRequestsByContext= async (parent, args, context) => {
-    //logger.info("Calling getContactRequests")
+    //logger.debug("Calling getContactRequests")
     const {token} = context;
-    //logger.info(token)
+    //logger.debug(token)
 
     if (!token) {
         throw new AuthenticationError('You must be logged in');
     }
 
     const recipient = await getUserFromToken(token);
-    //logger.info('user', !!recipient)
+    //logger.debug('user', !!recipient)
 
     // Check if the user is logged in
     if (!recipient) {
         throw new AuthenticationError('You must be logged in');
     }
 
-    //logger.info(recipient)
-    //logger.info(recipient.id)
+    //logger.debug(recipient)
+    //logger.debug(recipient.id)
     // Fetch all contact requests where the user is the recipient
     const contactRequest = ContactRequest.find({recipientId: recipient.id});
-    //logger.info(!!contactRequest)
+    //logger.debug(!!contactRequest)
     if (!contactRequest) {
         throw new Error('Contact requests not found');
     }

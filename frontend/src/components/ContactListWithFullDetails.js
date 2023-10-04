@@ -13,7 +13,7 @@ export const ContactListWithFullDetails = () => {
     if(error) return <p>Error : {error.message}</p>;
 
     const contacts = data.getContactsWithFullDetails;
-    //logger.info(contacts);
+    //logger.debug(contacts);
     return (
         <div>
             <Typography variant="h3">{t('contacts')}</Typography>

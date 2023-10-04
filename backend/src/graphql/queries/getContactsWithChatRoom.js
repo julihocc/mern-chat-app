@@ -5,7 +5,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const ChatRoom = require("../../models/ChatRoomModel");
 
 const getContactsWithChatRoom = async (parent, args, context) => {
-  //logger.info('getContactsWithFullDetails()');
+  //logger.debug('getContactsWithFullDetails()');
   const { token } = context;
   if (!token) {
     throw new AuthenticationError('You must be logged in to get contacts');

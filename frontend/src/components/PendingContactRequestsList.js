@@ -37,7 +37,7 @@ const PendingContactRequestsList = () => {
                         <div>
                             <button onClick={async () => { // This becomes an async function
                                 try {
-                                    //logger.info('Accept contact request');
+                                    //logger.debug('Accept contact request');
                                     await acceptContactRequestHandler({variables: {requestId: id}}); // Use the handler here with the requestId
                                 } catch (error) {
                                     logger.error('Error accepting contact request:', error);
@@ -46,7 +46,7 @@ const PendingContactRequestsList = () => {
                             </button>
                             <button onClick={async () => { // This becomes an async function
                                 try {
-                                    //logger.info('Reject contact request');
+                                    //logger.debug('Reject contact request');
                                     await rejectContactRequestHandler({variables: {requestId: id}}); // Use the handler here with the requestId
                                 } catch (error) {
                                     logger.error('Error rejecting contact request:', error);
