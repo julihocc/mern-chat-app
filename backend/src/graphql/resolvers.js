@@ -28,7 +28,7 @@ const { getUserById } = require("./queries/getUserById");
 const { getUsersById } = require("./queries/getUsersById");
 const { getChatRoomsForCurrentUser } = require("./queries/getChatRoomsForCurrentUser");
 const { getOneToOneChatRoom } = require("./queries/getOneToOneChatRoom");
-
+const { getContactsWithChatRoom } = require("./queries/getContactsWithChatRoom");
 const resolvers = {
     Upload: GraphQLUpload,
     Subscription: subscriptions,
@@ -57,7 +57,8 @@ const resolvers = {
         getUserById,
         getUsersById,
         getChatRoomsForCurrentUser,
-        getOneToOneChatRoom
+        getOneToOneChatRoom,
+        getContactsWithChatRoom
     }
 };
 

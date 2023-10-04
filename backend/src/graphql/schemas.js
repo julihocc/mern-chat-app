@@ -9,7 +9,14 @@ const schemas = gql`
         id: ID!
         email: String!
         username: String!
-        contacts: [ID] # new field
+        contacts: [ID] 
+    }
+    
+    type Contact {
+        id: ID!
+        email: String!
+        username: String!
+        chatRoom: ID
     }
 
 
@@ -74,6 +81,7 @@ const schemas = gql`
         getChatRoomUsers(chatRoomId: ID!): [User]
         getChatRoomsForCurrentUser: [ChatRoom]
         getOneToOneChatRoom(contactId: ID): ChatRoom
+        getContactsWithChatRoom: [Contact]
     }
 
     type Mutation {
