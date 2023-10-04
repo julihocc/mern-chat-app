@@ -41,7 +41,7 @@ const sendContactRequest = async (parent, {senderId, recipientId}, context) => {
 
         await contactRequest.save();
 
-        //logger.info(`Contact request sent from ${senderId} to ${recipientId}`); // log the info
+        //logger.debug(`Contact request sent from ${senderId} to ${recipientId}`); // log the info
 
         return contactRequest;
     } catch (err) {

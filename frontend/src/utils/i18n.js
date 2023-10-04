@@ -6,7 +6,7 @@ import { fetchTranslations } from './translationService';
 import logger from './logger';
 
 const resources = await fetchTranslations();
-//logger.info(resources)
+//logger.debug(resources)
 
 i18n
     .use(LanguageDetector)

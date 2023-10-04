@@ -36,7 +36,7 @@ app.use(cookieParser());
 async function startServer() {
     try {
         await connectDB();
-        //logger.info('Connected to MongoDB'); // Changed this line
+        //logger.debug('Connected to MongoDB'); // Changed this line
     } catch (err) {
         logger.error('Error connecting to MongoDB:', err); // And this line
     }
@@ -76,8 +76,8 @@ async function startServer() {
     );
 
     httpServer.listen(PORT, () => {
-        logger.info(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // Changed this line
-        logger.info(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // And this line
+        logger.debug(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`); // Changed this line
+        logger.debug(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`); // And this line
     });
 
 }

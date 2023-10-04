@@ -13,7 +13,7 @@ export const ContactListWithChatRoom = () => {
     if(error) return <p>Error : {error.message}</p>;
 
     const contacts = data.getContactsWithChatRoom;
-    //logger.info(contacts);
+    //logger.debug(contacts);
     return (
         <div>
             <Typography variant="h3">{t('contacts')}</Typography>

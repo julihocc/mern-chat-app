@@ -24,7 +24,7 @@ export const ChangeUsername = () => {
     useEffect(() => {
         if (usernameHasChanged) {
             // window.location.reload();
-            logger.info(`Username has been changed to ${newUsername}`);
+            logger.debug(`Username has been changed to ${newUsername}`);
         }
     }, [usernameHasChanged]);
 
