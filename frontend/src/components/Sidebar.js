@@ -3,6 +3,7 @@ import Drawer from '@mui/material/Drawer';
 import ChatRoomList from './ChatRoomList';
 import {ContactListWithFullDetails} from "./ContactListWithFullDetails";
 import {Gravatar} from "./Gravatar";
+import {ContactListWithChatRoom} from "./ContactListWithChatRoom";
 
 export const Sidebar = () => {
     return (
@@ -14,7 +15,7 @@ export const Sidebar = () => {
         >
             <Gravatar/>
             <ChatRoomList/>
-            <ContactListWithFullDetails/>
+            <ContactListWithChatRoom/>
         </Drawer>
     );
 }
