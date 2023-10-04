@@ -8,11 +8,8 @@ import PendingContactRequestsList from './PendingContactRequestsList';
 import CreateGroupConversation from './CreateGroupConversation';
 import {useTranslation} from 'react-i18next';
 import logger from '../utils/logger';
-import {ContactListWithFullDetails} from './ContactListWithFullDetails';
-import {ChangeUsername} from './ChangeUsername';
 // Import the new action creator
 import {initiateFetchCurrentUser} from '../redux/actions';
-import {Gravatar} from './Gravatar';
 import {Sidebar} from './Sidebar';
 import {Container} from '@mui/material';
 
@@ -63,10 +60,6 @@ const Dashboard = () => {
             </Grid>
             <Grid item>
                 <SendContactRequestForm/>
-            </Grid>
-            <Grid item>
-                {/*TODO Fixed the needing of refreshing to see new username*/}
-                <ChangeUsername/>
             </Grid>
         </Grid>
 </Container>

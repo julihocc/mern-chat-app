@@ -10,6 +10,7 @@ import ChatRoomViewer from "./components/ChatRoomViewer";
 import Signup from "./components/SignUp";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import {logoutUser, setUser} from './redux/slices/userSlice';
+import Settings from "./components/Settings";
 
 const MainRoutes = () => {
     const dispatch = useDispatch();
@@ -82,6 +83,7 @@ const MainRoutes = () => {
                         }
                     />
                     <Route path="/chat/:chatRoomId" element={<ChatRoomViewer/>}/>
+                    <Route path="/settings" element={<Settings/>}/>
                 </Routes>
             </Container>
         </>
