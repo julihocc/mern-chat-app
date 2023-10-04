@@ -12,6 +12,7 @@ export const Sidebar = () => {
             style={{ width: '240px' }}
             PaperProps={{ style: { width: '240px' } }}
         >
+            <Gravatar/>
             <ChatRoomList/>
             <ContactListWithFullDetails/>
         </Drawer>

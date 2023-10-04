@@ -14,6 +14,7 @@ import {ChangeUsername} from './ChangeUsername';
 import {initiateFetchCurrentUser} from '../redux/actions';
 import {Gravatar} from './Gravatar';
 import {Sidebar} from './Sidebar';
+import {Container} from '@mui/material';
 
 const Dashboard = () => {
     const {t} = useTranslation();
@@ -43,10 +44,8 @@ const Dashboard = () => {
 
     // Render the main dashboard layout
     return (
-        <div>
-        <Sidebar/>
-            <div style={{ flex: 1, marginLeft: '240px' }}> {/* Adjust marginLeft based on Sidebar width */}
-
+<Container>
+                <Sidebar/>
                 <Grid container spacing={3} direction="column">
             <Grid item>
                 <Typography variant="h1">{t('dashboard')}</Typography>
@@ -55,7 +54,6 @@ const Dashboard = () => {
                 <Typography variant="h2">
                     {t('welcome')}, {username || email || t('guest')}!
                 </Typography>
-                <Gravatar email={email}/>
             </Grid>
             <Grid item>
                 <PendingContactRequestsList userId={user.id}/>
@@ -67,18 +65,12 @@ const Dashboard = () => {
                 <SendContactRequestForm/>
             </Grid>
             <Grid item>
-                <ChatRoomList/>
-            </Grid>
-            <Grid item>
-                <ContactListWithFullDetails/>
-            </Grid>
-            <Grid item>
                 {/*TODO Fixed the needing of refreshing to see new username*/}
                 <ChangeUsername/>
             </Grid>
-        </Grid>);
-        </div>
-        </div>);
+        </Grid>
+</Container>
+    )
 };
 
 export default Dashboard;
