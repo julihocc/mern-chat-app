@@ -13,6 +13,7 @@ import {ChangeUsername} from './ChangeUsername';
 // Import the new action creator
 import {initiateFetchCurrentUser} from '../redux/actions';
 import {Gravatar} from './Gravatar';
+import {Sidebar} from './Sidebar';
 
 const Dashboard = () => {
     const {t} = useTranslation();
@@ -42,7 +43,11 @@ const Dashboard = () => {
 
     // Render the main dashboard layout
     return (
-        <Grid container spacing={3} direction="column">
+        <div>
+        <Sidebar/>
+            <div style={{ flex: 1, marginLeft: '240px' }}> {/* Adjust marginLeft based on Sidebar width */}
+
+                <Grid container spacing={3} direction="column">
             <Grid item>
                 <Typography variant="h1">{t('dashboard')}</Typography>
             </Grid>
@@ -72,6 +77,8 @@ const Dashboard = () => {
                 <ChangeUsername/>
             </Grid>
         </Grid>);
+        </div>
+        </div>);
 };
 
 export default Dashboard;
