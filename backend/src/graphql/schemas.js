@@ -100,6 +100,7 @@ const schemas = gql`
         createChatRoom(participantIds: [ID!]!): ChatRoom!
         createGroupConversation(additionalEmails: [String!]!): ChatRoom!
         changeUsername(newUsername: String!): User
+        changePassword(oldPassword:String! ,newPassword: String!): User
     }
 
     type Subscription {

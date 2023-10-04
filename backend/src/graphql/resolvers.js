@@ -13,6 +13,7 @@ const { sendContactRequest } = require("./mutations/sendContactRequest");
 const { signUp } = require("./mutations/signUp");
 const { sendMessage } = require("./mutations/sendMessage");
 const { changeUsername } = require("./mutations/changeUsername");
+const { changePassword } = require("./mutations/changePassword");
 // Queries
 const  { getChatRoomById } = require("./queries/getChatRoomById");
 const { getChatRooms } = require("./queries/getChatRooms");
@@ -41,7 +42,8 @@ const resolvers = {
         sendContactRequest,
         signUp,
         sendMessage,
-        changeUsername
+        changeUsername,
+        changePassword
     },
     Query: {
         getChatRoomById,
