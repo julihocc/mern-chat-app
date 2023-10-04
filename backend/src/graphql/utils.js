@@ -7,11 +7,13 @@ const logger = require('../logger'); // Import the logger
 const saltRounds = 10;
 
 const encryptPassword = async (password) => {
-    return await bcrypt.hash(password, saltRounds);
+    // return await bcrypt.hash(password, saltRounds);
+    return password
 }
 
 const comparePassword = async (password, hash) => {
-    return await bcrypt.compare(password, hash);
+    // return await bcrypt.compare(password, hash);
+    return password === hash
 }
 
 const getUserFromToken = async (token) => {
