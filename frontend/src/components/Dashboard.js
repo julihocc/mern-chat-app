@@ -56,7 +56,7 @@ const Dashboard = () => {
                 </Typography>
             </Grid>
             <Grid item>
-                <PendingContactRequestsList userId={user.id}/>
+                <PendingContactRequestsList/>
             </Grid>
             <Grid item>
                 <CreateGroupConversation/>

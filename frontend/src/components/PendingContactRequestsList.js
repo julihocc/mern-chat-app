@@ -5,9 +5,11 @@ import { useAcceptContactRequest } from '../hooks/mutations/useAcceptContactRequ
 import { useRejectContactRequest } from '../hooks/mutations/useRejectContactRequest';
 import { useTranslation } from "react-i18next";
 import logger from "loglevel";
+import {useSelector} from "react-redux";
 
-const PendingContactRequestsList = ({userId}) => {
-
+const PendingContactRequestsList = () => {
+    const {id} = useSelector((state) => state.user);
+    const userId = id;
     const {t} = useTranslation();
     const {loading, error, data} = useGetContactRequestsByContext();
     const acceptContactRequestHandler = useAcceptContactRequest(userId);
