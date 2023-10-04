@@ -73,6 +73,7 @@ const schemas = gql`
         getContactsWithFullDetails: [User]
         getChatRoomUsers(chatRoomId: ID!): [User]
         getChatRoomsForCurrentUser: [ChatRoom]
+        getOneToOneChatRoom(contactId: ID): ChatRoom
     }
 
     type Mutation {

@@ -11,7 +11,6 @@ const {getUserFromToken} = require("../utils");
     }
 
     const user = await getUserFromToken(token);
-    //logger.info('user', !!user)
 
     if (!user) {
         throw new AuthenticationError('Invalid token');
