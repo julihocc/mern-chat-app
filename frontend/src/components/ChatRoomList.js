@@ -8,10 +8,10 @@ import {Link} from "react-router-dom";
 
 const ChatRoomList = () => {
     const {t} = useTranslation();
-    const { loading, error, data } = useGetChatRoomsForCurrentUser();  // using the hook
+    const { loading, error, data } = useGetChatRoomsForCurrentUser();
     if (loading) return <CircularProgress />;
     if (error) {
-        logger.error(`Error when trying to get chat rooms: ${error.message}`);  // using logger
+        logger.error(`Error when trying to get chat rooms: ${error.message}`);
         return <Alert severity="error">Error: {error.message}</Alert>;
     }
     logger.debug(`Data found: ${JSON.stringify(data)}`);  // using logger
