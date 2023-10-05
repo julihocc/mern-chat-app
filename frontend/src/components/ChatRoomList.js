@@ -1,42 +1,64 @@
 // path: frontend/src/components/ChatRoomList.js
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { CircularProgress, Alert, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import logger from '../utils/logger';  // importing the logger
 import { useGetChatRoomsForCurrentUser } from "../hooks/queries/useGetChatRoomsForCurrentUser";
 import {Link} from "react-router-dom";
 
-
-
-
 const ChatRoomList = () => {
     const {t} = useTranslation();
 
-    const [sortOption, setSortOption] = useState('ascending'); // default to date
+    const { loading, error, data } = useGetChatRoomsForCurrentUser();
+    const [sortOption, setSortOption] = useState('ascending');
+    const [sortedChatRooms, setSortedChatRooms] = useState([]);
+    useEffect(() => {
+
+        let sorted;
+
+        if(data) {
+            sorted = [...data.getChatRoomsForCurrentUser];
+            logger.debug(`Sorted Chatrooms: ${ data.getChatRoomsForCurrentUser.map((chatRoom) => (chatRoom.createdAt))}`);
+        } else {
+            sorted = [];
+        }
+
+        if (sortOption === 'ascending') {
+            sorted.sort(
+                (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+            );
+        } else if (sortOption === 'descending') {
+            sorted.sort(
+                (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+            );
+        }
+
+        setSortedChatRooms(sorted);
+    }, [sortOption, data]);
 
     const handleSortChange = (event) => {
         setSortOption(event.target.value);
+        logger.debug(`Sort option changed to: ${event.target.value}`)
     };
-
-    const { loading, error, data } = useGetChatRoomsForCurrentUser();
     if (loading) return <CircularProgress />;
     if (error) {
         logger.error(`Error when trying to get chat rooms: ${error.message}`);
         return <Alert severity="error">Error: {error.message}</Alert>;
     }
-    logger.debug(`Data found: ${JSON.stringify(data)}`);  //
 
-    let sortedChatRooms = [...data.getChatRoomsForCurrentUser];
+    // let sortedChatRooms = [...data.getChatRoomsForCurrentUser];
 
-    if (sortOption === 'ascending') {
-        sortedChatRooms.sort(
-            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-    } else if (sortOption === 'descending') {
-        sortedChatRooms.sort(
-            (a, b) =>  new Date(a.createdAt) - new Date(b.createdAt)
-        );
-    }
+    // if (sortOption === 'ascending') {
+    //     sortedChatRooms.sort(
+    //         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+    //     );
+    // } else if (sortOption === 'descending') {
+    //     sortedChatRooms.sort(
+    //         (a, b) =>  new Date(b.createdAt) - new Date(a.createdAt)
+    //     );
+    // }
+
+
 
     // using logger
     return (
@@ -45,8 +67,8 @@ const ChatRoomList = () => {
                 {t('chatList')}
             </Typography>
             <select onChange={handleSortChange}>
-                <option value="date">Ascending</option>
-                <option value="name">Descending</option>
+                <option value="ascending">Ascending</option>
+                <option value="descending">Descending</option>
             </select>
             {/*<ul>*/}
             {/*{data.getChatRoomsForCurrentUser.map((chatRoom) => (*/}
@@ -57,15 +79,18 @@ const ChatRoomList = () => {
             {/*    </li>*/}
             {/*))}*/}
             {/*</ul>*/}
-            <ul>
-                {sortedChatRooms.map((chatRoom) => (
-                    <li key={chatRoom.id}>
-                        <Link to={`/chat/${chatRoom.id}`}>
-                            Chat: {chatRoom.createdAt}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+
+            <div key={sortOption}>
+                <ul>
+                    {sortedChatRooms.map((chatRoom) => (
+                        <li key={chatRoom.id}>
+                            <Link to={`/chat/${chatRoom.id}`}>
+                                Chat: {chatRoom.createdAt}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
         </div>
     );
