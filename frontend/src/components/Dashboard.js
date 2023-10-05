@@ -1,8 +1,7 @@
 // frontend/src/components/Dashboard.js
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Alert, CircularProgress, Grid, Typography} from '@mui/material';
-import ChatRoomList from './ChatRoomList';
+import {Alert, CircularProgress, Container, Grid, Typography} from '@mui/material';
 import SendContactRequestForm from './SendContactRequestForm';
 import PendingContactRequestsList from './PendingContactRequestsList';
 import CreateGroupConversation from './CreateGroupConversation';
@@ -10,8 +9,10 @@ import {useTranslation} from 'react-i18next';
 import logger from '../utils/logger';
 // Import the new action creator
 import {initiateFetchCurrentUser} from '../redux/actions';
-import {Sidebar} from './Sidebar';
-import {Container} from '@mui/material';
+import {Gravatar} from "./Gravatar";
+import ChatRoomList from './ChatRoomList';
+import {ContactListWithChatRoom} from "./ContactListWithChatRoom";
+import {Link} from "react-router-dom";
 
 const Dashboard = () => {
     const {t} = useTranslation();
@@ -40,30 +41,54 @@ const Dashboard = () => {
     }
 
     // Render the main dashboard layout
-    return (
-<Container>
-                <Sidebar/>
-                <Grid container spacing={3} direction="column">
-            <Grid item>
-                <Typography variant="h1">{t('dashboard')}</Typography>
-            </Grid>
-            <Grid container justifyContent="center" alignItems="center">
-                <Typography variant="h2">
-                    {t('welcome')}, {username || email || t('guest')}!
-                </Typography>
-            </Grid>
-            <Grid item>
-                <PendingContactRequestsList/>
-            </Grid>
-            <Grid item>
-                <CreateGroupConversation/>
-            </Grid>
-            <Grid item>
-                <SendContactRequestForm/>
+    return (<Container>
+        <Grid container spacing={3} direction="column">
+
+            <Grid container direction="row" spacing={10}>
+
+                {/* Column 1 */}
+                <Grid item xs={7}>
+                    {/*<Grid container direction="column" spacing={3}>*/}
+                        <Grid item>
+                            <Typography>
+                                <Typography variant="h1">
+                                    {t('dashboard')}
+                                </Typography>
+                                {t('welcome')}, {username || email || t('guest')}!
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <PendingContactRequestsList/>
+                        </Grid>
+                        <Grid item>
+                            <CreateGroupConversation/>
+                        </Grid>
+                        <Grid item>
+                            <SendContactRequestForm/>
+                        </Grid>
+                    {/*</Grid>*/}
+                </Grid>
+
+                {/* Column 2 */}
+                <Grid item xs={5}>
+                    <Grid item>
+                        <Gravatar/>
+                    </Grid>
+                    <Grid item>
+                        <ChatRoomList/>
+                    </Grid>
+                    <Grid item>
+                        <ContactListWithChatRoom/>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/settings">
+                            <Typography variant="h3">{t('settings')}</Typography>
+                        </Link>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
-</Container>
-    )
+    </Container>)
 };
 
 export default Dashboard;
