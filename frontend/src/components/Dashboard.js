@@ -42,56 +42,53 @@ const Dashboard = () => {
 
     // Render the main dashboard layout
     return (<Container>
-            <Grid container spacing={3} direction="column">
+        <Grid container spacing={3} direction="column">
 
-                <Grid container direction="row" spacing={10}>
+            <Grid container direction="row" spacing={10}>
 
-                    {/* Column 1 */}
-                    <Grid item xs={7}>
-                        <Grid container direction="column" spacing={3}>
-                            <Grid item>
-                                <Typography >
-                                    <Typography variant="h1">
-                                        {t('dashboard')}
-                                    </Typography>
-                                    {t('welcome')}, {username || email || t('guest')}!
+                {/* Column 1 */}
+                <Grid item xs={7}>
+                    {/*<Grid container direction="column" spacing={3}>*/}
+                        <Grid item>
+                            <Typography>
+                                <Typography variant="h1">
+                                    {t('dashboard')}
                                 </Typography>
-                            </Grid>
-                            <Grid item>
-                                <PendingContactRequestsList/>
-                            </Grid>
-                            <Grid item>
-                                <CreateGroupConversation/>
-                            </Grid>
-                            <Grid item>
-                                <SendContactRequestForm/>
-                            </Grid>
+                                {t('welcome')}, {username || email || t('guest')}!
+                            </Typography>
                         </Grid>
-                    </Grid>
+                        <Grid item>
+                            <PendingContactRequestsList/>
+                        </Grid>
+                        <Grid item>
+                            <CreateGroupConversation/>
+                        </Grid>
+                        <Grid item>
+                            <SendContactRequestForm/>
+                        </Grid>
+                    {/*</Grid>*/}
+                </Grid>
 
-                    {/* Column 2 */}
-                    <Grid item xs={5}>
-                        {/* Add your new components here */}
-                        <Grid item>
-                            {/* Example component */}
-                            <Gravatar/>
-                        </Grid>
-                        <Grid item>
-                            {/* Another example component */}
-                            <ChatRoomList/>
-                        </Grid>
-                        <Grid item>
-                            <ContactListWithChatRoom/>
-                        </Grid>
-                        <Grid item>
-                            <Link to="/settings">
-                                <Typography variant="h3">{t('settings')}</Typography>
-                            </Link>
-                        </Grid>
+                {/* Column 2 */}
+                <Grid item xs={5}>
+                    <Grid item>
+                        <Gravatar/>
+                    </Grid>
+                    <Grid item>
+                        <ChatRoomList/>
+                    </Grid>
+                    <Grid item>
+                        <ContactListWithChatRoom/>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/settings">
+                            <Typography variant="h3">{t('settings')}</Typography>
+                        </Link>
                     </Grid>
                 </Grid>
             </Grid>
-        </Container>)
+        </Grid>
+    </Container>)
 };
 
 export default Dashboard;
