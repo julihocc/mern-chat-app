@@ -22,7 +22,7 @@ const ChatRoomList = () => {
             {data.getChatRoomsForCurrentUser.map((chatRoom) => (
                 <li key={chatRoom.id}>
                 <Link to={`/chat/${chatRoom.id}`} key={chatRoom.id}>
-                    Chat: {Date(Number(chatRoom.createdAt))}
+                    Chat: {Date(chatRoom.createdAt)}
                 </Link>
                 </li>
             ))}
