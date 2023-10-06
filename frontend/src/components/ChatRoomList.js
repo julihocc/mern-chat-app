@@ -18,20 +18,23 @@ const ChatRoomList = () => {
 
         if(data) {
             sorted = [...data.getChatRoomsForCurrentUser];
-            logger.debug(`Sorted Chatrooms: ${ data.getChatRoomsForCurrentUser.map((chatRoom) => (chatRoom.createdAt))}`);
         } else {
             sorted = [];
         }
 
         if (sortOption === 'ascending') {
+            logger.debug(`Sorting chat rooms in ascending order`)
             sorted.sort(
-                (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+                (a, b) => a.createdAt - b.createdAt
             );
         } else if (sortOption === 'descending') {
+            logger.debug(`Sorting chat rooms in descending order`)
             sorted.sort(
-                (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+                (a, b) => b.createdAt - a.createdAt
             );
         }
+
+        logger.debug(`Sorted Chatrooms ${sortOption}: ${ sorted.map((chatRoom) => (chatRoom.createdAt))}`);
 
         setSortedChatRooms(sorted);
     }, [sortOption, data]);
@@ -46,20 +49,6 @@ const ChatRoomList = () => {
         return <Alert severity="error">Error: {error.message}</Alert>;
     }
 
-    // let sortedChatRooms = [...data.getChatRoomsForCurrentUser];
-
-    // if (sortOption === 'ascending') {
-    //     sortedChatRooms.sort(
-    //         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-    //     );
-    // } else if (sortOption === 'descending') {
-    //     sortedChatRooms.sort(
-    //         (a, b) =>  new Date(b.createdAt) - new Date(a.createdAt)
-    //     );
-    // }
-
-
-
     // using logger
     return (
         <div>
@@ -70,22 +59,13 @@ const ChatRoomList = () => {
                 <option value="ascending">Ascending</option>
                 <option value="descending">Descending</option>
             </select>
-            {/*<ul>*/}
-            {/*{data.getChatRoomsForCurrentUser.map((chatRoom) => (*/}
-            {/*    <li key={chatRoom.id}>*/}
-            {/*    <Link to={`/chat/${chatRoom.id}`} key={chatRoom.id}>*/}
-            {/*        Chat: {Date(chatRoom.createdAt)}*/}
-            {/*    </Link>*/}
-            {/*    </li>*/}
-            {/*))}*/}
-            {/*</ul>*/}
 
             <div key={sortOption}>
                 <ul>
                     {sortedChatRooms.map((chatRoom) => (
                         <li key={chatRoom.id}>
                             <Link to={`/chat/${chatRoom.id}`}>
-                                Chat: {chatRoom.createdAt}
+                                Chat: {Date(chatRoom.createdAt)}
                             </Link>
                         </li>
                     ))}
