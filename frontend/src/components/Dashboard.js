@@ -18,7 +18,7 @@ const Dashboard = () => {
     const {t} = useTranslation();
     const dispatch = useDispatch();
 
-    const {loading, error, isLoggedIn, email, username, user} = useSelector((state) => state.user);
+    const {loading, error, isLoggedIn, email, username} = useSelector((state) => state.user);
     useEffect(() => {
         if (isLoggedIn) {
             // Use the new action creator
