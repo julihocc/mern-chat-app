@@ -1,0 +1,41 @@
+# Backend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: jdk2py/backend:latest
+          env:
+            - name: MONGODB_URL
+              value: "mongodb://localhost:27017"
+            - name: PORT
+              value: "4000"
+            - name: JWT_SECRET
+              value: "mysecretkey"
+          ports:
+            - containerPort: 4000
+
+# Backend Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 4000
+      targetPort: 4000
+  selector:
+    app: backend
