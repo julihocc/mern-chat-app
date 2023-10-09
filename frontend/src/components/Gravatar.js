@@ -23,7 +23,6 @@ export const Gravatar = () => {
         const gravatarUrl = `https://www.gravatar.com/avatar/${hash}?s=${80}`;
         return <img src={gravatarUrl} alt="User Avatar"/>;
     } catch {
-        return <div>Error generating Gravatar</div>;
-        return <div></div>
+        return <div>Refresh if your Gravatar is not ready</div>;
     }
 };
