@@ -49,7 +49,7 @@ const Dashboard = () => {
             <Grid container direction="row" spacing={10}>
 
                 {/* Column 1 */}
-                <Grid item xs={12} md={7}>
+                <Grid item xs={12} sm={8} md={7}>
                     {/*<Grid container direction="column" spacing={3}>*/}
                         <Grid item>
                             <Typography>
@@ -72,7 +72,7 @@ const Dashboard = () => {
                 </Grid>
 
                 {/* Column 2 */}
-                <Grid item xs={12} md={5}>
+                <Grid item xs={12} sm={4} md={5}>
                     <Grid item>
                         <Gravatar/>
                     </Grid>
