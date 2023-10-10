@@ -21,3 +21,19 @@ code {
   padding: 20px;
   overflow-y: auto;
 }
+
+/* For screens smaller than 600px */
+@media (max-width: 599px) {
+  .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* For screens between 600px and 899px */
+@media (min-width: 600px) and (max-width: 899px) {
+  .sidebar {
+    width: 50%;
+    padding: 15px;
+  }
+}
