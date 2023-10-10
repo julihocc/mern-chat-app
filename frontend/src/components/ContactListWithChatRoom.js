@@ -18,7 +18,7 @@ export const ContactListWithChatRoom = () => {
         <div>
             <Typography variant="h3">{t('contacts')}</Typography>
             <ul>
-                {contacts.map(contact => (
+                {contacts && contacts.map(contact => (
                     <li key={contact.id}>
                         <Link to={`/chat/${contact.chatRoom}`} key={contact.id}>
                             Chat: {contact.email}
