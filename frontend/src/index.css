@@ -22,6 +22,12 @@ code {
   overflow-y: auto;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 /* For screens smaller than 600px */
 @media (max-width: 599px) {
   .sidebar {
