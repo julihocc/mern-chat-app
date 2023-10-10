@@ -14,7 +14,7 @@ code {
 /* styles.css or Sidebar.css */
 
 .sidebar {
-  width: 250px;
+  width: 30%;
   height: 100vh;
   background-color: #f5f5f5;
   border-right: 1px solid #ddd;
