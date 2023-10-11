@@ -84,6 +84,6 @@ async function startServer() {
     try {
         await startServer();
     } catch (err) {
-        logger.error('Error starting the backend:', err);  
+        logger.error('Error starting the backend:', err);
     }
 })();
