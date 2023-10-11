@@ -107,7 +107,6 @@ const typeDefs = gql`
     ): SignupPayload!
     login(email: String!, password: String!): LoginPayload!
     sendMessage(
-      senderId: ID!
       chatRoomId: ID!
       body: String
       file: Upload
