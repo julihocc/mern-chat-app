@@ -3,7 +3,7 @@
 const User = require('./models/UserModel');
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
-const logger = require('./logger'); 
+const logger = require('./logger');
 
 async function getUserById(userId) {
     try {

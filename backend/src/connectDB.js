@@ -10,9 +10,9 @@ const connectDB = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        logger.debug(`Connected to MongoDB: ${process.env.MONGODB_URL}`); // Log the info
+        logger.debug(`Connected to MongoDB: ${process.env.MONGODB_URL}`);
     } catch (err) {
-        logger.error('Error connecting to MongoDB:', err); // Log the error
+        logger.error('Error connecting to MongoDB:', err);
         throw err;
     }
 };
