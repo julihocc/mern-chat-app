@@ -4,8 +4,8 @@ import { useGetContactRequestsByContext } from '../hooks/queries/useGetContactRe
 import { useAcceptContactRequest } from '../hooks/mutations/useAcceptContactRequest';
 import { useRejectContactRequest } from '../hooks/mutations/useRejectContactRequest';
 import { useTranslation } from "react-i18next";
-import logger from "loglevel";
 import {useSelector} from "react-redux";
+import logger from "../utils/logger";
 
 const PendingContactRequestsList = () => {
     const {id} = useSelector((state) => state.user);
@@ -30,10 +30,9 @@ const PendingContactRequestsList = () => {
             <ul>
                 {pendingRequests.map(({id, senderId, status, createdAt}) => (
                     <li key={id}>
-                        <p>id: {id}</p>
-                        <p>sender: {senderId}</p>
+                        <p>sender: {senderId.email}</p>
                         <p>status: {status}</p>
-                        <p>createdAt: {createdAt}</p>
+                        <p>createdAt: {Date(createdAt)}</p>
                         <div>
                             <button onClick={async () => { // This becomes an async function
                                 try {

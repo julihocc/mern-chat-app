@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export const SEND_CONTACT_REQUEST = gql`
-    mutation SendContactRequest($senderId: ID!, $recipientId: ID!) {
-        sendContactRequest(senderId: $senderId, recipientId: $recipientId) {
+    mutation SendContactRequest($recipientId: ID!) {
+        sendContactRequest(recipientId: $recipientId) {
             senderId
             recipientId
             status

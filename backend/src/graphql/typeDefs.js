@@ -71,7 +71,7 @@ const typeDefs = gql`
 
     type ContactRequestPopulated {
         id: ID!
-        senderId: User # modified
+        senderId: User 
         recipientId: ID!
         status: String!
         createdAt: String!
@@ -102,7 +102,7 @@ const typeDefs = gql`
         signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
         sendMessage(senderId:ID!, chatRoomId: ID!,  body: String,  file: Upload): Message!
-        sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
+        sendContactRequest(recipientId:ID!): ContactRequest
         acceptContactRequest(requestId: ID!): ContactRequest!
         rejectContactRequest(requestId: ID!): ContactRequest!
         createChatRoom(participantIds: [ID!]!): ChatRoom!
