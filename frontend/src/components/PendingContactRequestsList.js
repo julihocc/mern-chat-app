@@ -1,9 +1,9 @@
 // path: frontend/src/components/PendingContactRequestsList.js
-import React from 'react';
-import { useGetContactRequestsByContext } from '../hooks/queries/useGetContactRequestsByContext';
-import { useAcceptContactRequest } from '../hooks/mutations/useAcceptContactRequest';
-import { useRejectContactRequest } from '../hooks/mutations/useRejectContactRequest';
-import { useTranslation } from "react-i18next";
+import React, {useEffect, useState} from 'react';
+import {useGetContactRequestsByContext} from '../hooks/queries/useGetContactRequestsByContext';
+import {useAcceptContactRequest} from '../hooks/mutations/useAcceptContactRequest';
+import {useRejectContactRequest} from '../hooks/mutations/useRejectContactRequest';
+import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
 import logger from "../utils/logger";
 
@@ -11,9 +11,18 @@ const PendingContactRequestsList = () => {
     const {id} = useSelector((state) => state.user);
     const userId = id;
     const {t} = useTranslation();
-    const {loading, error, data} = useGetContactRequestsByContext();
+    const {loading, error, data, refetch} = useGetContactRequestsByContext();
     const acceptContactRequestHandler = useAcceptContactRequest(userId);
     const rejectContactRequestHandler = useRejectContactRequest(userId);
+    const [refreshKey, setRefreshKey] = useState(0);
+
+    const forceUpdate = () => {
+        setRefreshKey(oldKey => oldKey +1);
+    }
+
+    useEffect(() => {
+        refetch();
+    }, [refreshKey]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message} </p>;
@@ -24,20 +33,18 @@ const PendingContactRequestsList = () => {
     // Don't render anything if there are no pending requests
     if (pendingRequests.length === 0) return null;
 
-    return (
-        <div>
+    return (<div>
             <h3> {t('contactRequest')} </h3>
             <ul>
-                {pendingRequests.map(({id, senderId, status, createdAt}) => (
-                    <li key={id}>
+                {pendingRequests.map(({id, senderId, status, createdAt}) => (<li key={id}>
                         <p>sender: {senderId.email}</p>
                         <p>status: {status}</p>
                         <p>createdAt: {Date(createdAt)}</p>
                         <div>
                             <button onClick={async () => { // This becomes an async function
                                 try {
-                                    //logger.debug('Accept contact request');
-                                    await acceptContactRequestHandler({variables: {requestId: id}}); // Use the handler here with the requestId
+                                    await acceptContactRequestHandler({variables: {requestId: id}});
+                                    forceUpdate();
                                 } catch (error) {
                                     logger.error('Error accepting contact request:', error);
                                 }
@@ -45,19 +52,17 @@ const PendingContactRequestsList = () => {
                             </button>
                             <button onClick={async () => { // This becomes an async function
                                 try {
-                                    //logger.debug('Reject contact request');
-                                    await rejectContactRequestHandler({variables: {requestId: id}}); // Use the handler here with the requestId
+                                    await rejectContactRequestHandler({variables: {requestId: id}});
+                                    forceUpdate();
                                 } catch (error) {
                                     logger.error('Error rejecting contact request:', error);
                                 }
                             }}>Reject
                             </button>
                         </div>
-                    </li>
-                ))}
+                    </li>))}
             </ul>
-        </div>
-    )
+        </div>)
 }
 
 export default PendingContactRequestsList;
