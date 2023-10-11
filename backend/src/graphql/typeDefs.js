@@ -1,120 +1,130 @@
 // backend\src\graphql\typeDefs.js
 
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-    scalar Upload
+  scalar Upload
 
-    type User {
-        id: ID!
-        email: String!
-        username: String!
-        contacts: [ID] 
-    }
-    
-    type Contact {
-        id: ID!
-        email: String!
-        username: String!
-        chatRoom: ID
-    }
-    
-    type ChatRoom {
-        id: ID!
-        participantIds: [ID!]!
-        messageIds: [ID]
-        createdAt: String!
-    }
+  type User {
+    id: ID!
+    email: String!
+    username: String!
+    contacts: [ID]
+  }
 
-    type ChatRoomPopulated {
-        id: ID!
-        participantIds: [User!]!
-        messageIds: [ID]
-        createdAt: String!
-    }
+  type Contact {
+    id: ID!
+    email: String!
+    username: String!
+    chatRoom: ID
+  }
 
-    type Message {
-        id: ID!
-        senderId: ID!
-        body: String
-        createdAt: String!
-        chatRoomId: ID!
-        fileContent: String # Base64 encoded file content
-    }
+  type ChatRoom {
+    id: ID!
+    participantIds: [ID!]!
+    messageIds: [ID]
+    createdAt: String!
+  }
 
-    type MessagePopulated {
-        id: ID!
-        senderId: User!
-        body: String
-        createdAt: String!
-        chatRoomId: ID!
-        fileContent: String # Base64 encoded file content
-    }
+  type ChatRoomPopulated {
+    id: ID!
+    participantIds: [User!]!
+    messageIds: [ID]
+    createdAt: String!
+  }
 
-    type SignupPayload {
-        token: String!
-        user: User!
-    }
+  type Message {
+    id: ID!
+    senderId: ID!
+    body: String
+    createdAt: String!
+    chatRoomId: ID!
+    fileContent: String # Base64 encoded file content
+  }
 
-    type LoginPayload {
-        token: String!
-        user: User!
-    }
+  type MessagePopulated {
+    id: ID!
+    senderId: User!
+    body: String
+    createdAt: String!
+    chatRoomId: ID!
+    fileContent: String # Base64 encoded file content
+  }
 
-    type ContactRequest {
-        id: ID!
-        senderId: ID! # modified
-        recipientId: ID!
-        status: String!
-        createdAt: String!
-    }
+  type SignupPayload {
+    token: String!
+    user: User!
+  }
 
-    type ContactRequestPopulated {
-        id: ID!
-        senderId: User 
-        recipientId: ID!
-        status: String!
-        createdAt: String!
-    }
+  type LoginPayload {
+    token: String!
+    user: User!
+  }
 
-    type Query {
-        getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
-        getChatRooms: [ChatRoom]
-        getCurrentUser: User
-        getUserById(userId: ID!): User
-        getContactRequests(userId: ID!): [ContactRequest] 
-        getContactRequestsByContext: [ContactRequestPopulated] 
-        getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
-        getUserByEmail(email: String!): User
-        getChatRoomsByUserId(userId: ID!): [ChatRoom]
-        getMessageById(messageId: ID!): Message
-        getUsersById(userIds: [ID!]!): [User]
-        getUserByEmails(emails: [String!]!): [User]
-        getContacts(userId: ID!): [User]
-        getContactsWithFullDetails: [User]
-        getChatRoomUsers(chatRoomId: ID!): [User]
-        getChatRoomsForCurrentUser: [ChatRoom]
-        getOneToOneChatRoom(contactId: ID): ChatRoom
-        getContactsWithChatRoom: [Contact]
-    }
+  type ContactRequest {
+    id: ID!
+    senderId: ID! # modified
+    recipientId: ID!
+    status: String!
+    createdAt: String!
+  }
 
-    type Mutation {
-        signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
-        login(email: String!, password: String!): LoginPayload!
-        sendMessage(senderId:ID!, chatRoomId: ID!,  body: String,  file: Upload): Message!
-        sendContactRequest(recipientId:ID!): ContactRequest
-        acceptContactRequest(requestId: ID!): ContactRequest!
-        rejectContactRequest(requestId: ID!): ContactRequest!
-        createChatRoom(participantIds: [ID!]!): ChatRoom!
-        createGroupConversation(additionalEmails: [String!]!): ChatRoom!
-        changeUsername(newUsername: String!): User
-        changePassword(oldPassword:String! ,newPassword: String!): User
-    }
+  type ContactRequestPopulated {
+    id: ID!
+    senderId: User
+    recipientId: ID!
+    status: String!
+    createdAt: String!
+  }
 
-    type Subscription {
-        newMessage(chatRoomId: ID!): Message!
-        friendRequestUpdated(userId: ID!): ContactRequest!  # new subscription
-    }
+  type Query {
+    getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
+    getChatRooms: [ChatRoom]
+    getCurrentUser: User
+    getUserById(userId: ID!): User
+    getContactRequests(userId: ID!): [ContactRequest]
+    getContactRequestsByContext: [ContactRequestPopulated]
+    getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
+    getUserByEmail(email: String!): User
+    getChatRoomsByUserId(userId: ID!): [ChatRoom]
+    getMessageById(messageId: ID!): Message
+    getUsersById(userIds: [ID!]!): [User]
+    getUserByEmails(emails: [String!]!): [User]
+    getContacts(userId: ID!): [User]
+    getContactsWithFullDetails: [User]
+    getChatRoomUsers(chatRoomId: ID!): [User]
+    getChatRoomsForCurrentUser: [ChatRoom]
+    getOneToOneChatRoom(contactId: ID): ChatRoom
+    getContactsWithChatRoom: [Contact]
+  }
+
+  type Mutation {
+    signUp(
+      email: String!
+      username: String!
+      password: String!
+      confirmPassword: String!
+    ): SignupPayload!
+    login(email: String!, password: String!): LoginPayload!
+    sendMessage(
+      senderId: ID!
+      chatRoomId: ID!
+      body: String
+      file: Upload
+    ): Message!
+    sendContactRequest(recipientId: ID!): ContactRequest
+    acceptContactRequest(requestId: ID!): ContactRequest!
+    rejectContactRequest(requestId: ID!): ContactRequest!
+    createChatRoom(participantIds: [ID!]!): ChatRoom!
+    createGroupConversation(additionalEmails: [String!]!): ChatRoom!
+    changeUsername(newUsername: String!): User
+    changePassword(oldPassword: String!, newPassword: String!): User
+  }
+
+  type Subscription {
+    newMessage(chatRoomId: ID!): Message!
+    friendRequestUpdated(userId: ID!): ContactRequest! # new subscription
+  }
 `;
 
 module.exports = { typeDefs };
