@@ -10,11 +10,22 @@ const sendMessage = async (_, {chatRoomId, body, file}, context) => {
     if (!token) {
         throw new AuthenticationError("You must be logged in!");
     }
+    logger.debug(`Token: ${token}`)
 
-    const sender = getUserFromToken(token);
+
+    const sender = await getUserFromToken(token);
+    
+    if (!sender) {
+        throw new AuthenticationError("Invalid token!");
+    }
+
+    logger.debug(`Sender: ${JSON.stringify(sender)}`);
 
     const senderId = sender.id;
 
+    if (!senderId) {
+        throw new Error("Sender ID must be provided");
+    }
     // Log the inputs without fileUrl, as it's not defined yet
     logger.debug(`Received sendMessage request with senderId: ${senderId}, chatRoomId: ${chatRoomId}, body: ${body}`,);
 
@@ -36,9 +47,15 @@ const sendMessage = async (_, {chatRoomId, body, file}, context) => {
         throw new Error("Chat room not found");
     }
 
-    const message = new Message({
-        chatRoomId: chatRoom.id, senderId: sender.id, body: body, fileContent: fileContent, // Include file URL
-    });
+    const messageInput = {
+        chatRoomId: chatRoom.id, senderId: sender.id, body: body, fileContent: fileContent,
+    }
+
+    console.log(`Message input: ${JSON.stringify(messageInput)}`);
+
+    const message = new Message(
+        messageInput
+    );
 
     try {
         await message.save();

@@ -15,10 +15,16 @@ const comparePassword = async (password, hash) => {
 };
 
 const getUserFromToken = async (token) => {
+  logger.debug(`getUserFromToken: ${token}`)
   const tokenString = token.split(" ")[1];
+  logger.debug(`tokenString: ${tokenString}`)
+  logger.debug(`JWT_SECRET: ${process.env.JWT_SECRET}`)
   try {
     const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);
-    return User.findById(decoded.id);
+    logger.debug(`decoded: ${JSON.stringify(decoded)}`)
+    const user = await User.findById(decoded.id);
+    logger.debug(`user: ${JSON.stringify(user)}`)
+    return user;
   } catch (err) {
     logger.error("Error in getUserFromToken", err);
     throw new Error(err);
