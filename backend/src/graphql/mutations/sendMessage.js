@@ -14,7 +14,7 @@ const sendMessage = async (_, {chatRoomId, body, file}, context) => {
 
 
     const sender = await getUserFromToken(token);
-    
+
     if (!sender) {
         throw new AuthenticationError("Invalid token!");
     }
