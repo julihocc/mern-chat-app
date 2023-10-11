@@ -59,7 +59,7 @@ const ChatRoomViewer = () => {
         e.preventDefault();
         await sendMessageMutation({
             variables: {
-                senderId: senderId, chatRoomId: chatRoomId, body: messageBody, file: file,
+                chatRoomId: chatRoomId, body: messageBody, file: file,
             }
         })
     };
