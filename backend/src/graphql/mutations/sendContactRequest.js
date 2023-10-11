@@ -1,41 +1,42 @@
 // path: backend\src\graphql\resolvers\mutations\sendContactRequest.js
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
-const logger = require('../../logger');
-const {AuthenticationError} = require("apollo-server-express");
-const {getUserFromToken} = require("../utils");
+const logger = require("../../logger");
+const { AuthenticationError } = require("apollo-server-express");
+const { getUserFromToken } = require("../utils");
 
-const sendContactRequest = async (_, {recipientId}, context) => {
+const sendContactRequest = async (_, { recipientId }, context) => {
+  const { token } = context;
 
-    const {token} = context
+  const sender = await getUserFromToken(token);
 
-    const sender = await getUserFromToken(token);
+  if (!sender) {
+    logger.error("Attempt unautorized acess");
+    throw new AuthenticationError("You are not logged in");
+  }
 
-    if (!sender) {
-        logger.error('Attempt unautorized acess');
-        throw new AuthenticationError("You are not logged in");
-    }
+  const recipient = await User.findById(recipientId);
 
-    const recipient = await User.findById(recipientId);
+  if (!recipient) {
+    throw new Error(`Recipient not found: ${recipientId}`);
+  }
 
-    if (!recipient) {
-        throw new Error(`Recipient not found: ${recipientId}`);
-    }
+  try {
+    const contactRequest = new ContactRequest({
+      senderId: sender.id,
+      recipientId: recipient.id,
+      status: "pending",
+    });
 
-    try {
-        const contactRequest = new ContactRequest({
-            senderId: sender.id,
-            recipientId: recipient.id,
-            status: 'pending'
-        });
+    await contactRequest.save();
 
-        await contactRequest.save();
-
-        return contactRequest;
-    } catch (err) {
-        logger.error(`Error whe saving contact request ${err}`);
-        throw new Error(`Failed to send contact request from ${sender.id} to ${recipient.id}: ${err}`);
-    }
+    return contactRequest;
+  } catch (err) {
+    logger.error(`Error whe saving contact request ${err}`);
+    throw new Error(
+      `Failed to send contact request from ${sender.id} to ${recipient.id}: ${err}`,
+    );
+  }
 };
 
-module.exports = {sendContactRequest};
+module.exports = { sendContactRequest };
