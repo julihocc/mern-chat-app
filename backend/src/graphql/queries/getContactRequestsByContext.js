@@ -22,7 +22,7 @@ const getContactRequestsByContext= async (parent, args, context) => {
     //logger.debug(recipient)
     //logger.debug(recipient.id)
     // Fetch all contact requests where the user is the recipient
-    const contactRequest = ContactRequest.find({recipientId: recipient.id});
+    const contactRequest = ContactRequest.find({recipientId: recipient.id}).populate('senderId');
     //logger.debug(!!contactRequest)
     if (!contactRequest) {
         throw new Error('Contact requests not found');
