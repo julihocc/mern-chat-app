@@ -5,25 +5,15 @@ const logger = require('../../logger');
 const {AuthenticationError} = require("apollo-server-express");
 const {getUserFromToken} = require("../utils");
 
-const sendContactRequest = async (parent, {senderId, recipientId}, context) => {
+const sendContactRequest = async (_, {recipientId}, context) => {
 
     const {token} = context
 
-    const user = await getUserFromToken(token);
-
-    if (!user) {
-        logger.error('Attempt unautorized acess');
-        throw new AuthenticationError("You are not logged in");
-    }
-
-    const sender = await User.findById(senderId);
+    const sender = await getUserFromToken(token);
 
     if (!sender) {
-        throw new Error(`Sender not found: ${senderId}`);
-    }
-
-    if (sender.id.toString() !== user.id.toString()) {
-        throw new Error(`You cannot send a contact request in the behalf of ${sender.id}`);
+        logger.error('Attempt unautorized acess');
+        throw new AuthenticationError("You are not logged in");
     }
 
     const recipient = await User.findById(recipientId);
@@ -41,12 +31,10 @@ const sendContactRequest = async (parent, {senderId, recipientId}, context) => {
 
         await contactRequest.save();
 
-        //logger.debug(`Contact request sent from ${senderId} to ${recipientId}`); // log the info
-
         return contactRequest;
     } catch (err) {
-        logger.error(); // log the error
-        throw new Error(`Failed to send contact request from ${senderId} to ${recipientId}: ${err}`);
+        logger.error(`Error whe saving contact request ${err}`);
+        throw new Error(`Failed to send contact request from ${sender.id} to ${recipient.id}: ${err}`);
     }
 };
 

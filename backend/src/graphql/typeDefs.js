@@ -1,8 +1,8 @@
-// backend\src\graphql\schemas.js
+// backend\src\graphql\typeDefs.js
 
 const { gql } = require('apollo-server-express');
 
-const schemas = gql`
+const typeDefs = gql`
     scalar Upload
 
     type User {
@@ -69,13 +69,21 @@ const schemas = gql`
         createdAt: String!
     }
 
+    type ContactRequestPopulated {
+        id: ID!
+        senderId: User 
+        recipientId: ID!
+        status: String!
+        createdAt: String!
+    }
+
     type Query {
         getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
         getChatRooms: [ChatRoom]
         getCurrentUser: User
         getUserById(userId: ID!): User
-        getContactRequests(userId: ID!): [ContactRequest] # modified
-        getContactRequestsByContext: [ContactRequest] # new
+        getContactRequests(userId: ID!): [ContactRequest] 
+        getContactRequestsByContext: [ContactRequestPopulated] 
         getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
         getUserByEmail(email: String!): User
         getChatRoomsByUserId(userId: ID!): [ChatRoom]
@@ -94,7 +102,7 @@ const schemas = gql`
         signUp(email: String!, username: String!, password: String!, confirmPassword: String!): SignupPayload!
         login(email: String!, password: String!): LoginPayload!
         sendMessage(senderId:ID!, chatRoomId: ID!,  body: String,  file: Upload): Message!
-        sendContactRequest(senderId: ID!, recipientId:ID!): ContactRequest
+        sendContactRequest(recipientId:ID!): ContactRequest
         acceptContactRequest(requestId: ID!): ContactRequest!
         rejectContactRequest(requestId: ID!): ContactRequest!
         createChatRoom(participantIds: [ID!]!): ChatRoom!
@@ -109,4 +117,4 @@ const schemas = gql`
     }
 `;
 
-module.exports = schemas;
+module.exports = { typeDefs };
