@@ -35,6 +35,6 @@ initializeStore().then((store) => {
     );
   } else {
 
-    logger.error("Error: Root element not found."); 
+    logger.error("Error: Root element not found.");
   }
 });

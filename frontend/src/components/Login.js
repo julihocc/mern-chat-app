@@ -1,6 +1,6 @@
 // frontend/src/components/Login.js
 import React, { useState } from "react";
-import { useDispatch } from "react-redux"; // Import useDispatch to dispatch Redux actions
+import { useDispatch } from "react-redux";
 import { useApolloClient } from "@apollo/client";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -34,7 +34,7 @@ const LOGIN_USER = gql`
 const Login = () => {
   const navigate = useNavigate();
   const client = useApolloClient();
-  const dispatch = useDispatch(); // Use Redux dispatch
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const [email, setEmail] = useState("");
@@ -47,16 +47,11 @@ const Login = () => {
     },
     onCompleted(data) {
       logger.debug("Login successful. Setting user in Redux store.");
-      dispatch(setUser(data.login.user)); // Dispatching setUser action
-
-      // Storing the token in local storage
-      localStorage.setItem("authToken", data.login.token); // Change made here
-
-      // Setting cookie with SameSite attribute
+      dispatch(setUser(data.login.user));
+      localStorage.setItem("authToken", data.login.token);
       document.cookie = `token=${data.login.token}; path=/; max-age=3600; SameSite=Lax`;
       logger.debug("document.cookie", document.cookie);
 
-      // Querying current user
       client
         .query({
           query: GET_CURRENT_USER,
@@ -75,14 +70,13 @@ const Login = () => {
             );
           },
           (err) => {
-            logger.error("client.query Error:", err.message); // Logging query error
+            logger.error("client.query Error:", err.message);
           },
         )
         .catch((err) => {
-          logger.error("client.query Error:", err.message); // Logging catch block error
+          logger.error("client.query Error:", err.message);
         });
 
-      // Navigating to dashboard
       logger.debug("Navigating to dashboard");
       navigate("/dashboard");
     },
@@ -92,8 +86,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    logger.debug("Handling form submit"); // Logging form submit
-
+    logger.debug("Handling form submit");
     if (!isEmail(email)) {
       logger.error(t("invalidEmail"));
       return;
@@ -105,10 +98,10 @@ const Login = () => {
     }
 
     try {
-      logger.debug("Attempting login with email:", email); // Logging login attempt
+      logger.debug("Attempting login with email:", email);
       await loginUser({ variables: { email, password } });
     } catch (err) {
-      logger.error("Login attempt failed:", err); // Logging error on login attempt
+      logger.error("Login attempt failed:", err);
     }
   };
 
