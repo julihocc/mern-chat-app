@@ -26,10 +26,9 @@ const sendMessage = async (_, {chatRoomId, body, file}, context) => {
     if (!senderId) {
         throw new Error("Sender ID must be provided");
     }
-    // Log the inputs without fileUrl, as it's not defined yet
+
     logger.debug(`Received sendMessage request with senderId: ${senderId}, chatRoomId: ${chatRoomId}, body: ${body}`,);
 
-    // Handle file upload if provided
     let fileContent = null;
     if (file) {
         const {createReadStream} = await file;
@@ -59,10 +58,10 @@ const sendMessage = async (_, {chatRoomId, body, file}, context) => {
 
     try {
         await message.save();
-        logger.debug(`Message saved with id: ${message.id}`); // Log this info
+        logger.debug(`Message saved with id: ${message.id}`);
     } catch (err) {
-        logger.error(`Failed to save message: ${err}`); // Log this error
-        throw new Error("Failed to save message"); // Propagate the error to the client
+        logger.error(`Failed to save message: ${err}`);
+        throw new Error("Failed to save message");
     }
 
     chatRoom.messageIds.push(message.id);

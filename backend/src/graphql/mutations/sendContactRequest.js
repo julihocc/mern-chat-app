@@ -4,19 +4,19 @@ const ContactRequest = require("../../models/ContactRequestModel");
 const logger = require("../../logger");
 const {AuthenticationError} = require("apollo-server-express");
 const {getUserFromToken} = require("../utils");
-const Joi = require("joi");
+const yup = require("yup");
 
 const sendContactRequest = async (_, {recipientId}, context) => {
 
-    const schema = Joi.object({
-        recipientId: Joi.string().required().message("RecipientId is required"),
+    const schema = yup.object().shape({
+        recipientId: yup.string().required(),
     });
 
-    const {error} = schema.validate({recipientId});
-
-    if (error) {
-        logger.error(`Validation error: ${error}`);
-        throw new Error(`Validation error: ${error}`);
+    try {
+        await schema.validate({recipientId});
+    } catch (err) {
+        logger.error(`Invalid input: ${err}`)
+        throw new Error(`Invalid input: ${err}`);
     }
 
     const {token} = context;
