@@ -20,7 +20,6 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
         throw new UserInputError("Username already in use");
     }
 
-    // Check if password and confirmPassword match
     if (password !== confirmPassword) {
         logger.error("Passwords don't match");
         throw new UserInputError("Passwords don't match");
