@@ -4,10 +4,10 @@ const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");
-const logger = require("../../logger"); // Import the logger
+const logger = require("../../logger");
 
 const acceptContactRequest = async (parent, { requestId }, context) => {
-  const { token, pubSub } = context; // Added pubSub here
+  const { token, pubSub } = context;
 
   if (!token) {
     throw new AuthenticationError("You must be logged in");
@@ -29,7 +29,6 @@ const acceptContactRequest = async (parent, { requestId }, context) => {
     throw new Error("Contact request not found");
   }
 
-  // Ensure that the authenticated user is involved in the contact request
   if (user.id !== contactRequest.recipientId.toString()) {
     throw new AuthenticationError(
       "You are not authorized to perform this action",
@@ -59,7 +58,6 @@ const acceptContactRequest = async (parent, { requestId }, context) => {
     sender.contacts.push(contactRequest.recipientId);
     await sender.save();
 
-    // Furthermore, pubSub publish here for both sender and recipient
     pubSub.publish(`FRIEND_REQUEST_UPDATED_${contactRequest.senderId}`, {
       friendRequestUpdated: contactRequest,
     });
@@ -69,7 +67,7 @@ const acceptContactRequest = async (parent, { requestId }, context) => {
 
     return contactRequest;
   } catch (err) {
-    logger.error(err); // Use the logger here
+    logger.error(err);
   }
 };
 

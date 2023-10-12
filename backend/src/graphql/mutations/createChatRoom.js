@@ -17,16 +17,14 @@ const createChatRoom = async (_, { participantIds }, context) => {
     throw new Error("Some participantIds not found");
   }
 
-  // Check if chatRoom already exists with the same participantIds
   const existingChatRoom = await ChatRoom.findOne({
     participantIds: { $all: participantIds },
-  }); // Added this line
+  });
   if (existingChatRoom) {
-    // And this line
-    throw new Error("ChatRoom with these participants already exists"); // And this line
-  } // And this line
+    throw new Error("ChatRoom with these participants already exists");
+  }
 
-  const chatRoom = new ChatRoom({ participantIds }); // participantIds instead of participants
+  const chatRoom = new ChatRoom({ participantIds }); 
   await chatRoom.save();
   return chatRoom;
 };
