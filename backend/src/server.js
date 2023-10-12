@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 4000;
 const cookieParser = require("cookie-parser");
 const logger = require("./logger");
 const { graphqlUploadExpress } = require("graphql-upload");
+const rateLimit = require("express-rate-limit");
 
 const app = express();
 
@@ -26,6 +27,14 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use(cors(corsOptions));
+
+const apiLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour window
+  max: 10000, // limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again after an hour",
+});
+
+app.use("/graphql", apiLimiter);
 
 app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
