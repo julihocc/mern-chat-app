@@ -42,6 +42,15 @@ app.use(errorHandler);
 
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+    const token = req.cookies.authToken;
+    if (token) {
+        req.token = token;
+    }
+    next();
+});
+
+
 async function startServer() {
     try {
         await connectDB();
@@ -56,7 +65,10 @@ async function startServer() {
             if (connection) {
                 return {...connection.context, pubSub};
             } else {
+                // TODO: Test solution with cookies
                 const token = req.headers.authorization || "";
+                req.token = token;
+                // logger.debug("Token for updated solution:", token);
                 return {req, res, pubSub, token};
             }
         }, uploads: false,
