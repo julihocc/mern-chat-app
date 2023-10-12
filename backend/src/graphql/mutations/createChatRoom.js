@@ -24,7 +24,7 @@ const createChatRoom = async (_, { participantIds }, context) => {
     throw new Error("ChatRoom with these participants already exists");
   }
 
-  const chatRoom = new ChatRoom({ participantIds }); 
+  const chatRoom = new ChatRoom({ participantIds });
   await chatRoom.save();
   return chatRoom;
 };

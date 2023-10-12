@@ -5,12 +5,12 @@ import gql from "graphql-tag";
 import { setUser } from "../redux/slices/userSlice";
 
 const GET_CURRENT_USER = gql`
-    query GetCurrentUser {
-        getCurrentUser {
-            id
-            email
-        }
+  query GetCurrentUser {
+    getCurrentUser {
+      id
+      email
     }
+  }
 `;
 
 const useInitializeAuth = () => {

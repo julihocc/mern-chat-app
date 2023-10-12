@@ -1,5 +1,5 @@
 // path: frontend\src\logger.js
-import log from 'loglevel';
+import log from "loglevel";
 
 // if (process.env.NODE_ENV === 'production') {
 //     log.setLevel('error');
@@ -7,6 +7,6 @@ import log from 'loglevel';
 //     log.setLevel('debug');
 // }
 
-log.setLevel('debug');
+log.setLevel("debug");
 
 export default log;
