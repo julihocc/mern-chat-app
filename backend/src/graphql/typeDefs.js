@@ -106,11 +106,7 @@ const typeDefs = gql`
       confirmPassword: String!
     ): SignupPayload!
     login(email: String!, password: String!): LoginPayload!
-    sendMessage(
-      chatRoomId: ID!
-      body: String
-      file: Upload
-    ): Message!
+    sendMessage(chatRoomId: ID!, body: String, file: Upload): Message!
     sendContactRequest(recipientId: ID!): ContactRequest
     acceptContactRequest(requestId: ID!): ContactRequest!
     rejectContactRequest(requestId: ID!): ContactRequest!

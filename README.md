@@ -1,4 +1,4 @@
-# Minikube deployment 
+# Minikube deployment
 
 ```
 kubectl apply -f mongodb-pvc.yaml

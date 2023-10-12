@@ -33,7 +33,7 @@ initializeStore().then((store) => {
             </ThemeProvider>
           </I18nextProvider>
         </ApolloProvider>
-      </React.StrictMode>
+      </React.StrictMode>,
     );
   } else {
     // Instead of using console.error, I've used our custom logger to handle the error message
