@@ -18,9 +18,10 @@ const useInitializeAuth = () => {
   const client = useApolloClient();
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    // TODO: Remove localStorage and use only cookies
+    // const token = localStorage.getItem("authToken");
 
-    if (token) {
+    // if (token) {
       client
         .query({
           query: GET_CURRENT_USER,
@@ -34,7 +35,7 @@ const useInitializeAuth = () => {
           // Handle the error if needed
           console.error("Error retrieving current user:", err.message);
         });
-    }
+    // }
   }, [dispatch, client]);
 };
 
