@@ -68,7 +68,6 @@ async function startServer() {
                 // TODO: Test solution with cookies
                 const token = req.headers.authorization || "";
                 req.token = token;
-                // logger.debug("Token for updated solution:", token);
                 return {req, res, pubSub, token};
             }
         }, uploads: false,

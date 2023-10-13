@@ -17,10 +17,11 @@ const GET_CURRENT_USER = gql`
 // Async function to rehydrate state from the Apollo client
 export const rehydrateState = async () => {
   // Attempt to fetch the token from local storage
-  const token = localStorage.getItem("authToken");
+  // TODO: Remove localStorage and use only cookies
+  // const token = localStorage.getItem("authToken");
 
   // Check if the token exists
-  if (token) {
+  // if (token) {
     try {
       // Perform Apollo client query to fetch current user data
       const { data } = await apolloClient.query({
@@ -37,7 +38,7 @@ export const rehydrateState = async () => {
       // Log any errors that occur during the fetch operation
       console.error("Error retrieving current user:", err.message);
     }
-  }
+  // }
 
   // Return an empty object if no token is found, effectively initializing the store with empty state
   return {};

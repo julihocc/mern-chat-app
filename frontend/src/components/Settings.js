@@ -8,7 +8,6 @@ const Settings = () => {
     <div>
       <Grid>
         <Grid item>
-          {/*TODO Fixed the needing of refreshing to see new username*/}
           <ChangeUsername />
         </Grid>
         <Grid item>

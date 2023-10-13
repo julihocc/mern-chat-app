@@ -48,7 +48,8 @@ const Login = () => {
     onCompleted(data) {
       logger.debug("Login successful. Setting user in Redux store.");
       dispatch(setUser(data.login.user));
-      localStorage.setItem("authToken", data.login.token);
+      // TODO: Remove localStorage and use only cookies
+      // localStorage.setItem("authToken", data.login.token);
       document.cookie = `token=${data.login.token}; path=/; max-age=3600; SameSite=Lax`;
       logger.debug("document.cookie", document.cookie);
 
