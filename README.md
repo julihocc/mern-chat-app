@@ -8,7 +8,7 @@ kubectl apply -f mongodb-deployment.yaml
 docker build -t jdk2py/backend:latest ./backend
 docker tag jdk2py/backend:latest jdk2py/backend:latest
 docker push jdk2py/backend:latest
-docker pull jdk2py/backend:latestkube
+docker pull jdk2py/backend:latest
 
 kubectl delete -f ./miniback.yaml
 kubectl apply -f ./miniback.yaml
