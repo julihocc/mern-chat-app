@@ -3,7 +3,7 @@
 ## Docker-compose deployment
 
 ``````
-cd porject
+cd project
 docker-compose up
 ``````
 
