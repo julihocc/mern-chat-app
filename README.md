@@ -1,6 +1,19 @@
-# Minikube deployment
+# Chat application
+
+## Docker-compose deployment
+
+``````
+cd porject
+docker-compose up
+``````
+
+## Minikube deployment
 
 ```
+cd project
+
+minikube start
+
 kubectl apply -f mongodb-pvc.yaml
 kubectl apply -f mongodb-service.yaml
 kubectl apply -f mongodb-deployment.yaml
