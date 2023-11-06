@@ -1,5 +1,5 @@
 // backend\src\graphql\resolvers\mutations\createGroupConversation.js
-const User = require("../../models/UserModel");
+const User = require("../../authService/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const logger = require("../../logger");
 const { AuthenticationError } = require("apollo-server-express");

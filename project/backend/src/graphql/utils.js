@@ -2,7 +2,7 @@
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/UserModel");
+const User = require("../authService/UserModel");
 // const logger = require("../logger");
 const saltRounds = 10;
 

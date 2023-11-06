@@ -1,4 +1,4 @@
-const User = require("../../models/UserModel");
+const User = require("../../authService/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const logger = require("../../logger");
 const getContactRequests = async (_, { userId }, __) => {

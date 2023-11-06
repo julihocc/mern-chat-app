@@ -1,4 +1,4 @@
-const User = require("../../models/UserModel");
+const User = require("../../authService/UserModel");
 const getUserByEmail = async (parent, { email }) => {
   return User.findOne({ email });
 };

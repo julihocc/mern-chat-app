@@ -1,4 +1,4 @@
-const User = require("../../models/UserModel");
+const User = require("../../authService/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");
 const { getUserFromToken } = require("../utils");

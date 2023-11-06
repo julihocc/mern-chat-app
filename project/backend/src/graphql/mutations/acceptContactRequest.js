@@ -1,6 +1,6 @@
 // Path: backend\src\graphql\resolvers\mutations\acceptContactRequest.js
 const { getUserFromToken } = require("../utils");
-const User = require("../../models/UserModel");
+const User = require("../../authService/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");

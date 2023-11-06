@@ -9,13 +9,13 @@ const { createChatRoom } = require("./mutations/createChatRoom");
 const {
   createGroupConversation,
 } = require("./mutations/createGroupConversation");
-const { login } = require("./mutations/login");
+const { login } = require("../authService/login");
 const { rejectContactRequest } = require("./mutations/rejectContactRequest");
 const { sendContactRequest } = require("./mutations/sendContactRequest");
-const { signUp } = require("./mutations/signUp");
+const { signUp } = require("../authService/signUp");
 const { sendMessage } = require("./mutations/sendMessage");
 const { changeUsername } = require("./mutations/changeUsername");
-const { changePassword } = require("./mutations/changePassword");
+const { changePassword } = require("../authService/changePassword");
 // Queries
 const { getChatRoomById } = require("./queries/getChatRoomById");
 const { getChatRooms } = require("./queries/getChatRooms");

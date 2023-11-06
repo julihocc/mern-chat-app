@@ -1,5 +1,5 @@
 const ChatRoom = require("../../models/ChatRoomModel");
-const User = require("../../models/UserModel");
+const User = require("../../authService/UserModel");
 
 const getChatRoomUsers = async (_, { chatRoomId }, __) => {
   const chatRoom = await ChatRoom.findById(chatRoomId);
