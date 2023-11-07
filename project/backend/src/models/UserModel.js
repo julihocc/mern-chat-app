@@ -11,11 +11,6 @@ const UserSchema = new Schema({
     required: [true, "Please enter a username"],
     unique: true,
   },
-  password: {
-    type: String,
-    required: [true, "Please enter a password"],
-    minlength: [6, "Password should be at least 6 characters"],
-  },
   contacts: [
     {
       type: Schema.Types.ObjectId,
