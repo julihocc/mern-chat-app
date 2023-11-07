@@ -21,6 +21,10 @@ const typeDefs = gql`
     user: User!
   }
   
+    type Query {
+        me: String
+    }
+  
   type Mutation {
     signUp(
       email: String!

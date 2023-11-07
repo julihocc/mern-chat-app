@@ -4,7 +4,14 @@ const {login} = require('./mutations/login');
 const {signUp} = require('./mutations/signUp');
 
 const resolvers = {
-    AuthMutation: {
+
+    Query: {
+        me: () => {
+            return 'Hello World!';
+        }
+    },
+
+    Mutation: {
         changePassword,
         login,
         signUp,
