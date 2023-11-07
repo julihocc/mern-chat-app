@@ -1,6 +1,6 @@
 // Importing required dependencies and configurations
 // frontend/src/redux/rehydrateState.js
-import apolloClient from "../apolloClient";
+import {backendApolloClient} from "../apolloClient";
 import gql from "graphql-tag";
 
 // Defining GraphQL query to get the current user
@@ -24,7 +24,7 @@ export const rehydrateState = async () => {
   // if (token) {
     try {
       // Perform Apollo client query to fetch current user data
-      const { data } = await apolloClient.query({
+      const { data } = await backendApolloClient.query({
         query: GET_CURRENT_USER,
         fetchPolicy: "network-only",
       });
