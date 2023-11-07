@@ -1,6 +1,6 @@
 const logger = require("../../utils/logger");
 const { AuthenticationError } = require("apollo-server-express");
-const { getUserFromToken } = require("../../../../authService/src/authUtils");
+const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
 const getCurrentUser = async (parent, args, context) => {
   //logger.debug("Calling getCurrentUser")
   const { token } = context;

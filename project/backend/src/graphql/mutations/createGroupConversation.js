@@ -3,7 +3,7 @@ const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const logger = require("../../utils/logger");
 const { AuthenticationError } = require("apollo-server-express");
-const { getUserFromToken } = require("../../../../authService/src/authUtils");
+const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
 
 const createGroupConversation = async (_, { additionalEmails }, context) => {
   logger.debug("createGroupConversation");

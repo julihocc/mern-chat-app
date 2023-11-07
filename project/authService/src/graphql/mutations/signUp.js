@@ -3,7 +3,7 @@
 const {UserInputError} = require("apollo-server-express");
 const User = require("../../models/UserModel");
 const jwt = require("jsonwebtoken");
-const {encryptPassword} = require("../../authUtils");
+const {encryptPassword} = require("../../utils/authentication");
 const logger = require("../../utils/logger");
 
 const signUp = async (_, {email, username, password, confirmPassword}, context,) => {

@@ -2,7 +2,7 @@
 const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");
-const { getUserFromToken } = require("../../../../authService/src/authUtils");
+const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
 const logger = require("../../utils/logger");
 const createChatRoom = async (_, { participantIds }, context) => {
   const { token } = context;

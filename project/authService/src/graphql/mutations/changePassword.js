@@ -4,7 +4,7 @@ const {
   getUserFromToken,
   comparePassword,
   encryptPassword,
-} = require("../../authUtils");
+} = require("../../utils/authentication");
 const {
   AuthenticationError,
   UserInputError,
