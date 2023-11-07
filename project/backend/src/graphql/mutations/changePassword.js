@@ -1,15 +1,15 @@
 // backend/src/graphql/mutations/changePassword.js
-const User = require("./UserModel");
+const User = require("../../models/UserModel");
 const {
   getUserFromToken,
   comparePassword,
   encryptPassword,
-} = require("../graphql/utils");
+} = require("../utils");
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const logger = require("../logger");
+const logger = require("../../logger");
 
 const changePassword = async (_, { oldPassword, newPassword }, context) => {
   if (oldPassword === newPassword) {

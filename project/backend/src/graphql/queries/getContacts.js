@@ -1,5 +1,5 @@
 const logger = require("../../logger");
-const User = require("../../authService/UserModel");
+const User = require("../../models/UserModel");
 const { UserInputError } = require("apollo-server-express");
 const getContacts = async (parent, { userId }, _) => {
   //logger.debug("Calling getContacts")

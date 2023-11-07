@@ -1,5 +1,5 @@
 const logger = require("../../logger");
-const User = require("../../authService/UserModel");
+const User = require("../../models/UserModel");
 const getUserById = async (parent, { userId }) => {
   //logger.debug("Calling getUserById", userId);
   const user = User.findById(userId);

@@ -1,5 +1,5 @@
 const logger = require("../../logger");
-const User = require("../../authService/UserModel");
+const User = require("../../models/UserModel");
 const { getUserFromToken } = require("../utils");
 const { AuthenticationError } = require("apollo-server-express");
 const ChatRoom = require("../../models/ChatRoomModel");

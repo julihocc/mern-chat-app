@@ -1,5 +1,5 @@
 // path: backend\src\graphql\resolvers\mutations\sendContactRequest.js
-const User = require("../../authService/UserModel");
+const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const logger = require("../../logger");
 const { AuthenticationError } = require("apollo-server-express");
