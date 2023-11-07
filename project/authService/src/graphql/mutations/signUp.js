@@ -5,6 +5,7 @@ const User = require("../../models/UserModel");
 const jwt = require("jsonwebtoken");
 const {encryptPassword} = require("../../utils/authentication");
 const logger = require("../../utils/logger");
+const {publishUserEvent} = require("../../utils/rabbitMQPublisher");
 
 const signUp = async (_, {email, username, password, confirmPassword}, context,) => {
     // Check if email already exists
@@ -30,6 +31,12 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
 
     try {
         await user.save();
+        await publishUserEvent(
+            "UserCreated",{
+                id: user.id,
+                email: user.email,
+                username: user.username,
+            });
         //logger.debug(`User created with id: ${user.id}`); // Log this info
     } catch (err) {
         logger.error(`Failed to save user: ${err}`); // Log this error

@@ -15,6 +15,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("./utils/logger");
 const {graphqlUploadExpress} = require("graphql-upload");
 const rateLimit = require("express-rate-limit");
+const { startEventSubscriber } = require("./utils/rabbitMQSubscriber");
 
 const app = express();
 
@@ -83,6 +84,9 @@ async function startServer() {
     }, {
         server: httpServer, path: apolloServer.graphqlPath,
     },);
+
+    // Start the RabbitMQ subscriber
+    await startEventSubscriber();
 
     httpServer.listen(PORT, () => {
         logger.debug(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`,);
