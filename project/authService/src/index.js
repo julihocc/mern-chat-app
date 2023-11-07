@@ -1,12 +1,12 @@
-// Path: backend\src\index.js
+// authService/src/index.js
 const express = require("express");
 const {ApolloServer} = require("apollo-server-express");
 const {PubSub} = require("graphql-subscriptions");
 const {execute, subscribe} = require("graphql");
 const {SubscriptionServer} = require("subscriptions-transport-ws");
 const cors = require("cors");
-const {typeDefs} = require("./graphql/typeDefs");
-const {resolvers} = require("./graphql/resolvers");
+const {typeDefs } = require("./graphql/typeDefs");
+const {resolvers } = require("./graphql/resolvers");
 const errorHandler = require("./utils/errorHandler");
 const connectDB = require("./utils/connectDB");
 const http = require("http");
@@ -94,6 +94,6 @@ async function startServer() {
     try {
         await startServer();
     } catch (err) {
-        logger.error("Error starting the backend:", err);
+        logger.error("Error starting the authentication service:", err);
     }
 })();
