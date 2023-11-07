@@ -8,7 +8,6 @@ const typeDefs = gql`
     id: ID!
     email: String!
     username: String!
-    contacts: [ID]
   }
   
   type SignupPayload {
