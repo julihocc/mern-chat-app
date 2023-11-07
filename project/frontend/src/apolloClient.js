@@ -40,7 +40,7 @@ const authServiceWsLink = new WebSocketLink({
   },
 });
 
-const tokenLink = setContext((_, { headers }) => {
+const authMiddleware = setContext((_, { headers }) => {
   const tokenCookie = document.cookie
     .split("; ")
     .find((row) => row.startsWith("token="));
@@ -54,21 +54,31 @@ const tokenLink = setContext((_, { headers }) => {
   };
 });
 
-const link = split(
-  ({ query }) => {
-    const definition = getMainDefinition(query);
-    return (
-      definition.kind === "OperationDefinition" &&
-      definition.operation === "subscription"
-    );
-  },
-  backendWsLink, // tokenLink.concat(httpLink),
-  tokenLink.concat(backendLink), // Changed this line
-);
+// const link = split(
+//   ({ query }) => {
+//     const definition = getMainDefinition(query);
+//     return (
+//       definition.kind === "OperationDefinition" &&
+//       definition.operation === "subscription"
+//     );
+//   },
+//   backendWsLink, // authMiddleware.concat(httpLink),
+//   authMiddleware.concat(backendLink), // Changed this line
+// );
+//
+// const apolloClient = new ApolloClient({
+//   link,
+//   cache: new InMemoryCache(),
+// });
+//
+// export default apolloClient;
 
-const apolloClient = new ApolloClient({
-  link,
+export const backendApolloClient = new ApolloClient({
+  link: authMiddleware.concat(backendLink),
   cache: new InMemoryCache(),
 });
 
-export default apolloClient;
+export const authServiceApolloClient = new ApolloClient({
+  link: authMiddleware.concat(authServiceLink),
+  cache: new InMemoryCache(),
+});
