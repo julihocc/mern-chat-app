@@ -1,8 +1,8 @@
 // backend/src/graphql/mutations/changeUsername.js
 const User = require('../../models/UserModel');
 const {AuthenticationError} = require('apollo-server-express');
-const {getUserFromToken} = require("../utils")
-const logger = require("../../logger");
+const {getUserFromToken} = require("../../../../authService/src/utils/authentication")
+const logger = require("../../utils/logger");
 
 const changeUsername = async (_, args, context) => {
     const {newUsername} = args;

@@ -1,4 +1,0 @@
-# /backend/.dockerignore
-node_modules
-.dockerignore
-Dockerfile

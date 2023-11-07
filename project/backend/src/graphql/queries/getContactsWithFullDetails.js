@@ -1,6 +1,6 @@
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 const User = require("../../models/UserModel");
-const { getUserFromToken } = require("../utils");
+const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
 const { AuthenticationError } = require("apollo-server-express");
 
 const getContactsWithFullDetails = async (parent, args, context) => {

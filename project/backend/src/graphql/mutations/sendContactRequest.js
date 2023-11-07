@@ -1,9 +1,9 @@
 // path: backend\src\graphql\resolvers\mutations\sendContactRequest.js
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 const { AuthenticationError } = require("apollo-server-express");
-const { getUserFromToken } = require("../utils");
+const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
 const yup = require("yup");
 
 const sendContactRequest = async (_, { recipientId }, context) => {

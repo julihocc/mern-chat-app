@@ -1,10 +1,10 @@
 // Path: backend\src\graphql\resolvers\mutations\acceptContactRequest.js
-const { getUserFromToken } = require("../utils");
+const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 
 const acceptContactRequest = async (parent, { requestId }, context) => {
   const { token, pubSub } = context;

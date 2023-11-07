@@ -1,6 +1,6 @@
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 const getContactRequests = async (_, { userId }, __) => {
   const user = await User.findById(userId);
 

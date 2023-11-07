@@ -1,9 +1,9 @@
 // backend\src\graphql\resolvers\mutations\createGroupConversation.js
 const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 const { AuthenticationError } = require("apollo-server-express");
-const { getUserFromToken } = require("../utils");
+const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
 
 const createGroupConversation = async (_, { additionalEmails }, context) => {
   logger.debug("createGroupConversation");

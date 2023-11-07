@@ -1,6 +1,6 @@
 // backend/models/ChatRoomModel.js
 const { Schema, model } = require("mongoose");
-const logger = require("../logger"); // Import the logger
+const logger = require("../utils/logger"); // Import the logger
 
 function arrayLimit(val) {
   //logger.debug(`arrayLimit: val: ${val}`); // Replace console.log with //logger.debug

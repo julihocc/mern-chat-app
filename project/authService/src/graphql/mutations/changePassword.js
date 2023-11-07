@@ -4,12 +4,12 @@ const {
   getUserFromToken,
   comparePassword,
   encryptPassword,
-} = require("../utils");
+} = require("../../utils/authentication");
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 
 const changePassword = async (_, { oldPassword, newPassword }, context) => {
   if (oldPassword === newPassword) {
