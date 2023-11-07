@@ -1,4 +1,4 @@
-// Path: backend\src\server.js
+// Path: backend\src\index.js
 const express = require("express");
 const {ApolloServer} = require("apollo-server-express");
 const {PubSub} = require("graphql-subscriptions");
@@ -7,12 +7,12 @@ const {SubscriptionServer} = require("subscriptions-transport-ws");
 const cors = require("cors");
 const {typeDefs} = require("./graphql/typeDefs");
 const {resolvers} = require("./graphql/resolvers");
-const errorHandler = require("./errorHandler");
-const connectDB = require("./connectDB");
+const errorHandler = require("./utils/errorHandler");
+const connectDB = require("./utils/connectDB");
 const http = require("http");
 const PORT = process.env.PORT || 4000;
 const cookieParser = require("cookie-parser");
-const logger = require("./logger");
+const logger = require("./utils/logger");
 const {graphqlUploadExpress} = require("graphql-upload");
 const rateLimit = require("express-rate-limit");
 

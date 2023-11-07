@@ -99,13 +99,6 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    signUp(
-      email: String!
-      username: String!
-      password: String!
-      confirmPassword: String!
-    ): SignupPayload!
-    login(email: String!, password: String!): LoginPayload!
     sendMessage(chatRoomId: ID!, body: String, file: Upload): Message!
     sendContactRequest(recipientId: ID!): ContactRequest
     acceptContactRequest(requestId: ID!): ContactRequest!
@@ -113,7 +106,6 @@ const typeDefs = gql`
     createChatRoom(participantIds: [ID!]!): ChatRoom!
     createGroupConversation(additionalEmails: [String!]!): ChatRoom!
     changeUsername(newUsername: String!): User
-    changePassword(oldPassword: String!, newPassword: String!): User
   }
 
   type Subscription {

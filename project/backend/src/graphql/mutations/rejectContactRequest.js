@@ -1,8 +1,8 @@
 // backend\src\graphql\resolvers\mutations\rejectContactRequest.js
-const { getUserFromToken } = require("../utils");
+const { getUserFromToken } = require("../../../../authService/src/authUtils");
 const ContactRequest = require("../../models/ContactRequestModel");
 const { AuthenticationError } = require("apollo-server-express");
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 
 const rejectContactRequest = async (parent, { requestId }, context) => {
   const { token, pubSub } = context; // Added pubSub here

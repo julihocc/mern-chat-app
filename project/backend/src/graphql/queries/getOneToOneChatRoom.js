@@ -1,8 +1,8 @@
 const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");
-const { getUserFromToken } = require("../utils");
-const logger = require("../../logger");
+const { getUserFromToken } = require("../../../../authService/src/authUtils");
+const logger = require("../../utils/logger");
 
 const getOneToOneChatRoom = async (_, { contactId }, { token }) => {
   if (!token) {

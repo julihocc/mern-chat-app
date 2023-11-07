@@ -1,9 +1,9 @@
 // Path: backend/src/graphql/mutations/sendMessage.js
 const ChatRoom = require("../../models/ChatRoomModel");
 const Message = require("../../models/MessageModel");
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 const { AuthenticationError } = require("apollo-server-express");
-const { getUserFromToken } = require("../utils");
+const { getUserFromToken } = require("../../../../authService/src/authUtils");
 
 const sendMessage = async (_, { chatRoomId, body, file }, context) => {
   const { token, pubSub } = context;

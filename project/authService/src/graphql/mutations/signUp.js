@@ -3,8 +3,8 @@
 const {UserInputError} = require("apollo-server-express");
 const User = require("../../models/UserModel");
 const jwt = require("jsonwebtoken");
-const {encryptPassword} = require("../utils");
-const logger = require("../../logger");
+const {encryptPassword} = require("../../authUtils");
+const logger = require("../../utils/logger");
 
 const signUp = async (_, {email, username, password, confirmPassword}, context,) => {
     // Check if email already exists

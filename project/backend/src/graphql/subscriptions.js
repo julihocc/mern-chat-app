@@ -1,5 +1,5 @@
 // backend\src\graphql\resolvers\subscriptions.js
-const logger = require("../logger"); // Import the logger
+const logger = require("../utils/logger"); // Import the logger
 
 const subscriptions = {
   newMessage: {

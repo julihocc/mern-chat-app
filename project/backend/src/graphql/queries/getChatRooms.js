@@ -1,6 +1,6 @@
-const logger = require("../../logger");
+const logger = require("../../utils/logger");
 const { AuthenticationError } = require("apollo-server-express");
-const { getUserFromToken } = require("../utils");
+const { getUserFromToken } = require("../../../../authService/src/authUtils");
 const ChatRoom = require("../../models/ChatRoomModel");
 const getChatRooms = async (parent, args, context) => {
   const { token } = context;
