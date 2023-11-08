@@ -134,8 +134,22 @@ const MainRoutes = () => {
                             )
                         }
                     />
-                    <Route path="/chat/:chatRoomId" element={<ChatRoomViewer/>}/>
-                    <Route path="/settings" element={<Settings/>}/>
+                    <Route
+                        path="/chat/:chatRoomId"
+                        element={
+                            <ApolloProvider client={backendApolloClient}>
+                                <ChatRoomViewer/>
+                            </ApolloProvider>
+                        }
+                    />
+                    <Route
+                        path="/settings"
+                        element={
+                        <ApolloProvider client={authServiceApolloClient}>
+                            <Settings/>
+                        </ApolloProvider>
+                        }
+                    />
                 </Routes>
             </Container>
         </>

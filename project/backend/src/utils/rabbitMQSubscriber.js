@@ -21,9 +21,14 @@ async function startEventSubscriber() {
                 // Assuming event.userData contains the necessary user fields
                 const newUser = new User(event.userData);
                 await newUser.save();
-            } else if (event.eventType === 'UserUpdated') {
+            }
+            if (event.eventType === 'UserUpdated') {
                 // Assuming event.userData contains the updated user fields and an id
                 await User.findByIdAndUpdate(event.userData.id, event.userData);
+            }
+            if (event.eventType === 'UsernameChanged') {
+                const { oldUsername, newUsername } = event.userData;
+                await User.findOneAndUpdate({username: oldUsername}, {$set: {username: newUsername}}, {new: true})
             }
             channel.ack(message);
         } catch (error) {
