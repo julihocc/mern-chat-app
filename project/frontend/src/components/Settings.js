@@ -7,7 +7,7 @@ import { authServiceApolloClient } from "../apolloClient";
 
 const Settings = () => {
   return (
-      <ApolloProvider client={authServiceApolloClient}>
+      // <ApolloProvider client={authServiceApolloClient}>
         <div>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -18,7 +18,7 @@ const Settings = () => {
             </Grid>
           </Grid>
         </div>
-      </ApolloProvider>
+      // </ApolloProvider>
   );
 };
 
