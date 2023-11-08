@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  authService:
+  auth_service:
     build:
       context: ./authService
       dockerfile: Dockerfile

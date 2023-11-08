@@ -1,7 +1,7 @@
 // path: backend/src/graphql/queries/getChatRoomsForCurrentUser.js
 const ChatRoom = require("../../models/ChatRoomModel");
 const logger = require("../../utils/logger");
-const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
+const { getUserFromToken } = require("../../utils/authentication");
 
 const getChatRoomsForCurrentUser = async (parent, args, context) => {
   const { token } = context;
