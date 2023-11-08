@@ -2,8 +2,8 @@
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../../../backend/src/models/UserModel");
-// const logger = require("../logger");
+const User = require("../models/UserModel");
+const logger = require("./logger");
 const saltRounds = 10;
 
 const encryptPassword = async (password) => {
@@ -23,7 +23,7 @@ const getUserFromToken = async (token) => {
     const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);
     // logger.debug(`decoded: ${JSON.stringify(decoded)}`)
     const user = await User.findById(decoded.id);
-    // logger.debug(`user: ${JSON.stringify(user)}`)
+    logger.debug(`getUserFromToken: ${JSON.stringify(user)}`)
     return user;
   } catch (err) {
     // logger.error("Error in getUserFromToken", err);

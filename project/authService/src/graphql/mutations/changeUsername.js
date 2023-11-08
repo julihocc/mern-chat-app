@@ -3,6 +3,7 @@ const User = require('../../models/UserModel');
 const {AuthenticationError} = require('apollo-server-express');
 const {getUserFromToken} = require("../../utils/authentication")
 const logger = require("../../utils/logger");
+const {publishUserEvent} = require("../../utils/rabbitMQPublisher");
 
 const changeUsername = async (_, args, context) => {
     const {newUsername} = args;
@@ -26,6 +27,17 @@ const changeUsername = async (_, args, context) => {
         logger.debug(`Updating username: ${user.username} to ${newUsername}`);
         await User.updateOne({username: user.username}, {$set: {username: newUsername}});
         await logger.debug(`Username updated to ${user.username}`);
+
+        await publishUserEvent(
+            'UsernameChanged',
+            {
+                id: user._id,
+                oldUsername: user.username,
+                newUsername: newUsername
+            })
+
+        logger.debug(`Updated username: ${user.username} to ${newUsername}`);
+
         return await User.findOne({username: newUsername});
     } catch (err) {
         throw new Error(`Error updating username: ${err.message}`);
