@@ -3,8 +3,6 @@
 import React from 'react';
 import {ApolloProvider} from '@apollo/client';
 import {backendApolloClient, authServiceApolloClient} from './apolloClient';
-
-
 import {useDispatch, useSelector} from "react-redux"; // Import Redux hooks
 import {Link, Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
