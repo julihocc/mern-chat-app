@@ -1,0 +1,4 @@
+# /authService/.dockerignore
+node_modules
+.dockerignore
+Dockerfile

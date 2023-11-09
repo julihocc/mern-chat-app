@@ -27,12 +27,10 @@ const backendWsLink = new WebSocketLink({
   },
 });
 
-// Create an upload link for the authService server
 const authServiceLink = createUploadLink({
   uri: AUTH_SERVICE_HTTP_URL + "/graphql",
 });
 
-// Create a WebSocket link for the authService server
 const authServiceWsLink = new WebSocketLink({
   uri: AUTH_SERVICE_WS_URL + "/graphql",
   options: {
@@ -54,31 +52,38 @@ const authMiddleware = setContext((_, { headers }) => {
   };
 });
 
-// const link = split(
-//   ({ query }) => {
-//     const definition = getMainDefinition(query);
-//     return (
-//       definition.kind === "OperationDefinition" &&
-//       definition.operation === "subscription"
-//     );
-//   },
-//   backendWsLink, // authMiddleware.concat(httpLink),
-//   authMiddleware.concat(backendLink), // Changed this line
-// );
-//
-// const apolloClient = new ApolloClient({
-//   link,
-//   cache: new InMemoryCache(),
-// });
-//
-// export default apolloClient;
+
+const backendApolloClientLink = split(
+    ({ query }) => {
+      const definition = getMainDefinition(query);
+      return (
+        definition.kind === "OperationDefinition" &&
+        definition.operation === "subscription"
+      );
+    },
+    backendWsLink, // authMiddleware.concat(httpLink),
+    authMiddleware.concat(backendLink), // Changed this line
+)
 
 export const backendApolloClient = new ApolloClient({
-  link: authMiddleware.concat(backendLink),
+  link: backendApolloClientLink,
   cache: new InMemoryCache(),
 });
 
+const authServiceApolloClientLink = split(
+    ({ query }) => {
+      const definition = getMainDefinition(query);
+      return (
+        definition.kind === "OperationDefinition" &&
+        definition.operation === "subscription"
+      );
+    },
+    authServiceWsLink, // authMiddleware.concat(httpLink),
+    authMiddleware.concat(authServiceLink), // Changed this line
+)
+
 export const authServiceApolloClient = new ApolloClient({
-  link: authMiddleware.concat(authServiceLink),
+  link: authServiceApolloClientLink,
   cache: new InMemoryCache(),
 });
+

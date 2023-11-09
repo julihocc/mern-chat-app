@@ -1,5 +1,5 @@
 // Path: backend\src\graphql\resolvers\mutations\acceptContactRequest.js
-const { getUserFromToken } = require("../../../../authService/src/utils/authentication");
+const { getUserFromToken } = require("../../utils/authentication");
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const ChatRoom = require("../../models/ChatRoomModel");
