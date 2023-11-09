@@ -1,4 +1,4 @@
-version: '3'
+version: '2.1'
 
 services:
   auth_service:
@@ -11,6 +11,13 @@ services:
       - PORT=5000
       - JWT_SECRET=mysecretkey
       - MONGODB_URL=mongodb://mongo:27017/authService
+      - RABBITMQ_URL=amqp://user:password@rabbitmq:5672
+    depends_on:
+      mongo:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
+
   backend:
     build:
       context: ./backend
@@ -21,6 +28,13 @@ services:
       - PORT=4000
       - JWT_SECRET=mysecretkey
       - MONGODB_URL=mongodb://mongo:27017/backend
+      - RABBITMQ_URL=amqp://user:password@rabbitmq:5672
+    depends_on:
+      mongo:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
+
   frontend:
     build:
       context: ./frontend
@@ -38,5 +52,23 @@ services:
     volumes:
       - mongo-data:/data/db
 
+  rabbitmq:
+    image: "rabbitmq:management"
+    hostname: "rabbitmq"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+
 volumes:
   mongo-data:
+  rabbitmq_data:
