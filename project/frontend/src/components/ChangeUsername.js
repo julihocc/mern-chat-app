@@ -7,6 +7,7 @@ export const ChangeUsername = () => {
 
     const [newUsername, setNewUsername] = useState('');
     const [usernameHasChanged, setUsernameHasChanged] = useState(false);
+    const [currentPassword, setCurrentPassword] = useState('');
 
     const changeUsername = useChangeUsername(newUsername);
 
@@ -29,10 +30,6 @@ export const ChangeUsername = () => {
     }, [usernameHasChanged]);
 
     return (
-        // <div>
-        //     <TextField value={newUsername} onChange={(e) => setNewUsername(e.target.value)} />
-        //     <Button onClick={handleSubmit}>Change Username</Button>
-        // </div>
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
             <TextField
                 label="New Username"
