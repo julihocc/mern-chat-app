@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useChangePassword} from "../hooks/mutations/useChangePassword";
 import {Box, Button, TextField, Typography} from "@mui/material";
+import logger from "../utils/logger";
 
 export const ChangePassword = () => {
     const [currentPassword, setCurrentPassword] = useState("");
@@ -12,8 +13,11 @@ export const ChangePassword = () => {
     const handlePasswordChange = async () => {
         try {
             if (newPassword !== confirmPassword) {
+                logger.error("Password and its confirmation do not match");
                 throw new Error("Passwords do not match");
-            } 
+            } else {
+                logger.debug(`Changing password to ${newPassword}`);
+            }
             await changePassword({
                 variables: {oldPassword: currentPassword, newPassword},
             });

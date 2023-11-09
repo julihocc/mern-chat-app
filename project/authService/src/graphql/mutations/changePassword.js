@@ -36,8 +36,13 @@ const changePassword = async (_, { oldPassword, newPassword }, context) => {
   const currentHashedPassword = user.password;
   logger.debug(`Current hashed password: ${currentHashedPassword}`);
 
-  if (hashedOldPassword !== currentHashedPassword) {
-    throw new UserInputError("Incorrect password");
+  // if (hashedOldPassword !== currentHashedPassword) {
+  //   throw new UserInputError("Incorrect password");
+  // }
+
+  const isPasswordValid = await comparePassword(oldPassword, user.password);
+  if (!isPasswordValid) {
+    throw new UserInputError("Incorrect password. Look at changePassword,js for more details");
   }
 
   if (currentHashedPassword === hashedNewPassword) {
