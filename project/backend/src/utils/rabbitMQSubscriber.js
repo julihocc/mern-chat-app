@@ -27,8 +27,10 @@ async function startEventSubscriber() {
                 await User.findByIdAndUpdate(event.userData.id, event.userData);
             }
             if (event.eventType === 'UsernameChanged') {
-                const { oldUsername, newUsername } = event.userData;
-                await User.findOneAndUpdate({username: oldUsername}, {$set: {username: newUsername}}, {new: true})
+                const { id, oldUsername, newUsername } = event.userData;
+                const user = await User.findById(id);
+                user.username = newUsername;
+                await user.save();
             }
             channel.ack(message);
         } catch (error) {
