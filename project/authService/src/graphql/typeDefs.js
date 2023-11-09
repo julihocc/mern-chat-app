@@ -33,7 +33,7 @@ const typeDefs = gql`
     ): SignupPayload!
     login(email: String!, password: String!): LoginPayload!
     changePassword(oldPassword: String!, newPassword: String!): User
-    changeUsername(newUsername: String!): User
+    changeUsername(newUsername: String!, currentPassword: String!): User
   }
 `;
 
