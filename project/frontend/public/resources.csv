@@ -1,7 +1,7 @@
 key,en,fr,es
 greeting,Hello!,Bonjour!,¡Hola!
 farewell,Goodbye!,Au revoir!,¡Adiós!
-welcome,Welcome to our application ,Bienvenue dans notre application ,Bienvenido a nuestra aplicación
+welcome,Welcome to our application,Bienvenue dans notre application,Bienvenido a nuestra aplicación
 logout,Logout,Déconnexion,Cerrar sesión
 login,Login,Connexion,Iniciar sesión
 signup,Signup,Inscription,Regístrate
@@ -31,3 +31,4 @@ usernameChanged, Username changed,Nom d'utilisateur change,Nombre de usuario ha 
 invalidEmail,Email is invalid,L’email est invalide,Correo electrónico no valido
 participants,Participants,Participants,Participantes
 settings,Settings,Paramètres,Ajustes
+currentUser,Current user,Utilisateur actuel,Usuario actual

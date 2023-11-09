@@ -58,8 +58,8 @@ const Dashboard = () => {
             {/*<Grid container direction="column" spacing={3}>*/}
             <Grid item>
               <Typography variant="h1">{t("dashboard")}</Typography>
-              <Typography>
-                {t("welcome")}, {username || email || t("guest")}!
+              <Typography variant="h2">
+                {t("currentUser")}: {username || email || t("guest")}
               </Typography>
             </Grid>
             <Grid item>
