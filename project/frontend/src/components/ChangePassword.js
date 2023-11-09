@@ -13,7 +13,7 @@ export const ChangePassword = () => {
         try {
             if (newPassword !== confirmPassword) {
                 throw new Error("Passwords do not match");
-            }
+            } 
             await changePassword({
                 variables: {oldPassword: currentPassword, newPassword},
             });

@@ -9,13 +9,15 @@ export const ChangeUsername = () => {
     const [usernameHasChanged, setUsernameHasChanged] = useState(false);
     const [currentPassword, setCurrentPassword] = useState('');
 
-    const changeUsername = useChangeUsername(newUsername, currentPassword);
+    const {changeUsername} = useChangeUsername();
 
     const handleSubmit = async () => {
         try {
             logger.debug(`Changing username to ${newUsername}`);
             logger.debug(currentPassword);
-            await changeUsername({ variables: { newUsername, currentPassword } });
+            await changeUsername({
+                variables: {newUsername, currentPassword}
+            });
             logger.debug(`Username changed to ${newUsername}`);
             await setUsernameHasChanged(true);
             logger.debug(`Username has been changed to ${newUsername}`);
