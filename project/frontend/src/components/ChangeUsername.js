@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useChangeUsername} from "../hooks/mutations/useChangeUsername";
-import {Button, TextField} from '@mui/material';
+import {Box, Button, TextField} from '@mui/material';
 import logger from "../utils/logger";
 
 export const ChangeUsername = () => {
@@ -29,9 +29,21 @@ export const ChangeUsername = () => {
     }, [usernameHasChanged]);
 
     return (
-        <div>
-            <TextField value={newUsername} onChange={(e) => setNewUsername(e.target.value)} />
-            <Button onClick={handleSubmit}>Change Username</Button>
-        </div>
+        // <div>
+        //     <TextField value={newUsername} onChange={(e) => setNewUsername(e.target.value)} />
+        //     <Button onClick={handleSubmit}>Change Username</Button>
+        // </div>
+        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+            <TextField
+                label="New Username"
+                variant="outlined"
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
+                margin="normal"
+            />
+            <Button variant="contained" color="primary" onClick={handleSubmit}>
+                Change Username
+            </Button>
+        </Box>
     );
 };
