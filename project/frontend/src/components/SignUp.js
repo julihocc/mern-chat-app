@@ -84,7 +84,7 @@ const Signup = () => {
           value={username}
           onChange={(e) => {
             setUsername(e.target.value);
-            // setErrorMessage("");
+            setErrorMessage("");
           }}
         />
 
@@ -94,7 +94,7 @@ const Signup = () => {
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
-            // setErrorMessage("");
+            setErrorMessage("");
           }}
         />
 
@@ -104,7 +104,7 @@ const Signup = () => {
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
-            // setErrorMessage("");
+            setErrorMessage("");
           }}
         />
 
@@ -114,7 +114,7 @@ const Signup = () => {
           value={confirmPassword}
           onChange={(e) => {
             setConfirmPassword(e.target.value);
-            // setErrorMessage("");
+            setErrorMessage("");
           }}
         />
 
