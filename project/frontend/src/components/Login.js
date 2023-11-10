@@ -85,9 +85,6 @@ const Login = () => {
 			navigate("/dashboard");
 		},
 	});
-
-	if (error) return <p>LOGIN_USER Error: {error.message}</p>;
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		logger.debug("Handling form submit");
@@ -141,7 +138,7 @@ const Login = () => {
 			</form>
 			{errorMessage && (
 				<Alert severity="error" style={{ marginTop: '120px' }}>
-					Alert? {errorMessage}
+					{errorMessage}
 				</Alert>
 			)}
 		</div>
