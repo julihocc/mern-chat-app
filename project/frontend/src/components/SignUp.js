@@ -1,12 +1,12 @@
 // Path: frontend\src\components\SignUp.js
 import React, { useState } from "react";
-import { useDispatch } from "react-redux"; // Import useDispatch
+import { useDispatch } from "react-redux";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { useNavigate } from "react-router-dom";
-import { Button, TextField } from "@mui/material"; // Import MUI components
-import { useTranslation } from "react-i18next"; // Import i18next
-import logger from "../utils/logger"; // Import logger
+import {Alert, Button, TextField} from "@mui/material";
+import { useTranslation } from "react-i18next";
+import logger from "../utils/logger";
 import { setUser } from "../redux/slices/userSlice";
 
 const SIGNUP = gql`
@@ -34,21 +34,23 @@ const SIGNUP = gql`
 
 const Signup = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // Use Redux dispatch
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { t } = useTranslation();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [signUp, { error }] = useMutation(SIGNUP, {
     onError(err) {
       logger.error("Signup Error:", err.message);
+      setErrorMessage(err.message);
       navigate("/signup");
     },
     onCompleted(data) {
       document.cookie = `token=${data.signUp.token}; path=/; max-age=3600`;
-      dispatch(setUser()); // Dispatch loginUser action
+      dispatch(setUser());
       navigate("/dashboard");
     },
   });
@@ -76,33 +78,57 @@ const Signup = () => {
     <div>
       <h2>{t("signup")}</h2>
       <form onSubmit={handleSubmit}>
+
         <TextField
           label={t("username")}
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => {
+            setUsername(e.target.value);
+            // setErrorMessage("");
+          }}
         />
+
         <TextField
           type="email"
           label={t("email")}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            // setErrorMessage("");
+          }}
         />
+
         <TextField
           type="password"
           label={t("password")}
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            // setErrorMessage("");
+          }}
         />
+
         <TextField
           type="password"
           label={t("confirmPassword")}
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+            // setErrorMessage("");
+          }}
         />
+
         <Button type="submit" variant="contained" color="primary">
           {t("signup")}
         </Button>
       </form>
+
+      {errorMessage && (
+          <Alert severity="error" style={{ marginTop: '20px' }}>
+            {errorMessage}
+          </Alert>
+      )}
+
     </div>
   );
 };
