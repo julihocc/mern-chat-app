@@ -61,7 +61,8 @@ const Signup = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      logger.error("Passwords don't match!");
+      // logger.error("Passwords don't match!");
+      setErrorMessage(t("passwordsDoNotMatch"));
       return;
     }
 
