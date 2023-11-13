@@ -4,6 +4,7 @@ const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");
 const { getUserFromToken } = require("../../utils/authentication");
 const logger = require("../../utils/logger");
+const {publishUserEvent} = require("../../utils/rabbitMQPublisher");
 const createChatRoom = async (_, { participantIds }, context) => {
   const { token } = context;
   const user = await getUserFromToken(token);
@@ -24,8 +25,16 @@ const createChatRoom = async (_, { participantIds }, context) => {
     throw new Error("ChatRoom with these participants already exists");
   }
 
-  const chatRoom = new ChatRoom({ participantIds });
-  await chatRoom.save();
+  try {
+    const chatRoom = new ChatRoom({participantIds});
+    await chatRoom.save();
+    await publishUserEvent('ChatRoomCreated', {
+      id: chatRoom._id, participantIds: chatRoom.participantIds
+    })
+  } catch(error) {
+    throw new Error(`Failed to create chatRoom: ${error.message}`);
+  }
+
   return chatRoom;
 };
 
