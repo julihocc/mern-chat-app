@@ -6,7 +6,7 @@ const RABBITMQ_URL = process.env.RABBITMQ_URL;
 async function startEventSubscriber() {
     const connection = await amqp.connect(RABBITMQ_URL);
     const channel = await connection.createChannel();
-    const queue = 'user_events';
+    const queue = 'backend';
 
     await channel.assertQueue(queue, { durable: true });
     console.log(`Subscriber connected to queue: ${queue}`);

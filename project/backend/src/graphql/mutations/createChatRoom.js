@@ -28,7 +28,7 @@ const createChatRoom = async (_, { participantIds }, context) => {
   try {
     const chatRoom = new ChatRoom({participantIds});
     await chatRoom.save();
-    await publishUserEvent('ChatRoomCreated', {
+    await publishUserEvent("chatService",'ChatRoomCreated', {
       id: chatRoom._id, participantIds: chatRoom.participantIds
     })
   } catch(error) {

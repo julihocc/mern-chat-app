@@ -44,7 +44,7 @@ const createGroupConversation = async (_, { additionalEmails }, context) => {
 
   try {
     await chatRoom.save();
-    await publishUserEvent('ChatRoomCreated', {
+    await publishUserEvent("chatService",'ChatRoomCreated', {
       id: chatRoom._id, participantIds: chatRoom.participantIds
     })
     return chatRoom;

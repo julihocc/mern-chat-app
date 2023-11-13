@@ -37,7 +37,10 @@ const changeUsername = async (_, args, context) => {
         await User.updateOne({username: user.username}, {$set: {username: newUsername}});
         await logger.debug(`Username updated to ${user.username}`);
 
-        await publishUserEvent('UsernameChanged', {
+        await publishUserEvent("backend",'UsernameChanged', {
+            id: user._id, oldUsername: user.username, newUsername: newUsername
+        })
+        await publishUserEvent("chatService",'UsernameChanged', {
             id: user._id, oldUsername: user.username, newUsername: newUsername
         })
 
