@@ -1,4 +1,4 @@
-const logout = async (_, args, context) => {
+const logout = async (_, __, context) => {
 	// Clear the authToken cookie
 	context.res.clearCookie('authToken', {
 		httpOnly: true,

@@ -27,21 +27,34 @@ import {logoutUser, setUser} from "./redux/slices/userSlice";
 import Settings from "./components/Settings";
 import {useState} from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-// import {LOGOUT_MUTATION} from './gql/mutations/LOGOUT_MUTATION';
-// import {useMutation} from "@apollo/client";
+import {LOGOUT_MUTATION} from './gql/mutations/LOGOUT_MUTATION';
+import {useMutation} from "@apollo/client";
 
 const MainRoutes = () => {
 
-    // const [logoutMutation] = useMutation(LOGOUT_MUTATION)
+	// const [logoutMutation] = useMutation(LOGOUT_MUTATION)
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const {t} = useTranslation();
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn); // Assuming `isLoggedIn` is in the user part of the state
+	const [logoutMutation] = useMutation(LOGOUT_MUTATION, {
+		client: authServiceApolloClient,
+	})
 
-	const handleLogout = () => {
-		document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-		dispatch(logoutUser()); // Dispatch logout action
-		navigate("/login");
+	// const handleLogout = () => {
+	// 	document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	// 	dispatch(logoutUser()); // Dispatch logout action
+	// 	navigate("/login");
+	// };
+
+	const handleLogout = async () => {
+		try {
+			await logoutMutation();
+			dispatch(logoutUser()); // Dispatch logout action
+			navigate("/login");
+		} catch (error) {
+			console.error('Logout error:', error);
+		}
 	};
 
 	const handleLogin = (userData) => {
