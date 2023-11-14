@@ -32,7 +32,17 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
     try {
         await user.save();
         await publishUserEvent(
-            "UserCreated",{
+            "backend",
+            "UserCreated",
+            {
+                id: user.id,
+                email: user.email,
+                username: user.username,
+            });
+        await publishUserEvent(
+            "chatService",
+            "UserCreated",
+            {
                 id: user.id,
                 email: user.email,
                 username: user.username,

@@ -11,9 +11,7 @@ const {
 } = require("./mutations/createGroupConversation");
 const { rejectContactRequest } = require("./mutations/rejectContactRequest");
 const { sendContactRequest } = require("./mutations/sendContactRequest");
-const { sendMessage } = require("./mutations/sendMessage");
 // Queries
-const { getChatRoomById } = require("./queries/getChatRoomById");
 const { getChatRooms } = require("./queries/getChatRooms");
 const { getChatRoomUsers } = require("./queries/getChatRoomUsers");
 const { getContactRequests } = require("./queries/getContactRequests");
@@ -25,9 +23,6 @@ const {
   getContactsWithFullDetails,
 } = require("./queries/getContactsWithFullDetails");
 const { getCurrentUser } = require("./queries/getCurrentUser");
-const {
-  getMessagesByChatRoomId,
-} = require("./queries/getMessagesByChatRoomId");
 const { getUserByEmail } = require("./queries/getUserByEmail");
 const { getUserById } = require("./queries/getUserById");
 const { getUsersById } = require("./queries/getUsersById");
@@ -47,10 +42,8 @@ const resolvers = {
     createGroupConversation,
     rejectContactRequest,
     sendContactRequest,
-    sendMessage,
   },
   Query: {
-    getChatRoomById,
     getChatRooms,
     getChatRoomUsers,
     getContactRequests,
@@ -58,7 +51,6 @@ const resolvers = {
     getContacts,
     getContactsWithFullDetails,
     getCurrentUser,
-    getMessagesByChatRoomId,
     getUserByEmail,
     getUserById,
     getUsersById,

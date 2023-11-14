@@ -84,7 +84,6 @@ const typeDefs = gql`
     getUserById(userId: ID!): User
     getContactRequests(userId: ID!): [ContactRequest]
     getContactRequestsByContext: [ContactRequestPopulated]
-    getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
     getUserByEmail(email: String!): User
     getChatRoomsByUserId(userId: ID!): [ChatRoom]
     getMessageById(messageId: ID!): Message

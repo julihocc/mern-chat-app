@@ -4,6 +4,7 @@ const ChatRoom = require("../../models/ChatRoomModel");
 const logger = require("../../utils/logger");
 const { AuthenticationError } = require("apollo-server-express");
 const { getUserFromToken } = require("../../utils/authentication");
+const { publishUserEvent } = require("../../utils/rabbitMQPublisher");
 
 const createGroupConversation = async (_, { additionalEmails }, context) => {
   logger.debug("createGroupConversation");
@@ -43,6 +44,9 @@ const createGroupConversation = async (_, { additionalEmails }, context) => {
 
   try {
     await chatRoom.save();
+    await publishUserEvent("chatService",'ChatRoomCreated', {
+      id: chatRoom._id, participantIds: chatRoom.participantIds
+    })
     return chatRoom;
   } catch (error) {
     throw new Error(`Failed to create chatRoom: ${error.message}`);

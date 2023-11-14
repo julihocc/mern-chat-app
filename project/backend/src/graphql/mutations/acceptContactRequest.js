@@ -1,10 +1,12 @@
 // Path: backend\src\graphql\resolvers\mutations\acceptContactRequest.js
+
 const { getUserFromToken } = require("../../utils/authentication");
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");
 const logger = require("../../utils/logger");
+const {publishUserEvent} = require("../../utils/rabbitMQPublisher");
 
 const acceptContactRequest = async (parent, { requestId }, context) => {
   const { token, pubSub } = context;
@@ -43,6 +45,10 @@ const acceptContactRequest = async (parent, { requestId }, context) => {
       participantIds: [contactRequest.senderId, contactRequest.recipientId],
       messagesIds: [],
     });
+
+    await publishUserEvent("chatService",'ChatRoomCreated', {
+      id: chatRoom._id, participantIds: chatRoom.participantIds
+    })
 
     await chatRoom.save();
 
