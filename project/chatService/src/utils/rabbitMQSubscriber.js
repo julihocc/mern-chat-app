@@ -1,6 +1,7 @@
 const amqp = require('amqplib');
 const User = require("../models/UserModel");
 const ChatRoom = require("../models/ChatRoomModel");
+const logger = require("./logger");
 
 const RABBITMQ_URL = process.env.RABBITMQ_URL;
 
@@ -12,7 +13,7 @@ async function startEventSubscriber() {
 	await channel.assertQueue(queue, {durable: true});
 	console.log(`Subscriber connected to queue: ${queue}`);
 
-	channel.consume(queue, async (message) => {
+	await channel.consume(queue, async (message) => {
 		const event = JSON.parse(message.content.toString());
 		console.log(`Received event: ${event.eventType}`);
 
@@ -34,9 +35,10 @@ async function startEventSubscriber() {
 				await user.save();
 			}
 			if (event.eventType === 'ChatRoomCreated') {
+				logger.debug(`Applying ChatRoomCreated: ${event.userData.participantIds} at chat service`);
 				const {id, participantIds} = event.userData;
-				const chatRoom = await ChatRoom.findById(id);
-				chatRoom.participantIds = participantIds;
+				const chatRoom = new ChatRoom({_id: id, participantIds});
+				logger.debug(`ChatRoomCreated: ${chatRoom.participantIds} at the chat service`);
 				await chatRoom.save();
 			}
 			channel.ack(message);

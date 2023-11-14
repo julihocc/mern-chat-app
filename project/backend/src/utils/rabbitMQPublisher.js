@@ -10,7 +10,7 @@ async function publishUserEvent(queue, eventType, userData) {
     const eventMessage = JSON.stringify({ eventType, userData });
     channel.sendToQueue(queue, Buffer.from(eventMessage), { persistent: true });
 
-    console.log(`Published ${eventType} event to queue`);
+    console.log(`Published ${eventType} event to queue ${queue}`);
     await channel.close();
     await connection.close();
 }

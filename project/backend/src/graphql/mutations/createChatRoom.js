@@ -27,15 +27,15 @@ const createChatRoom = async (_, { participantIds }, context) => {
 
   try {
     const chatRoom = new ChatRoom({participantIds});
-    await chatRoom.save();
     await publishUserEvent("chatService",'ChatRoomCreated', {
       id: chatRoom._id, participantIds: chatRoom.participantIds
     })
+    await chatRoom.save();
+    logger.debug(`Backend: Created chatRoom ${chatRoom._id}`);
+    return chatRoom;
   } catch(error) {
     throw new Error(`Failed to create chatRoom: ${error.message}`);
   }
-
-  return chatRoom;
 };
 
 module.exports = { createChatRoom };
