@@ -3,6 +3,7 @@ const {changePassword} = require('./mutations/changePassword');
 const {login} = require('./mutations/login');
 const {signUp} = require('./mutations/signUp');
 const {changeUsername} = require('./mutations/changeUsername');
+const {logout} = require('./mutations/logout');
 
 const resolvers = {
 
@@ -16,7 +17,8 @@ const resolvers = {
         changePassword,
         login,
         signUp,
-        changeUsername
+        changeUsername,
+        logout,
     },
 };
 
