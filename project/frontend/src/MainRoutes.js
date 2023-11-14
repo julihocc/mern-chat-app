@@ -32,7 +32,7 @@ import {useMutation} from "@apollo/client";
 
 const MainRoutes = () => {
 
-    const [logoutMutation] = useMutation(LOGOUT_MUTATION)
+	const [logoutMutation] = useMutation(LOGOUT_MUTATION)
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const {t} = useTranslation();
@@ -44,16 +44,16 @@ const MainRoutes = () => {
 	// 	navigate("/login");
 	// };
 
-    const handleLogout = async () => {
-        try {
-            await logoutMutation();
-            dispatch(logoutUser()); // Dispatch logout action
-            navigate("/login");
-        } catch (error) {
-            console.error('Logout error:', error);
-        }
-    };
-    
+	const handleLogout = async () => {
+		try {
+			await logoutMutation();
+			dispatch(logoutUser()); // Dispatch logout action
+			navigate("/login");
+		} catch (error) {
+			console.error('Logout error:', error);
+		}
+	};
+
 	const handleLogin = (userData) => {
 		dispatch(setUser(userData)); // Dispatch login action with user data
 	};
@@ -78,9 +78,11 @@ const MainRoutes = () => {
 						<LanguageSwitcher/>
 						{isLoggedIn ? (
 							<>
-								<Button color="inherit" onClick={handleLogout}>
-									{t("logout")}
-								</Button>
+								<ApolloProvider client={authServiceApolloClient}>
+									<Button color="inherit" onClick={handleLogout}>
+										{t("logout")}
+									</Button>
+								</ApolloProvider>
 								<Button color="inherit" component={Link} to="/dashboard">
 									{t("dashboard")}
 								</Button>
@@ -113,7 +115,7 @@ const MainRoutes = () => {
 						element={
 							isLoggedIn ? (
 								<ApolloProvider client={backendApolloClient}>
-									<Dashboard onLogout={handleLogout}/>
+									<Dashboard/>
 								</ApolloProvider>
 							) : (
 								<Navigate to="/" replace/>
@@ -141,7 +143,7 @@ const MainRoutes = () => {
 						element={
 							isLoggedIn ? (
 								<ApolloProvider client={backendApolloClient}>
-									<Dashboard onLogout={handleLogout}/>
+									<Dashboard/>
 								</ApolloProvider>
 							) : (
 								<Navigate to="/" replace/>
