@@ -20,6 +20,10 @@ const typeDefs = gql`
     user: User!
   }
   
+  type LogoutPayload {
+    message: String!
+  }
+  
     type Query {
         me: String
     }
@@ -34,7 +38,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): LoginPayload!
     changePassword(oldPassword: String!, newPassword: String!): User
     changeUsername(newUsername: String!, currentPassword: String!): User
-    logout: String!
+    logout: LogoutPayload!
   }
 `;
 
