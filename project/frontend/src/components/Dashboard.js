@@ -29,13 +29,11 @@ const Dashboard = () => {
   // );
   //
 
-  const { loading, error, isLoggedIn } = useSelector(
+  const { loading, error, isLoggedIn, user } = useSelector(
     (state) => state.user,
   );
 
-  const { username, email } = useSelector(
-    (state) => state.user.user,
-  );
+  logger.info(`Dashboard: ${JSON.stringify(user)}`);
 
   // useEffect(() => {
   //   if (isLoggedIn) {
@@ -58,7 +56,7 @@ const Dashboard = () => {
     }
   }, [dispatch, isLoggedIn]);
 
-  // Show a loader while the request is in progress
+    // Show a loader while the request is in progress
   if (loading) return <CircularProgress />;
 
   // Handle error by showing an alert and logging it
@@ -83,7 +81,7 @@ const Dashboard = () => {
             <Grid item>
               <Typography variant="h1">{t("dashboard")}</Typography>
               <Typography variant="h2">
-                {t("currentUser")}: {username || email || t("guest")}
+                {t("currentUser")}: {user?.username || user?.email || t("guest")}
               </Typography>
             </Grid>
             <Grid item>
