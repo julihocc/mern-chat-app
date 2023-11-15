@@ -29,6 +29,7 @@ import {useState} from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import {LOGOUT_MUTATION} from './gql/mutations/LOGOUT_MUTATION';
 import {useMutation} from "@apollo/client";
+import Logout from "./components/Logout";
 
 const MainRoutes = () => {
 
@@ -37,9 +38,8 @@ const MainRoutes = () => {
 	const navigate = useNavigate();
 	const {t} = useTranslation();
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn); // Assuming `isLoggedIn` is in the user part of the state
-	const [logoutMutation] = useMutation(LOGOUT_MUTATION, {
-		client: authServiceApolloClient,
-	})
+	const [drawerOpen, setDrawerOpen] = useState(false);
+
 
 	// const handleLogout = () => {
 	// 	document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -47,21 +47,15 @@ const MainRoutes = () => {
 	// 	navigate("/login");
 	// };
 
-	const handleLogout = async () => {
-		try {
-			await logoutMutation();
-			dispatch(logoutUser()); // Dispatch logout action
-			navigate("/login");
-		} catch (error) {
-			console.error('Logout error:', error);
-		}
-	};
+
 
 	const handleLogin = (userData) => {
 		dispatch(setUser(userData)); // Dispatch login action with user data
 	};
 
-	const [drawerOpen, setDrawerOpen] = useState(false);
+	const handleLogout = () => {
+		navigate("/logout");
+	};
 
 	const toggleDrawer = () => {
 		setDrawerOpen(!drawerOpen);
@@ -167,6 +161,12 @@ const MainRoutes = () => {
 							</ApolloProvider>
 						}
 					/>
+					<Route path="/logout" element={
+						<ApolloProvider client={authServiceApolloClient}>
+                            <Logout/>
+                        </ApolloProvider>
+					} /> {/* New route for logout */}
+
 				</Routes>
 			</Container>
 		</>
