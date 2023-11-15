@@ -61,6 +61,10 @@ services:
     environment:
       - REACT_APP_BACKEND_HTTP_URL=http://localhost:4000
       - REACT_APP_BACKEND_WS_URL=ws://localhost:4000
+      - REACT_APP_AUTH_SERVICE_HTTP_URL=http://localhost:5000
+      - REACT_APP_AUTH_SERVICE_WS_URL=ws://localhost:5000
+      - REACT_APP_CHAT_SERVICE_HTTP_URL=http://localhost:4500
+      - REACT_APP_CHAT_SERVICE_WS_URL=ws://localhost:4500
 
   mongo:
     image: mongo:latest
