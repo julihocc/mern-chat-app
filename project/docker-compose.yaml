@@ -45,7 +45,7 @@ services:
       - PORT=4500
       - JWT_SECRET=mysecretkey
       - MONGODB_URL=mongodb://mongo:27017/chatService
-      - RABBITMQ_URL=amqp://user:password@rabbitm:5672
+      - RABBITMQ_URL=amqp://user:password@rabbitmq:5672
     depends_on:
       mongo:
         condition: service_started
