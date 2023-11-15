@@ -35,6 +35,23 @@ services:
       rabbitmq:
         condition: service_healthy
 
+  chat_service:
+    build:
+      context: ./chatService
+      dockerfile: Dockerfile
+    ports:
+      - "4500:4500"
+    environment:
+      - PORT=4500
+      - JWT_SECRET=mysecretkey
+      - MONGODB_URL=mongodb://mongo:27017/chatService
+      - RABBITMQ_URL=amqp://user:password@rabbitm:5672
+    depends_on:
+      mongo:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
+
   frontend:
     build:
       context: ./frontend
