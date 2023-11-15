@@ -24,9 +24,33 @@ const Dashboard = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { loading, error, isLoggedIn, email, username } = useSelector(
+  // const { loading, error, isLoggedIn, email, username } = useSelector(
+  //   (state) => state.user,
+  // );
+  //
+
+  const { loading, error, isLoggedIn } = useSelector(
     (state) => state.user,
   );
+
+  const { username, email } = useSelector(
+    (state) => state.user.user,
+  );
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     // Use the new action creator
+  //     dispatch(initiateFetchCurrentUser());
+  //   }
+  // }, [dispatch, isLoggedIn]);
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     // Use the new action creator
+  //     dispatch(initiateFetchCurrentUser());
+  //   }
+  // });
+
   useEffect(() => {
     if (isLoggedIn) {
       // Use the new action creator
