@@ -1,5 +1,5 @@
 // frontend/src/components/Login.js
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useApolloClient} from "@apollo/client";
 import {useMutation} from "@apollo/react-hooks";
@@ -111,51 +111,58 @@ const Login = () => {
 		}
 	};
 
-	if (loading) {
-        return <div>Loading...</div>;
-    }
 
-	if (error) {
-		logger.error("Login error:", error);
-		setErrorMessage(error.message)
+
+	useEffect(() => {
+
+
+		if (error) {
+			logger.error("Login error:", error);
+			setErrorMessage(error.message)
+		}
+
+		if (data) {
+			logger.debug("Login data:", data);
+			setErrorMessage("");
+			dispatch(setUser(data.login.user));
+
+			client
+				.query({
+					query: GET_CURRENT_USER,
+					fetchPolicy: "network-only",
+				})
+				.then(
+					({data}) => {
+						logger.debug("client.query data", data);
+						logger.debug(
+							"client.query data.getCurrentUser",
+							data.getCurrentUser,
+						);
+						logger.debug(
+							"client.query data.getCurrentUser.chatRoomId",
+							data.getCurrentUser.id,
+						);
+					},
+					(err) => {
+						logger.error("client.query Error:", err.message);
+					},
+				)
+				.catch((err) => {
+					logger.error("client.query Error:", err.message);
+				});
+
+			logger.debug("Navigating to dashboard");
+			navigate("/dashboard");
+
+		}
+	}, [error, data, dispatch, client, navigate, t])
+
+
+	if (loading) {
+		return <div>Loading...</div>;
 	}
 
-	if (data) {
-        logger.debug("Login data:", data);
-		setErrorMessage("");
-		dispatch(setUser(data.login.user));
-
-		client
-			.query({
-				query: GET_CURRENT_USER,
-				fetchPolicy: "network-only",
-			})
-			.then(
-				({data}) => {
-					logger.debug("client.query data", data);
-					logger.debug(
-						"client.query data.getCurrentUser",
-						data.getCurrentUser,
-					);
-					logger.debug(
-						"client.query data.getCurrentUser.chatRoomId",
-						data.getCurrentUser.id,
-					);
-				},
-				(err) => {
-					logger.error("client.query Error:", err.message);
-				},
-			)
-			.catch((err) => {
-				logger.error("client.query Error:", err.message);
-			});
-
-		logger.debug("Navigating to dashboard");
-		navigate("/dashboard");
-
-    }
-
-
+	
 	return (
 		<div>
 			<h2>{t("login")}</h2>
