@@ -8,29 +8,30 @@ import {Alert, Button, TextField} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import logger from "../utils/logger";
 import { setUser } from "../redux/slices/userSlice";
+import {useSignup} from "../hooks/mutations/useSignup";
 
-const SIGNUP = gql`
-  mutation SignUp(
-    $username: String!
-    $email: String!
-    $password: String!
-    $confirmPassword: String!
-  ) {
-    signUp(
-      username: $username
-      email: $email
-      password: $password
-      confirmPassword: $confirmPassword
-    ) {
-      token
-      user {
-        id
-        username
-        email
-      }
-    }
-  }
-`;
+// const SIGNUP = gql`
+//   mutation SignUp(
+//     $username: String!
+//     $email: String!
+//     $password: String!
+//     $confirmPassword: String!
+//   ) {
+//     signUp(
+//       username: $username
+//       email: $email
+//       password: $password
+//       confirmPassword: $confirmPassword
+//     ) {
+//       token
+//       user {
+//         id
+//         username
+//         email
+//       }
+//     }
+//   }
+// `;
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -42,18 +43,20 @@ const Signup = () => {
   const { t } = useTranslation();
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [signUp, { error }] = useMutation(SIGNUP, {
-    onError(err) {
-      logger.error("Signup Error:", err.message);
-      setErrorMessage(err.message);
-      navigate("/signup");
-    },
-    onCompleted(data) {
-      document.cookie = `token=${data.signUp.token}; path=/; max-age=3600`;
-      dispatch(setUser());
-      navigate("/dashboard");
-    },
-  });
+  // const [signUp, { error }] = useMutation(SIGNUP, {
+  //   onError(err) {
+  //     logger.error("Signup Error:", err.message);
+  //     setErrorMessage(err.message);
+  //     navigate("/signup");
+  //   },
+  //   onCompleted(data) {
+  //     document.cookie = `token=${data.signUp.token}; path=/; max-age=3600`;
+  //     dispatch(setUser());
+  //     navigate("/dashboard");
+  //   },
+  // });
+
+  const {signUp, error} = useSignup(setErrorMessage, navigate, dispatch);
 
   if (error) return <p>SIGNUP_USER Error: {error.message}</p>;
 
