@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {ApolloProvider} from '@apollo/client';
-import {backendApolloClient, authServiceApolloClient, chatServiceApolloClient} from './apolloClient';
+import {contactServiceApolloClient, authServiceApolloClient, chatServiceApolloClient} from './apolloClient';
 import {useDispatch, useSelector} from "react-redux"; // Import Redux hooks
 import {Link, Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -109,7 +109,7 @@ const MainRoutes = () => {
 						path="/"
 						element={
 							isLoggedIn ? (
-								<ApolloProvider client={backendApolloClient}>
+								<ApolloProvider client={contactServiceApolloClient}>
 									<Dashboard onLogout={handleLogout}/>
 								</ApolloProvider>
 							) : (
@@ -137,7 +137,7 @@ const MainRoutes = () => {
 						path="/dashboard"
 						element={
 							isLoggedIn ? (
-								<ApolloProvider client={backendApolloClient}>
+								<ApolloProvider client={contactServiceApolloClient}>
 									<Dashboard onLogout={handleLogout}/>
 								</ApolloProvider>
 							) : (

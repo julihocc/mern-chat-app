@@ -1,4 +1,4 @@
-// backend\src\graphql\resolvers\mutations\signUp.js
+// contactService\src\graphql\resolvers\mutations\signUp.js
 
 const {UserInputError} = require("apollo-server-express");
 const User = require("../../models/UserModel");
@@ -32,7 +32,7 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
     try {
         await user.save();
         await publishUserEvent(
-            "backend",
+            "contactService",
             "UserCreated",
             {
                 id: user.id,

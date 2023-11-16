@@ -6,10 +6,10 @@ import {setContext} from "@apollo/client/link/context";
 import {createUploadLink} from "apollo-upload-client";
 import logger from "./utils/logger";
 
-const BACKEND_HTTP_URL = process.env.REACT_APP_BACKEND_HTTP_URL;
-const BACKEND_WS_URL = process.env.REACT_APP_BACKEND_WS_URL;
-logger.debug(`BACKEND_HTTP_URL: ${BACKEND_HTTP_URL}`);
-logger.debug(`BACKEND_WS_URL: ${BACKEND_WS_URL}`);
+const CONTACT_SERVICE_HTTP_URL = process.env.REACT_APP_CONTACT_SERVICE_HTTP_URL;
+const CONTACT_SERVICE_WS_URL = process.env.REACT_APP_CONTACT_SERVICE_WS_URL;
+logger.debug(`CONTACT_SERVICE_HTTP_URL: ${CONTACT_SERVICE_HTTP_URL}`);
+logger.debug(`CONTACT_SERVICE_WS_URL: ${CONTACT_SERVICE_WS_URL}`);
 
 const AUTH_SERVICE_HTTP_URL = process.env.REACT_APP_AUTH_SERVICE_HTTP_URL;
 const AUTH_SERVICE_WS_URL = process.env.REACT_APP_AUTH_SERVICE_WS_URL;
@@ -38,21 +38,21 @@ const authMiddleware = setContext((_, {headers}) => {
 
 
 /*
-BACKEND CONFIGURATION
+CONTACT SERVICE CONFIGURATION
  */
 
-const backendLink = createUploadLink({
-	uri: BACKEND_HTTP_URL + "/graphql",
+const contactServiceLink = createUploadLink({
+	uri: CONTACT_SERVICE_HTTP_URL + "/graphql",
 });
 
-const backendWsLink = new WebSocketLink({
-	uri: BACKEND_WS_URL + "/graphql",
+const contactServiceWsLink = new WebSocketLink({
+	uri: CONTACT_SERVICE_WS_URL + "/graphql",
 	options: {
 		reconnect: true,
 	},
 });
 
-const backendApolloClientLink = split(
+const contactServiceApolloClientLink = split(
 	({query}) => {
 		const definition = getMainDefinition(query);
 		return (
@@ -60,12 +60,12 @@ const backendApolloClientLink = split(
 			definition.operation === "subscription"
 		);
 	},
-	backendWsLink, // authMiddleware.concat(httpLink),
-	authMiddleware.concat(backendLink), // Changed this line
+	contactServiceWsLink, // authMiddleware.concat(httpLink),
+	authMiddleware.concat(contactServiceLink), // Changed this line
 )
 
-export const backendApolloClient = new ApolloClient({
-	link: backendApolloClientLink,
+export const contactServiceApolloClient = new ApolloClient({
+	link: contactServiceApolloClientLink,
 	cache: new InMemoryCache(),
 });
 

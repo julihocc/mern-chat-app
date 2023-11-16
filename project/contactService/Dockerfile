@@ -1,4 +1,4 @@
-#backend/Dockerfile
+#contactService/Dockerfile
 FROM node:16.13.1
 
 # Create and Set working directory

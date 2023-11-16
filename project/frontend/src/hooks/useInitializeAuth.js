@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useApolloClient } from "@apollo/client";
 import gql from "graphql-tag";
 import { setUser } from "../redux/slices/userSlice";
-import { backendApolloClient } from "../apolloClient";
+import { contactServiceApolloClient } from "../apolloClient";
 
 const GET_CURRENT_USER = gql`
   query GetCurrentUser {
@@ -17,7 +17,7 @@ const GET_CURRENT_USER = gql`
 const useInitializeAuth = () => {
   const dispatch = useDispatch();
   // const client = useApolloClient();
-  const client = backendApolloClient;
+  const client = contactServiceApolloClient;
 
   useEffect(() => {
     // TODO: Remove localStorage and use only cookies

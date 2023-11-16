@@ -1,4 +1,4 @@
-// backend\src\graphql\resolvers\mutations\rejectContactRequest.js
+// contactService\src\graphql\resolvers\mutations\rejectContactRequest.js
 const { getUserFromToken } = require("../../utils/authentication");
 const ContactRequest = require("../../models/ContactRequestModel");
 const { AuthenticationError } = require("apollo-server-express");

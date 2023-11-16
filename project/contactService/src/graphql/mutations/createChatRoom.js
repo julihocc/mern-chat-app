@@ -1,4 +1,4 @@
-// backend\src\graphql\resolvers\mutations\createChatRoom.js
+// contactService\src\graphql\resolvers\mutations\createChatRoom.js
 const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const { AuthenticationError } = require("apollo-server-express");
@@ -31,7 +31,7 @@ const createChatRoom = async (_, { participantIds }, context) => {
       id: chatRoom._id, participantIds: chatRoom.participantIds
     })
     await chatRoom.save();
-    logger.debug(`Backend: Created chatRoom ${chatRoom._id}`);
+    logger.debug(`Contact Service: Created chatRoom ${chatRoom._id}`);
     return chatRoom;
   } catch(error) {
     throw new Error(`Failed to create chatRoom: ${error.message}`);

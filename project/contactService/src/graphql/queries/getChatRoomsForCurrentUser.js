@@ -1,4 +1,4 @@
-// path: backend/src/graphql/queries/getChatRoomsForCurrentUser.js
+// path: contactService/src/graphql/queries/getChatRoomsForCurrentUser.js
 const ChatRoom = require("../../models/ChatRoomModel");
 const logger = require("../../utils/logger");
 const { getUserFromToken } = require("../../utils/authentication");

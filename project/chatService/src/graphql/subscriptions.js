@@ -1,4 +1,4 @@
-// backend\src\graphql\resolvers\subscriptions.js
+// contactService\src\graphql\resolvers\subscriptions.js
 const logger = require("../utils/logger"); // Import the logger
 
 const subscriptions = {
