@@ -4,9 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../redux/slices/userSlice';
 import { LOGOUT_MUTATION } from '../gql/mutations/LOGOUT_MUTATION';
+import {useLogoutMutation} from "../hooks/mutations/useLogoutMutation";
 
 const Logout = () => {
-	const [logoutMutation, { loading, error }] = useMutation(LOGOUT_MUTATION);
+	// const [logoutMutation, { loading, error }] = useMutation(LOGOUT_MUTATION);
+
+	const {logoutMutation, loading, error } = useLogoutMutation();
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
