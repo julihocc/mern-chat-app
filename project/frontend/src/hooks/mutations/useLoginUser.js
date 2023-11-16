@@ -7,12 +7,8 @@ export const useLoginUser = () => {
 	const [loginUser, {loading, error, data}] = useMutation(LOGIN_USER, {
 		onError(err) {
 			logger.error("Login Error:", err.message);
-			// setErrorMessage(err.message);
-		},
-		onCompleted(data) {
-			// setErrorMessage("");
+		}, onCompleted(data) {
 			logger.debug("Login successful. Setting user in Redux store.");
-			// dispatch(setUser(data.login.user));
 			document.cookie = `token=${data.login.token}; path=/; max-age=3600; SameSite=Lax`;
 			logger.debug("document.cookie", document.cookie);
 		},

@@ -17,11 +17,9 @@ const SendContactRequestForm = () => {
 	} = useGetCurrentUser();
 
 
-
 	const {
 		sendContactRequest, loading: sendContactLoading, error: sendContactError,
 	} = useSendContactRequest();
-
 
 
 	const {
@@ -61,28 +59,28 @@ const SendContactRequestForm = () => {
 	}
 
 	return (<div>
-			<Typography variant="h3">{t("sendContactRequest")}</Typography>
-			<form onSubmit={handleSubmit}>
-				<TextField
-					type="email"
-					label={t("email")}
-					placeholder={t("enterEmail")}
-					variant="outlined"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<Button
-					type="submit"
-					variant="contained"
-					color="primary"
-					disabled={sendContactLoading}
-				>
-					{sendContactLoading ? t("sending") : t("send")}
-				</Button>
-			</form>
-			{userError && <p>{userError}</p>}
-			{sendContactError && <p>Error: {sendContactError.message}</p>}
-		</div>);
+		<Typography variant="h3">{t("sendContactRequest")}</Typography>
+		<form onSubmit={handleSubmit}>
+			<TextField
+				type="email"
+				label={t("email")}
+				placeholder={t("enterEmail")}
+				variant="outlined"
+				value={email}
+				onChange={(e) => setEmail(e.target.value)}
+			/>
+			<Button
+				type="submit"
+				variant="contained"
+				color="primary"
+				disabled={sendContactLoading}
+			>
+				{sendContactLoading ? t("sending") : t("send")}
+			</Button>
+		</form>
+		{userError && <p>{userError}</p>}
+		{sendContactError && <p>Error: {sendContactError.message}</p>}
+	</div>);
 };
 
 export default SendContactRequestForm;

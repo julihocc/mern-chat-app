@@ -17,19 +17,16 @@ async function startEventSubscriber() {
 		const event = JSON.parse(message.content.toString());
 		console.log(`Received event: ${event.eventType}`);
 
-		// Handle the event
 		try {
 			if (event.eventType === 'UserCreated') {
-				// Assuming event.userData contains the necessary user fields
 				const newUser = new User(event.userData);
 				await newUser.save();
 			}
 			if (event.eventType === 'UserUpdated') {
-				// Assuming event.userData contains the updated user fields and an id
 				await User.findByIdAndUpdate(event.userData.id, event.userData);
 			}
 			if (event.eventType === 'UsernameChanged') {
-				const {id, oldUsername, newUsername} = event.userData;
+				const {id, newUsername} = event.userData;
 				const user = await User.findById(id);
 				user.username = newUsername;
 				await user.save();
@@ -44,7 +41,6 @@ async function startEventSubscriber() {
 			channel.ack(message);
 		} catch (error) {
 			console.error('Error handling event:', error);
-			// Requeue the message for later if there was an error
 			channel.nack(message);
 		}
 	});

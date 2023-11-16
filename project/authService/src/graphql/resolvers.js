@@ -7,19 +7,15 @@ const {logout} = require('./mutations/logout');
 
 const resolvers = {
 
-    Query: {
-        me: () => {
-            return 'Hello World!';
-        }
-    },
+	Query: {
+		me: () => {
+			return 'Hello World!';
+		}
+	},
 
-    Mutation: {
-        changePassword,
-        login,
-        signUp,
-        changeUsername,
-        logout,
-    },
+	Mutation: {
+		changePassword, login, signUp, changeUsername, logout,
+	},
 };
 
-module.exports = { resolvers };
+module.exports = {resolvers};

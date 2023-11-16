@@ -15,24 +15,24 @@ const cookieParser = require("cookie-parser");
 const logger = require("./utils/logger");
 const {graphqlUploadExpress} = require("graphql-upload");
 const rateLimit = require("express-rate-limit");
-const { startEventSubscriber } = require("./utils/rabbitMQSubscriber");
+const {startEventSubscriber} = require("./utils/rabbitMQSubscriber");
 
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
 
 const corsOptions = {
-    origin: "*",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+	origin: "*",
+	credentials: true,
+	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+	allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use(cors(corsOptions));
 
 const apiLimiter = rateLimit({
-    windowMs: 60 * 60 * 1000, // 1 hour window
-    max: 10000, // limit each IP to 100 requests per windowMs
-    message: "Too many requests from this IP, please try again after an hour",
+	windowMs: 60 * 60 * 1000, // 1 hour window
+	max: 10000, // limit each IP to 100 requests per windowMs
+	message: "Too many requests from this IP, please try again after an hour",
 });
 
 app.use("/graphql", apiLimiter);
@@ -44,60 +44,60 @@ app.use(errorHandler);
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-    const token = req.cookies.authToken;
-    if (token) {
-        req.token = token;
-    }
-    next();
+	const token = req.cookies.authToken;
+	if (token) {
+		req.token = token;
+	}
+	next();
 });
 
 
 async function startServer() {
-    try {
-        await connectDB();
-    } catch (err) {
-        logger.error("Error connecting to MongoDB:", err);
-    }
+	try {
+		await connectDB();
+	} catch (err) {
+		logger.error("Error connecting to MongoDB:", err);
+	}
 
-    const pubSub = new PubSub();
+	const pubSub = new PubSub();
 
-    const apolloServer = new ApolloServer({
-        typeDefs, resolvers, introspection: true, context: ({req, res, connection}) => {
-            if (connection) {
-                return {...connection.context, pubSub};
-            } else {
-                // TODO: Test solution with cookies
-                const token = req.headers.authorization || "";
-                req.token = token;
-                return {req, res, pubSub, token};
-            }
-        }, uploads: false,
-    });
+	const apolloServer = new ApolloServer({
+		typeDefs, resolvers, introspection: true, context: ({req, res, connection}) => {
+			if (connection) {
+				return {...connection.context, pubSub};
+			} else {
+				// TODO: Test solution with cookies
+				const token = req.headers.authorization || "";
+				req.token = token;
+				return {req, res, pubSub, token};
+			}
+		}, uploads: false,
+	});
 
-    await apolloServer.start();
-    apolloServer.applyMiddleware({app});
+	await apolloServer.start();
+	apolloServer.applyMiddleware({app});
 
-    const httpServer = http.createServer(app);
+	const httpServer = http.createServer(app);
 
-    SubscriptionServer.create({
-        schema: apolloServer.schema, execute, subscribe,
-    }, {
-        server: httpServer, path: apolloServer.graphqlPath,
-    },);
+	SubscriptionServer.create({
+		schema: apolloServer.schema, execute, subscribe,
+	}, {
+		server: httpServer, path: apolloServer.graphqlPath,
+	},);
 
-    // Start the RabbitMQ subscriber
-    await startEventSubscriber();
+	// Start the RabbitMQ subscriber
+	await startEventSubscriber();
 
-    httpServer.listen(PORT, () => {
-        logger.debug(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`,);
-        logger.debug(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`,);
-    });
+	httpServer.listen(PORT, () => {
+		logger.debug(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`,);
+		logger.debug(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`,);
+	});
 }
 
 (async () => {
-    try {
-        await startServer();
-    } catch (err) {
-        logger.error("Error starting the contactService:", err);
-    }
+	try {
+		await startServer();
+	} catch (err) {
+		logger.error("Error starting the contactService:", err);
+	}
 })();

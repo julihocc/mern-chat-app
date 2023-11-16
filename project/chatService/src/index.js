@@ -6,8 +6,8 @@ const {PubSub} = require("graphql-subscriptions");
 const {execute, subscribe} = require("graphql");
 const {SubscriptionServer} = require("subscriptions-transport-ws");
 const cors = require("cors");
-const {typeDefs } = require("./graphql/typeDefs");
-const {resolvers } = require("./graphql/resolvers");
+const {typeDefs} = require("./graphql/typeDefs");
+const {resolvers} = require("./graphql/resolvers");
 const errorHandler = require("./utils/errorHandler");
 const connectDB = require("./utils/connectDB");
 const http = require("http");
@@ -16,7 +16,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("./utils/logger");
 const {graphqlUploadExpress} = require("graphql-upload");
 const rateLimit = require("express-rate-limit");
-const { startEventSubscriber } = require("./utils/rabbitMQSubscriber");
+const {startEventSubscriber} = require("./utils/rabbitMQSubscriber");
 
 const app = express();
 
@@ -31,9 +31,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const apiLimiter = rateLimit({
-	windowMs: 60 * 60 * 1000, // 1 hour window
-	max: 10000, // limit each IP to 100 requests per windowMs
-	message: "Too many requests from this IP, please try again after an hour",
+	windowMs: 60 * 60 * 1000, max: 10000, message: "Too many requests from this IP, please try again after an hour",
 });
 
 app.use("/graphql", apiLimiter);
