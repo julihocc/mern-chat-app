@@ -33,7 +33,7 @@ const Logout = () => {
 	if (loading) return <p>Logging out...</p>;
 	if (error) return <p>Error during logout!</p>;
 
-	return null; // or a spinner/loading indicator
+	return null; 
 };
 
 export default Logout;
