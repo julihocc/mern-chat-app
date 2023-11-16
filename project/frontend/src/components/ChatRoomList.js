@@ -70,7 +70,7 @@ const ChatRoomList = () => {
                         sortedChatRooms.map((chatRoom) => (
                             <li key={chatRoom.id}>
                                 <Link to={`/chat/${chatRoom.id}`}>
-                                    Chat: {Date(chatRoom.createdAt)}
+                                    Chat: {chatRoom.createdAt}
                                 </Link>
                             </li>
                         ))}

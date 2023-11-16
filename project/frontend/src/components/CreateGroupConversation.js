@@ -13,22 +13,26 @@ import {
 import { useTranslation } from "react-i18next";
 import { useGetCurrentUser } from "../hooks/queries/useGetCurrentUser";
 import logger from "../utils/logger";
+import {useCreateGroupConversation} from "../hooks/mutations/useCreateGroupConversation";
 
-const CREATE_GROUP_CONVERSATION = gql`
-  mutation CreateGroupConversation($additionalEmails: [String!]!) {
-    createGroupConversation(additionalEmails: $additionalEmails) {
-      id
-    }
-  }
-`;
+// const CREATE_GROUP_CONVERSATION = gql`
+//   mutation CreateGroupConversation($additionalEmails: [String!]!) {
+//     createGroupConversation(additionalEmails: $additionalEmails) {
+//       id
+//     }
+//   }
+// `;
 
 const CreateGroupConversation = () => {
   logger.debug("CreateGroupConversation");
   const { t } = useTranslation();
   const [emailsInput, setEmailsInput] = useState("");
-  const [createGroupConversation, { loading, error }] = useMutation(
-    CREATE_GROUP_CONVERSATION,
-  );
+
+  // const [createGroupConversation, { loading, error }] = useMutation(
+  //   CREATE_GROUP_CONVERSATION,
+  // );
+
+  const {createGroupConversation, loading, error} = useCreateGroupConversation();
 
   const currentUser = useGetCurrentUser();
   logger.debug("currentUser", currentUser);
