@@ -1,4 +1,4 @@
-// backend\src\graphql\resolvers\hooks\hooksHub.js
+// contactService\src\graphql\resolvers\hooks\hooksHub.js
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");

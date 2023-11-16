@@ -1,4 +1,4 @@
-// backend\src\graphql\typeDefs.js
+// contactService\src\graphql\typeDefs.js
 
 const { gql } = require("apollo-server-express");
 

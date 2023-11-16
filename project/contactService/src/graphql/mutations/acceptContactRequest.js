@@ -1,4 +1,4 @@
-// Path: backend\src\graphql\resolvers\mutations\acceptContactRequest.js
+// Path: contactService\src\graphql\resolvers\mutations\acceptContactRequest.js
 
 const { getUserFromToken } = require("../../utils/authentication");
 const User = require("../../models/UserModel");

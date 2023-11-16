@@ -1,4 +1,4 @@
-// Path: backend\src\index.js
+// Path: contactService\src\index.js
 const express = require("express");
 const {ApolloServer} = require("apollo-server-express");
 const {PubSub} = require("graphql-subscriptions");
@@ -98,6 +98,6 @@ async function startServer() {
     try {
         await startServer();
     } catch (err) {
-        logger.error("Error starting the backend:", err);
+        logger.error("Error starting the contactService:", err);
     }
 })();

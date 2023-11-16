@@ -1,4 +1,4 @@
-// Path: backend\src\graphql\resolvers.js
+// Path: contactService\src\graphql\resolvers.js
 // Define the resolvers for the GraphQL schema
 
 const subscriptions = require("./subscriptions");

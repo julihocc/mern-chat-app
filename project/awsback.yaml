@@ -1,21 +1,21 @@
-# Backend Deployment
+# Contact Service Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: contactService
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: contactService
   template:
     metadata:
       labels:
-        app: backend
+        app: contactService
     spec:
       containers:
-        - name: backend
-          image: jdk2py/backend:latest
+        - name: contactService
+          image: jdk2py/contactService:latest
           env:
             - name: MONGODB_URL
               value: "mongodb+srv://julihocastillo:vQI7ZpG2ml13Tyib@cluster0.mjrfzla.mongodb.net/?retryWrites=true&w=majority"
@@ -39,11 +39,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend
+  name: contactService
 spec:
   type: LoadBalancer
   ports:
     - port: 4000
       targetPort: 4000
   selector:
-    app: backend
+    app: contactService

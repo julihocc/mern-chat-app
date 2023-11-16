@@ -1,4 +1,4 @@
-// backend\src\graphql\resolvers\mutations\createGroupConversation.js
+// contactService\src\graphql\resolvers\mutations\createGroupConversation.js
 const User = require("../../models/UserModel");
 const ChatRoom = require("../../models/ChatRoomModel");
 const logger = require("../../utils/logger");

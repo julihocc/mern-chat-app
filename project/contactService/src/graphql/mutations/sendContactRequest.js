@@ -1,4 +1,4 @@
-// path: backend\src\graphql\resolvers\mutations\sendContactRequest.js
+// path: contactService\src\graphql\resolvers\mutations\sendContactRequest.js
 const User = require("../../models/UserModel");
 const ContactRequest = require("../../models/ContactRequestModel");
 const logger = require("../../utils/logger");

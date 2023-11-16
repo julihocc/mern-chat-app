@@ -1,4 +1,4 @@
-// backend/src/graphql/mutations/changeUsername.js
+// contactService/src/graphql/mutations/changeUsername.js
 const User = require('../../models/UserModel');
 const {AuthenticationError} = require('apollo-server-express');
 const {getUserFromToken, comparePassword} = require("../../utils/authentication")
@@ -37,7 +37,7 @@ const changeUsername = async (_, args, context) => {
         await User.updateOne({username: user.username}, {$set: {username: newUsername}});
         await logger.debug(`Username updated to ${user.username}`);
 
-        await publishUserEvent("backend",'UsernameChanged', {
+        await publishUserEvent("contactService",'UsernameChanged', {
             id: user._id, oldUsername: user.username, newUsername: newUsername
         })
         await publishUserEvent("chatService",'UsernameChanged', {

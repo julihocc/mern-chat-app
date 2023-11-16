@@ -1,4 +1,4 @@
-# /backend/.dockerignore
+# /contactService/.dockerignore
 node_modules
 .dockerignore
 Dockerfile

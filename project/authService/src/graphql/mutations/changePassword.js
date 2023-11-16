@@ -1,4 +1,4 @@
-// backend/src/graphql/mutations/changePassword.js
+// contactService/src/graphql/mutations/changePassword.js
 const User = require("../../models/UserModel");
 const {
     getUserFromToken,

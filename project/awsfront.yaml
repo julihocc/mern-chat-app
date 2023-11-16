@@ -17,9 +17,9 @@ spec:
         - name: frontend
           image: jdk2py/frontend:latest
           env:
-            - name: REACT_APP_BACKEND_HTTP_URL
+            - name: REACT_APP_CONTACT_SERVICE_HTTP_URL
               value: "http://a6ed7031bb3a84ace9f38ccc6cb0153a-693263867.us-east-1.elb.amazonaws.com:4000"
-            - name: REACT_APP_BACKEND_WS_URL
+            - name: REACT_APP_CONTACT_SERVICE_WS_URL
               value: "ws://a6ed7031bb3a84ace9f38ccc6cb0153a-693263867.us-east-1.elb.amazonaws.com:4000"
             - name: REACT_APP_S3_BUCKET_NAME
               value: "marbles4078"
@@ -56,7 +56,7 @@ metadata:
   name: my-ingress
   annotations:
     nginx.ingress.kubernetes.io/enable-websocket: "true"
-    nginx.ingress.kubernetes.io/websocket-services: "backend"
+    nginx.ingress.kubernetes.io/websocket-services: "contactService"
 spec:
   ingressClassName: "nginx"
   rules:

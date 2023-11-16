@@ -1,4 +1,4 @@
-// backend\src\graphql\resolvers\mutations\login.js
+// contactService\src\graphql\resolvers\mutations\login.js
 const User = require("../../models/UserModel");
 const jwt = require("jsonwebtoken");
 const { comparePassword } = require("../../utils/authentication");

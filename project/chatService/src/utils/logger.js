@@ -1,4 +1,4 @@
-// path: backend\src\logger.js
+// path: contactService\src\logger.js
 const winston = require("winston");
 
 const logger = winston.createLogger({

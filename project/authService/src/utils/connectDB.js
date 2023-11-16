@@ -1,5 +1,5 @@
 // Initialize the connection to MongoDB
-// path: backend\src\connectDB.js
+// path: contactService\src\connectDB.js
 const mongoose = require("mongoose");
 require("dotenv").config();
 const logger = require("./logger"); // Import the logger
