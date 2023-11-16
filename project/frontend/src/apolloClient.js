@@ -30,8 +30,7 @@ const authMiddleware = setContext((_, {headers}) => {
 
 	return {
 		headers: {
-			...headers,
-			authorization: token ? `Bearer ${token}` : "",
+			...headers, authorization: token ? `Bearer ${token}` : "",
 		},
 	};
 });
@@ -46,27 +45,20 @@ const contactServiceLink = createUploadLink({
 });
 
 const contactServiceWsLink = new WebSocketLink({
-	uri: CONTACT_SERVICE_WS_URL + "/graphql",
-	options: {
+	uri: CONTACT_SERVICE_WS_URL + "/graphql", options: {
 		reconnect: true,
 	},
 });
 
-const contactServiceApolloClientLink = split(
-	({query}) => {
+const contactServiceApolloClientLink = split(({query}) => {
 		const definition = getMainDefinition(query);
-		return (
-			definition.kind === "OperationDefinition" &&
-			definition.operation === "subscription"
-		);
-	},
-	contactServiceWsLink, // authMiddleware.concat(httpLink),
+		return (definition.kind === "OperationDefinition" && definition.operation === "subscription");
+	}, contactServiceWsLink, // authMiddleware.concat(httpLink),
 	authMiddleware.concat(contactServiceLink), // Changed this line
 )
 
 export const contactServiceApolloClient = new ApolloClient({
-	link: contactServiceApolloClientLink,
-	cache: new InMemoryCache(),
+	link: contactServiceApolloClientLink, cache: new InMemoryCache(),
 });
 
 
@@ -79,27 +71,20 @@ const authServiceLink = createUploadLink({
 });
 
 const authServiceWsLink = new WebSocketLink({
-	uri: AUTH_SERVICE_WS_URL + "/graphql",
-	options: {
+	uri: AUTH_SERVICE_WS_URL + "/graphql", options: {
 		reconnect: true,
 	},
 });
 
-const authServiceApolloClientLink = split(
-	({query}) => {
+const authServiceApolloClientLink = split(({query}) => {
 		const definition = getMainDefinition(query);
-		return (
-			definition.kind === "OperationDefinition" &&
-			definition.operation === "subscription"
-		);
-	},
-	authServiceWsLink, // authMiddleware.concat(httpLink),
+		return (definition.kind === "OperationDefinition" && definition.operation === "subscription");
+	}, authServiceWsLink, // authMiddleware.concat(httpLink),
 	authMiddleware.concat(authServiceLink), // Changed this line
 )
 
 export const authServiceApolloClient = new ApolloClient({
-	link: authServiceApolloClientLink,
-	cache: new InMemoryCache(),
+	link: authServiceApolloClientLink, cache: new InMemoryCache(),
 });
 
 
@@ -108,29 +93,22 @@ CHAT SERVICE CONFIGURATION
  */
 
 const chatServiceLink = createUploadLink({
-    uri: CHAT_SERVICE_HTTP_URL + "/graphql",
+	uri: CHAT_SERVICE_HTTP_URL + "/graphql",
 });
 
 const chatServiceWsLink = new WebSocketLink({
-    uri: CHAT_SERVICE_WS_URL + "/graphql",
-    options: {
-        reconnect: true,
-    },
+	uri: CHAT_SERVICE_WS_URL + "/graphql", options: {
+		reconnect: true,
+	},
 });
 
-const chatServiceApolloClientLink = split(
-    ({query}) => {
-        const definition = getMainDefinition(query);
-        return (
-            definition.kind === "OperationDefinition" &&
-            definition.operation === "subscription"
-        );
-    },
-    chatServiceWsLink, // authMiddleware.concat(httpLink),
-    authMiddleware.concat(chatServiceLink), // Changed this line
+const chatServiceApolloClientLink = split(({query}) => {
+		const definition = getMainDefinition(query);
+		return (definition.kind === "OperationDefinition" && definition.operation === "subscription");
+	}, chatServiceWsLink, // authMiddleware.concat(httpLink),
+	authMiddleware.concat(chatServiceLink), // Changed this line
 )
 
 export const chatServiceApolloClient = new ApolloClient({
-    link: chatServiceApolloClientLink,
-    cache: new InMemoryCache(),
+	link: chatServiceApolloClientLink, cache: new InMemoryCache(),
 });

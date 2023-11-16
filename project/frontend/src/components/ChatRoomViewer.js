@@ -32,14 +32,13 @@ const ChatRoomViewer = () => {
 	const {t} = useTranslation();
 	const {chatRoomId} = useParams();
 	const chatRoom = useGetChatRoomById(chatRoomId);
-	const {messageData, messageLoading, messageError} =
-		useGetMessagesByChatRoomId(chatRoomId);
+	const {messageData, messageLoading, messageError} = useGetMessagesByChatRoomId(chatRoomId);
 	const {newMessageData} = useNewMessageSubscription();
 	const [messageBody, setMessageBody] = useState("");
 	const [file, setFile] = useState(null);
 	const [messages, setMessages] = useState([]);
 
-	const {sendMessageMutation, error: sendMessageError, loading: sendMessageLoading } = useSendMessage(chatRoomId);
+	const {sendMessageMutation, error: sendMessageError, loading: sendMessageLoading} = useSendMessage(chatRoomId);
 
 	const isLoading = chatRoom.loading || messageLoading || sendMessageLoading;
 
@@ -53,9 +52,7 @@ const ChatRoomViewer = () => {
 		e.preventDefault();
 		await sendMessageMutation({
 			variables: {
-				chatRoomId: chatRoomId,
-				body: messageBody,
-				file: file,
+				chatRoomId: chatRoomId, body: messageBody, file: file,
 			},
 		});
 	};
@@ -72,16 +69,11 @@ const ChatRoomViewer = () => {
 		}
 	}, [newMessageData]);
 
-	// const currentUser = useGetCurrentUser();
-	// =======================================
+
 	const dispatch = useDispatch();
 
-	// Extracting relevant pieces of the state
-	const {loading, user, error, isLoggedIn} = useSelector(
-		(state) => state.user,
-	);
+	const {loading, user, error, isLoggedIn} = useSelector((state) => state.user,);
 
-	// Fetch current user details if logged in
 	useEffect(() => {
 		if (isLoggedIn) {
 			// Use the new action creator
@@ -89,49 +81,35 @@ const ChatRoomViewer = () => {
 		}
 	}, [dispatch, isLoggedIn]);
 
-	// Show a loader while the request is in progress
 	if (loading) return <CircularProgress/>;
 
-	// Handle error by showing an alert and logging it
 	if (error) {
 		logger.error(`GET_CURRENT_USER Error: ${error}`);
 		return <Alert severity="error">{t("An error occurred")}</Alert>;
 	}
 
-	// Handle case when user data is unavailable but is supposed to be logged in
 	if (isLoggedIn && !user) {
 		return <div>Loading user data...</div>; // This could also be a spinner
 	}
 
-	// Handle case when user data is unavailable and not logged in
 	if (!isLoggedIn) {
 		return <div>Please log in.</div>;
 	}
-	// =======================================
+
 
 	const currentUserId = user.id;
 
-	if (!currentUserId)
-		return (
-			<Typography variant="h4">Please log in to view the chat room</Typography>
-		);
+	if (!currentUserId) return (<Typography variant="h4">Please log in to view the chat room</Typography>);
 	if (isLoading) return <Loading queryName="Loading"/>;
 
-	if (chatRoom.error)
-		return <p>Chat Room Error: {JSON.stringify(chatRoom.error)}</p>;
+	if (chatRoom.error) return <p>Chat Room Error: {JSON.stringify(chatRoom.error)}</p>;
 	if (messageError) return <p>Message Error: {JSON.stringify(messageError)}</p>;
-	if (sendMessageError)
-		return <p>Send Message Error: {JSON.stringify(sendMessageError)}</p>;
+	if (sendMessageError) return <p>Send Message Error: {JSON.stringify(sendMessageError)}</p>;
 
-	return (
-		<Container
+	return (<Container
 			component={Paper}
 			sx={{
-				height: "90vh",
-				mt: 2,
-				display: "flex",
-				flexDirection: "column",
-				p: 2,
+				height: "90vh", mt: 2, display: "flex", flexDirection: "column", p: 2,
 			}}
 		>
 			<CssBaseline/>
@@ -148,35 +126,30 @@ const ChatRoomViewer = () => {
 					.join(", ")}
 			</Typography>
 			<List>
-				{messages &&
-					messages.slice(-5).map((message, index) => (
-						<ListItem
-							key={index}
+				{messages && messages.slice(-5).map((message, index) => (<ListItem
+						key={index}
+						sx={{
+							flexDirection: message.senderId.id === currentUserId ? "row-reverse" : "row",
+						}}
+					>
+						<ListItemAvatar>
+							<Gravatar email={message.senderId.email}/>
+						</ListItemAvatar>
+						<ListItemText
+							primary={message.body}
+							secondary={message.senderId.username}
 							sx={{
-								flexDirection:
-									message.senderId.id === currentUserId ? "row-reverse" : "row",
+								textAlign: message.senderId.id === currentUserId ? "right" : "left",
 							}}
-						>
-							<ListItemAvatar>
-								<Gravatar email={message.senderId.email}/>
-							</ListItemAvatar>
-							<ListItemText
-								primary={message.body}
-								secondary={message.senderId.username}
-								sx={{
-									textAlign:
-										message.senderId.id === currentUserId ? "right" : "left",
-								}}
+						/>
+						{message.fileContent && ( // Assuming the file is an image, render it as an image tag
+							<img
+								src={`data:${message.mimeType};base64,${message.fileContent}`}
+								alt="Uploaded content"
 							/>
-							{message.fileContent && ( // Assuming the file is an image, render it as an image tag
-								<img
-									src={`data:${message.mimeType};base64,${message.fileContent}`}
-									alt="Uploaded content"
-								/>
-								// For other file types, you can create a download link with the appropriate MIME type
-							)}
-						</ListItem>
-					))}
+							// For other file types, you can create a download link with the appropriate MIME type
+						)}
+					</ListItem>))}
 			</List>
 			<form onSubmit={(e) => handleSendMessage(e, currentUserId, chatRoomId)}>
 				<Stack direction="row" spacing={1}>
@@ -204,8 +177,7 @@ const ChatRoomViewer = () => {
 					</Button>
 				</Stack>
 			</form>
-		</Container>
-	);
+		</Container>);
 };
 
 export default ChatRoomViewer;

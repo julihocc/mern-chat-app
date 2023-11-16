@@ -1,6 +1,6 @@
 // contactService\src\graphql\typeDefs.js
 
-const { gql } = require("apollo-server-express");
+const {gql} = require("apollo-server-express");
 
 const typeDefs = gql`
     scalar Upload
@@ -78,8 +78,8 @@ const typeDefs = gql`
     }
 
     type Query {
-	    getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
-	    getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
+        getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
+        getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
     }
 
     type Mutation {
@@ -91,4 +91,4 @@ const typeDefs = gql`
     }
 `;
 
-module.exports = { typeDefs };
+module.exports = {typeDefs};

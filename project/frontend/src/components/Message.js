@@ -6,10 +6,6 @@ import {useGetSender} from "../hooks/queries/useGetSender";
 
 export const Message = ({message, isCurrentUser}) => {
 
-	// const { loading, error, data } = useQuery(GET_USER_BY_ID, {
-	//   variables: { userId: message.senderId },
-	// });
-
 	const {loading, error, data} = useGetSender(message)
 
 	if (loading) return <p>Loading sender info...</p>;
