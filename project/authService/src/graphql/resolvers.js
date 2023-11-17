@@ -4,13 +4,12 @@ const {login} = require('./mutations/login');
 const {signUp} = require('./mutations/signUp');
 const {changeUsername} = require('./mutations/changeUsername');
 const {logout} = require('./mutations/logout');
+const {getCurrentUser} = require('./queries/getCurrentUser');
 
 const resolvers = {
 
 	Query: {
-		me: () => {
-			return 'Hello World!';
-		}
+		getCurrentUser
 	},
 
 	Mutation: {

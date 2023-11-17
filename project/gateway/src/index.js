@@ -4,7 +4,7 @@ const { ApolloGateway, IntrospectAndCompose } = require('@apollo/gateway');
 const gateway = new ApolloGateway({
 	supergraphSdl: new IntrospectAndCompose({
 		subgraphs: [
-			{ name: 'auth', url: 'http://localhost:4001' },
+			{ name: 'auth', url: 'http://localhost:4001/graphql' },
 			// Add other services here as you federate them
 		],
 	}),

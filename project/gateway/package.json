@@ -2,14 +2,14 @@
   "name": "gateway",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "src/index.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@apollo/gateway": "^2.5.7",
     "apollo-server": "^3.13.0"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js"
   }
 }

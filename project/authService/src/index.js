@@ -1,7 +1,7 @@
 // authService/src/index.js
 const express = require("express");
 const {ApolloServer} = require("apollo-server-express");
-const {buildFederatedSchema} = require("@apollo/federation");
+const { buildSubgraphSchema } = require('@apollo/subgraph');
 const {PubSub} = require("graphql-subscriptions");
 const {execute, subscribe} = require("graphql");
 const {SubscriptionServer} = require("subscriptions-transport-ws");
@@ -63,7 +63,7 @@ async function startServer() {
 
 	const apolloServer = new ApolloServer({
 		// typeDefs, resolvers,
-		schema: buildFederatedSchema([{ typeDefs, resolvers }]),
+		schema: buildSubgraphSchema([{ typeDefs, resolvers }]),
 		introspection: true,
 		context: ({req, res, connection}) => {
 			if (connection) {
