@@ -44,6 +44,7 @@ app.use(errorHandler);
 app.use(cookieParser());
 
 app.use((req, res, next) => {
+	logger.debug(`Incoming Headers: ${JSON.stringify(req.headers)}`);
 	const token = req.cookies.authToken;
 	if (token) {
 		req.token = token;

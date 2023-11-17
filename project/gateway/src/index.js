@@ -10,7 +10,13 @@ const gateway = new ApolloGateway({
 	}),
 });
 
-const server = new ApolloServer({ gateway, subscriptions: false });
+const server = new ApolloServer({
+	gateway,
+	subscriptions: false,
+	context: ({req}) => {
+		return { headers: req.headers };
+	}
+});
 
 server.listen().then(({ url }) => {
 	console.log(`🚀 Server ready at ${url}`);
