@@ -1,7 +1,8 @@
 // AuthServiceDataSource.js
-import { RESTDataSource } from '@apollo/datasource-rest';
+// import { RESTDataSource } from '@apollo/datasource-rest';
+const { RESTDataSource } = require("@apollo/datasource-rest");
 
-class AuthServiceDataSource extends RESTDataSource {
+class AuthAPI extends RESTDataSource {
 	constructor() {
 		super();
 		this.baseURL = 'http://localhost:5000/'; // Replace with your AuthService URL
@@ -80,4 +81,4 @@ class AuthServiceDataSource extends RESTDataSource {
 
 }
 
-export default AuthServiceDataSource;
+module.export = {AuthAPI};
