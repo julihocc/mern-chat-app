@@ -8,8 +8,9 @@
 const resolvers = {
 
 	Query: {
-		me: () => {
-			return 'Hello World!';
+		getCurrentUser: async (parent, args, {dataSources, context}) => {
+			console.log(context);
+			return await dataSources.authAPI.getCurrentUser();
 		}
 	},
 

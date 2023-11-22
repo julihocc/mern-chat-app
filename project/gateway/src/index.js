@@ -63,10 +63,6 @@ async function startServer() {
 	const apolloServer = new ApolloServer({
 		typeDefs, resolvers,
 
-		dataSources : () => ({
-			authAPI: new AuthAPI(),
-		}),
-
 		// introspection: true,
 		context: ({req, res, connection}) => {
 			if (connection) {
@@ -77,7 +73,13 @@ async function startServer() {
 				req.token = token;
 				return {req, res, pubSub, token};
 			}
-		}, uploads: false,
+		},
+
+		dataSources : () => ({
+			authAPI: new AuthAPI(),
+		}),
+
+		uploads: false,
 	});
 
 	await apolloServer.start();
