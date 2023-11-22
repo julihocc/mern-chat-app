@@ -16,6 +16,9 @@ const resolvers = {
 
 	Mutation: {
 		login: async (_, {email, password}, {dataSources}) => {
+			console.log("Mutation: login");
+			console.log(email, password);
+			console.log(dataSources)
 			return await dataSources.authAPI.login(email, password);
 		}
 	},

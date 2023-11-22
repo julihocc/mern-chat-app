@@ -11,6 +11,8 @@ const login = async (_, { email, password }, context) => {
   if (!user) {
     logger.error(`Invalid email: ${email}`);
     throw new Error("Invalid email");
+  } else {
+    logger.debug("user", JSON.stringify(user));
   }
   const match = await comparePassword(password, user.password);
   if (!match) {
