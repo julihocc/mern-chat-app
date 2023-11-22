@@ -80,4 +80,4 @@ class AuthAPI extends RESTDataSource {
 
 }
 
-module.export = {AuthAPI};
+module.exports = {AuthAPI};
