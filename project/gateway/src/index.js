@@ -64,9 +64,11 @@ async function startServer() {
 		typeDefs, resolvers,
 
 		dataSources : () => ({
-			authAPI: new AuthAPI,
+			authAPI: new AuthAPI(),
 		}),
-		introspection: true, context: ({req, res, connection}) => {
+
+		// introspection: true,
+		context: ({req, res, connection}) => {
 			if (connection) {
 				return {...connection.context, pubSub};
 			} else {
