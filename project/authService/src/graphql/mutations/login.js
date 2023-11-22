@@ -5,6 +5,8 @@ const { comparePassword } = require("../../utils/authentication");
 const logger = require("../../utils/logger");
 
 const login = async (_, { email, password }, context) => {
+  logger.debug("login", { email, password });
+  logger.debug("context", context);
   const user = await User.findOne({ email });
   if (!user) {
     logger.error(`Invalid email: ${email}`);

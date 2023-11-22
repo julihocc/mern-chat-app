@@ -68,7 +68,6 @@ async function startServer() {
 			if (connection) {
 				return {...connection.context, pubSub};
 			} else {
-				// TODO: Test solution with cookies
 				const token = req.headers.authorization || "";
 				req.token = token;
 				return {req, res, pubSub, token};
