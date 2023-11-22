@@ -8,8 +8,21 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async login(email, password) {
-		return this.post('login', { email, password });
+		const response = await this.post('', {
+			query: `
+            mutation {
+                login(email: "${email}", password: "${password}") {
+                    user {
+                        email
+                    }
+                    token
+                }
+            }
+        `
+		});
+		return response.data.login;
 	}
+
 
 }
 
