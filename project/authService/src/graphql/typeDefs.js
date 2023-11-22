@@ -1,45 +1,14 @@
-// authService/src/graphql/typeDefs.js
-
-const {gql} = require("apollo-server-express");
+const {gql} = require('apollo-server-express');
 
 const typeDefs = gql`
-
-    type User {
-        id: ID!
-        email: String!
+	type User {
+		id: ID!
         username: String!
-    }
-
-    type SignupPayload {
-        token: String!
-        user: User!
-    }
-
-    type LoginPayload {
-        token: String!
-        user: User!
-    }
-
-    type LogoutPayload {
-        message: String!
-    }
-
-    type Query {
-        getCurrentUser: User!
-    }
-
-    type Mutation {
-        signUp(
-            email: String!
-            username: String!
-            password: String!
-            confirmPassword: String!
-        ): SignupPayload!
-        login(email: String!, password: String!): LoginPayload!
-        changePassword(oldPassword: String!, newPassword: String!): User
-        changeUsername(newUsername: String!, currentPassword: String!): User
-        logout: LogoutPayload!
-    }
-`;
-
-module.exports = {typeDefs};
+        email: String!
+        password: String!
+	}
+	
+	type Query {
+        getUserByEmail(email: String!): User!
+    }	
+`

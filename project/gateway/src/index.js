@@ -5,8 +5,8 @@ const {PubSub} = require("graphql-subscriptions");
 const {execute, subscribe} = require("graphql");
 const {SubscriptionServer} = require("subscriptions-transport-ws");
 const cors = require("cors");
-const {typeDefs} = require("./graphql/typeDefs");
-const {resolvers} = require("./graphql/resolvers");
+const {typeDefs} = require("./graphqlAuthService/typeDefs");
+const {resolvers} = require("./graphqlAuthService/resolvers");
 const errorHandler = require("./utils/errorHandler");
 const http = require("http");
 const PORT = process.env.PORT || 3001;
@@ -52,11 +52,6 @@ app.use((req, res, next) => {
 
 
 async function startServer() {
-	// try {
-	// 	await connectDB();
-	// } catch (err) {
-	// 	logger.error("Error connecting to MongoDB:", err);
-	// }
 
 	const pubSub = new PubSub();
 

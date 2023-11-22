@@ -5,20 +5,6 @@ class AuthAPI extends RESTDataSource {
 	constructor(options) {
 		super(options);
 		this.baseURL = 'http://localhost:5000/graphql';
-		this.context = "aqui va el token"
-	}
-
-	async getCurrentUser() {
-		console.log("getCurrentUser");
-		console.log(this.baseURL);
-		console.log(this.context);
-		const response = await this.post("", {
-			body: {
-                query: "query Query {  getCurrentUser { username  } }",
-            },
-		});
-		console.log(response);
-		return response.data.data.getCurrentUser;
 	}
 
 	async login(email, password) {
