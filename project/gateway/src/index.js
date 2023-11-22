@@ -8,13 +8,13 @@ const cors = require("cors");
 const {typeDefs} = require("./graphql/typeDefs");
 const {resolvers} = require("./graphql/resolvers");
 const errorHandler = require("./utils/errorHandler");
-const connectDB = require("./utils/connectDB");
 const http = require("http");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 const cookieParser = require("cookie-parser");
 const logger = require("./utils/logger");
-const {graphqlUploadExpress} = require("graphql-upload");
+// const {graphqlUploadExpress} = require("graphql-upload");
 const rateLimit = require("express-rate-limit");
+const {AuthAPI} = require("./dataSources/AuthServiceDataSource")
 
 const app = express();
 
@@ -36,7 +36,7 @@ const apiLimiter = rateLimit({
 
 app.use("/graphql", apiLimiter);
 
-app.use(graphqlUploadExpress({maxFileSize: 10000000, maxFiles: 10}));
+// app.use(graphqlUploadExpress({maxFileSize: 10000000, maxFiles: 10}));
 
 app.use(errorHandler);
 
@@ -61,7 +61,12 @@ async function startServer() {
 	const pubSub = new PubSub();
 
 	const apolloServer = new ApolloServer({
-		typeDefs, resolvers, introspection: true, context: ({req, res, connection}) => {
+		typeDefs, resolvers,
+
+		dataSources : () => ({
+			authAPI: new AuthAPI,
+		}),
+		introspection: true, context: ({req, res, connection}) => {
 			if (connection) {
 				return {...connection.context, pubSub};
 			} else {
@@ -74,6 +79,7 @@ async function startServer() {
 	});
 
 	await apolloServer.start();
+
 	apolloServer.applyMiddleware({app});
 
 	const httpServer = http.createServer(app);

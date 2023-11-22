@@ -1,15 +1,14 @@
 // AuthServiceDataSource.js
-// import { RESTDataSource } from '@apollo/datasource-rest';
 const { RESTDataSource } = require("@apollo/datasource-rest");
 
 class AuthAPI extends RESTDataSource {
-	constructor() {
-		super();
+	constructor(options) {
+		super(options);
 		this.baseURL = 'http://localhost:5000/'; // Replace with your AuthService URL
 	}
 
 	async login(email, password) {
-		return this.post('', {
+		return this.post('graphql', {
 			query: `
         mutation {
           login(email: "${email}", password: "${password}") {
@@ -25,7 +24,7 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async signUp(username, email, password) {
-		return this.post('', {
+		return this.post('graphql', {
 			query: `
         mutation {
           signUp(username: "${username}", email: "${email}", password: "${password}") {
@@ -41,7 +40,7 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async changePassword(userId, newPassword) {
-		return this.post('', {
+		return this.post('graphql', {
 			query: `
         mutation {
           changePassword(userId: "${userId}", newPassword: "${newPassword}") {
@@ -54,7 +53,7 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async changeUsername(userId, newUsername) {
-		return this.post('', {
+		return this.post('graphql', {
 			query: `
         mutation {
           changeUsername(userId: "${userId}", newUsername: "${newUsername}") {
@@ -67,7 +66,7 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async logout(userId) {
-		return this.post('', {
+		return this.post('graphql', {
 			query: `
         mutation {
           logout(userId: "${userId}") {
