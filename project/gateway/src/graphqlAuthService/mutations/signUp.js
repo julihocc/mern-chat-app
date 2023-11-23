@@ -48,7 +48,7 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
 	// 	logger.error(`Failed to save user: ${err}`);
 	// }
 
-	const user = await context.dataSources.authAPI.createUser({email, username, password});
+	const user = await context.dataSources.authAPI.createUser(email, username, password);
 	logger.debug(`user: ${JSON.stringify(user)}`);
 
 	// const token = jwt.sign({
