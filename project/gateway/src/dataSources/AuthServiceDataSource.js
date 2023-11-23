@@ -55,6 +55,19 @@ class AuthAPI extends RESTDataSource {
         return data;
 	}
 
+	async getUserByToken(token) {
+		debug("getUserByToken",)
+        debug(`token: ${token}`);
+
+        const data = await this.post("/auth-service/getUserByToken", {
+            body: {
+                token
+            }
+        })
+        debug(`getUserByToken/data: ${JSON.stringify(data)}`);
+        return data;
+	}
+
 }
 
 module.exports = {AuthAPI};

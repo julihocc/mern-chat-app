@@ -1,8 +1,9 @@
 // UserController.js
 const User = require('../models/UserModel');
-const {comparePassword, getUserFromToken} = require('../utils/authentication');
+const {comparePassword, getUserFromToken, retrieveUser} = require('../utils/authentication');
 const {debug} = require("../utils/logger");
 const {sign} = require("jsonwebtoken");
+const {retrieveUserByToken} = require('../utils/authentication');
 
 const getUserByEmail = async (req, res) => {
 	debug("getUserByEmail")
@@ -45,8 +46,21 @@ const getTokenByPayload = async (req, res) => {
 	}
 }
 
+const getUserByToken = async (req, res) => {
+	try{
+		const {token} = req.body;
+        const user = await retrieveUserByToken(token);
+        debug(`user: ${JSON.stringify(user)}`);
+        res.json(user);
+        return user;
+	} catch (error) {
+		res.status(500).json({message: `Server error: ${error}`});
+	}
+}
+
 module.exports = {
 	getUserByEmail,
 	getPasswordComparison,
 	getTokenByPayload,
+	getUserByToken
 };

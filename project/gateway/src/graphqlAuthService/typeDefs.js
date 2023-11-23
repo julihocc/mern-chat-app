@@ -25,7 +25,7 @@ const typeDefs = gql`
     }
 
     type Query {
-        # getCurrentUser: User!
+         getCurrentUserCredentials: User!
         me: String
     }
 

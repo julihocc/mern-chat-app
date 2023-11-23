@@ -14,7 +14,7 @@ const comparePassword = async (password, hash) => {
 	return await bcrypt.compare(password, hash);
 };
 
-const getUserFromToken = async (token) => {
+const retrieveUserByToken = async (token) => {
 
 	const tokenString = token.split(" ")[1];
 
@@ -24,9 +24,9 @@ const getUserFromToken = async (token) => {
 		logger.debug(`getUserFromToken: ${JSON.stringify(user)}`)
 		return user;
 	} catch (err) {
-
 		throw new Error(err);
 	}
+
 };
 
-module.exports = {encryptPassword, comparePassword, getUserFromToken};
+module.exports = {encryptPassword, comparePassword, retrieveUserByToken};

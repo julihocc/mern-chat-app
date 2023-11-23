@@ -46,6 +46,7 @@ app.use(express.json());
 app.post('/auth-service/getUserByEmail', UserController.getUserByEmail);
 app.post('/auth-service/getPasswordComparison', UserController.getPasswordComparison);
 app.post('/auth-service/getTokenByPayload', UserController.getTokenByPayload);
+app.post('/auth-service/getUserByToken', UserController.getUserByToken);
 
 async function startServer() {
 	try {

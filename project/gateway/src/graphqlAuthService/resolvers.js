@@ -1,12 +1,11 @@
 // authService/src/graphql/resolvers.js
 const {login} = require('./mutations/login');
+const {getCurrentUserCredentials} = require('./queries/getCurrentUser');
 
 const resolvers = {
 
 	Query: {
-        me: async (parent, args, context) => {
-			return "me";
-        }
+		getCurrentUserCredentials
 	},
 
 	Mutation: {
