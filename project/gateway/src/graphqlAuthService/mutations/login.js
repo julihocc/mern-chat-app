@@ -8,8 +8,7 @@ const login = async (_, {email, password}, context) => {
 	// const user = await User.findOne({ email });
 
 	const user = await context.dataSources.authAPI.getUserByEmail(email);
-	logger.debug("got user", user);
-	logger.debug("user id: ", user._id);
+	logger.debug(`user: ${JSON.stringify(user)}`);
 
 	if (!user) {
 		logger.error(`No user with email: ${email}`);
@@ -17,7 +16,7 @@ const login = async (_, {email, password}, context) => {
 	}
 
 	const match = await context.dataSources.authAPI.getPasswordComparison(password, user.password);
-	logger.debug("match", match);
+	logger.debug(`match: ${JSON.stringify(match)}`);
 
 	if (!match) {
 		logger.error(`Invalid password for email: ${email}`);
@@ -25,15 +24,16 @@ const login = async (_, {email, password}, context) => {
 	}
 
 	const token = await context.dataSources.authAPI.getTokenByPayload(user._id, user.email)
+	logger.debug(`token: ${JSON.stringify(token)}`);
 
-	context.res.cookie('authToken', token, {
+	context.res.cookie('authToken', token.token, {
 		httpOnly: true,
 		maxAge: 3600000,
 		sameSite: 'lax'
 	});
 
 	return {
-		token,
+		token: token.token,
 		user,
 	};
 };
