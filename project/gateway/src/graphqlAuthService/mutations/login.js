@@ -10,7 +10,7 @@ const login = async (_, { email, password }, context) => {
 
   // const user = await User.findOne({ email });
 
-  const user = await context.dataSources.authAPI.login(email);
+  const user = await context.dataSources.authAPI.getUserByEmail(email);
 
   if (!user) {
     logger.error(`Invalid email: ${email}`);
@@ -19,6 +19,7 @@ const login = async (_, { email, password }, context) => {
     logger.debug("user", JSON.stringify(user));
   }
   const match = await comparePassword(password, user.password);
+
   if (!match) {
     logger.error(`Invalid password for email: ${email}`);
     throw new Error("Invalid password");
