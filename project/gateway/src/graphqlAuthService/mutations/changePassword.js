@@ -1,8 +1,5 @@
 // contactService/src/graphql/mutations/changePassword.js
-const User = require("../../models/UserModel");
-const {
-	getUserFromToken, comparePassword, encryptPassword,
-} = require("../../utils/authentication");
+
 const {
 	AuthenticationError, UserInputError,
 } = require("apollo-server-express");
@@ -13,8 +10,8 @@ const changePassword = async (_, {oldPassword, newPassword}, context) => {
 		throw new UserInputError("New password cannot be the same as old password");
 	}
 
-	const hashedOldPassword = await encryptPassword(oldPassword);
-	const hashedNewPassword = await encryptPassword(newPassword);
+	// const hashedOldPassword = await encryptPassword(oldPassword);
+	// const hashedNewPassword = await encryptPassword(newPassword);
 
 	const {token} = context;
 
@@ -22,7 +19,8 @@ const changePassword = async (_, {oldPassword, newPassword}, context) => {
 		throw new AuthenticationError("You must be logged in");
 	}
 
-	const user = await getUserFromToken(token);
+	// const user = await getUserFromToken(token);
+	const user = await context.dataSources.authAPI.getUserByToken(token);
 
 	if (!user) {
 		throw new AuthenticationError("User not found");
@@ -34,10 +32,14 @@ const changePassword = async (_, {oldPassword, newPassword}, context) => {
 	logger.debug(`Current hashed password: ${currentHashedPassword}`);
 
 
-	const isPasswordValid = await comparePassword(oldPassword, user.password);
+	// const isPasswordValid = await comparePassword(oldPassword, user.password);
+	const isPasswordValid = await context.dataSources.authAPI.getPasswordComparison(oldPassword, currentHashedPassword);
+
 	if (!isPasswordValid) {
-		throw new UserInputError("Incorrect password. Look at changePassword,js for more details");
+		throw new UserInputError("Incorrect password.");
 	}
+
+	const hashedNewPassword = await context.dataSources.authAPI.getPasswordEncrypted(newPassword);
 
 	if (currentHashedPassword === hashedNewPassword) {
 		throw new UserInputError("New password cannot be the same as old password");

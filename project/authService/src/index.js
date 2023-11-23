@@ -50,6 +50,7 @@ app.post('/auth-service/getUserByToken', UserController.getUserByToken);
 app.post('/auth-service/getUserByUsername', UserController.getUserByUsername);
 app.post('/auth-service/getPasswordEncrypted', UserController.getPasswordEncrypted);
 app.post('/auth-service/createUser', UserController.createUser);
+app.post('/auth-service/changePassword', UserController.changePassword);
 
 async function startServer() {
 	try {

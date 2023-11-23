@@ -98,6 +98,19 @@ const createUser = async (req, res) => {
     }
 }
 
+const changePassword = async (req, res) => {
+	try {
+		const {email, password} = req.body;
+		await User.updateOne({email}, {$set: {password: await encryptPassword(password)}});
+		const updatedUser = await User.findOne({email});
+		debug(`Updated user: ${JSON.stringify(updatedUser)}`);
+		res.json(updatedUser);
+		return updatedUser;
+	} catch (error) {
+		res.status(500).json({message: `changePassword error: ${error}`});
+	}
+}
+
 module.exports = {
-	getUserByEmail, getPasswordComparison, getTokenByPayload, getUserByToken, getUserByUsername, getPasswordEncrypted, createUser
+	getUserByEmail, getPasswordComparison, getTokenByPayload, getUserByToken, getUserByUsername, getPasswordEncrypted, createUser, changePassword
 };
