@@ -3,40 +3,43 @@
 const jwt = require("jsonwebtoken");
 const logger = require("../../utils/logger");
 
-const login = async (_, { email, password }, context) => {
-  logger.debug("login", { email, password });
-  logger.debug("context", !!context);
+const login = async (_, {email, password}, context) => {
+	logger.debug("login", {email, password});
+	logger.debug("context", context);
 
-  // const user = await User.findOne({ email });
+	// const user = await User.findOne({ email });
 
-  const user = await context.dataSources.authAPI.getUserByEmail(email);
+	const user = await context.dataSources.authAPI.getUserByEmail(email);
+	logger.debug("user", user);
 
-  if (!user) {
-    logger.error(`Invalid email: ${email}`);
-    throw new Error("Invalid email");
-  } else {
-    logger.debug("user", JSON.stringify(user));
-  }
+	if (!user) {
+		logger.error(`Invalid email: ${email}`);
+		throw new Error("Invalid email");
+	} else {
+		logger.debug("user", JSON.stringify(user));
+	}
 
-  const match = await context.dataSources.authAPI.getPasswordComparison(password, user.password);
+	const match = await context.dataSources.authAPI.getPasswordComparison(password, user.password);
+	logger.debug("match", match);
 
-  if (!match) {
-    logger.error(`Invalid password for email: ${email}`);
-    throw new Error("Invalid password");
-  }
-  const payload = { id: user._id, email: user.email };
-  const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
+	if (!match) {
+		logger.error(`Invalid password for email: ${email}`);
+		throw new Error("Invalid password");
+	}
 
-  context.res.cookie('authToken', token, {
-    httpOnly: true,
-    maxAge: 3600000,
-    sameSite: 'lax'
-  });
+	const payload = {id: user._id, email: user.email};
+	const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: "1h"});
 
-  return {
-    token,
-    user,
-  };
+	context.res.cookie('authToken', token, {
+		httpOnly: true,
+		maxAge: 3600000,
+		sameSite: 'lax'
+	});
+
+	return {
+		token,
+		user,
+	};
 };
 
-module.exports = { login };
+module.exports = {login};

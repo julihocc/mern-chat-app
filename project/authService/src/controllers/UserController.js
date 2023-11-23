@@ -4,8 +4,10 @@ const {comparePassword, getUserFromToken} = require('../utils/authentication');
 const {debug} = require("../utils/logger");
 
 const getUserByEmail = async (req, res) => {
+	debug("getUserByEmail")
 	try {
-		const email = req.params.email;
+		const email = req.body.email;
+		debug(`email: ${email}`);
 		const user = await User.findOne({ email });
 		if (!user) {
 			return res.status(404).json({ message: 'User not found' });

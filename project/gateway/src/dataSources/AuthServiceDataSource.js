@@ -12,7 +12,12 @@ class AuthAPI extends RESTDataSource {
 		debug("getUserByEmail",)
 		debug(`email: ${email}`);
 
-		const data = await this.get("/users/email/:email", {})
+		const data = await this.get("/auth-service/getUserByEmail/", {
+			body: {
+				email
+			}
+		})
+
 		debug(`data: ${JSON.stringify(data)}`);
 		return data.results;
 

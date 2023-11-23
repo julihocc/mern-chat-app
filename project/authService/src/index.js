@@ -43,7 +43,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // RESTful route for getting user by email
-app.get('/auth-service/getUserByEmail/:email', UserController.getUserByEmail);
+app.post('/auth-service/getUserByEmail', UserController.getUserByEmail);
 app.post('/auth-service/getPasswordComparison', UserController.getPasswordComparison);
 
 async function startServer() {
