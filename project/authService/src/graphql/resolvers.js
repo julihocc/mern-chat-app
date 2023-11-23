@@ -1,1 +1,0 @@
-const {getUserByEmail} = require('./resolvers/user');
