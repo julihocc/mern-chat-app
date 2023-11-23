@@ -45,6 +45,7 @@ app.use(express.json());
 // RESTful route for getting user by email
 app.post('/auth-service/getUserByEmail', UserController.getUserByEmail);
 app.post('/auth-service/getPasswordComparison', UserController.getPasswordComparison);
+app.post('/auth-service/getTokenByPayload', UserController.getTokenByPayload);
 
 async function startServer() {
 	try {

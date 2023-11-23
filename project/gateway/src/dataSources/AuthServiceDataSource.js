@@ -12,14 +12,14 @@ class AuthAPI extends RESTDataSource {
 		debug("getUserByEmail",)
 		debug(`email: ${email}`);
 
-		const data = await this.get("/auth-service/getUserByEmail/", {
+		const data = await this.post("/auth-service/getUserByEmail/", {
 			body: {
 				email
 			}
 		})
 
-		debug(`data: ${JSON.stringify(data)}`);
-		return data.results;
+		debug(`getUserByEmail/data: ${JSON.stringify(data)}`);
+		return data;
 
 	}
 
@@ -34,8 +34,25 @@ class AuthAPI extends RESTDataSource {
 				hashed
 			}
         })
-        debug(`data: ${JSON.stringify(data)}`);
-        return data.results;
+
+        debug(`getPasswordComparison/data: ${JSON.stringify(data)}`);
+		debug(`getPasswordComparison/data as object: ${data}`);
+        return data;
+	}
+
+	async getTokenByPayload(id, email) {
+		debug("getTokenByPayload",)
+        debug(`id: ${id}`);
+        debug(`email: ${email}`);
+
+        const data = await this.post("/auth-service/getTokenByPayload", {
+            body: {
+                id,
+                email
+            }
+        })
+        debug(`getTokenByPayload/data: ${JSON.stringify(data)}`);
+        return data;
 	}
 
 }

@@ -1,22 +1,19 @@
 // contactService\src\graphql\resolvers\mutations\login.js
 // const User = require("../../models/UserModel");
-const jwt = require("jsonwebtoken");
 const logger = require("../../utils/logger");
 
 const login = async (_, {email, password}, context) => {
 	logger.debug("login", {email, password});
-	logger.debug("context", context);
 
 	// const user = await User.findOne({ email });
 
 	const user = await context.dataSources.authAPI.getUserByEmail(email);
-	logger.debug("user", user);
+	logger.debug("got user", user);
+	logger.debug("user id: ", user._id);
 
 	if (!user) {
-		logger.error(`Invalid email: ${email}`);
-		throw new Error("Invalid email");
-	} else {
-		logger.debug("user", JSON.stringify(user));
+		logger.error(`No user with email: ${email}`);
+		throw new Error(`No user with email: ${email}`);
 	}
 
 	const match = await context.dataSources.authAPI.getPasswordComparison(password, user.password);
@@ -27,8 +24,7 @@ const login = async (_, {email, password}, context) => {
 		throw new Error("Invalid password");
 	}
 
-	const payload = {id: user._id, email: user.email};
-	const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: "1h"});
+	const token = await context.dataSources.authAPI.getTokenByPayload(user._id, user.email)
 
 	context.res.cookie('authToken', token, {
 		httpOnly: true,
