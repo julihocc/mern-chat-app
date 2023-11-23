@@ -68,6 +68,49 @@ class AuthAPI extends RESTDataSource {
         return data;
 	}
 
+	async getUserByUsername(username) {
+		debug("getUserByUsername",)
+        debug(`username: ${username}`);
+
+        const data = await this.post("/auth-service/getUserByUsername", {
+            body: {
+                username
+            }
+        })
+        debug(`getUserByUsername/data: ${JSON.stringify(data)}`);
+        return data;
+	}
+
+	async getPasswordEncrypted(password) {
+		debug("getPasswordEncrypted",)
+        debug(`password: ${password}`);
+
+        const data = await this.post("/auth-service/getPasswordEncrypted", {
+            body: {
+                password
+            }
+        })
+        debug(`getPasswordEncrypted/data: ${JSON.stringify(data)}`);
+        return data;
+	}
+
+	async createUser(email, username, password) {
+		debug("createUser",)
+        debug(`email: ${email}`);
+        debug(`username: ${username}`);
+        debug(`password: ${password}`);
+
+        const data = await this.post("/auth-service/createUser", {
+            body: {
+                email,
+                username,
+                password
+            }
+        })
+        debug(`createUser/data: ${JSON.stringify(data)}`);
+        return data;
+	}
+
 }
 
 module.exports = {AuthAPI};

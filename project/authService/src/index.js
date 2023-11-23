@@ -47,6 +47,9 @@ app.post('/auth-service/getUserByEmail', UserController.getUserByEmail);
 app.post('/auth-service/getPasswordComparison', UserController.getPasswordComparison);
 app.post('/auth-service/getTokenByPayload', UserController.getTokenByPayload);
 app.post('/auth-service/getUserByToken', UserController.getUserByToken);
+app.post('/auth-service/getUserByUsername', UserController.getUserByUsername);
+app.post('/auth-service/getPasswordEncrypted', UserController.getPasswordEncrypted);
+app.post('/auth-service/createUser', UserController.createUser);
 
 async function startServer() {
 	try {

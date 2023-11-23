@@ -1,9 +1,9 @@
 // UserController.js
 const User = require('../models/UserModel');
-const {comparePassword, getUserFromToken, retrieveUser} = require('../utils/authentication');
+const {comparePassword, retrieveUserByToken, encryptPassword} = require('../utils/authentication');
 const {debug} = require("../utils/logger");
 const {sign} = require("jsonwebtoken");
-const {retrieveUserByToken} = require('../utils/authentication');
+const {publishUserEvent} = require("../utils/rabbitMQPublisher");
 
 const getUserByEmail = async (req, res) => {
 	debug("getUserByEmail")
@@ -11,13 +11,10 @@ const getUserByEmail = async (req, res) => {
 		const email = req.body.email;
 		debug(`email: ${email}`);
 		const user = await User.findOne({email});
-		if (!user) {
-			return res.status(404).json({message: 'User not found'});
-		}
 		res.json(user);
 		return user;
 	} catch (error) {
-		res.status(500).json({message: `Server error: ${error}`});
+		res.status(500).json({message: `getUserByEmail error: ${error}`});
 	}
 };
 
@@ -29,7 +26,7 @@ const getPasswordComparison = async (req, res) => {
 		res.json(result);
 		return result;
 	} catch (error) {
-		res.status(500).json({message: `Server error: ${error}`});
+		res.status(500).json({message: `getPasswordComparison error: ${error}`});
 	}
 }
 
@@ -42,25 +39,65 @@ const getTokenByPayload = async (req, res) => {
 		res.json({token});
 		return token;
 	} catch (error) {
-		res.status(500).json({message: `Server error: ${error}`});
+		res.status(500).json({message: `getTokenByPayload error: ${error}`});
 	}
 }
 
 const getUserByToken = async (req, res) => {
-	try{
+	try {
 		const {token} = req.body;
-        const user = await retrieveUserByToken(token);
-        debug(`user: ${JSON.stringify(user)}`);
-        res.json(user);
-        return user;
+		const user = await retrieveUserByToken(token);
+		debug(`user: ${JSON.stringify(user)}`);
+		res.json(user);
+		return user;
 	} catch (error) {
-		res.status(500).json({message: `Server error: ${error}`});
+		res.status(500).json({message: `getUserByToken error: ${error}`});
 	}
 }
 
+const getUserByUsername = async (req, res) => {
+	try {
+        const username = req.body.username;
+        debug(`username: ${username}`);
+        const user = await User.findOne({username});
+        res.json(user);
+        return user;
+    } catch (error) {
+        res.status(500).json({message: `getUserByUsername error: ${error}`});
+    }
+}
+
+const getPasswordEncrypted = async (req, res) => {
+	try {
+        const {password} = req.body;
+        const hashedPassword = await encryptPassword(password);
+        debug(`hashedPassword: ${hashedPassword}`);
+        res.json({hashedPassword});
+        return hashedPassword;
+    } catch (error) {
+        res.status(500).json({message: `getPasswordEncrypted error: ${error}`});
+    }
+}
+
+const createUser = async (req, res) => {
+	try {
+        const {email, username, password} = req.body;
+        const hashedPassword = await encryptPassword(password);
+        const user = new User({email, username, password: hashedPassword});
+        await user.save();
+		// await publishUserEvent("contactService", "UserCreated", {
+        //     id: user._id, email: user.email, username: user.username,
+        // });
+		// await publishUserEvent("chatService", "UserCreated", {
+        //     id: user._id, email: user.email, username: user.username,
+        // });
+        res.json(user);
+        return user;
+    } catch (error) {
+        res.status(500).json({message: `createUser error: ${error}`});
+    }
+}
+
 module.exports = {
-	getUserByEmail,
-	getPasswordComparison,
-	getTokenByPayload,
-	getUserByToken
+	getUserByEmail, getPasswordComparison, getTokenByPayload, getUserByToken, getUserByUsername, getPasswordEncrypted, createUser
 };
