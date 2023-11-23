@@ -9,21 +9,27 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async getUserByEmail(email) {
-		console.log(email);
-		console.log(this.baseURL);
+		debug("getUserByEmail",)
+		debug(`email: ${email}`);
 
 		const data = await this.get("/users/email/:email", {})
-		debug("response", data);
+		debug(`data: ${JSON.stringify(data)}`);
 		return data.results;
 
 	}
 
-	async comparePassword(password, hashedPassword) {
-		console.log(password);
-        console.log(hashedPassword);
+	async getPasswordComparison(password, hashed) {
+		debug("getPasswordComparison",)
+        debug(`password: ${password}`);
+        debug(`hashedPassword: ${hashed}`);
 
-        const data = await this.get("/users/password/:password", {})
-        debug("response", data);
+        const data = await this.post("/auth-service/getPasswordComparison", {
+			body: {
+				password,
+				hashed
+			}
+        })
+        debug(`data: ${JSON.stringify(data)}`);
         return data.results;
 	}
 

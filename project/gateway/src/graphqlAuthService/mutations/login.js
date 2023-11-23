@@ -17,7 +17,7 @@ const login = async (_, { email, password }, context) => {
   } else {
     logger.debug("user", JSON.stringify(user));
   }
-  const match = await comparePassword(password, user.password);
+  const match = await context.dataSources.authAPI.getPasswordComparison(password, user.password);
 
   if (!match) {
     logger.error(`Invalid password for email: ${email}`);
