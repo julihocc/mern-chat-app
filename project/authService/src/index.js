@@ -40,8 +40,11 @@ app.use(errorHandler);
 // Cookie parsing
 app.use(cookieParser());
 
+app.use(express.json());
+
 // RESTful route for getting user by email
-app.get('/users/email/:email', UserController.getUserByEmail);
+app.get('/auth-service/getUserByEmail/:email', UserController.getUserByEmail);
+app.post('/auth-service/getPasswordComparison', UserController.getPasswordComparison);
 
 async function startServer() {
 	try {

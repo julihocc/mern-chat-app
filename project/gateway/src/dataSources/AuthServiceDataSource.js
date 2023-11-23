@@ -1,40 +1,30 @@
 // AuthServiceDataSource.js
 const {RESTDataSource} = require("@apollo/datasource-rest");
+const {debug} = require("../utils/logger");
 
 class AuthAPI extends RESTDataSource {
 	constructor(options) {
 		super(options);
-		this.baseURL = 'http://localhost:5000/graphql';
+		this.baseURL = 'http://localhost:5000';
 	}
 
-	async login(email, password) {
-		console.log(email, password);
+	async getUserByEmail(email) {
+		console.log(email);
 		console.log(this.baseURL);
-		this.context = "cambie el token"
-		console.log(this.context);
 
-		const response = await this.post('', {
-			body: {
-				// query: "mutation Mutation($email: String!, $password: String!) {  login(email: $email, password: $password) {    user {      email    }    token  } }",
-				query: `
-				mutation Mutation($email: String!, $password: String!) {
-					  login(email: $email, password: $password) {
-					    user {
-					      email
-					      id
-					      username
-					    }
-					    token
-					  }
-					}
-				`, variables: {
-					email, password,
-				}
-			},
-		});
-		console.log(response);
-		console.log(JSON.stringify(response.data.login.user))
-		return response.data.login;
+		const data = await this.get("/users/email/:email", {})
+		debug("response", data);
+		return data.results;
+
+	}
+
+	async comparePassword(password, hashedPassword) {
+		console.log(password);
+        console.log(hashedPassword);
+
+        const data = await this.get("/users/password/:password", {})
+        debug("response", data);
+        return data.results;
 	}
 
 }

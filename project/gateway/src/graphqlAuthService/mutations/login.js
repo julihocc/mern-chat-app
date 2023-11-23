@@ -1,7 +1,6 @@
 // contactService\src\graphql\resolvers\mutations\login.js
 // const User = require("../../models/UserModel");
 const jwt = require("jsonwebtoken");
-const { comparePassword } = require("../../utils/authentication");
 const logger = require("../../utils/logger");
 
 const login = async (_, { email, password }, context) => {
