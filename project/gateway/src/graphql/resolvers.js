@@ -7,11 +7,12 @@ const {changeUsername} = require('./mutations/changeUsername');
 const {logout} = require('./mutations/logout');
 // chatService resolvers
 const {getChatRoomById} = require('./queries/getChatRoomById');
+const {getMessagesByChatRoomId} = require('./queries/getMessagesByChatRoomId');
 
 const resolvers = {
 
 	Query: {
-		getCurrentUserCredentials, getChatRoomById
+		getCurrentUserCredentials, getChatRoomById, getMessagesByChatRoomId
 	},
 
 	Mutation: {

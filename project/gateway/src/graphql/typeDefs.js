@@ -30,12 +30,22 @@ const typeDefs = gql`
         messageIds: [ID]
         createdAt: String!
     }
+    
+    type MessagePopulated {
+        _id: ID!
+        senderId: User!
+        body: String
+        createdAt: String!
+        chatRoomId: ID!
+        fileContent: String # Base64 encoded file content
+    }
 
     type Query {
         # authService
         getCurrentUserCredentials: User!
         # chatService
         getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
+        getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
     }
 
     type Mutation {

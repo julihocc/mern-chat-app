@@ -140,7 +140,6 @@ class AuthAPI extends RESTDataSource {
         debug(`changeUsername/data: ${JSON.stringify(data)}`);
         return data;
 	}
-
 }
 
 module.exports = {AuthAPI};
