@@ -4,6 +4,7 @@ const logger = require("../../utils/logger");
 const {publishUserEvent} = require("../../utils/rabbitMQPublisher");
 
 const changeUsername = async (_, args, context) => {
+	logger.debug("changeUsername")
 	const {newUsername, currentPassword} = args;
 	logger.debug(`New Username: ${newUsername}`);
 	const {token} = context;
@@ -53,6 +54,15 @@ const changeUsername = async (_, args, context) => {
 	// 	throw new Error(`Error updating username: ${err.message}`);
 	// }
 
+
+	try {
+		logger.debug(`Updating username: ${user.username} to ${newUsername}`);
+		const updatedUser = await context.dataSources.authAPI.changeUsername(user.username, newUsername)
+		logger.debug(`Updated user: ${JSON.stringify(updatedUser)}`);
+		return updatedUser;
+	} catch (err) {
+		throw new Error(`Error updating username: ${err.message}`);
+	}
 
 }
 

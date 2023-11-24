@@ -126,6 +126,21 @@ class AuthAPI extends RESTDataSource {
         return data;
 	}
 
+	async changeUsername(username, newUsername) {
+		debug("changeUsername",)
+        debug(`username: ${username}`);
+        debug(`newUsername: ${newUsername}`);
+
+        const data = await this.post("/auth-service/changeUsername", {
+            body: {
+                username,
+                newUsername
+            }
+        })
+        debug(`changeUsername/data: ${JSON.stringify(data)}`);
+        return data;
+	}
+
 }
 
 module.exports = {AuthAPI};
