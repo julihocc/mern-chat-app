@@ -1,4 +1,4 @@
-// Path: contactService/src/graphql/mutations/sendMessage.js
+// Path: contactService/src/graphqlChatService/mutations/sendMessage.js
 const ChatRoom = require("../../models/ChatRoomModel");
 const Message = require("../../models/MessageModel");
 const logger = require("../../utils/logger");

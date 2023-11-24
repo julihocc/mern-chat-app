@@ -5,8 +5,8 @@ const {PubSub} = require("graphql-subscriptions");
 const {execute, subscribe} = require("graphql");
 const {SubscriptionServer} = require("subscriptions-transport-ws");
 const cors = require("cors");
-const {typeDefs} = require("./graphqlAuthService/typeDefs");
-const {resolvers} = require("./graphqlAuthService/resolvers");
+const {typeDefs} = require("./graphql/typeDefs");
+const {resolvers} = require("./graphql/resolvers");
 const errorHandler = require("./utils/errorHandler");
 const http = require("http");
 const PORT = process.env.PORT || 3001;
@@ -15,6 +15,7 @@ const logger = require("./utils/logger");
 // const {graphqlUploadExpress} = require("graphql-upload");
 const rateLimit = require("express-rate-limit");
 const {AuthAPI} = require("./dataSources/AuthServiceDataSource")
+const {ChatAPI} = require("./dataSources/ChatServiceDataSource")
 
 const app = express();
 
@@ -71,6 +72,7 @@ async function startServer() {
 
 		dataSources : () => ({
 			authAPI: new AuthAPI(),
+			chatAPI: new ChatAPI(),
 		}),
 
 		uploads: false,

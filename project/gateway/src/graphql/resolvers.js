@@ -1,9 +1,12 @@
-// authService/src/graphql/resolvers.js
+// authService resolvers
 const {login} = require('./mutations/login');
-const {getCurrentUserCredentials} = require('./queries/getCurrentUser');
+const {getCurrentUserCredentials} = require('./queries/getCurrentUserCredentials');
 const {signUp} = require('./mutations/signUp');
 const {changePassword} = require('./mutations/changePassword');
 const {changeUsername} = require('./mutations/changeUsername');
+const {logout} = require('./mutations/logout');
+// chatService resolvers
+const {getChatRoomById} = require('./queries/getChatRoomById');
 
 const resolvers = {
 
@@ -12,7 +15,7 @@ const resolvers = {
 	},
 
 	Mutation: {
-		login, signUp, changePassword, changeUsername
+		login, signUp, changePassword, changeUsername, logout, getChatRoomById
 	},
 };
 

@@ -1,4 +1,4 @@
-// contactService\src\graphql\resolvers\subscriptions.js
+// contactService\src\graphqlChatService\resolvers\subscriptions.js
 
 
 const subscriptions = {

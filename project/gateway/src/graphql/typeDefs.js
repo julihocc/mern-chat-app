@@ -23,10 +23,19 @@ const typeDefs = gql`
     type LogoutPayload {
         message: String!
     }
+    
+    type ChatRoomPopulated {
+        _id: ID!
+        participantIds: [User!]!
+        messageIds: [ID]
+        createdAt: String!
+    }
 
     type Query {
-         getCurrentUserCredentials: User!
-        me: String
+        # authService
+        getCurrentUserCredentials: User!
+        # chatService
+        getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
     }
 
     type Mutation {
