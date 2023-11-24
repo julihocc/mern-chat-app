@@ -44,6 +44,7 @@ app.use(express.json());
 // RESTful routes
 app.post("/chat-service/getChatRoomById", ChatController.getChatRoomById);
 app.post("/chat-service/getChatRoomByIdPopulatedWithUsers", ChatController.getChatRoomByIdPopulatedWithUsers);
+app.post("/chat-service/getMessagesByChatRoomId", ChatController.getMessagesByChatRoomId);
 
 async function startServer() {
 	try {

@@ -41,7 +41,27 @@ const getChatRoomByIdPopulatedWithUsers = async (req, res) => {
 	}
 }
 
+const getMessagesByChatRoomId = async (req, res) => {
+	debug("getMessagesByChatRoomId");
+    try {
+        const chatRoomId = req.body.chatRoomId;
+        debug(`chatRoomId: ${chatRoomId}`);
+        const messages = await Message.find({chatRoomId}).populate("senderId");
+        debug(`messages: ${messages}`);
+        res.json(messages);
+        res.status(200);
+        return messages;
+    } catch (err) {
+        res.status(500).json(
+            {
+                message: `Error getting messages by chat room id: ${err}`
+            }
+        )
+    }
+}
+
 module.exports = {
     getChatRoomById,
-	getChatRoomByIdPopulatedWithUsers
+	getChatRoomByIdPopulatedWithUsers,
+	getMessagesByChatRoomId
 }
