@@ -111,6 +111,21 @@ class AuthAPI extends RESTDataSource {
         return data;
 	}
 
+	async changePassword(email, password) {
+		debug("changePassword",)
+        debug(`email: ${email}`);
+        debug(`password: ${password}`);
+
+        const data = await this.post("/auth-service/changePassword", {
+            body: {
+                email,
+                password
+            }
+        })
+        debug(`changePassword/data: ${JSON.stringify(data)}`);
+        return data;
+	}
+
 }
 
 module.exports = {AuthAPI};

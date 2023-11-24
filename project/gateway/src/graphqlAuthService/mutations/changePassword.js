@@ -45,15 +45,24 @@ const changePassword = async (_, {oldPassword, newPassword}, context) => {
 		throw new UserInputError("New password cannot be the same as old password");
 	}
 
+	// try {
+	// 	logger.debug(`Changing password for user: ${user.email}`);
+	// 	await User.updateOne({email: user.email}, {$set: {password: hashedNewPassword}},);
+	// 	const updatedUser = await User.findOne({email: user.email});
+	// 	logger.debug(`Updated user: ${JSON.stringify(updatedUser)}`);
+	// 	return updatedUser;
+	// } catch (err) {
+	// 	logger.error(`Error changing password: ${err.message}`);
+	// 	throw new Error("Error changing password");
+	// }
 	try {
 		logger.debug(`Changing password for user: ${user.email}`);
-		await User.updateOne({email: user.email}, {$set: {password: hashedNewPassword}},);
-		const updatedUser = await User.findOne({email: user.email});
+        const updatedUser = await context.dataSources.authAPI.changePassword(user.email, newPassword);
 		logger.debug(`Updated user: ${JSON.stringify(updatedUser)}`);
 		return updatedUser;
 	} catch (err) {
 		logger.error(`Error changing password: ${err.message}`);
-		throw new Error("Error changing password");
+        throw new Error("Error changing password");
 	}
 };
 
