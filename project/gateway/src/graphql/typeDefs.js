@@ -3,6 +3,8 @@
 const {gql} = require("apollo-server-express");
 
 const typeDefs = gql`
+    
+    scalar Upload 
 
     type User {
         _id: ID!
@@ -29,6 +31,15 @@ const typeDefs = gql`
         participantIds: [User!]!
         messageIds: [ID]
         createdAt: String!
+    }
+    
+    type Message {
+        _id: ID!
+        senderId: ID!
+        body: String
+        createdAt: String!
+        chatRoomId: ID!
+        fileContent: String # Base64 encoded file content
     }
     
     type MessagePopulated {
@@ -59,6 +70,7 @@ const typeDefs = gql`
         changePassword(oldPassword: String!, newPassword: String!): User
         changeUsername(newUsername: String!, currentPassword: String!): User
         logout: LogoutPayload!
+        sendMessage(chatRoomId:ID!, body:String, file:Upload):Message!
     }
 `;
 

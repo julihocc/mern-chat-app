@@ -45,6 +45,7 @@ app.use(express.json());
 app.post("/chat-service/getChatRoomById", ChatController.getChatRoomById);
 app.post("/chat-service/getChatRoomByIdPopulatedWithUsers", ChatController.getChatRoomByIdPopulatedWithUsers);
 app.post("/chat-service/getMessagesByChatRoomId", ChatController.getMessagesByChatRoomId);
+app.post("/chat-service/saveMessage", ChatController.saveMessage);
 
 async function startServer() {
 	try {

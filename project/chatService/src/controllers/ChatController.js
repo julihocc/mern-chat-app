@@ -60,8 +60,47 @@ const getMessagesByChatRoomId = async (req, res) => {
     }
 }
 
+const saveMessage = async (req, res) => {
+	debug("saveMessage");
+	const chatRoomId = req.body.chatRoomId;
+	const senderId = req.body.senderId
+	const body = req.body.body
+	const fileContent = req.body.fileContent
+	debug(`chatRoomId: ${chatRoomId}`)
+	debug(`senderId: ${senderId}`);
+	debug(`body: ${body}`)
+	debug(`fileContent: ${fileContent}`)
+
+	const message = new Message({chatRoomId, senderId, body, fileContent});
+
+	try {
+		await message.save();
+
+		const chatRoom = await ChatRoom.findById(chatRoomId);
+		debug(`chatRoom messages: ${chatRoom.messageIds}`);
+		debug(`message: ${message._id}`);
+		chatRoom.messageIds.push(message._id);
+		await chatRoom.save();
+		debug(`chatRoom messages updated: ${chatRoom.messageIds}`);
+
+		res.json(message);
+		res.status(200);
+
+		return message;
+	} catch (err) {
+		res.status(500).json(
+            {
+                message: `Error saving message: ${err}`
+            }
+        )
+	}
+
+
+}
+
 module.exports = {
     getChatRoomById,
 	getChatRoomByIdPopulatedWithUsers,
-	getMessagesByChatRoomId
+	getMessagesByChatRoomId,
+	saveMessage
 }
