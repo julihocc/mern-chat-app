@@ -111,6 +111,32 @@ const changePassword = async (req, res) => {
 	}
 }
 
+const changeUsername = async (req, res) => {
+	try{
+		debug("changeUsername")
+		const {username, newUsername} = req.body;
+		debug(`username: ${username}`);
+		debug(`newUsername: ${newUsername}`);
+		// const user = await User.findOneAndUpdate({username}, {$set: {username: newUsername}});
+		await User.updateOne({username}, {$set: {username: newUsername}});
+		const user = await User.findOne({username: newUsername});
+		debug(`Updated user: ${JSON.stringify(user)}`);
+
+
+		await publishUserEvent("contactService", 'UsernameChanged', {
+			id: user._id, oldUsername: user.username, newUsername: newUsername
+		})
+		await publishUserEvent("chatService", 'UsernameChanged', {
+            id: user._id, oldUsername: user.username, newUsername: newUsername
+        })
+
+		res.json(user);
+		return user;
+	} catch (error) {
+		res.status(500).json({message: `changeUsername error: ${error}`});
+	}
+}
+
 module.exports = {
-	getUserByEmail, getPasswordComparison, getTokenByPayload, getUserByToken, getUserByUsername, getPasswordEncrypted, createUser, changePassword
+	getUserByEmail, getPasswordComparison, getTokenByPayload, getUserByToken, getUserByUsername, getPasswordEncrypted, createUser, changePassword, changeUsername
 };
