@@ -11,11 +11,11 @@ const {getChatRoomById} = require('./queries/getChatRoomById');
 const resolvers = {
 
 	Query: {
-		getCurrentUserCredentials
+		getCurrentUserCredentials, getChatRoomById
 	},
 
 	Mutation: {
-		login, signUp, changePassword, changeUsername, logout, getChatRoomById
+		login, signUp, changePassword, changeUsername, logout
 	},
 };
 

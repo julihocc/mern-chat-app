@@ -57,45 +57,45 @@ const getUserByToken = async (req, res) => {
 
 const getUserByUsername = async (req, res) => {
 	try {
-        const username = req.body.username;
-        debug(`username: ${username}`);
-        const user = await User.findOne({username});
-        res.json(user);
-        return user;
-    } catch (error) {
-        res.status(500).json({message: `getUserByUsername error: ${error}`});
-    }
+		const username = req.body.username;
+		debug(`username: ${username}`);
+		const user = await User.findOne({username});
+		res.json(user);
+		return user;
+	} catch (error) {
+		res.status(500).json({message: `getUserByUsername error: ${error}`});
+	}
 }
 
 const getPasswordEncrypted = async (req, res) => {
 	try {
-        const {password} = req.body;
-        const hashedPassword = await encryptPassword(password);
-        debug(`hashedPassword: ${hashedPassword}`);
-        res.json({hashedPassword});
-        return hashedPassword;
-    } catch (error) {
-        res.status(500).json({message: `getPasswordEncrypted error: ${error}`});
-    }
+		const {password} = req.body;
+		const hashedPassword = await encryptPassword(password);
+		debug(`hashedPassword: ${hashedPassword}`);
+		res.json({hashedPassword});
+		return hashedPassword;
+	} catch (error) {
+		res.status(500).json({message: `getPasswordEncrypted error: ${error}`});
+	}
 }
 
 const createUser = async (req, res) => {
 	try {
-        const {email, username, password} = req.body;
-        const hashedPassword = await encryptPassword(password);
-        const user = new User({email, username, password: hashedPassword});
-        await user.save();
+		const {email, username, password} = req.body;
+		const hashedPassword = await encryptPassword(password);
+		const user = new User({email, username, password: hashedPassword});
+		await user.save();
 		// await publishUserEvent("contactService", "UserCreated", {
-        //     id: user._id, email: user.email, username: user.username,
-        // });
+		//     id: user._id, email: user.email, username: user.username,
+		// });
 		// await publishUserEvent("chatService", "UserCreated", {
-        //     id: user._id, email: user.email, username: user.username,
-        // });
-        res.json(user);
-        return user;
-    } catch (error) {
-        res.status(500).json({message: `createUser error: ${error}`});
-    }
+		//     id: user._id, email: user.email, username: user.username,
+		// });
+		res.json(user);
+		return user;
+	} catch (error) {
+		res.status(500).json({message: `createUser error: ${error}`});
+	}
 }
 
 const changePassword = async (req, res) => {
@@ -112,7 +112,7 @@ const changePassword = async (req, res) => {
 }
 
 const changeUsername = async (req, res) => {
-	try{
+	try {
 		debug("changeUsername")
 		const {username, newUsername} = req.body;
 		debug(`username: ${username}`);
@@ -127,8 +127,8 @@ const changeUsername = async (req, res) => {
 			id: user._id, oldUsername: user.username, newUsername: newUsername
 		})
 		await publishUserEvent("chatService", 'UsernameChanged', {
-            id: user._id, oldUsername: user.username, newUsername: newUsername
-        })
+			id: user._id, oldUsername: user.username, newUsername: newUsername
+		})
 
 		res.json(user);
 		return user;
@@ -138,5 +138,13 @@ const changeUsername = async (req, res) => {
 }
 
 module.exports = {
-	getUserByEmail, getPasswordComparison, getTokenByPayload, getUserByToken, getUserByUsername, getPasswordEncrypted, createUser, changePassword, changeUsername
+	getUserByEmail,
+	getPasswordComparison,
+	getTokenByPayload,
+	getUserByToken,
+	getUserByUsername,
+	getPasswordEncrypted,
+	createUser,
+	changePassword,
+	changeUsername
 };

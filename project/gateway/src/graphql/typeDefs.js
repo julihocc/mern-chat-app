@@ -23,7 +23,7 @@ const typeDefs = gql`
     type LogoutPayload {
         message: String!
     }
-    
+        
     type ChatRoomPopulated {
         _id: ID!
         participantIds: [User!]!

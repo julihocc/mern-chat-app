@@ -7,6 +7,7 @@ const rateLimit = require("express-rate-limit");
 const connectDB = require("./utils/connectDB");
 const errorHandler = require("./utils/errorHandler");
 const logger = require("./utils/logger");
+const ChatController = require("./controllers/ChatController");
 
 const PORT = process.env.PORT || 5000;
 
@@ -41,7 +42,8 @@ app.use(cookieParser());
 app.use(express.json());
 
 // RESTful routes
-
+app.post("/chat-service/getChatRoomById", ChatController.getChatRoomById);
+app.post("/chat-service/getChatRoomByIdPopulatedWithUsers", ChatController.getChatRoomByIdPopulatedWithUsers);
 
 async function startServer() {
 	try {
