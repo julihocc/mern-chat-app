@@ -37,18 +37,12 @@ const resolvers = {
 	Upload: GraphQLUpload, Subscription: subscriptions, Mutation: {
 		acceptContactRequest, createChatRoom, createGroupConversation, rejectContactRequest, sendContactRequest,
 	}, Query: {
-		getChatRooms,
-		getChatRoomUsers,
-		getContactRequests,
 		getContactRequestsByContext,
-		getContacts,
-		getContactsWithFullDetails,
 		getCurrentUser,
 		getUserByEmail,
 		getUserById,
 		getUsersById,
 		getChatRoomsForCurrentUser,
-		getOneToOneChatRoom,
 		getContactsWithChatRoom,
 	},
 };
