@@ -62,11 +62,12 @@ const getMessagesByChatRoomId = async (req, res) => {
 
 const saveMessage = async (req, res) => {
 	debug("saveMessage");
-	const chatRoomId = req.body.chatRoomId;
-	const senderId = req.body.senderId
-	const body = req.body.body
-	const fileContent = req.body.fileContent
-	debug(`chatRoomId: ${chatRoomId}`)
+	// const chatRoomId = req.body.chatRoomId;
+	// const senderId = req.body.senderId
+	// const body = req.body.body
+	// const fileContent = req.body.fileContent
+	const {chatRoomId, senderId, body, fileContent} = req.body;
+	debug(`chatRoomId: ${JSON.stringify(chatRoomId)}`)
 	debug(`senderId: ${senderId}`);
 	debug(`body: ${body}`)
 	debug(`fileContent: ${fileContent}`)

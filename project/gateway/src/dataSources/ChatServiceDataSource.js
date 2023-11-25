@@ -46,6 +46,25 @@ class ChatAPI extends RESTDataSource {
 		debug(`getMessagesByChatRoomId/data: ${JSON.stringify(data)}`);
 		return data;
 	}
+
+	async saveMessage(chatRoomId, senderId, body, fileContent) {
+		debug("saveMessage")
+        debug(`chatRoomId: ${chatRoomId}`)
+        debug(`senderId: ${senderId}`)
+        debug(`body: ${body}`)
+        debug(`fileContent: ${fileContent}`)
+
+        const data = await this.post("/chat-service/saveMessage", {
+            body: {
+                chatRoomId,
+                senderId,
+                body,
+                fileContent
+            }
+        })
+        debug(`saveMessage/data: ${JSON.stringify(data)}`);
+        return data;
+	}
 }
 
 module.exports = {ChatAPI};

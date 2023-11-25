@@ -3,7 +3,7 @@ const {AuthenticationError} = require("apollo-server-express");
 
 const sendMessage = async (parent, args, context) => {
 
-	const {token, pubSub} = context
+	const {token} = context
 
 	const {chatRoomId, body, file} = args;
 
@@ -22,6 +22,7 @@ const sendMessage = async (parent, args, context) => {
 	logger.debug(`Sender: ${JSON.stringify(sender)}`);
 
 	const senderId = sender._id;
+	logger.debug(`Sender ID: ${senderId}`);
 
 	if (!senderId) {
 		throw new Error("Sender ID not found");
@@ -55,5 +56,23 @@ const sendMessage = async (parent, args, context) => {
 	//
 	// logger.debug(`Message input: ${JSON.stringify(messageInput)}`);
 
+	// const message = await context.dataSources.chatAPI.saveMessage({
+	// 	chatRoomId: chatRoom._id,
+    //     senderId: sender._id,
+    //     body,
+    //     fileContent
+	// })
 
+	const message = await context.dataSources.chatAPI.saveMessage(
+		chatRoomId,
+        senderId,
+        body,
+        fileContent
+	)
+
+	logger.debug(`Message: ${JSON.stringify(message)}`);
+
+	return message;
 }
+
+module.exports = {sendMessage};

@@ -8,6 +8,7 @@ const {logout} = require('./mutations/logout');
 // chatService resolvers
 const {getChatRoomById} = require('./queries/getChatRoomById');
 const {getMessagesByChatRoomId} = require('./queries/getMessagesByChatRoomId');
+const {sendMessage} = require('./mutations/sendMessage');
 
 const resolvers = {
 
@@ -16,7 +17,7 @@ const resolvers = {
 	},
 
 	Mutation: {
-		login, signUp, changePassword, changeUsername, logout
+		login, signUp, changePassword, changeUsername, logout, sendMessage
 	},
 };
 
