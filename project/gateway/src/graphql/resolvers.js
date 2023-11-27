@@ -9,7 +9,7 @@ const {logout} = require('./mutations/logout');
 const {getChatRoomById} = require('./queries/getChatRoomById');
 const {getMessagesByChatRoomId} = require('./queries/getMessagesByChatRoomId');
 const {sendMessage} = require('./mutations/sendMessage');
-const {createGroupConversation} = require('./mutations/createGroupConversation');
+const {createGroupConversationForCurrentUser} = require('./mutations/createGroupConversationForCurrentUser');
 
 const resolvers = {
 
@@ -18,7 +18,7 @@ const resolvers = {
 	},
 
 	Mutation: {
-		login, signUp, changePassword, changeUsername, logout, sendMessage
+		login, signUp, changePassword, changeUsername, logout, sendMessage, createGroupConversationForCurrentUser
 	},
 };
 

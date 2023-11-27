@@ -81,7 +81,7 @@ const typeDefs = gql`
         # chatService
         sendMessage(chatRoomId:ID!, body:String, file:Upload):Message!
         # contactService
-        createGroupConversation(participantIds: [String]!): ChatRoom!        
+        createGroupConversationForCurrentUser(additionalEmails: [String]!): ChatRoom        
     }
 `;
 
