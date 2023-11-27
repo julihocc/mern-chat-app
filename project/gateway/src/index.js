@@ -16,6 +16,7 @@ const logger = require("./utils/logger");
 const rateLimit = require("express-rate-limit");
 const {AuthAPI} = require("./dataSources/AuthServiceDataSource")
 const {ChatAPI} = require("./dataSources/ChatServiceDataSource")
+const {ContactAPI} = require("./dataSources/ContactServiceDataSource")
 
 const app = express();
 
@@ -73,6 +74,7 @@ async function startServer() {
 		dataSources : () => ({
 			authAPI: new AuthAPI(),
 			chatAPI: new ChatAPI(),
+			contactAPI: new ContactAPI(),
 		}),
 
 		uploads: false,

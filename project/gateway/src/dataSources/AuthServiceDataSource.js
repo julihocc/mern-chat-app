@@ -140,6 +140,19 @@ class AuthAPI extends RESTDataSource {
         debug(`changeUsername/data: ${JSON.stringify(data)}`);
         return data;
 	}
+
+	async getManyUsersByEmail(additionalEmails) {
+		debug("getManyUsersByEmail",)
+        debug(`additionalEmails: ${additionalEmails}`);
+
+        const data = await this.post("/auth-service/getManyUsersByEmail", {
+            body: {
+                additionalEmails
+            }
+        })
+        debug(`getManyUsersByEmail/data: ${JSON.stringify(data)}`);
+        return data;
+	}
 }
 
 module.exports = {AuthAPI};

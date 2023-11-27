@@ -25,6 +25,13 @@ const typeDefs = gql`
     type LogoutPayload {
         message: String!
     }
+    
+    type ChatRoom {
+        _id: ID!
+        participantIds: [ID!]!
+        messageIds: [ID]
+        createdAt: String!
+    }
         
     type ChatRoomPopulated {
         _id: ID!
@@ -60,6 +67,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
+        # authService
         signUp(
             email: String!
             username: String!
@@ -70,7 +78,10 @@ const typeDefs = gql`
         changePassword(oldPassword: String!, newPassword: String!): User
         changeUsername(newUsername: String!, currentPassword: String!): User
         logout: LogoutPayload!
+        # chatService
         sendMessage(chatRoomId:ID!, body:String, file:Upload):Message!
+        # contactService
+        createGroupConversation(participantIds: [String]!): ChatRoom!        
     }
 `;
 

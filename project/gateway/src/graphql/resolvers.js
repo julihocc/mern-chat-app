@@ -9,6 +9,7 @@ const {logout} = require('./mutations/logout');
 const {getChatRoomById} = require('./queries/getChatRoomById');
 const {getMessagesByChatRoomId} = require('./queries/getMessagesByChatRoomId');
 const {sendMessage} = require('./mutations/sendMessage');
+const {createGroupConversation} = require('./mutations/createGroupConversation');
 
 const resolvers = {
 

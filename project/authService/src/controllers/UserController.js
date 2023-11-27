@@ -137,6 +137,20 @@ const changeUsername = async (req, res) => {
 	}
 }
 
+const getManyUsersByEmail = async (req, res) => {
+	try {
+		debug("getManyUsersByEmail")
+		const {additionalEmails} = req.body;
+		debug(`emails: ${additionalEmails}`);
+		const otherUsers = await User.find({email: {$in: additionalEmails}});
+		debug(`otherUsers: ${JSON.stringify(otherUsers)}`);
+		res.json(otherUsers);
+		return otherUsers;
+	} catch (error) {
+		res.status(500).json({message: `getManyUsersByEmail error: ${error}`});
+	}
+}
+
 module.exports = {
 	getUserByEmail,
 	getPasswordComparison,
@@ -146,5 +160,6 @@ module.exports = {
 	getPasswordEncrypted,
 	createUser,
 	changePassword,
-	changeUsername
+	changeUsername,
+	getManyUsersByEmail
 };

@@ -2,6 +2,7 @@ const ChatRoom = require('../models/ChatRoomModel');
 const User = require('../models/UserModel');
 const Message = require('../models/MessageModel');
 const {debug} = require("../utils/logger");
+const {publishUserEvent} = require("../utils/rabbitMQSubscriber")
 
 const getChatRoomById = async (req, res) => {
 	debug("getChatRoomById");
@@ -14,11 +15,9 @@ const getChatRoomById = async (req, res) => {
 		res.status(200);
 		return chatRoom;
 	} catch (err) {
-		res.status(500).json(
-			{
-                message: `Error getting chat room by id: ${err}`
-            }
-		)
+		res.status(500).json({
+			message: `Error getting chat room by id: ${err}`
+		})
 	}
 }
 
@@ -33,31 +32,27 @@ const getChatRoomByIdPopulatedWithUsers = async (req, res) => {
 		res.status(200);
 		return chatRoom;
 	} catch (err) {
-		res.status(500).json(
-			{
-				message: `Error getting chat room by id: ${err}`
-			}
-		)
+		res.status(500).json({
+			message: `Error getting chat room by id: ${err}`
+		})
 	}
 }
 
 const getMessagesByChatRoomId = async (req, res) => {
 	debug("getMessagesByChatRoomId");
-    try {
-        const chatRoomId = req.body.chatRoomId;
-        debug(`chatRoomId: ${chatRoomId}`);
-        const messages = await Message.find({chatRoomId}).populate("senderId");
-        debug(`messages: ${messages}`);
-        res.json(messages);
-        res.status(200);
-        return messages;
-    } catch (err) {
-        res.status(500).json(
-            {
-                message: `Error getting messages by chat room id: ${err}`
-            }
-        )
-    }
+	try {
+		const chatRoomId = req.body.chatRoomId;
+		debug(`chatRoomId: ${chatRoomId}`);
+		const messages = await Message.find({chatRoomId}).populate("senderId");
+		debug(`messages: ${messages}`);
+		res.json(messages);
+		res.status(200);
+		return messages;
+	} catch (err) {
+		res.status(500).json({
+			message: `Error getting messages by chat room id: ${err}`
+		})
+	}
 }
 
 const saveMessage = async (req, res) => {
@@ -89,19 +84,58 @@ const saveMessage = async (req, res) => {
 
 		return message;
 	} catch (err) {
-		res.status(500).json(
-            {
-                message: `Error saving message: ${err}`
-            }
-        )
+		res.status(500).json({
+			message: `Error saving message: ${err}`
+		})
 	}
 
 
 }
 
+const getChatRoomByParticipantIds = async (req, res) => {
+	debug("getChatRoomByParticipantIds");
+	const participantIds = req.body.participantIds;
+	debug(`participantIds: ${participantIds}`);
+	try {
+		const chatRoom = await ChatRoom.findOne(
+			{
+				participantIds: {
+					$all: participantIds
+				}
+			}
+		)
+		res.json(chatRoom);
+		res.status(200);
+		return chatRoom;
+	} catch (err) {
+		res.status(500).json({
+			message: `Error getting chat room by participant ids: ${err}`
+		})
+	}
+}
+
+const createChatRoomWithParticipantIds = async (req, res) => {
+	debug("createChatRoomWithParticipantIds");
+	const participantIds = req.body.participantIds;
+	debug(`participantIds: ${participantIds}`);
+	try {
+		const chatRoom = await ChatRoom.create({participantIds});
+		await chatRoom.save();
+		res.json(chatRoom);
+		res.status(200);
+		return chatRoom;
+	} catch (err) {
+		res.status(500).json({
+            message: `Error creating chat room with participant ids: ${err}`
+        })
+	}
+}
+
 module.exports = {
-    getChatRoomById,
+	getChatRoomById,
 	getChatRoomByIdPopulatedWithUsers,
 	getMessagesByChatRoomId,
-	saveMessage
+	saveMessage,
+	getChatRoomByParticipantIds,
+	createChatRoomWithParticipantIds
 }
