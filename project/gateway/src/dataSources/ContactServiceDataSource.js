@@ -6,6 +6,7 @@ class ContactAPI extends RESTDataSource {
         super(options);
         this.baseURL = 'http://localhost:4000';
     }
+
 }
 
 module.exports = {ContactAPI};

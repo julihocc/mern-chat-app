@@ -57,6 +57,14 @@ const typeDefs = gql`
         chatRoomId: ID!
         fileContent: String # Base64 encoded file content
     }
+    
+    type ContactRequest {
+        _id: ID!
+        senderId: ID!
+        recipientId: ID!
+        status: String!
+        createdAt: String!
+    }
 
     type Query {
         # authService
@@ -81,7 +89,8 @@ const typeDefs = gql`
         # chatService
         sendMessage(chatRoomId:ID!, body:String, file:Upload):Message!
         # contactService
-        createGroupConversationForCurrentUser(additionalEmails: [String]!): ChatRoom        
+        createGroupConversationForCurrentUser(additionalEmails: [String]!): ChatRoom
+        sendContactRequest(recipientId: ID!): ContactRequest
     }
 `;
 

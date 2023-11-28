@@ -10,6 +10,8 @@ const {getChatRoomById} = require('./queries/getChatRoomById');
 const {getMessagesByChatRoomId} = require('./queries/getMessagesByChatRoomId');
 const {sendMessage} = require('./mutations/sendMessage');
 const {createGroupConversationForCurrentUser} = require('./mutations/createGroupConversationForCurrentUser');
+// contactService resolvers
+const {sendContactRequest} = require('./mutations/sendContactRequest');
 
 const resolvers = {
 

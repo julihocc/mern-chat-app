@@ -20,7 +20,6 @@ class AuthAPI extends RESTDataSource {
 
 		debug(`getUserByEmail/data: ${JSON.stringify(data)}`);
 		return data;
-
 	}
 
 	async getPasswordComparison(password, hashed) {

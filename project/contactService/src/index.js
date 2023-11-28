@@ -8,6 +8,7 @@ const connectDB = require("./utils/connectDB");
 const errorHandler = require("./utils/errorHandler");
 const logger = require("./utils/logger");
 // const ChatController = require("./controllers/ChatController");
+const ContactController = require("./controllers/ContactController");
 
 const PORT = process.env.PORT || 5000;
 
@@ -42,7 +43,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // RESTful routes
-
+app.post("/contact-service/sendContactRequest", ContactController.sendContactRequest);
 
 async function startServer() {
 	try {
