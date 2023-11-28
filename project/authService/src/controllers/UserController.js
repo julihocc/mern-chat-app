@@ -1,9 +1,8 @@
 // UserController.js
 const User = require('../models/UserModel');
-const {comparePassword, retrieveUserByToken, encryptPassword} = require('../utils/authentication');
+const {retrieveUserByToken, encryptPassword} = require('../utils/authentication');
 const {debug} = require("../utils/logger");
 const {sign} = require("jsonwebtoken");
-const {publishUserEvent} = require("../utils/rabbitMQPublisher");
 
 const getUserByEmail = async (req, res) => {
 	debug("getUserByEmail")
@@ -18,22 +17,15 @@ const getUserByEmail = async (req, res) => {
 	}
 };
 
-const getPasswordComparison = async (req, res) => {
-	try {
-		const {password, hashed} = req.body;
-		const result = await comparePassword(password, hashed);
-		debug(`comparePassword: ${JSON.stringify(result)}`);
-		res.json(result);
-		return result;
-	} catch (error) {
-		res.status(500).json({message: `getPasswordComparison error: ${error}`});
-	}
-}
 
 const getTokenByPayload = async (req, res) => {
+	debug("getTokenByPayload");
+	const {id, email} = req.body;
+	debug(`id: ${id}`);
+	debug(`email: ${email}`);
+	const payload = {id, email};
+	debug(`payload: ${JSON.stringify(payload)}`);
 	try {
-		const {id, email} = req.body;
-		const payload = {id, email};
 		const token = sign(payload, process.env.JWT_SECRET, {expiresIn: "1h"});
 		debug(`token: ${token}`);
 		res.json({token});
@@ -44,8 +36,11 @@ const getTokenByPayload = async (req, res) => {
 }
 
 const getUserByToken = async (req, res) => {
+	debug("getUserByToken");
+	const {token} = req.body;
+	debug(`token: ${token}`);
+	debug(`JWT_SECRET: ${process.env.JWT_SECRET}`);
 	try {
-		const {token} = req.body;
 		const user = await retrieveUserByToken(token);
 		debug(`user: ${JSON.stringify(user)}`);
 		res.json(user);
@@ -67,17 +62,6 @@ const getUserByUsername = async (req, res) => {
 	}
 }
 
-const getPasswordEncrypted = async (req, res) => {
-	try {
-		const {password} = req.body;
-		const hashedPassword = await encryptPassword(password);
-		debug(`hashedPassword: ${hashedPassword}`);
-		res.json({hashedPassword});
-		return hashedPassword;
-	} catch (error) {
-		res.status(500).json({message: `getPasswordEncrypted error: ${error}`});
-	}
-}
 
 const createUser = async (req, res) => {
 	try {
@@ -85,32 +69,12 @@ const createUser = async (req, res) => {
 		const hashedPassword = await encryptPassword(password);
 		const user = new User({email, username, password: hashedPassword});
 		await user.save();
-		// await publishUserEvent("contactService", "UserCreated", {
-		//     id: user._id, email: user.email, username: user.username,
-		// });
-		// await publishUserEvent("chatService", "UserCreated", {
-		//     id: user._id, email: user.email, username: user.username,
-		// });
 		res.json(user);
 		return user;
 	} catch (error) {
 		res.status(500).json({message: `createUser error: ${error}`});
 	}
 }
-
-const changePassword = async (req, res) => {
-	try {
-		const {email, password} = req.body;
-		await User.updateOne({email}, {$set: {password: await encryptPassword(password)}});
-		const updatedUser = await User.findOne({email});
-		debug(`Updated user: ${JSON.stringify(updatedUser)}`);
-		res.json(updatedUser);
-		return updatedUser;
-	} catch (error) {
-		res.status(500).json({message: `changePassword error: ${error}`});
-	}
-}
-
 const changeUsername = async (req, res) => {
 	try {
 		debug("changeUsername")
@@ -122,14 +86,6 @@ const changeUsername = async (req, res) => {
 		const user = await User.findOne({username: newUsername});
 		debug(`Updated user: ${JSON.stringify(user)}`);
 
-
-		await publishUserEvent("contactService", 'UsernameChanged', {
-			id: user._id, oldUsername: user.username, newUsername: newUsername
-		})
-		await publishUserEvent("chatService", 'UsernameChanged', {
-			id: user._id, oldUsername: user.username, newUsername: newUsername
-		})
-
 		res.json(user);
 		return user;
 	} catch (error) {
@@ -138,10 +94,10 @@ const changeUsername = async (req, res) => {
 }
 
 const getManyUsersByEmail = async (req, res) => {
+	debug("getManyUsersByEmail")
+	const {additionalEmails} = req.body;
+	debug(`emails: ${additionalEmails}`);
 	try {
-		debug("getManyUsersByEmail")
-		const {additionalEmails} = req.body;
-		debug(`emails: ${additionalEmails}`);
 		const otherUsers = await User.find({email: {$in: additionalEmails}});
 		debug(`otherUsers: ${JSON.stringify(otherUsers)}`);
 		res.json(otherUsers);
@@ -153,13 +109,10 @@ const getManyUsersByEmail = async (req, res) => {
 
 module.exports = {
 	getUserByEmail,
-	getPasswordComparison,
 	getTokenByPayload,
 	getUserByToken,
 	getUserByUsername,
-	getPasswordEncrypted,
 	createUser,
-	changePassword,
 	changeUsername,
 	getManyUsersByEmail
 };

@@ -9,6 +9,7 @@ const connectDB = require("./utils/connectDB");
 const errorHandler = require("./utils/errorHandler");
 const logger = require("./utils/logger");
 const UserController = require('./controllers/UserController');
+const PasswordController = require('./controllers/PasswordController');
 
 const PORT = process.env.PORT || 5000;
 
@@ -43,16 +44,16 @@ app.use(cookieParser());
 app.use(express.json());
 
 // RESTful route for getting user by email
-app.post('/auth-service/getUserByEmail', UserController.getUserByEmail);
-app.post('/auth-service/getPasswordComparison', UserController.getPasswordComparison);
-app.post('/auth-service/getTokenByPayload', UserController.getTokenByPayload);
-app.post('/auth-service/getUserByToken', UserController.getUserByToken);
-app.post('/auth-service/getUserByUsername', UserController.getUserByUsername);
-app.post('/auth-service/getPasswordEncrypted', UserController.getPasswordEncrypted);
-app.post('/auth-service/createUser', UserController.createUser);
-app.post('/auth-service/changePassword', UserController.changePassword);
-app.post('/auth-service/changeUsername', UserController.changeUsername);
-app.post('/auth-service/getManyUsersByEmail', UserController.getManyUsersByEmail);
+app.get('/v1/user-by-email', UserController.getUserByEmail);
+app.get('/v1/password-comparison', PasswordController.getPasswordComparison);
+app.get('/v1/token-by-payload', UserController.getTokenByPayload);
+app.get('/v1/user-by-token', UserController.getUserByToken);
+app.get('/v1/user-by-username', UserController.getUserByUsername);
+app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
+app.post('/v1/new-user', UserController.createUser);
+app.put('/v1/new-password', PasswordController.changePassword);
+app.put('/v1/new-username', UserController.changeUsername);
+app.post('/v1/many-users-by-email', UserController.getManyUsersByEmail);
 
 async function startServer() {
 	try {
