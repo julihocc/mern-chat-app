@@ -20,7 +20,7 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async getPasswordComparison(password, hashed) {
-		debug("getPasswordComparison",)
+		debug("AuthAPI/getPasswordComparison",)
         debug(`password: ${password}`);
         debug(`hashedPassword: ${hashed}`);
 
@@ -58,14 +58,18 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async getUserByToken(token) {
-		debug("getUserByToken",)
+		debug("AuthAPI/getUserByToken",)
         debug(`token: ${token}`);
 
-        const data = await this.get("/v1/user-by-token", {
-            body: {
-                token
-            }
-        })
+        // const data = await this.get("/v1/user-by-token", {
+        //     body: {
+        //         token
+        //     }
+        // })
+
+		const params = {token}
+		debug(`params: ${JSON.stringify(params)}`);
+		const data = await this.get("/v1/user-by-token/", {params})
         debug(`getUserByToken/data: ${JSON.stringify(data)}`);
         return data;
 	}
@@ -87,11 +91,13 @@ class AuthAPI extends RESTDataSource {
 		debug("getPasswordEncrypted",)
         debug(`password: ${password}`);
 
-        const data = await this.get("/v1/password-encrypted", {
-            body: {
-                password
-            }
-        })
+        // const data = await this.get("/v1/password-encrypted", {
+        //     body: {
+        //         password
+        //     }
+        // })
+		const params = {password}
+		const data = await this.get("/v1/password-encrypted", {params})
         debug(`getPasswordEncrypted/data: ${JSON.stringify(data)}`);
         return data;
 	}
