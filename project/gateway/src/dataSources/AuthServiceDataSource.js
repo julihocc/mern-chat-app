@@ -12,7 +12,7 @@ class AuthAPI extends RESTDataSource {
 		debug("getUserByEmail",)
 		debug(`email: ${email}`);
 
-		const data = await this.post("/auth-service/getUserByEmail/", {
+		const data = await this.get("/v1/user-by-email/", {
 			body: {
 				email
 			}
@@ -27,7 +27,7 @@ class AuthAPI extends RESTDataSource {
         debug(`password: ${password}`);
         debug(`hashedPassword: ${hashed}`);
 
-        const data = await this.post("/auth-service/getPasswordComparison", {
+        const data = await this.get("/v1/password-comparison", {
 			body: {
 				password,
 				hashed
@@ -44,7 +44,7 @@ class AuthAPI extends RESTDataSource {
         debug(`id: ${id}`);
         debug(`email: ${email}`);
 
-        const data = await this.post("/auth-service/getTokenByPayload", {
+        const data = await this.get("/v1/token-by-payload", {
             body: {
                 id,
                 email
@@ -58,7 +58,7 @@ class AuthAPI extends RESTDataSource {
 		debug("getUserByToken",)
         debug(`token: ${token}`);
 
-        const data = await this.post("/auth-service/getUserByToken", {
+        const data = await this.get("/v1/user-by-token", {
             body: {
                 token
             }
@@ -71,7 +71,7 @@ class AuthAPI extends RESTDataSource {
 		debug("getUserByUsername",)
         debug(`username: ${username}`);
 
-        const data = await this.post("/auth-service/getUserByUsername", {
+        const data = await this.get("/v1/user-by-username", {
             body: {
                 username
             }
@@ -84,7 +84,7 @@ class AuthAPI extends RESTDataSource {
 		debug("getPasswordEncrypted",)
         debug(`password: ${password}`);
 
-        const data = await this.post("/auth-service/getPasswordEncrypted", {
+        const data = await this.get("/v1/password-encrypted", {
             body: {
                 password
             }
@@ -99,7 +99,7 @@ class AuthAPI extends RESTDataSource {
         debug(`username: ${username}`);
         debug(`password: ${password}`);
 
-        const data = await this.post("/auth-service/createUser", {
+        const data = await this.post("/v1/new-user", {
             body: {
                 email,
                 username,
@@ -115,7 +115,7 @@ class AuthAPI extends RESTDataSource {
         debug(`email: ${email}`);
         debug(`password: ${password}`);
 
-        const data = await this.post("/auth-service/changePassword", {
+        const data = await this.put("/v1/new-password", {
             body: {
                 email,
                 password
@@ -130,7 +130,7 @@ class AuthAPI extends RESTDataSource {
         debug(`username: ${username}`);
         debug(`newUsername: ${newUsername}`);
 
-        const data = await this.post("/auth-service/changeUsername", {
+        const data = await this.put("/v1/new-username", {
             body: {
                 username,
                 newUsername
@@ -144,7 +144,7 @@ class AuthAPI extends RESTDataSource {
 		debug("getManyUsersByEmail",)
         debug(`additionalEmails: ${additionalEmails}`);
 
-        const data = await this.post("/auth-service/getManyUsersByEmail", {
+        const data = await this.get("/auth-service/many-users-by-email", {
             body: {
                 additionalEmails
             }

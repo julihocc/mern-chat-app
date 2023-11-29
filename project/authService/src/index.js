@@ -53,7 +53,7 @@ app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
 app.post('/v1/new-user', UserController.createUser);
 app.put('/v1/new-password', PasswordController.changePassword);
 app.put('/v1/new-username', UserController.changeUsername);
-app.post('/v1/many-users-by-email', UserController.getManyUsersByEmail);
+app.get('/v1/many-users-by-email', UserController.getManyUsersByEmail);
 
 async function startServer() {
 	try {
