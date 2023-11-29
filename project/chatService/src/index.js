@@ -8,6 +8,7 @@ const connectDB = require("./utils/connectDB");
 const errorHandler = require("./utils/errorHandler");
 const logger = require("./utils/logger");
 const ChatController = require("./controllers/ChatController");
+const MessageController = require("./controllers/MessageController");
 
 const PORT = process.env.PORT || 5000;
 
@@ -44,8 +45,8 @@ app.use(express.json());
 // RESTful routes
 app.post("/chat-service/getChatRoomById", ChatController.getChatRoomById);
 app.post("/chat-service/getChatRoomByIdPopulatedWithUsers", ChatController.getChatRoomByIdPopulatedWithUsers);
-app.post("/chat-service/getMessagesByChatRoomId", ChatController.getMessagesByChatRoomId);
-app.post("/chat-service/saveMessage", ChatController.saveMessage);
+app.post("/chat-service/getMessagesByChatRoomId", MessageController.getMessagesByChatRoomId);
+app.post("/chat-service/saveMessage", MessageController.saveMessage);
 app.post("/chat-service/getChatRoomByParticipantIds", ChatController.getChatRoomByParticipantIds);
 app.post("/chat-service/createChatRoomWithParticipantIds", ChatController.createChatRoomWithParticipantIds);
 
