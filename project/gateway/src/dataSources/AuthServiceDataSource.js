@@ -78,11 +78,13 @@ class AuthAPI extends RESTDataSource {
 		debug("getUserByUsername",)
         debug(`username: ${username}`);
 
-        const data = await this.get("/v1/user-by-username", {
-            body: {
-                username
-            }
-        })
+        // const data = await this.get("/v1/user-by-username", {
+        //     body: {
+        //         username
+        //     }
+        // })
+		const params = {username}
+		const data = await this.get("/v1/user-by-username/", {params})
         debug(`getUserByUsername/data: ${JSON.stringify(data)}`);
         return data;
 	}
