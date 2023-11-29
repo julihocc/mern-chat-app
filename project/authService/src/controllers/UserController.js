@@ -5,11 +5,13 @@ const {debug} = require("../utils/logger");
 const {sign} = require("jsonwebtoken");
 
 const getUserByEmail = async (req, res) => {
-	debug("getUserByEmail")
+	debug("authService/getUserByEmail")
 	try {
-		const email = req.body.email;
-		debug(`email: ${email}`);
+		// const email = req.body.email;
+		const email = req.query.email;
+		debug(`authService/email: ${email}`);
 		const user = await User.findOne({email});
+		debug(`authService/user: ${JSON.stringify(user)}`);
 		res.json(user);
 		return user;
 	} catch (error) {
@@ -20,7 +22,7 @@ const getUserByEmail = async (req, res) => {
 
 const getTokenByPayload = async (req, res) => {
 	debug("getTokenByPayload");
-	const {id, email} = req.body;
+	const {id, email} = req.query;
 	debug(`id: ${id}`);
 	debug(`email: ${email}`);
 	const payload = {id, email};

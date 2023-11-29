@@ -9,14 +9,11 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async getUserByEmail(email) {
-		debug("getUserByEmail",)
+		debug("gateway/getUserByEmail",)
 		debug(`email: ${email}`);
 
-		const data = await this.get("/v1/user-by-email/", {
-			body: {
-				email
-			}
-		})
+		const params = {email}
+		const data = await this.get("/v1/user-by-email/", {params});
 
 		debug(`getUserByEmail/data: ${JSON.stringify(data)}`);
 		return data;
@@ -27,12 +24,15 @@ class AuthAPI extends RESTDataSource {
         debug(`password: ${password}`);
         debug(`hashedPassword: ${hashed}`);
 
-        const data = await this.get("/v1/password-comparison", {
-			body: {
-				password,
-				hashed
-			}
-        })
+        // const data = await this.get("/v1/password-comparison", {
+		// 	body: {
+		// 		password,
+		// 		hashed
+		// 	}
+        // })
+
+		const params = {password, hashed}
+		const data = await this.get("/v1/password-comparison/", {params});
 
         debug(`getPasswordComparison/data: ${JSON.stringify(data)}`);
 		debug(`getPasswordComparison/data as object: ${data}`);
@@ -44,12 +44,15 @@ class AuthAPI extends RESTDataSource {
         debug(`id: ${id}`);
         debug(`email: ${email}`);
 
-        const data = await this.get("/v1/token-by-payload", {
-            body: {
-                id,
-                email
-            }
-        })
+        // const data = await this.get("/v1/token-by-payload", {
+        //     body: {
+        //         id,
+        //         email
+        //     }
+        // })
+		const params = {id, email}
+		const data = await this.get("/v1/token-by-payload/", {params})
+
         debug(`getTokenByPayload/data: ${JSON.stringify(data)}`);
         return data;
 	}

@@ -4,7 +4,7 @@ const {debug} = require("../utils/logger");
 
 const getPasswordComparison = async (req, res) => {
 	debug("getPasswordComparison");
-	const {password, hashed} = req.body;
+	const {password, hashed} = req.query;
 	debug(`password: ${password}`);
 	debug(`hashed: ${hashed}`);
 	try {

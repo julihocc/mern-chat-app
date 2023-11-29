@@ -12,11 +12,13 @@ const {sendMessage} = require('./mutations/sendMessage');
 const {createGroupConversationForCurrentUser} = require('./mutations/createGroupConversationForCurrentUser');
 // contactService resolvers
 const {sendContactRequest} = require('./mutations/sendContactRequest');
+// testing integration
+const {getUserByEmail} = require('./queries/getUserByEmail');
 
 const resolvers = {
 
 	Query: {
-		getCurrentUserCredentials, getChatRoomById, getMessagesByChatRoomId
+		getCurrentUserCredentials, getChatRoomById, getMessagesByChatRoomId, getUserByEmail,
 	},
 
 	Mutation: {
