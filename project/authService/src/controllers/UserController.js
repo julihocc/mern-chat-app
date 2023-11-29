@@ -39,7 +39,8 @@ const getTokenByPayload = async (req, res) => {
 
 const getUserByToken = async (req, res) => {
 	debug("getUserByToken");
-	const {token} = req.body;
+	// const {token} = req.body;
+	const {token} = req.query;
 	debug(`token: ${token}`);
 	debug(`JWT_SECRET: ${process.env.JWT_SECRET}`);
 	try {
@@ -54,7 +55,8 @@ const getUserByToken = async (req, res) => {
 
 const getUserByUsername = async (req, res) => {
 	try {
-		const username = req.body.username;
+		// const username = req.body.username;
+		const {username} = req.query;
 		debug(`username: ${username}`);
 		const user = await User.findOne({username});
 		res.json(user);
@@ -97,10 +99,12 @@ const changeUsername = async (req, res) => {
 
 const getManyUsersByEmail = async (req, res) => {
 	debug("getManyUsersByEmail")
-	const {additionalEmails} = req.body;
-	debug(`emails: ${additionalEmails}`);
+	const {emails} = req.query;
+	debug(`emails: ${emails}`);
+	const emailsAsArray = emails.split(",");
+	debug(`emailsAsArray: ${emailsAsArray}`);
 	try {
-		const otherUsers = await User.find({email: {$in: additionalEmails}});
+		const otherUsers = await User.find({email: {$in: emailsAsArray}});
 		debug(`otherUsers: ${JSON.stringify(otherUsers)}`);
 		res.json(otherUsers);
 		return otherUsers;

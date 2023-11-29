@@ -14,15 +14,16 @@ const {createGroupConversationForCurrentUser} = require('./mutations/createGroup
 const {sendContactRequest} = require('./mutations/sendContactRequest');
 // testing integration
 const {getUserByEmail} = require('./queries/getUserByEmail');
+const {getManyUsersByEmail} = require('./queries/getManyUsersByEmail');
 
 const resolvers = {
 
 	Query: {
-		getCurrentUserCredentials, getChatRoomById, getMessagesByChatRoomId, getUserByEmail,
+		getCurrentUserCredentials, getChatRoomById, getMessagesByChatRoomId, getUserByEmail, getManyUsersByEmail
 	},
 
 	Mutation: {
-		login, signUp, changePassword, changeUsername, logout, sendMessage, createGroupConversationForCurrentUser
+		login, signUp, changePassword, changeUsername, logout, sendMessage, createGroupConversationForCurrentUser,
 	},
 };
 

@@ -143,17 +143,29 @@ class AuthAPI extends RESTDataSource {
         return data;
 	}
 
-	async getManyUsersByEmail(additionalEmails) {
-		debug("getManyUsersByEmail",)
-        debug(`additionalEmails: ${additionalEmails}`);
+	async getManyUsersByEmail(emails) {
+		debug("authService/getManyUsersByEmail",)
+        debug(`additionalEmails: ${emails}`);
 
-        const data = await this.get("/auth-service/many-users-by-email", {
-            body: {
-                additionalEmails
-            }
-        })
-        debug(`getManyUsersByEmail/data: ${JSON.stringify(data)}`);
-        return data;
+        // const data = await this.get("/auth-service/many-users-by-email", {
+        //     body: {
+        //         additionalEmails
+        //     }
+        // })
+
+		// const joinedEmails = emails.join(",");
+		// debug(`joinedEmails: ${joinedEmails}`);
+		// const params = {emails: joinedEmails}
+		const params ={emails}
+		debug(`params: ${JSON.stringify(params)}`);
+		try {
+			const data = await this.get("/v1/many-users-by-email", {params})
+			debug(`getManyUsersByEmail/data: ${JSON.stringify(data)}`);
+			return data;
+		} catch (error) {
+			debug(`getManyUsersByEmail/error: ${JSON.stringify(error)}`);
+            throw error;
+		}
 	}
 }
 

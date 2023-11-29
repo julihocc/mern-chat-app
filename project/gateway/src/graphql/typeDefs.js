@@ -74,6 +74,7 @@ const typeDefs = gql`
         getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
         # testing integration
         getUserByEmail(email: String!): User
+        getManyUsersByEmail(emails: [String!]!): [User]
     }
 
     type Mutation {

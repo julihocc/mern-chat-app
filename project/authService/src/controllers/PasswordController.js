@@ -19,7 +19,8 @@ const getPasswordComparison = async (req, res) => {
 
 const getPasswordEncrypted = async (req, res) => {
 	try {
-		const {password} = req.body;
+		// const {password} = req.body;
+		const {password} = req.query;
 		const hashedPassword = await encryptPassword(password);
 		debug(`hashedPassword: ${hashedPassword}`);
 		res.json({hashedPassword});
