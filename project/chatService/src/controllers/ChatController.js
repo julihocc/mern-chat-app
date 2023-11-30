@@ -5,7 +5,8 @@ const {debug} = require("../utils/logger");
 const getChatRoomById = async (req, res) => {
 	debug("getChatRoomById");
 	try {
-		const chatRoomId = req.body.chatRoomId;
+		// const chatRoomId = req.body.chatRoomId;
+		const {chatRoomId} = req.query;
 		debug(`chatRoomId: ${chatRoomId}`);
 		const chatRoom = await ChatRoom.findById(chatRoomId);
 		debug(`chatRoom: ${chatRoom}`);

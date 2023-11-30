@@ -43,12 +43,12 @@ app.use(cookieParser());
 app.use(express.json());
 
 // RESTful routes
-app.post("/chat-service/getChatRoomById", ChatController.getChatRoomById);
-app.post("/chat-service/getChatRoomByIdPopulatedWithUsers", ChatController.getChatRoomByIdPopulatedWithUsers);
-app.post("/chat-service/getMessagesByChatRoomId", MessageController.getMessagesByChatRoomId);
-app.post("/chat-service/saveMessage", MessageController.saveMessage);
-app.post("/chat-service/getChatRoomByParticipantIds", ChatController.getChatRoomByParticipantIds);
-app.post("/chat-service/createChatRoomWithParticipantIds", ChatController.createChatRoomWithParticipantIds);
+app.get("/v1/chat-room-by-id", ChatController.getChatRoomById);
+app.get("/v1/chat-room-by-id-populated-with-users", ChatController.getChatRoomByIdPopulatedWithUsers);
+app.get("/v1/messages-by-chat-room-id", MessageController.getMessagesByChatRoomId);
+app.post("/v1/message", MessageController.saveMessage);
+app.get("/v1/get-chat-room-by-participant-ids", ChatController.getChatRoomByParticipantIds);
+app.post("/v1/chat-room-with-participant-ids", ChatController.createChatRoomWithParticipantIds);
 
 async function startServer() {
 	try {
