@@ -91,8 +91,8 @@ const typeDefs = gql`
         logout: LogoutPayload!
         # chatService
         sendMessage(chatRoomId:ID!, body:String, file:Upload):Message!
-        # contactService
         createGroupConversationForCurrentUser(additionalEmails: [String]!): ChatRoom
+        # contactService
         sendContactRequest(recipientId: ID!): ContactRequest
     }
 `;

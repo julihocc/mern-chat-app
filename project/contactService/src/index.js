@@ -43,7 +43,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // RESTful routes
-app.put("/v1/contact-request", ContactController.sendContactRequest);
+app.post("/v1/contact-request", ContactController.sendContactRequest);
 
 async function startServer() {
 	try {

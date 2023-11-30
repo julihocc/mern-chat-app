@@ -23,7 +23,7 @@ const resolvers = {
 	},
 
 	Mutation: {
-		login, signUp, changePassword, changeUsername, logout, sendMessage, createGroupConversationForCurrentUser,
+		login, signUp, changePassword, changeUsername, logout, sendMessage, createGroupConversationForCurrentUser, sendContactRequest
 	},
 };
 

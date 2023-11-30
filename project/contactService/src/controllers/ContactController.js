@@ -2,9 +2,10 @@ const User = require('../models/UserModel');
 const ContactRequest = require('../models/ContactRequestModel');
 const {debug} = require("../utils/logger");
 const sendContactRequest = async (req, res) => {
-	debug("sendContactRequest")
+	debug("ContactController | sendContactRequest")
+	const {senderId, recipientId, status} = req.body;
+	debug(senderId, recipientId, status)
 	try {
-		const {senderId, recipientId, status} = req.body;
 		const contactRequest = new ContactRequest({senderId, recipientId, status});
 		await contactRequest.save();
 		res.json(contactRequest);
