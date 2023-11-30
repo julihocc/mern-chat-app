@@ -10,13 +10,15 @@ class ChatAPI extends RESTDataSource {
 		debug("getChatRoomById")
 		debug(`chatRoomId: ${chatRoomId}`);
 
-		const data = await this.post("/chat-service/getChatRoomById", {
-            body: {
-                chatRoomId
-            }
-        })
+		// const data = await this.post("/chat-service/getChatRoomById", {
+        //     body: {
+        //         chatRoomId
+        //     }
+        // })
 
-		debug(`getChatRoomById/data: ${JSON.stringify(data)}`);
+		const params = {chatRoomId}
+		const data = await this.get("/v1/chat-room-by-id", {params})
+		debug(`ChatAPI | getChatRoomById | data: ${JSON.stringify(data)}`);
 		return data;
 	}
 
@@ -24,13 +26,16 @@ class ChatAPI extends RESTDataSource {
 		debug("getChatRoomByIdPopulatedWithUsers")
         debug(`chatRoomId: ${chatRoomId}`);
 
-        const data = await this.post("/chat-service/getChatRoomByIdPopulatedWithUsers", {
-            body: {
-                chatRoomId
-            }
-        })
+        // const data = await this.post("/chat-service/getChatRoomByIdPopulatedWithUsers", {
+        //     body: {
+        //         chatRoomId
+        //     }
+        // })
 
-        debug(`getChatRoomByIdPopulatedWithUsers/data: ${JSON.stringify(data)}`);
+		const params = {chatRoomId}
+		const data = await this.get("/v1/chat-room-by-id-populated-with-users", {params})
+		debug(`ChatAPI | getChatRoomByIdPopulatedWithUsers | data: ${JSON.stringify(data)}`);
+
         return data;
 	}
 
@@ -38,12 +43,17 @@ class ChatAPI extends RESTDataSource {
 		debug("getMessagesByChatRoomId",)
 		debug(`chatRoomId: ${chatRoomId}`);
 
-		const data = await this.post("/chat-service/getMessagesByChatRoomId", {
-			body: {
-				chatRoomId
-			}
-		})
-		debug(`getMessagesByChatRoomId/data: ${JSON.stringify(data)}`);
+		// const data = await this.post("/chat-service/getMessagesByChatRoomId", {
+		// 	body: {
+		// 		chatRoomId
+		// 	}
+		// })
+		// debug(`getMessagesByChatRoomId/data: ${JSON.stringify(data)}`);
+
+		const params = {chatRoomId}
+		const data = await this.get("/v1/messages-by-chat-room-id", {params})
+		debug(`ChatAPI | getMessagesByChatRoomId | data: ${JSON.stringify(data)}`);
+
 		return data;
 	}
 
@@ -54,7 +64,7 @@ class ChatAPI extends RESTDataSource {
         debug(`body: ${body}`)
         debug(`fileContent: ${fileContent}`)
 
-        const data = await this.post("/chat-service/saveMessage", {
+        const data = await this.post("/v1/message", {
             body: {
                 chatRoomId,
                 senderId,
@@ -62,7 +72,7 @@ class ChatAPI extends RESTDataSource {
                 fileContent
             }
         })
-        debug(`saveMessage/data: ${JSON.stringify(data)}`);
+		debug(`ChatAPI | saveMessage | data: ${JSON.stringify(data)}`);
         return data;
 	}
 
@@ -70,12 +80,16 @@ class ChatAPI extends RESTDataSource {
 		debug("getChatRoomByParticipantIds")
         debug(`participantIds: ${participantIds}`);
 
-        const data = await this.post("/chat-service/getChatRoomByParticipantIds", {
-            body: {
-                participantIds
-            }
-        })
-        debug(`getChatRoomByParticipantIds/data: ${JSON.stringify(data)}`);
+        // const data = await this.post("/chat-service/getChatRoomByParticipantIds", {
+        //     body: {
+        //         participantIds
+        //     }
+        // })
+        // debug(`getChatRoomByParticipantIds/data: ${JSON.stringify(data)}`);
+		const params = {participantIds}
+        const data = await this.get("/v1/chat-room-by-participant-ids", {params})
+        debug(`ChatAPI | getChatRoomByParticipantIds | data: ${JSON.stringify(data)}`);
+
         return data;
 	}
 
@@ -83,7 +97,7 @@ class ChatAPI extends RESTDataSource {
 		debug("createChatRoomWithParticipantIds")
         debug(`participantIds: ${participantIds}`);
 
-        const data = await this.post("/chat-service/createChatRoomWithParticipantIds", {
+        const data = await this.post("/v1/createChatRoomWithParticipantIds", {
             body: {
                 participantIds
             }
