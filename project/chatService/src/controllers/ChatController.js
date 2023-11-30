@@ -1,6 +1,6 @@
 const ChatRoom = require('../models/ChatRoomModel');
-const Message = require('../models/MessageModel');
 const {debug} = require("../utils/logger");
+require('../models/UserModel');
 
 const getChatRoomById = async (req, res) => {
 	debug("getChatRoomById");
@@ -23,8 +23,10 @@ const getChatRoomById = async (req, res) => {
 const getChatRoomByIdPopulatedWithUsers = async (req, res) => {
 	debug("getChatRoomById");
 	try {
-		const chatRoomId = req.body.chatRoomId;
+		// const chatRoomId = req.body.chatRoomId;
+		const {chatRoomId} = req.query;
 		debug(`chatRoomId: ${chatRoomId}`);
+		// FIXME: populate chatRoom with users requires copy user data from auth database
 		const chatRoom = await ChatRoom.findById(chatRoomId).populate("participantIds");
 		debug(`chatRoom: ${chatRoom}`);
 		res.json(chatRoom);
@@ -41,13 +43,16 @@ const getChatRoomByIdPopulatedWithUsers = async (req, res) => {
 
 const getChatRoomByParticipantIds = async (req, res) => {
 	debug("getChatRoomByParticipantIds");
-	const participantIds = req.body.participantIds;
+	// const participantIds = req.body.participantIds;
+	const {participantIds} = req.query;
 	debug(`participantIds: ${participantIds}`);
+	const participantIdsArray = participantIds.split(",");
+	debug(`participantIdsArray: ${participantIdsArray}`);
 	try {
 		const chatRoom = await ChatRoom.findOne(
 			{
 				participantIds: {
-					$all: participantIds
+					$all: participantIdsArray
 				}
 			}
 		)

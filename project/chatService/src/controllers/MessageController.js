@@ -1,11 +1,14 @@
 const {debug} = require("../utils/logger");
 const Message = require("../models/MessageModel");
 const ChatRoom = require("../models/ChatRoomModel");
+require("../models/UserModel");
 const getMessagesByChatRoomId = async (req, res) => {
 	debug("getMessagesByChatRoomId");
 	try {
-		const chatRoomId = req.body.chatRoomId;
+		// const chatRoomId = req.body.chatRoomId;
+		const {chatRoomId}= req.query;
 		debug(`chatRoomId: ${chatRoomId}`);
+		// FIXME: populate chatRoom with users requires copy user data from auth database
 		const messages = await Message.find({chatRoomId}).populate("senderId");
 		debug(`messages: ${messages}`);
 		res.json(messages);

@@ -47,7 +47,7 @@ app.get("/v1/chat-room-by-id", ChatController.getChatRoomById);
 app.get("/v1/chat-room-by-id-populated-with-users", ChatController.getChatRoomByIdPopulatedWithUsers);
 app.get("/v1/messages-by-chat-room-id", MessageController.getMessagesByChatRoomId);
 app.post("/v1/message", MessageController.saveMessage);
-app.get("/v1/get-chat-room-by-participant-ids", ChatController.getChatRoomByParticipantIds);
+app.get("/v1/chat-room-by-participant-ids", ChatController.getChatRoomByParticipantIds);
 app.post("/v1/chat-room-with-participant-ids", ChatController.createChatRoomWithParticipantIds);
 
 async function startServer() {
