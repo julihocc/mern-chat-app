@@ -8,3 +8,4 @@ node_modules/
 *.log
 *.xlsx
 requirements/
+yarn.lock
