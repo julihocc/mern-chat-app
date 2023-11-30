@@ -4,20 +4,20 @@ const {retrieveUserByToken, encryptPassword} = require('../utils/authentication'
 const {debug} = require("../utils/logger");
 const {sign} = require("jsonwebtoken");
 
-const getUserByEmail = async (req, res) => {
-	debug("authService/getUserByEmail")
-	try {
-		// const email = req.body.email;
-		const email = req.query.email;
-		debug(`authService/email: ${email}`);
-		const user = await User.findOne({email});
-		debug(`authService/user: ${JSON.stringify(user)}`);
-		res.json(user);
-		return user;
-	} catch (error) {
-		res.status(500).json({message: `getUserByEmail error: ${error}`});
-	}
-};
+// const getUserByEmail = async (req, res) => {
+// 	debug("authService/getUserByEmail")
+// 	try {
+// 		// const email = req.body.email;
+// 		const email = req.query.email;
+// 		debug(`authService/email: ${email}`);
+// 		const user = await User.findOne({email});
+// 		debug(`authService/user: ${JSON.stringify(user)}`);
+// 		res.json(user);
+// 		return user;
+// 	} catch (error) {
+// 		res.status(500).json({message: `getUserByEmail error: ${error}`});
+// 	}
+// };
 
 
 const getTokenByPayload = async (req, res) => {
@@ -37,34 +37,34 @@ const getTokenByPayload = async (req, res) => {
 	}
 }
 
-const getUserByToken = async (req, res) => {
-	debug("getUserByToken");
-	// const {token} = req.body;
-	const {token} = req.query;
-	debug(`token: ${token}`);
-	debug(`JWT_SECRET: ${process.env.JWT_SECRET}`);
-	try {
-		const user = await retrieveUserByToken(token);
-		debug(`user: ${JSON.stringify(user)}`);
-		res.json(user);
-		return user;
-	} catch (error) {
-		res.status(500).json({message: `getUserByToken error: ${error}`});
-	}
-}
+// const getUserByToken = async (req, res) => {
+// 	debug("getUserByToken");
+// 	// const {token} = req.body;
+// 	const {token} = req.query;
+// 	debug(`token: ${token}`);
+// 	debug(`JWT_SECRET: ${process.env.JWT_SECRET}`);
+// 	try {
+// 		const user = await retrieveUserByToken(token);
+// 		debug(`user: ${JSON.stringify(user)}`);
+// 		res.json(user);
+// 		return user;
+// 	} catch (error) {
+// 		res.status(500).json({message: `getUserByToken error: ${error}`});
+// 	}
+// }
 
-const getUserByUsername = async (req, res) => {
-	try {
-		// const username = req.body.username;
-		const {username} = req.query;
-		debug(`username: ${username}`);
-		const user = await User.findOne({username});
-		res.json(user);
-		return user;
-	} catch (error) {
-		res.status(500).json({message: `getUserByUsername error: ${error}`});
-	}
-}
+// const getUserByUsername = async (req, res) => {
+// 	try {
+// 		// const username = req.body.username;
+// 		const {username} = req.query;
+// 		debug(`username: ${username}`);
+// 		const user = await User.findOne({username});
+// 		res.json(user);
+// 		return user;
+// 	} catch (error) {
+// 		res.status(500).json({message: `getUserByUsername error: ${error}`});
+// 	}
+// }
 
 
 const createUser = async (req, res) => {
@@ -79,23 +79,23 @@ const createUser = async (req, res) => {
 		res.status(500).json({message: `createUser error: ${error}`});
 	}
 }
-const changeUsername = async (req, res) => {
-	try {
-		debug("changeUsername")
-		const {username, newUsername} = req.body;
-		debug(`username: ${username}`);
-		debug(`newUsername: ${newUsername}`);
-		// const user = await User.findOneAndUpdate({username}, {$set: {username: newUsername}});
-		await User.updateOne({username}, {$set: {username: newUsername}});
-		const user = await User.findOne({username: newUsername});
-		debug(`Updated user: ${JSON.stringify(user)}`);
-
-		res.json(user);
-		return user;
-	} catch (error) {
-		res.status(500).json({message: `changeUsername error: ${error}`});
-	}
-}
+// const changeUsername = async (req, res) => {
+// 	try {
+// 		debug("changeUsername")
+// 		const {username, newUsername} = req.body;
+// 		debug(`username: ${username}`);
+// 		debug(`newUsername: ${newUsername}`);
+// 		// const user = await User.findOneAndUpdate({username}, {$set: {username: newUsername}});
+// 		await User.updateOne({username}, {$set: {username: newUsername}});
+// 		const user = await User.findOne({username: newUsername});
+// 		debug(`Updated user: ${JSON.stringify(user)}`);
+//
+// 		res.json(user);
+// 		return user;
+// 	} catch (error) {
+// 		res.status(500).json({message: `changeUsername error: ${error}`});
+// 	}
+// }
 
 const getManyUsersByEmail = async (req, res) => {
 	debug("getManyUsersByEmail")
@@ -113,12 +113,75 @@ const getManyUsersByEmail = async (req, res) => {
 	}
 }
 
+const getUser = async (req, res) => {
+	debug("UserController | getUser")
+	const {email, token, username} = req.query;
+
+	if (token) {
+		debug(`token: ${token}`);
+		debug(`JWT_SECRET: ${process.env.JWT_SECRET}`);
+		try {
+			const user = await retrieveUserByToken(token);
+			debug(`user: ${JSON.stringify(user)}`);
+			res.json(user);
+			return user;
+		} catch (error) {
+			res.status(500).json({message: `getUserByToken error: ${error}`});
+		}
+	}
+	if (email) {
+		debug(`email: ${email}`);
+        try {
+            const user = await User.findOne({email});
+            debug(`user: ${JSON.stringify(user)}`);
+            res.json(user);
+            return user;
+        } catch (error) {
+            res.status(500).json({message: `getUserByEmail error: ${error}`});
+        }
+	}
+
+	if (username) {
+		debug(`username: ${username}`);
+        try {
+            const user = await User.findOne({username});
+            debug(`user: ${JSON.stringify(user)}`);
+            res.json(user);
+            return user;
+        } catch (error) {
+            res.status(500).json({message: `getUserByUsername error: ${error}`});
+        }
+	}
+}
+
+const updateUser = async (req, res) => {
+	debug("UserController | updateUser")
+	const {username, newUsername} = req.query;
+	debug(`username: ${username}`);
+	debug(`newUsername: ${newUsername}`);
+
+	if(username&&newUsername){
+		try{
+			await User.updateOne({username}, {$set: {username: newUsername}});
+            const user = await User.findOne({username: newUsername});
+            debug(`Updated user: ${JSON.stringify(user)}`);
+
+            res.json(user);
+            return user;
+		} catch (error) {
+			res.status(500).json({message: `updateUser error: ${error}`});
+		}
+	}
+}
+
 module.exports = {
-	getUserByEmail,
+	// getUserByEmail,
 	getTokenByPayload,
-	getUserByToken,
-	getUserByUsername,
+	// getUserByToken,
+	// getUserByUsername,
 	createUser,
-	changeUsername,
-	getManyUsersByEmail
+	// changeUsername,
+	getManyUsersByEmail,
+	getUser,
+	updateUser,
 };

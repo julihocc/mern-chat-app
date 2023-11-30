@@ -44,16 +44,19 @@ app.use(cookieParser());
 app.use(express.json());
 
 // RESTful route for getting user by email
-app.get('/v1/user-by-email', UserController.getUserByEmail);
+// app.get('/v1/user-by-email', UserController.getUserByEmail);
 app.get('/v1/password-comparison', PasswordController.getPasswordComparison);
 app.get('/v1/token-by-payload', UserController.getTokenByPayload);
-app.get('/v1/user-by-token', UserController.getUserByToken);
-app.get('/v1/user-by-username', UserController.getUserByUsername);
+// app.get('/v1/user-by-token', UserController.getUserByToken);
+// app.get('/v1/user-by-username', UserController.getUserByUsername);
 app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
-app.post('/v1/new-user', UserController.createUser);
 app.put('/v1/new-password', PasswordController.changePassword);
-app.put('/v1/new-username', UserController.changeUsername);
+// app.put('/v1/new-username', UserController.changeUsername);
 app.get('/v1/many-users-by-email', UserController.getManyUsersByEmail);
+
+app.get('/v1/user', UserController.getUser);
+app.post('/v1/user', UserController.createUser);
+app.put('/v1/user', UserController.updateUser);
 
 async function startServer() {
 	try {

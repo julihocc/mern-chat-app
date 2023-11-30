@@ -13,7 +13,7 @@ class AuthAPI extends RESTDataSource {
 		debug(`email: ${email}`);
 
 		const params = {email}
-		const data = await this.get("/v1/user-by-email/", {params});
+		const data = await this.get("/v1/user/", {params});
 
 		debug(`getUserByEmail/data: ${JSON.stringify(data)}`);
 		return data;
@@ -69,7 +69,7 @@ class AuthAPI extends RESTDataSource {
 
 		const params = {token}
 		debug(`params: ${JSON.stringify(params)}`);
-		const data = await this.get("/v1/user-by-token/", {params})
+		const data = await this.get("/v1/user/", {params})
         debug(`getUserByToken/data: ${JSON.stringify(data)}`);
         return data;
 	}
@@ -84,7 +84,7 @@ class AuthAPI extends RESTDataSource {
         //     }
         // })
 		const params = {username}
-		const data = await this.get("/v1/user-by-username/", {params})
+		const data = await this.get("/v1/user/", {params})
         debug(`getUserByUsername/data: ${JSON.stringify(data)}`);
         return data;
 	}
@@ -110,7 +110,7 @@ class AuthAPI extends RESTDataSource {
         debug(`username: ${username}`);
         debug(`password: ${password}`);
 
-        const data = await this.post("/v1/new-user", {
+        const data = await this.post("/v1/user", {
             body: {
                 email,
                 username,
@@ -141,7 +141,7 @@ class AuthAPI extends RESTDataSource {
         debug(`username: ${username}`);
         debug(`newUsername: ${newUsername}`);
 
-        const data = await this.put("/v1/new-username", {
+        const data = await this.put("/v1/user", {
             body: {
                 username,
                 newUsername
