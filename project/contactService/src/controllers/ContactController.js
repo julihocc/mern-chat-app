@@ -1,4 +1,3 @@
-const User = require('../models/UserModel');
 const ContactRequest = require('../models/ContactRequestModel');
 const {debug} = require("../utils/logger");
 const sendContactRequest = async (req, res) => {
