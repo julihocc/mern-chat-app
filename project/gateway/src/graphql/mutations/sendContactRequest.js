@@ -11,9 +11,9 @@ const sendContactRequest = async (parent, args, context, info) => {
 		recipientId: yup.string().required(),
 	})
 
-	try{
+	try {
 		await schema.validate({recipientId})
-	} catch(err) {
+	} catch (err) {
 		logger.error(`Error validating contact request: ${err.message}`)
 		throw new AuthenticationError(err.message)
 	}
@@ -23,7 +23,7 @@ const sendContactRequest = async (parent, args, context, info) => {
 
 	if (!token) {
 		logger.error(`Could not find token for contact request: ${token}`)
-        throw new AuthenticationError(`Could not find token for contact request: ${token}`)
+		throw new AuthenticationError(`Could not find token for contact request: ${token}`)
 	}
 
 	const sender = await context.dataSources.authAPI.getUserByToken(token);
@@ -37,18 +37,18 @@ const sendContactRequest = async (parent, args, context, info) => {
 	const recipient = await context.dataSources.authAPI.getUserById(recipientId);
 	logger.debug(`recipient: ${JSON.stringify(recipient)}`);
 
-	if(!recipient) {
+	if (!recipient) {
 		logger.error(`Could not find recipient for contact request: ${recipientId}`)
-        throw new AuthenticationError(`Could not find recipient for contact request: ${recipientId}`)
+		throw new AuthenticationError(`Could not find recipient for contact request: ${recipientId}`)
 	}
 
 	try {
-		const contactRequest = await context.dataSources.contactAPI.sendContactRequest(sender._id, recipient._id, "pending");
+		const contactRequest = await context.dataSources.contactAPI.sendContactRequest(sender._id, recipient._id);
 		logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
 		return contactRequest;
 	} catch (err) {
 		logger.error(`Error sending contact request: ${err.message}`)
-        throw new Error(`Error sending contact request: ${err.message}`)
+		throw new Error(`Error sending contact request: ${err.message}`)
 	}
 }
 
