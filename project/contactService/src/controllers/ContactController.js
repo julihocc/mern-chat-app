@@ -32,4 +32,34 @@ const getContactRequest = async (req, res) => {
 	}
 }
 
-module.exports = {sendContactRequest, getContactRequest };
+const changeContactRequestStatus = async (req, res) => {
+	debug("ContactController | changeContactRequestStatus")
+    const {requestId, status, chatRoomId} = req.body;
+	debug(`requestId: ${requestId}`)
+	debug(`status: ${status}`)
+	debug(`chatRoomId: ${chatRoomId}`)
+    if(requestId && status) {
+        try {
+            const contactRequest = await ContactRequest.findByIdAndUpdate(requestId, {status}, {new: true});
+            debug(`ContactController | changeContactRequestStatus | contactRequest: ${JSON.stringify(contactRequest)}`)
+            res.json(contactRequest);
+            res.status(200);
+            return contactRequest;
+        } catch (error) {
+            res.status(500).json({message: `ContactController | changeContactRequestStatus error: ${error}`});
+        }
+    }
+	if (requestId&&chatRoomId) {
+		try {
+			const contactRequest = await ContactRequest.findByIdAndUpdate(requestId, {chatRoomId}, {new: true});
+			debug(`ContactController | changeContactRequestStatus | contactRequest: ${JSON.stringify(contactRequest)}`)
+			res.json(contactRequest);
+			res.status(200);
+			return contactRequest;
+		} catch (error) {
+			res.status(500).json({message: `ContactController | changeContactRequestStatus error: ${error}`});
+		}
+	}
+}
+
+module.exports = {sendContactRequest, getContactRequest, changeContactRequestStatus};
