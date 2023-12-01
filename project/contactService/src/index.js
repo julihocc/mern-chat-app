@@ -44,6 +44,7 @@ app.use(express.json());
 
 // RESTful routes
 app.post("/v1/contact-request", ContactController.sendContactRequest);
+app.get("/v1/contact-request", ContactController.getContactRequest);
 
 async function startServer() {
 	try {
