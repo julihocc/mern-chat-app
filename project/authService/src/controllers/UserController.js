@@ -115,8 +115,19 @@ const getManyUsersByEmail = async (req, res) => {
 
 const getUser = async (req, res) => {
 	debug("UserController | getUser")
-	const {email, token, username} = req.query;
+	const {userId, email, token, username} = req.query;
 
+	if (userId) {
+		debug(`User id: ${userId}`);
+        try {
+            const user = await User.findById(userId);
+            debug(`user: ${JSON.stringify(user)}`);
+            res.json(user);
+            return user;
+        } catch (error) {
+            res.status(500).json({message: `getUserById error: ${error}`});
+        }
+	}
 	if (token) {
 		debug(`token: ${token}`);
 		debug(`JWT_SECRET: ${process.env.JWT_SECRET}`);

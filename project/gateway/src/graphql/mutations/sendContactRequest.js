@@ -3,8 +3,9 @@ const {AuthenticationError} = require('apollo-server-express');
 const yup = require('yup');
 
 const sendContactRequest = async (parent, args, context, info) => {
-
+	logger.debug("Mutations | sendContactRequest")
 	const {recipientId} = args
+	logger.debug(`recipientId: ${recipientId}`)
 
 	const schema = yup.object().shape({
 		recipientId: yup.string().required(),
@@ -18,22 +19,37 @@ const sendContactRequest = async (parent, args, context, info) => {
 	}
 
 	const {token} = context;
+	logger.debug(`token: ${token}`)
+
+	if (!token) {
+		logger.error(`Could not find token for contact request: ${token}`)
+        throw new AuthenticationError(`Could not find token for contact request: ${token}`)
+	}
 
 	const sender = await context.dataSources.authAPI.getUserByToken(token);
+	logger.debug(`sender: ${JSON.stringify(sender)}`);
 
 	if (!sender) {
 		logger.error(`Could not find sender for contact request: ${token}`)
 		throw new AuthenticationError(`Could not find sender for contact request: ${token}`)
 	}
 
-	const recipient = await context.dataSources.authAPI.getUserByEmail(recipientId);
+	const recipient = await context.dataSources.authAPI.getUserById(recipientId);
+	logger.debug(`recipient: ${JSON.stringify(recipient)}`);
 
 	if(!recipient) {
 		logger.error(`Could not find recipient for contact request: ${recipientId}`)
         throw new AuthenticationError(`Could not find recipient for contact request: ${recipientId}`)
 	}
 
-
+	try {
+		const contactRequest = await context.dataSources.contactAPI.sendContactRequest(sender._id, recipient._id, "pending");
+		logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
+		return contactRequest;
+	} catch (err) {
+		logger.error(`Error sending contact request: ${err.message}`)
+        throw new Error(`Error sending contact request: ${err.message}`)
+	}
 }
 
 module.exports = {sendContactRequest}

@@ -58,7 +58,7 @@ class AuthAPI extends RESTDataSource {
 	}
 
 	async getUserByToken(token) {
-		debug("AuthAPI/getUserByToken",)
+		debug("AuthAPI | getUserByToken",)
         debug(`token: ${token}`);
 
         // const data = await this.get("/v1/user-by-token", {
@@ -87,6 +87,15 @@ class AuthAPI extends RESTDataSource {
 		const data = await this.get("/v1/user/", {params})
         debug(`getUserByUsername/data: ${JSON.stringify(data)}`);
         return data;
+	}
+
+	async getUserById(userId) {
+		debug("AuthAPI | getUserById")
+		debug(`userId: ${userId}`);
+		const params = {userId}
+		const data = await this.get("/v1/user/", {params})
+		debug(`AuthAPI | getUserById | data: ${JSON.stringify(data)}`);
+		return data;
 	}
 
 	async getPasswordEncrypted(password) {
