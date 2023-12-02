@@ -66,20 +66,23 @@ const getChatRoomByParticipantIds = async (req, res) => {
 	}
 }
 
-const createChatRoomWithParticipantIds = async (req, res) => {
+const createChatRoom = async (req, res) => {
 	debug("createChatRoomWithParticipantIds");
-	const participantIds = req.body.participantIds;
+	const {participantIds} = req.body;
 	debug(`participantIds: ${participantIds}`);
-	try {
-		const chatRoom = await ChatRoom.create({participantIds});
-		await chatRoom.save();
-		res.json(chatRoom);
-		res.status(200);
-		return chatRoom;
-	} catch (err) {
-		res.status(500).json({
-            message: `Error creating chat room with participant ids: ${err}`
-        })
+	if (participantIds) {
+		debug(`Create chat room with participant ids: ${participantIds}`)
+		try {
+			const chatRoom = await ChatRoom.create({participantIds});
+			await chatRoom.save();
+			res.json(chatRoom);
+			res.status(200);
+			return chatRoom;
+		} catch (err) {
+			res.status(500).json({
+				message: `Error creating chat room with participant ids: ${err}`
+			})
+		}
 	}
 }
 
@@ -87,5 +90,5 @@ module.exports = {
 	getChatRoomById,
 	getChatRoomByIdPopulatedWithUsers,
 	getChatRoomByParticipantIds,
-	createChatRoomWithParticipantIds
+	createChatRoom
 }

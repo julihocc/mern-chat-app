@@ -12,6 +12,7 @@ const {sendMessage} = require('./mutations/sendMessage');
 const {createGroupConversationForCurrentUser} = require('./mutations/createGroupConversationForCurrentUser');
 // contactService resolvers
 const {sendContactRequest} = require('./mutations/sendContactRequest');
+const {acceptContactRequest} = require('./mutations/acceptContactRequest');
 // testing integration
 const {getUserByEmail} = require('./queries/getUserByEmail');
 const {getManyUsersByEmail} = require('./queries/getManyUsersByEmail');
@@ -23,7 +24,15 @@ const resolvers = {
 	},
 
 	Mutation: {
-		login, signUp, changePassword, changeUsername, logout, sendMessage, createGroupConversationForCurrentUser, sendContactRequest
+		login,
+		signUp,
+		changePassword,
+		changeUsername,
+		logout,
+		sendMessage,
+		createGroupConversationForCurrentUser,
+		sendContactRequest,
+		acceptContactRequest
 	},
 };
 

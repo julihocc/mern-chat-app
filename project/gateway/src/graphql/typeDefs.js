@@ -94,6 +94,7 @@ const typeDefs = gql`
         createGroupConversationForCurrentUser(additionalEmails: [String]!): ChatRoom
         # contactService
         sendContactRequest(recipientId: ID!): ContactRequest
+        acceptContactRequest(requestId: ID!): ContactRequest
     }
 `;
 

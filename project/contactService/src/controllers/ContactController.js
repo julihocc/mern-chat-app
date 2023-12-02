@@ -32,7 +32,7 @@ const getContactRequest = async (req, res) => {
 	}
 }
 
-const changeContactRequestStatus = async (req, res) => {
+const changeContactRequest = async (req, res) => {
 	debug("ContactController | changeContactRequestStatus")
     const {requestId, status, chatRoomId} = req.body;
 	debug(`requestId: ${requestId}`)
@@ -62,4 +62,4 @@ const changeContactRequestStatus = async (req, res) => {
 	}
 }
 
-module.exports = {sendContactRequest, getContactRequest, changeContactRequestStatus};
+module.exports = {sendContactRequest, getContactRequest, changeContactRequest};

@@ -167,11 +167,14 @@ const getUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
 	debug("UserController | updateUser")
-	const {username, newUsername} = req.query;
+	const {username, newUsername, userId, contactId} = req.body;
 	debug(`username: ${username}`);
 	debug(`newUsername: ${newUsername}`);
+	debug(`userId: ${userId}`);
+	debug(`contactId: ${contactId}`);
 
 	if(username&&newUsername){
+		debug(`Changing username from ${username} to ${newUsername}`);
 		try{
 			await User.updateOne({username}, {$set: {username: newUsername}});
             const user = await User.findOne({username: newUsername});
@@ -179,6 +182,28 @@ const updateUser = async (req, res) => {
 
             res.json(user);
             return user;
+		} catch (error) {
+			res.status(500).json({message: `updateUser error: ${error}`});
+		}
+	}
+
+	if(userId&&contactId){
+		debug(`Adding new contact ${contactId} to user ${userId}`)
+		try{
+			const user = await User.findById(userId);
+			debug(`user: ${JSON.stringify(user)}`);
+			if(!user.contacts){
+				user.contacts = [];
+			}
+			// if(!user.contacts.includes(contactId)){
+			// 	user.contacts.push(contactId);
+			// }
+			user.contacts.push(contactId);
+			debug(`Updated user: ${JSON.stringify(user)}`);
+			await user.save();
+			res.json(user)
+			res.status(200);
+			return user;
 		} catch (error) {
 			res.status(500).json({message: `updateUser error: ${error}`});
 		}
