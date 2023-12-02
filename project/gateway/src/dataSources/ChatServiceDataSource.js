@@ -97,7 +97,7 @@ class ChatAPI extends RESTDataSource {
 		debug("createChatRoomWithParticipantIds")
         debug(`participantIds: ${participantIds}`);
 
-        const data = await this.post("/v1/createChatRoomWithParticipantIds", {
+        const data = await this.post("/v1/chat-room", {
             body: {
                 participantIds
             }
