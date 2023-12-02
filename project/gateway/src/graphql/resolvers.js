@@ -13,6 +13,7 @@ const {createGroupConversationForCurrentUser} = require('./mutations/createGroup
 // contactService resolvers
 const {sendContactRequest} = require('./mutations/sendContactRequest');
 const {acceptContactRequest} = require('./mutations/acceptContactRequest');
+const {rejectContactRequest} = require('./mutations/rejectContactRequest');
 // testing integration
 const {getUserByEmail} = require('./queries/getUserByEmail');
 const {getManyUsersByEmail} = require('./queries/getManyUsersByEmail');
@@ -32,7 +33,8 @@ const resolvers = {
 		sendMessage,
 		createGroupConversationForCurrentUser,
 		sendContactRequest,
-		acceptContactRequest
+		acceptContactRequest,
+		rejectContactRequest
 	},
 };
 

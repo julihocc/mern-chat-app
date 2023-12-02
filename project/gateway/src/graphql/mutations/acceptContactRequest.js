@@ -29,6 +29,11 @@ const acceptContactRequest = async (parent, {requestId}, context) => {
 		const contactRequest = await context.dataSources.contactAPI.getContactRequest(requestId);
 		logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
 
+		if (user._id!== contactRequest.recipientId.toString()) {
+			logger.error(`You must be the recipient of the contact request to accept it`)
+            throw new AuthenticationError(`You must be the recipient of the contact request to accept it`)
+		}
+
 		if (!contactRequest) {
 			logger.error(`Could not find contact request: ${requestId}`)
 			throw new AuthenticationError(`Could not find contact request: ${requestId}`)

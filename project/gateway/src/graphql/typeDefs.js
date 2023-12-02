@@ -95,6 +95,7 @@ const typeDefs = gql`
         # contactService
         sendContactRequest(recipientId: ID!): ContactRequest
         acceptContactRequest(requestId: ID!): ContactRequest
+        rejectContactRequest(requestId: ID!): ContactRequest
     }
 `;
 
