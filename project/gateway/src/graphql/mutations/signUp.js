@@ -30,7 +30,10 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
 	}
 
 	const user = await context.dataSources.authAPI.createUser(email, username, password);
-	logger.debug(`user: ${JSON.stringify(user)}`);
+	await context.dataSources.chatAPI.createUser(user._id, user.email, user.username);
+	await context.dataSources.contactAPI.createUser(user._id, user.email, user.username);
+
+	logger.debug(`AuthAPI | user: ${JSON.stringify(user)}`);
 
 	// const token = jwt.sign({
 	// 	id: user.id, email: user.email,

@@ -74,12 +74,6 @@ const createUser = async (req, res) => {
 		const hashedPassword = await encryptPassword(password);
 		const user = new User({email, username, password: hashedPassword});
 		await user.save();
-		await publishUserEvent("contactService", "UserCreated", {
-			id: user.id, email: user.email, username: user.username,
-		});
-		await publishUserEvent("chatService", "UserCreated", {
-			id: user.id, email: user.email, username: user.username,
-		});
 		res.json(user);
 		return user;
 	} catch (error) {

@@ -35,29 +35,11 @@ const changeUsername = async (_, args, context) => {
 		throw new Error('Username already taken');
 	}
 
-	// try {
-	// 	logger.debug(`Updating username: ${user.username} to ${newUsername}`);
-	// 	await User.updateOne({username: user.username}, {$set: {username: newUsername}});
-	// 	await logger.debug(`Username updated to ${user.username}`);
-	//
-	// 	await publishUserEvent("contactService", 'UsernameChanged', {
-	// 		id: user._id, oldUsername: user.username, newUsername: newUsername
-	// 	})
-	// 	await publishUserEvent("chatService", 'UsernameChanged', {
-	// 		id: user._id, oldUsername: user.username, newUsername: newUsername
-	// 	})
-	//
-	// 	logger.debug(`Updated username: ${user.username} to ${newUsername}`);
-	//
-	// 	return await User.findOne({username: newUsername});
-	// } catch (err) {
-	// 	throw new Error(`Error updating username: ${err.message}`);
-	// }
-
-
 	try {
 		logger.debug(`Updating username: ${user.username} to ${newUsername}`);
 		const updatedUser = await context.dataSources.authAPI.changeUsername(user.username, newUsername)
+		await context.dataSources.chatAPI.changeUsername(user.username, newUsername);
+		await context.dataSources.contactAPI.changeUsername(user.username, newUsername);
 		logger.debug(`Updated user: ${JSON.stringify(updatedUser)}`);
 		return updatedUser;
 	} catch (err) {

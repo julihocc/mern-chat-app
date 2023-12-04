@@ -105,6 +105,38 @@ class ChatAPI extends RESTDataSource {
         debug(`createChatRoomWithParticipantIds/data: ${JSON.stringify(data)}`);
         return data;
 	}
+
+	async createUser(_id, email, username) {
+		debug("ChatAPIT | createUser")
+        debug(`_id: ${_id}`)
+        debug(`email: ${email}`)
+        debug(`username: ${username}`)
+
+        const data = await this.post("/v1/user", {
+            body: {
+                _id,
+                email,
+                username
+            }
+        })
+        debug(`createUser/data: ${JSON.stringify(data)}`);
+        return data;
+	}
+
+	async changeUsername(username, newUsername) {
+		debug("ChatAPIT | updateUser")
+        debug(`username: ${username}`)
+        debug(`newUsername: ${newUsername}`)
+
+        const data = await this.put("/v1/user", {
+            body: {
+                username,
+                newUsername
+            }
+        })
+        debug(`updateUser/data: ${JSON.stringify(data)}`);
+        return data;
+	}
 }
 
 module.exports = {ChatAPI};

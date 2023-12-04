@@ -5,6 +5,7 @@ const RABBITMQ_URL = process.env.RABBITMQ_URL;
 debug(`Connecting to RabbitMQ at ${RABBITMQ_URL}`);
 
 async function publishUserEvent(queue, eventType, userData) {
+    debug(`Connecting to RabbitMQ at ${RABBITMQ_URL}`);
     const connection = await amqp.connect(RABBITMQ_URL);
     const channel = await connection.createChannel();
 

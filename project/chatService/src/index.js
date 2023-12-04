@@ -9,6 +9,7 @@ const errorHandler = require("./utils/errorHandler");
 const logger = require("./utils/logger");
 const ChatController = require("./controllers/ChatController");
 const MessageController = require("./controllers/MessageController");
+const UserController = require("./controllers/UserController");
 
 const PORT = process.env.PORT || 5000;
 
@@ -46,9 +47,13 @@ app.use(express.json());
 app.get("/v1/chat-room-by-id", ChatController.getChatRoomById);
 app.get("/v1/chat-room-by-id-populated-with-users", ChatController.getChatRoomByIdPopulatedWithUsers);
 app.get("/v1/messages-by-chat-room-id", MessageController.getMessagesByChatRoomId);
-app.post("/v1/message", MessageController.saveMessage);
 app.get("/v1/chat-room-by-participant-ids", ChatController.getChatRoomByParticipantIds);
+
 app.post("/v1/chat-room", ChatController.createChatRoom);
+app.post("/v1/message", MessageController.saveMessage);
+app.post("/v1/user", UserController.createUser);
+
+app.put("/v1/user", UserController.updateUser);
 
 async function startServer() {
 	try {
