@@ -29,25 +29,6 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
 		throw new UserInputError("Passwords don't match");
 	}
 
-	// const hashedPassword = await encryptPassword(password);
-	// const hashedPassword = await context.dataSources.authAPI.getPasswordEncrypted(password);
-	// logger.info(`hashedPassword: ${hashedPassword}`);
-
-	// const user = new User({email, username, password: hashedPassword});
-
-	// try {
-	// 	await user.save();
-	// 	await publishUserEvent("contactService", "UserCreated", {
-	// 		id: user.id, email: user.email, username: user.username,
-	// 	});
-	// 	await publishUserEvent("chatService", "UserCreated", {
-	// 		id: user.id, email: user.email, username: user.username,
-	// 	});
-	//
-	// } catch (err) {
-	// 	logger.error(`Failed to save user: ${err}`);
-	// }
-
 	const user = await context.dataSources.authAPI.createUser(email, username, password);
 	logger.debug(`user: ${JSON.stringify(user)}`);
 

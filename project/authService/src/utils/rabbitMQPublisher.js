@@ -1,6 +1,8 @@
 const amqp = require('amqplib');
+const {debug} = require("./logger");
 
 const RABBITMQ_URL = process.env.RABBITMQ_URL;
+debug(`Connecting to RabbitMQ at ${RABBITMQ_URL}`);
 
 async function publishUserEvent(queue, eventType, userData) {
     const connection = await amqp.connect(RABBITMQ_URL);

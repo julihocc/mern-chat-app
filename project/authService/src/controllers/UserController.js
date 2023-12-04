@@ -3,6 +3,7 @@ const User = require('../models/UserModel');
 const {retrieveUserByToken, encryptPassword} = require('../utils/authentication');
 const {debug} = require("../utils/logger");
 const {sign} = require("jsonwebtoken");
+const {publishUserEvent} = require("../utils/rabbitMQPublisher");
 
 // const getUserByEmail = async (req, res) => {
 // 	debug("authService/getUserByEmail")
@@ -73,6 +74,12 @@ const createUser = async (req, res) => {
 		const hashedPassword = await encryptPassword(password);
 		const user = new User({email, username, password: hashedPassword});
 		await user.save();
+		await publishUserEvent("contactService", "UserCreated", {
+			id: user.id, email: user.email, username: user.username,
+		});
+		await publishUserEvent("chatService", "UserCreated", {
+			id: user.id, email: user.email, username: user.username,
+		});
 		res.json(user);
 		return user;
 	} catch (error) {
