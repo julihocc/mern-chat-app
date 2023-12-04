@@ -1,13 +1,13 @@
 // frontend/src/redux/sagas.js
 import {all, call, put, takeLatest} from "redux-saga/effects";
-import {contactServiceApolloClient} from "../apolloClient";
+import {apolloClient} from "../apolloClient";
 import {GET_CURRENT_USER} from "../gql/queries/GET_CURRENT_USER";
 import {fetchUserFailure, fetchUserRequest, fetchUserSaga, fetchUserSuccess,} from "./slices/userSlice";
 
 function* fetchCurrentUserSaga() {
 	yield put(fetchUserRequest());
 	try {
-		const {data} = yield call(contactServiceApolloClient.query, {
+		const {data} = yield call(apolloClient.query, {
 			query: GET_CURRENT_USER,
 		});
 		yield put(fetchUserSuccess(data.getCurrentUser));

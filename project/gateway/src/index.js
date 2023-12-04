@@ -12,7 +12,7 @@ const http = require("http");
 const PORT = process.env.PORT || 3001;
 const cookieParser = require("cookie-parser");
 const logger = require("./utils/logger");
-// const {graphqlUploadExpress} = require("graphql-upload");
+const {graphqlUploadExpress} = require("graphql-upload");
 const rateLimit = require("express-rate-limit");
 const {AuthAPI} = require("./dataSources/AuthServiceDataSource")
 const {ChatAPI} = require("./dataSources/ChatServiceDataSource")
@@ -38,7 +38,7 @@ const apiLimiter = rateLimit({
 
 app.use("/graphql", apiLimiter);
 
-// app.use(graphqlUploadExpress({maxFileSize: 10000000, maxFiles: 10}));
+app.use(graphqlUploadExpress({maxFileSize: 10000000, maxFiles: 10}));
 
 app.use(errorHandler);
 

@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import gql from "graphql-tag";
 import {setUser} from "../redux/slices/userSlice";
-import {contactServiceApolloClient} from "../apolloClient";
+import {apolloClient} from "../apolloClient";
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
@@ -15,7 +15,7 @@ const GET_CURRENT_USER = gql`
 
 const useInitializeAuth = () => {
 	const dispatch = useDispatch();
-	const client = contactServiceApolloClient;
+	const client = apolloClient;
 
 	useEffect(() => {
 
