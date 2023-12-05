@@ -49,6 +49,7 @@ app.get("/v1/chat-room-by-id-populated-with-users", ChatController.getChatRoomBy
 app.get("/v1/chat-room-by-participant-ids", ChatController.getChatRoomByParticipantIds);
 app.get("/v1/chat-room-by-id-populated-with-users", ChatController.getChatRoomByIdPopulatedWithUsers);
 app.get("/v1/chat-rooms", ChatController.getChatRooms)
+app.get("/v1/messages", MessageController.getMessagesByChatRoomId);
 
 
 app.post("/v1/chat-room", ChatController.createChatRoom);
