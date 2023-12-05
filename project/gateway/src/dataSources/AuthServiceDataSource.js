@@ -199,6 +199,15 @@ class AuthAPI extends RESTDataSource {
         debug(`addContact/data: ${JSON.stringify(data)}`);
         return data;
 	}
+
+	async getContactsByUserId(userId) {
+		debug("AuthAPI | getContactsByUserId")
+		debug(`userId: ${userId}`);
+		const params = {userId}
+		const data = await this.get("/v1/contacts", {params})
+		debug(`AuthAPI | getContactsByUserId | data: ${JSON.stringify(data)}`);
+		return data;
+	}
 }
 
 module.exports = {AuthAPI};

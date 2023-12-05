@@ -58,6 +58,8 @@ app.get('/v1/user', UserController.getUser);
 app.post('/v1/user', UserController.createUser);
 app.put('/v1/user', UserController.updateUser);
 
+app.get('/v1/contacts', UserController.getContactsByUserId);
+
 async function startServer() {
 	try {
 		await connectDB();

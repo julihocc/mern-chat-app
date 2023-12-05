@@ -1,10 +1,12 @@
 // project/gateway/src/graphql/resolvers.js
+// authService
 const {login} = require('./mutations/login');
 const {getCurrentUser} = require('./queries/getCurrentUser');
 const {signUp} = require('./mutations/signUp');
 const {changePassword} = require('./mutations/changePassword');
 const {changeUsername} = require('./mutations/changeUsername');
 const {logout} = require('./mutations/logout');
+const {getContactsWithChatRoom} = require('./queries/getContactsWithChatRoom');
 // chatService resolvers
 const {getChatRoomById} = require('./queries/getChatRoomById');
 const {getMessagesByChatRoomId} = require('./queries/getMessagesByChatRoomId');
@@ -29,7 +31,8 @@ const resolvers = {
 		getUserByEmail,
 		getManyUsersByEmail,
 		getChatRoomsForCurrentUser,
-		getContactRequestsByContext
+		getContactRequestsByContext,
+		getContactsWithChatRoom
 	},
 
 	Mutation: {

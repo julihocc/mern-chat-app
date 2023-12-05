@@ -211,6 +211,21 @@ const updateUser = async (req, res) => {
 	}
 }
 
+const getContactsByUserId = async (req, res) => {
+	debug("UserController | getContactsByUserId")
+    const {userId} = req.query;
+    debug(`userId: ${userId}`);
+    try {
+		const user = await User.findById(userId);
+        const contacts = await User.find({_id: {$in: user.contacts}});
+        debug(`contacts: ${JSON.stringify(contacts)}`);
+        res.json(contacts);
+        return contacts;
+    } catch (error) {
+        res.status(500).json({message: `getContactsByUserId error: ${error}`});
+    }
+}
+
 module.exports = {
 	// getUserByEmail,
 	getTokenByPayload,
@@ -221,4 +236,5 @@ module.exports = {
 	getManyUsersByEmail,
 	getUser,
 	updateUser,
+	getContactsByUserId,
 };

@@ -12,6 +12,13 @@ const typeDefs = gql`
         username: String!
     }
 
+    type UserWithChatRoom {
+        _id: ID!
+        email: String!
+        username: String!
+        chatRoom: ID!
+    }
+
     type SignupPayload {
         token: String!
         user: User!
@@ -77,6 +84,7 @@ const typeDefs = gql`
     type Query {
         # authService
         getCurrentUser: User!
+        getContactsWithChatRoom: [UserWithChatRoom]
         # chatService
         getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
         getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
