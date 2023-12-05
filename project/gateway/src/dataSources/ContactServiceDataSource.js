@@ -49,6 +49,13 @@ class ContactAPI extends RESTDataSource {
         return data;
 	}
 
+	async getContactRequestsByRecipientId(recipientId) {
+		debug(`ContactAPI | getContactRequestsByRecipientId | recipientId: ${recipientId}`);
+		const params = {recipientId};
+		const data = await this.get(`/v1/contact-request`, {params});
+		debug(`ContactAPI | getContactRequestsByRecipientId | data: ${JSON.stringify(data)}`);
+	}
+
 	async addChatRoomIdToContactRequest(requestId, chatRoomId) {
 		debug(`ContactAPI | addChatRoomIdToContactRequest`);
 		debug(`requestId: ${requestId}`);
