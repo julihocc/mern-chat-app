@@ -97,7 +97,7 @@ const ChatRoomViewer = () => {
 	}
 
 
-	const currentUserId = user.id;
+	const currentUserId = user._id;
 
 	if (!currentUserId) return (<Typography variant="h4">Please log in to view the chat room</Typography>);
 	if (isLoading) return <Loading queryName="Loading"/>;
@@ -129,7 +129,7 @@ const ChatRoomViewer = () => {
 				{messages && messages.slice(-5).map((message, index) => (<ListItem
 						key={index}
 						sx={{
-							flexDirection: message.senderId.id === currentUserId ? "row-reverse" : "row",
+							flexDirection: message.senderId._id === currentUserId ? "row-reverse" : "row",
 						}}
 					>
 						<ListItemAvatar>
@@ -139,7 +139,7 @@ const ChatRoomViewer = () => {
 							primary={message.body}
 							secondary={message.senderId.username}
 							sx={{
-								textAlign: message.senderId.id === currentUserId ? "right" : "left",
+								textAlign: message.senderId._id === currentUserId ? "right" : "left",
 							}}
 						/>
 						{message.fileContent && ( // Assuming the file is an image, render it as an image tag
