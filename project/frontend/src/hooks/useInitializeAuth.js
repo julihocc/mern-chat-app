@@ -6,8 +6,8 @@ import {apolloClient} from "../apolloClient";
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
-        getCurrentUser {
-            id
+        getCurrentUserCredentials {
+            _id
             email
         }
     }

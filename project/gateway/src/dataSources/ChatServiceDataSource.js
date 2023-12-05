@@ -137,6 +137,18 @@ class ChatAPI extends RESTDataSource {
         debug(`updateUser/data: ${JSON.stringify(data)}`);
         return data;
 	}
+
+	async getChatRoomsByUserId(userId) {
+		debug("ChatAPI | getChatRoomsForCurrentUser")
+		debug(`userId: ${userId}`);
+		const data = await this.get("/v1/chat-rooms", {
+            params: {
+                userId
+            }
+        })
+		debug(`ChatAPI | getChatRoomsForCurrentUser | data: ${JSON.stringify(data)}`);
+		return data;
+	}
 }
 
 module.exports = {ChatAPI};

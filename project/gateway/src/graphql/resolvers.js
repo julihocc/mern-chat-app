@@ -10,6 +10,7 @@ const {getChatRoomById} = require('./queries/getChatRoomById');
 const {getMessagesByChatRoomId} = require('./queries/getMessagesByChatRoomId');
 const {sendMessage} = require('./mutations/sendMessage');
 const {createGroupConversationForCurrentUser} = require('./mutations/createGroupConversationForCurrentUser');
+const {getChatRoomsForCurrentUser} = require('./queries/getChatRoomsForCurrentUser');
 // contactService resolvers
 const {sendContactRequest} = require('./mutations/sendContactRequest');
 const {acceptContactRequest} = require('./mutations/acceptContactRequest');
@@ -21,7 +22,12 @@ const {getManyUsersByEmail} = require('./queries/getManyUsersByEmail');
 const resolvers = {
 
 	Query: {
-		getCurrentUserCredentials, getChatRoomById, getMessagesByChatRoomId, getUserByEmail, getManyUsersByEmail
+		getCurrentUserCredentials,
+		getChatRoomById,
+		getMessagesByChatRoomId,
+		getUserByEmail,
+		getManyUsersByEmail,
+		getChatRoomsForCurrentUser,
 	},
 
 	Mutation: {
