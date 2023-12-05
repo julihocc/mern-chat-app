@@ -1,4 +1,4 @@
-// authService/src/index.js
+// project/gateway/src/index.js
 const express = require("express");
 const {ApolloServer} = require("apollo-server-express");
 const {PubSub} = require("graphql-subscriptions");
@@ -47,6 +47,7 @@ app.use(cookieParser());
 app.use((req, res, next) => {
 	const token = req.cookies.authToken;
 	if (token) {
+		logger.debug(`gateway | Token: ${token}`);
 		req.token = token;
 	}
 	next();

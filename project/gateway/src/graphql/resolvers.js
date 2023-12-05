@@ -1,6 +1,6 @@
-// authService resolvers
+// project/gateway/src/graphql/resolvers.js
 const {login} = require('./mutations/login');
-const {getCurrentUserCredentials} = require('./queries/getCurrentUserCredentials');
+const {getCurrentUser} = require('./queries/getCurrentUser');
 const {signUp} = require('./mutations/signUp');
 const {changePassword} = require('./mutations/changePassword');
 const {changeUsername} = require('./mutations/changeUsername');
@@ -22,7 +22,7 @@ const {getManyUsersByEmail} = require('./queries/getManyUsersByEmail');
 const resolvers = {
 
 	Query: {
-		getCurrentUserCredentials,
+		getCurrentUser,
 		getChatRoomById,
 		getMessagesByChatRoomId,
 		getUserByEmail,

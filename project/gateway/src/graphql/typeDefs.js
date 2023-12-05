@@ -68,7 +68,7 @@ const typeDefs = gql`
 
     type Query {
         # authService
-        getCurrentUserCredentials: User!
+        getCurrentUser: User!
         # chatService
         getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
         getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]

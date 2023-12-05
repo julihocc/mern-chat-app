@@ -1,7 +1,7 @@
 const {AuthenticationError} = require("apollo-server-express");
 const {debug} = require("../../utils/logger");
-const getCurrentUserCredentials = async (parent, args, context) => {
-	debug("queries/getCurrentUserCredentials");
+const getCurrentUser = async (parent, args, context) => {
+	debug("queries/getCurrentUser");
 
 	const {token} = context;
 	debug("token:", token);
@@ -20,4 +20,4 @@ const getCurrentUserCredentials = async (parent, args, context) => {
 	return user;
 };
 
-module.exports = {getCurrentUserCredentials};
+module.exports = {getCurrentUser};
