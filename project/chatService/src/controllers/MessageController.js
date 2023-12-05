@@ -33,7 +33,7 @@ const saveMessage = async (req, res) => {
 	debug(`chatRoomId: ${JSON.stringify(chatRoomId)}`)
 	debug(`senderId: ${senderId}`);
 	debug(`body: ${body}`)
-	debug(`fileContent: ${fileContent}`)
+	// debug(`fileContent: ${fileContent}`)
 
 	const message = new Message({chatRoomId, senderId, body, fileContent});
 

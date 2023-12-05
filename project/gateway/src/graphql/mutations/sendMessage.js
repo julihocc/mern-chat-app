@@ -2,6 +2,7 @@ const logger = require("../../utils/logger");
 const {AuthenticationError} = require("apollo-server-express");
 
 const sendMessage = async (parent, args, context) => {
+	logger.debug(`Sending message: ${JSON.stringify(args)}`);
 
 	const {token} = context
 
@@ -28,16 +29,22 @@ const sendMessage = async (parent, args, context) => {
 		throw new Error("Sender ID not found");
 	}
 
+	// let fileContent = null;
+	//
+	// if(file){
+	// 	const {createReadStream} = await file;
+	// 	const stream = createReadStream();
+	// 	const chunks = [];
+	// 	for await (const chunk of stream) {
+	// 		chunks.push(chunk);
+	// 	}
+	// 	fileContent = Buffer.concat(chunks).toString("base64");
+	// }
+
 	let fileContent = null;
 
-	if(file){
-		const {createReadStream} = await file;
-		const stream = createReadStream();
-		const chunks = [];
-		for await (const chunk of stream) {
-			chunks.push(chunk);
-		}
-		fileContent = Buffer.concat(chunks).toString("base64");
+	if(file) {
+		fileContent = file.split(";base64,")[1];
 	}
 
 	const chatRoom = await context.dataSources.chatAPI.getChatRoomById(chatRoomId)
@@ -67,10 +74,10 @@ const sendMessage = async (parent, args, context) => {
 		chatRoomId,
         senderId,
         body,
-        fileContent
+        fileContent,
 	)
 
-	logger.debug(`Message: ${JSON.stringify(message)}`);
+	logger.debug(`Message: ${JSON.stringify(message._id)}`);
 
 	return message;
 }

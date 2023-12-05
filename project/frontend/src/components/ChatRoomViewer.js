@@ -36,26 +36,81 @@ const ChatRoomViewer = () => {
 	const {newMessageData} = useNewMessageSubscription();
 	const [messageBody, setMessageBody] = useState("");
 	const [file, setFile] = useState(null);
+	const [fileName, setFileName] = useState(null);
 	const [messages, setMessages] = useState([]);
 
 	const {sendMessageMutation, error: sendMessageError, loading: sendMessageLoading} = useSendMessage(chatRoomId);
 
 	const isLoading = chatRoom.loading || messageLoading || sendMessageLoading;
 
+	// const handleFileChange = (e) => {
+	// 	const tempFile = e.target.files[0];
+	// 	logger.debug(`type of file: ${typeof tempFile}`);
+	// 	logger.debug(`file size: ${tempFile.size}`);
+	// 	logger.debug(`file name: ${tempFile.name}`);
+	// 	logger.debug(`file type: ${tempFile.type}`);
+	// 	logger.debug(`file: ${JSON.stringify(tempFile)}`);
+	// 	setFile(tempFile);
+	// 	logger.debug(`File: ${JSON.stringify(file)}`);
+	// };
+
 	const handleFileChange = (e) => {
-		const tempFile = e.target.files[0];
-		logger.debug("typeof tempFile: ", typeof tempFile);
-		setFile(tempFile);
+		logger.debug(`File changed: ${e.target.files[0].name}`);
+		setFileName(e.target.files[0].name);
+		const file = e.target.files[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				setFile(reader.result); // Set the Base64 string to the state
+				logger.debug(`File: ${JSON.stringify(file)}`);
+			};
+			reader.readAsDataURL(file);
+		}
 	};
 
-	const handleSendMessage = async (e, senderId, chatRoomId) => {
+	// const handleSendMessage = async (e, senderId, chatRoomId) => {
+	// 	e.preventDefault();
+	// 	await sendMessageMutation({
+	// 		variables: {
+	// 			chatRoomId: chatRoomId, body: messageBody, file: file,
+	// 		},
+	// 	});
+	// };
+
+	// const handleSendMessage = async (e) => {
+	// 	logger.debug(`Sending message: ${messageBody}`);
+	// 	e.preventDefault();
+	// 	const fileInput = document.getElementById('inputForFile');
+	// 	const file = fileInput.files[0]; // Directly using the file from input
+	//
+	// 	if (file) {
+	// 		logger.debug("File selected: ", file.name);
+	// 		logger.debug(`File size: ${file.size}`);
+	// 		logger.debug(`File type: ${file.type}`);
+	// 		await sendMessageMutation({
+	// 			variables: {
+	// 				chatRoomId: chatRoomId,
+	// 				body: messageBody,
+	// 				file: file,
+	// 			},
+	// 		});
+	// 	} else {
+	// 		logger.debug("No file selected");
+	// 		// Handle the case where no file is selected
+	// 	}
+	// };
+
+	const handleSendMessage = async (e) => {
 		e.preventDefault();
 		await sendMessageMutation({
 			variables: {
-				chatRoomId: chatRoomId, body: messageBody, file: file,
+				chatRoomId: chatRoomId,
+				body: messageBody,
+				file: file, // This is now a Base64 string
 			},
 		});
 	};
+
 
 	useEffect(() => {
 		logger.debug("Messages from server:", messageData?.getMessagesByChatRoomId);
@@ -169,7 +224,7 @@ const ChatRoomViewer = () => {
 					/>
 					<label htmlFor="inputForFile">
 						<Button variant="contained" component="span">
-							{file ? file.name : "Upload File"}
+							{file ? fileName : "Upload File"}
 						</Button>
 					</label>
 					<Button type="submit" variant="contained" color="primary">

@@ -45,7 +45,7 @@ class ChatAPI extends RESTDataSource {
 
 		const params = {chatRoomId}
 		const data = await this.get("/v1/messages", {params})
-		debug(`ChatAPI | getMessagesByChatRoomId | data: ${JSON.stringify(data)}`);
+		// debug(`ChatAPI | getMessagesByChatRoomId | data: ${JSON.stringify(data)}`);
 
 		return data;
 	}
@@ -55,7 +55,6 @@ class ChatAPI extends RESTDataSource {
         debug(`chatRoomId: ${chatRoomId}`)
         debug(`senderId: ${senderId}`)
         debug(`body: ${body}`)
-        debug(`fileContent: ${fileContent}`)
 
         const data = await this.post("/v1/message", {
             body: {
