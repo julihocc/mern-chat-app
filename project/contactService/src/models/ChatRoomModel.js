@@ -11,9 +11,7 @@ const chatRoomSchema = new Schema({
 		type: [{
 			type: Schema.Types.ObjectId, ref: "User",
 		},], validate: [arrayLimit, "{PATH} must have at least two participantIds."],
-	}, messageIds: [{
-		type: Schema.Types.ObjectId, ref: "Message",
-	},],
+	}, 
 }, {timestamps: true},);
 
 module.exports = model("ChatRoom", chatRoomSchema);

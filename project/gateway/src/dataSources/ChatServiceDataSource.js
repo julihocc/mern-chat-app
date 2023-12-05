@@ -94,7 +94,7 @@ class ChatAPI extends RESTDataSource {
 	}
 
 	async createChatRoomWithParticipantIds(participantIds) {
-		debug("createChatRoomWithParticipantIds")
+		debug("ChatAPI | createChatRoomWithParticipantIds")
         debug(`participantIds: ${participantIds}`);
 
         const data = await this.post("/v1/chat-room", {
@@ -102,7 +102,7 @@ class ChatAPI extends RESTDataSource {
                 participantIds
             }
         })
-        debug(`createChatRoomWithParticipantIds/data: ${JSON.stringify(data)}`);
+        debug(`ChatAPI | createChatRoomWithParticipantIds | data: ${JSON.stringify(data)}`);
         return data;
 	}
 

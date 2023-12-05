@@ -10,6 +10,7 @@ const logger = require("./utils/logger");
 // const ChatController = require("./controllers/ChatController");
 const ContactController = require("./controllers/ContactController");
 const UserController = require("./controllers/UserController");
+const ChatController = require("./controllers/ChatController");
 
 const PORT = process.env.PORT || 5000;
 
@@ -50,6 +51,8 @@ app.put("/v1/contact-request", ContactController.changeContactRequest);
 
 app.post("/v1/user", UserController.createUser);
 app.put("/v1/user", UserController.updateUser);
+
+app.post("/v1/chat-room", ChatController.createChatRoom);
 
 async function startServer() {
 	try {

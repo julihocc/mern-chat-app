@@ -34,6 +34,7 @@ const createGroupConversationForCurrentUser = async (_, args, context) => {
 
 	try {
 		const chatRoom = await context.dataSources.chatAPI.createChatRoomWithParticipantIds(participantIds);
+		await context.dataSources.contactAPI.createChatRoomWithParticipantIds(chatRoom._id, participantIds);
 		logger.debug(`chatRoom: ${JSON.stringify(chatRoom)}`);
 		return chatRoom;
 	} catch (err) {

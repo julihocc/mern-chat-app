@@ -85,6 +85,18 @@ class ContactAPI extends RESTDataSource {
         debug(`ContactAPI | changeUsername | data: ${JSON.stringify(data)}`);
         return data;
 	}
+
+	async createChatRoomWithParticipantIds(chatRoomId, participantIds) {
+		debug("ContactAPI | createChatRoomWithParticipantIds");
+		debug(`chatRoomId: ${chatRoomId}`);
+        debug(`participantIds: ${participantIds}`);
+
+        const body = {chatRoomId, participantIds};
+        const data = await this.post("/v1/chat-room", {body});
+
+        debug(`ContactAPI | createChatRoomWithParticipantIds | data: ${JSON.stringify(data)}`);
+        return data;
+	}
 }
 
 module.exports = {ContactAPI};
