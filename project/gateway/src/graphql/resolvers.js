@@ -15,6 +15,7 @@ const {getChatRoomsForCurrentUser} = require('./queries/getChatRoomsForCurrentUs
 const {sendContactRequest} = require('./mutations/sendContactRequest');
 const {acceptContactRequest} = require('./mutations/acceptContactRequest');
 const {rejectContactRequest} = require('./mutations/rejectContactRequest');
+const {getContactRequestsByContext} = require('./queries/getContactRequestsByContext');
 // testing integration
 const {getUserByEmail} = require('./queries/getUserByEmail');
 const {getManyUsersByEmail} = require('./queries/getManyUsersByEmail');
@@ -28,6 +29,7 @@ const resolvers = {
 		getUserByEmail,
 		getManyUsersByEmail,
 		getChatRoomsForCurrentUser,
+		getContactRequestsByContext
 	},
 
 	Mutation: {

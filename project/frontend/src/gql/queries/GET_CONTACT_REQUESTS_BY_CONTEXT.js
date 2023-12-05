@@ -5,7 +5,7 @@ export const GET_CONTACT_REQUESTS_BY_CONTEXT = gql`
     getContactRequestsByContext {
       id
       senderId {
-        id
+        _id
         username
         email
       }

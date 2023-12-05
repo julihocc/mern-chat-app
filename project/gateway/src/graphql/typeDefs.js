@@ -66,6 +66,14 @@ const typeDefs = gql`
         createdAt: String!
     }
 
+    type ContactRequestPopulated {
+        _id: ID!
+        senderId: User
+        recipientId: ID!
+        status: String!
+        createdAt: String!
+    }
+
     type Query {
         # authService
         getCurrentUser: User!
@@ -73,6 +81,8 @@ const typeDefs = gql`
         getChatRoomById(chatRoomId: ID!): ChatRoomPopulated
         getMessagesByChatRoomId(chatRoomId: ID!): [MessagePopulated]
         getChatRoomsForCurrentUser: [ChatRoom]
+        # contactService
+        getContactRequestsByContext: [ContactRequestPopulated]
         # testing integration
         getUserByEmail(email: String!): User
         getManyUsersByEmail(emails: [String!]!): [User]
