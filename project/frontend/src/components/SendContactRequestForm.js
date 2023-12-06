@@ -5,12 +5,12 @@ import {useTranslation} from "react-i18next";
 import {useGetCurrentUser} from "../hooks/queries/useGetCurrentUser";
 import {useSendContactRequest} from "../hooks/mutations/useSendContactRequest";
 import {useGetUserByEmail} from "../hooks/queries/useGetUserByEmail";
+import logger from "../utils/logger";
 
 const SendContactRequestForm = () => {
 	const {t} = useTranslation();
 	const [email, setEmail] = useState("");
 	const [userError, setUserError] = useState(null);
-	const [requestSent, setRequestSent] = useState(false);
 
 
 	const {
@@ -30,11 +30,17 @@ const SendContactRequestForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setUserError(null);
+		logger.debug(`Sending contact request to ${email}...`);
+		const user = await getUserByEmail({variables: {email}});
+		logger.debug(`Sending contact request to ${user?.data?.getUserByEmail?.username}...`);
+		logger.debug(`user: ${JSON.stringify(user)}`);
+		logger.debug(`user.data: ${JSON.stringify(user.data)}`);
+		logger.debug(`user.data.getUserByEmail: ${JSON.stringify(user.data.getUserByEmail)}`);
+		logger.debug(`user.data.getUserByEmail.id: ${user.data.getUserByEmail.username}`);
 
-		await getUserByEmail({variables: {email}});
 	};
 	useEffect(() => {
-		if (getUserByEmailData && currentUserData?.getCurrentUser?.id && !requestSent) {
+		if (getUserByEmailData && currentUserData?.getCurrentUser?.id) {
 			// Added null checks
 			sendContactRequest({
 				variables: {
@@ -43,13 +49,12 @@ const SendContactRequestForm = () => {
 			})
 				.then(() => {
 					setEmail("");
-					setRequestSent(true);
 				})
 				.catch((err) => {
 					console.error(err);
 				});
 		}
-	}, [requestSent]);
+	}, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest]);
 	// }, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest,]);
 	if (currentUserLoading || getUserByEmailLoading) return <CircularProgress/>;
 	if (currentUserError) return <p>Error: {currentUserError.message}</p>;
