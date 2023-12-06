@@ -17,9 +17,10 @@ const sendContactRequest = async (req, res) => {
 
 const getContactRequest = async (req, res) => {
 	debug("ContactController | getContactRequests")
-	const {requestId, recipientId} = req.query;
+	const {requestId, recipientId, userId} = req.query;
 	debug(`debug: ${requestId}`)
 	debug(`debug: ${recipientId}`)
+	debug(`debug: ${userId}`)
 	if(requestId) {
 		try {
 			const contactRequest = await ContactRequest.findById(requestId);
