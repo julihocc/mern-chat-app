@@ -32,19 +32,14 @@ const SendContactRequestForm = () => {
 		setUserError(null);
 		logger.debug(`Sending contact request to ${email}...`);
 		const user = await getUserByEmail({variables: {email}});
-		logger.debug(`Sending contact request to ${user?.data?.getUserByEmail?.username}...`);
-		logger.debug(`user: ${JSON.stringify(user)}`);
-		logger.debug(`user.data: ${JSON.stringify(user.data)}`);
-		logger.debug(`user.data.getUserByEmail: ${JSON.stringify(user.data.getUserByEmail)}`);
-		logger.debug(`user.data.getUserByEmail.id: ${user.data.getUserByEmail.username}`);
-
+		logger.debug(`Sending contact request to ${user?.data?.getUserByEmail?._id}...`);
 	};
 	useEffect(() => {
-		if (getUserByEmailData && currentUserData?.getCurrentUser?.id) {
+		if (getUserByEmailData && currentUserData?.getCurrentUser?._id) {
 			// Added null checks
 			sendContactRequest({
 				variables: {
-					senderId: currentUserData.getCurrentUser.id, recipientId: getUserByEmailData.getUserByEmail.id,
+					senderId: currentUserData.getCurrentUser._id, recipientId: getUserByEmailData.getUserByEmail._id,
 				},
 			})
 				.then(() => {
@@ -54,7 +49,7 @@ const SendContactRequestForm = () => {
 					console.error(err);
 				});
 		}
-	}, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest]);
+	}, [getUserByEmailData, currentUserData?.getCurrentUser?._id]);
 	// }, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest,]);
 	if (currentUserLoading || getUserByEmailLoading) return <CircularProgress/>;
 	if (currentUserError) return <p>Error: {currentUserError.message}</p>;
