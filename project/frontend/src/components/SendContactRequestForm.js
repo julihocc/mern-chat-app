@@ -10,6 +10,7 @@ const SendContactRequestForm = () => {
 	const {t} = useTranslation();
 	const [email, setEmail] = useState("");
 	const [userError, setUserError] = useState(null);
+	const [requestSent, setRequestSent] = useState(false);
 
 
 	const {
@@ -30,11 +31,10 @@ const SendContactRequestForm = () => {
 		e.preventDefault();
 		setUserError(null);
 
-		// Load recipient user when form is submitted
 		await getUserByEmail({variables: {email}});
 	};
 	useEffect(() => {
-		if (getUserByEmailData && currentUserData?.getCurrentUser?.id) {
+		if (getUserByEmailData && currentUserData?.getCurrentUser?.id && !requestSent) {
 			// Added null checks
 			sendContactRequest({
 				variables: {
@@ -43,13 +43,14 @@ const SendContactRequestForm = () => {
 			})
 				.then(() => {
 					setEmail("");
+					setRequestSent(true);
 				})
 				.catch((err) => {
 					console.error(err);
 				});
 		}
-	}, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest,]); // Added optional chaining
-
+	}, [requestSent]);
+	// }, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest,]);
 	if (currentUserLoading || getUserByEmailLoading) return <CircularProgress/>;
 	if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 
