@@ -11,21 +11,25 @@ import logger from "./utils/logger";
 import React from "react";
 import {Provider} from "react-redux";
 import initializeStore from "./redux/store";
+import {ApolloProvider} from "@apollo/client";
+import {apolloClient} from "./apolloClient";
+
 
 const root = document.getElementById("root");
 
 initializeStore().then((store) => {
 	if (root) {
 		ReactDOM.createRoot(root).render(<React.StrictMode>
-
-			<I18nextProvider i18n={i18n}>
-				<ThemeProvider theme={theme}>
-					<Provider store={store}>
-						<App/>
-					</Provider>
-				</ThemeProvider>
-			</I18nextProvider>
-		</React.StrictMode>,);
+			<ApolloProvider client={apolloClient}>
+				<I18nextProvider i18n={i18n}>
+					<ThemeProvider theme={theme}>
+						<Provider store={store}>
+							<App/>
+						</Provider>
+					</ThemeProvider>
+				</I18nextProvider>
+			</ApolloProvider>
+		</React.StrictMode>);
 	} else {
 		logger.error("Error: Root element not found.");
 	}

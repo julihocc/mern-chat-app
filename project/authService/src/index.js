@@ -1,25 +1,24 @@
 // authService/src/index.js
 const express = require("express");
-const {ApolloServer} = require("apollo-server-express");
-const {PubSub} = require("graphql-subscriptions");
-const {execute, subscribe} = require("graphql");
-const {SubscriptionServer} = require("subscriptions-transport-ws");
 const cors = require("cors");
-const {typeDefs} = require("./graphql/typeDefs");
-const {resolvers} = require("./graphql/resolvers");
-const errorHandler = require("./utils/errorHandler");
-const connectDB = require("./utils/connectDB");
-const http = require("http");
-const PORT = process.env.PORT || 5000;
 const cookieParser = require("cookie-parser");
-const logger = require("./utils/logger");
-const {graphqlUploadExpress} = require("graphql-upload");
+const http = require("http");
 const rateLimit = require("express-rate-limit");
+
+const connectDB = require("./utils/connectDB");
+const errorHandler = require("./utils/errorHandler");
+const logger = require("./utils/logger");
+const UserController = require('./controllers/UserController');
+const PasswordController = require('./controllers/PasswordController');
+
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+// Static files
 app.use(express.static(__dirname + "/public"));
 
+// CORS setup
 const corsOptions = {
 	origin: "*",
 	credentials: true,
@@ -28,66 +27,49 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+// Rate limiting
 const apiLimiter = rateLimit({
 	windowMs: 60 * 60 * 1000, // 1 hour window
 	max: 10000, // limit each IP to 100 requests per windowMs
 	message: "Too many requests from this IP, please try again after an hour",
 });
+app.use(apiLimiter);
 
-app.use("/graphql", apiLimiter);
-
-app.use(graphqlUploadExpress({maxFileSize: 10000000, maxFiles: 10}));
-
+// Error handling
 app.use(errorHandler);
 
+// Cookie parsing
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-	const token = req.cookies.authToken;
-	if (token) {
-		req.token = token;
-	}
-	next();
-});
+app.use(express.json());
 
+// RESTful route for getting user by email
+// app.get('/v1/user-by-email', UserController.getUserByEmail);
+app.get('/v1/password-comparison', PasswordController.getPasswordComparison);
+app.get('/v1/token-by-payload', UserController.getTokenByPayload);
+// app.get('/v1/user-by-token', UserController.getUserByToken);
+// app.get('/v1/user-by-username', UserController.getUserByUsername);
+app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
+app.put('/v1/new-password', PasswordController.changePassword);
+// app.put('/v1/new-username', UserController.changeUsername);
+app.get('/v1/many-users-by-email', UserController.getManyUsersByEmail);
+
+app.get('/v1/user', UserController.getUser);
+app.post('/v1/user', UserController.createUser);
+app.put('/v1/user', UserController.updateUser);
+
+app.get('/v1/contacts', UserController.getContactsByUserId);
 
 async function startServer() {
 	try {
 		await connectDB();
+		const httpServer = http.createServer(app);
+		httpServer.listen(PORT, () => {
+			logger.debug(`Server is running at http://localhost:${PORT}`);
+		});
 	} catch (err) {
-		logger.error("Error connecting to MongoDB:", err);
+		logger.error("Error starting the authentication service:", err);
 	}
-
-	const pubSub = new PubSub();
-
-	const apolloServer = new ApolloServer({
-		typeDefs, resolvers, introspection: true, context: ({req, res, connection}) => {
-			if (connection) {
-				return {...connection.context, pubSub};
-			} else {
-				// TODO: Test solution with cookies
-				const token = req.headers.authorization || "";
-				req.token = token;
-				return {req, res, pubSub, token};
-			}
-		}, uploads: false,
-	});
-
-	await apolloServer.start();
-	apolloServer.applyMiddleware({app});
-
-	const httpServer = http.createServer(app);
-
-	SubscriptionServer.create({
-		schema: apolloServer.schema, execute, subscribe,
-	}, {
-		server: httpServer, path: apolloServer.graphqlPath,
-	},);
-
-	httpServer.listen(PORT, () => {
-		logger.debug(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`,);
-		logger.debug(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`,);
-	});
 }
 
 (async () => {
@@ -97,3 +79,4 @@ async function startServer() {
 		logger.error("Error starting the authentication service:", err);
 	}
 })();
+

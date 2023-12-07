@@ -61,8 +61,8 @@ const ChatRoomList = () => {
 		</FormControl>
 		<div key={sortOption}>
 			<ul>
-				{sortedChatRooms && sortedChatRooms.map((chatRoom) => (<li key={chatRoom.id}>
-					<Link to={`/chat/${chatRoom.id}`}>
+				{sortedChatRooms && sortedChatRooms.map((chatRoom) => (<li key={chatRoom._id}>
+					<Link to={`/chat/${chatRoom._id}`}>
 						Chat: {chatRoom.createdAt}
 					</Link>
 				</li>))}

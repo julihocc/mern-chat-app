@@ -8,8 +8,8 @@ import {useSelector} from "react-redux";
 import logger from "../utils/logger";
 
 const PendingContactRequestsList = () => {
-	const {id} = useSelector((state) => state.user);
-	const userId = id;
+	const {_id} = useSelector((state) => state.user);
+	const userId = _id;
 	const {t} = useTranslation();
 	const {loading, error, data, refetch} = useGetContactRequestsByContext();
 	const acceptContactRequestHandler = useAcceptContactRequest(userId);
@@ -34,7 +34,7 @@ const PendingContactRequestsList = () => {
 	return (<div>
 			<h3> {t("contactRequest")} </h3>
 			<ul>
-				{pendingRequests.map(({id, senderId, status, createdAt}) => (<li key={id}>
+				{pendingRequests.map(({_id, senderId, status, createdAt}) => (<li key={_id}>
 						<p>sender: {senderId.email}</p>
 						<p>status: {status}</p>
 						<p>createdAt: {Date(createdAt)}</p>
@@ -43,7 +43,7 @@ const PendingContactRequestsList = () => {
 								onClick={async () => {
 									try {
 										await acceptContactRequestHandler({
-											variables: {requestId: id},
+											variables: {requestId: _id},
 										});
 										forceUpdate();
 									} catch (error) {
@@ -57,7 +57,7 @@ const PendingContactRequestsList = () => {
 								onClick={async () => {
 									try {
 										await rejectContactRequestHandler({
-											variables: {requestId: id},
+											variables: {requestId: _id},
 										});
 										forceUpdate();
 									} catch (error) {

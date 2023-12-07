@@ -14,19 +14,22 @@ const comparePassword = async (password, hash) => {
 	return await bcrypt.compare(password, hash);
 };
 
-const getUserFromToken = async (token) => {
-
+const retrieveUserByToken = async (token) => {
+	logger.debug(`retrieveUserByToken: ${token}`);
 	const tokenString = token.split(" ")[1];
+	logger.debug(`tokenString: ${tokenString}`);
+
+	const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);
+	logger.debug(`decoded: ${JSON.stringify(decoded)}`);
 
 	try {
-		const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);
 		const user = await User.findById(decoded.id);
 		logger.debug(`getUserFromToken: ${JSON.stringify(user)}`)
 		return user;
 	} catch (err) {
-
 		throw new Error(err);
 	}
+
 };
 
-module.exports = {encryptPassword, comparePassword, getUserFromToken};
+module.exports = {encryptPassword, comparePassword, retrieveUserByToken};

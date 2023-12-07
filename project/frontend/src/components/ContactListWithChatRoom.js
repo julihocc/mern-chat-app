@@ -18,8 +18,8 @@ export const ContactListWithChatRoom = () => {
 			<ul>
 				{contacts &&
 					contacts.map((contact) => (
-						<li key={contact.id}>
-							<Link to={`/chat/${contact.chatRoom}`} key={contact.id}>
+						<li key={contact._id}>
+							<Link to={`/chat/${contact.chatRoom}`} key={contact._id}>
 								Chat: {contact.email}
 							</Link>
 						</li>

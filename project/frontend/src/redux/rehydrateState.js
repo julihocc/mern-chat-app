@@ -1,11 +1,12 @@
 // frontend/src/redux/rehydrateState.js
-import {contactServiceApolloClient} from "../apolloClient";
+import {apolloClient} from "../apolloClient";
 import gql from "graphql-tag";
+import logger from "../utils/logger";
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {
         getCurrentUser {
-            id
+            _id
             email
             username
         }
@@ -15,10 +16,10 @@ const GET_CURRENT_USER = gql`
 export const rehydrateState = async () => {
 
 	try {
-		const {data} = await contactServiceApolloClient.query({
+		const {data} = await apolloClient.query({
 			query: GET_CURRENT_USER, fetchPolicy: "network-only",
 		});
-
+		logger.debug("rehydrated user:", data.getCurrentUser);
 		return {
 			user: data.getCurrentUser,
 		};

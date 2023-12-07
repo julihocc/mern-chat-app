@@ -1,5 +1,4 @@
-import {useQuery} from "@apollo/client";
-import {GET_USER_BY_ID} from "../gql/queries/GET_USER_BY_ID";
+
 import {Box, Typography} from "@mui/material";
 import React from "react";
 import {useGetSender} from "../hooks/queries/useGetSender";

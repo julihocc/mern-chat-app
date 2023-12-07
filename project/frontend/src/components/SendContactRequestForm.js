@@ -5,6 +5,7 @@ import {useTranslation} from "react-i18next";
 import {useGetCurrentUser} from "../hooks/queries/useGetCurrentUser";
 import {useSendContactRequest} from "../hooks/mutations/useSendContactRequest";
 import {useGetUserByEmail} from "../hooks/queries/useGetUserByEmail";
+import logger from "../utils/logger";
 
 const SendContactRequestForm = () => {
 	const {t} = useTranslation();
@@ -29,16 +30,16 @@ const SendContactRequestForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setUserError(null);
-
-		// Load recipient user when form is submitted
-		await getUserByEmail({variables: {email}});
+		logger.debug(`Sending contact request to ${email}...`);
+		const user = await getUserByEmail({variables: {email}});
+		logger.debug(`Sending contact request to ${user?.data?.getUserByEmail?._id}...`);
 	};
 	useEffect(() => {
-		if (getUserByEmailData && currentUserData?.getCurrentUser?.id) {
+		if (getUserByEmailData && currentUserData?.getCurrentUser?._id) {
 			// Added null checks
 			sendContactRequest({
 				variables: {
-					senderId: currentUserData.getCurrentUser.id, recipientId: getUserByEmailData.getUserByEmail.id,
+					senderId: currentUserData.getCurrentUser._id, recipientId: getUserByEmailData.getUserByEmail._id,
 				},
 			})
 				.then(() => {
@@ -48,8 +49,8 @@ const SendContactRequestForm = () => {
 					console.error(err);
 				});
 		}
-	}, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest,]); // Added optional chaining
-
+	}, [getUserByEmailData, currentUserData?.getCurrentUser?._id]);
+	// }, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest,]);
 	if (currentUserLoading || getUserByEmailLoading) return <CircularProgress/>;
 	if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 

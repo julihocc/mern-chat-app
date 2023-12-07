@@ -11,7 +11,7 @@ async function startEventSubscriber() {
 	await channel.assertQueue(queue, {durable: true});
 	console.log(`Subscriber connected to queue: ${queue}`);
 
-	channel.consume(queue, async (message) => {
+	await channel.consume(queue, async (message) => {
 		const event = JSON.parse(message.content.toString());
 		console.log(`Received event: ${event.eventType}`);
 

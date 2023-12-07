@@ -7,7 +7,9 @@ const UserSchema = new Schema({
 		type: String, required: [true, "Please enter a username"], unique: true,
 	}, contacts: [{
 		type: Schema.Types.ObjectId, ref: "User",
-	},],
+	},], chatRooms: [{
+		type: Schema.Types.ObjectId, ref: "ChatRoom",
+	}]
 });
 
 module.exports = model("User", UserSchema);
