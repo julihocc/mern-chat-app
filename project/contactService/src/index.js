@@ -12,7 +12,7 @@ const ContactController = require("./controllers/ContactController");
 const UserController = require("./controllers/UserController");
 const ChatController = require("./controllers/ChatController");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
@@ -26,7 +26,7 @@ const corsOptions = {
 	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 	allowedHeaders: ["Content-Type", "Authorization"],
 };
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Rate limiting
 const apiLimiter = rateLimit({

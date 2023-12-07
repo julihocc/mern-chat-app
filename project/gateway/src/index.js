@@ -28,7 +28,7 @@ const corsOptions = {
 	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 	allowedHeaders: ["Content-Type", "Authorization"],
 };
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 const apiLimiter = rateLimit({
 	windowMs: 60 * 60 * 1000, // 1 hour window
