@@ -118,6 +118,10 @@ const typeDefs = gql`
         acceptContactRequest(requestId: ID!): ContactRequest
         rejectContactRequest(requestId: ID!): ContactRequest
     }
+    
+    type Subscription {
+        newMessage(chatRoomId: ID!): Message!
+    }
 `;
 
 module.exports = {typeDefs};
