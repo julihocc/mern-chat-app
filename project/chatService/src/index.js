@@ -11,7 +11,7 @@ const ChatController = require("./controllers/ChatController");
 const MessageController = require("./controllers/MessageController");
 const UserController = require("./controllers/UserController");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4500;
 
 const app = express();
 
@@ -19,12 +19,12 @@ const app = express();
 app.use(express.static(__dirname + "/public"));
 
 // CORS setup
-// const corsOptions = {
-// 	origin: "*",
-// 	credentials: true,
-// 	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-// 	allowedHeaders: ["Content-Type", "Authorization"],
-// };
+const corsOptions = {
+	origin: "*",
+	credentials: true,
+	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+	allowedHeaders: ["Content-Type", "Authorization"],
+};
 // app.use(cors(corsOptions));
 
 // Rate limiting
