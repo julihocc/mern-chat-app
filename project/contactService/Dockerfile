@@ -1,5 +1,5 @@
 #contactService/Dockerfile
-FROM node:16.13.1
+FROM node:16.20.1
 
 # Create and Set working directory
 RUN mkdir -p /usr/src/app
@@ -7,7 +7,7 @@ WORKDIR /usr/app
 
 # Install app dependencies
 COPY package*.json ./
-RUN npm install
+RUN yarn install
 
 # Copy app to container
 COPY . .

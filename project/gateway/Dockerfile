@@ -1,4 +1,4 @@
-#authService/Dockerfile
+#chatService/Dockerfile
 FROM node:16.20.1
 
 # Create and Set working directory
@@ -13,7 +13,8 @@ RUN yarn install
 COPY . .
 
 # Exports
-EXPOSE 5000
+EXPOSE 3001
 
 # Run the "start" script in package.json
 CMD ["npm", "start"]
+

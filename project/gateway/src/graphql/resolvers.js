@@ -23,9 +23,12 @@ const {getContactRequests} = require('./queries/getContactRequests');
 // testing integration
 const {getUserByEmail} = require('./queries/getUserByEmail');
 const {getManyUsersByEmail} = require('./queries/getManyUsersByEmail');
+const {GraphQLUpload} = require("graphql-upload");
+const subscriptions = require('./subscriptions');
 
 const resolvers = {
-
+	Upload: GraphQLUpload,
+	Subscription: subscriptions,
 	Query: {
 		getCurrentUser,
 		getChatRoomById,
@@ -51,6 +54,7 @@ const resolvers = {
 		acceptContactRequest,
 		rejectContactRequest
 	},
+
 };
 
 module.exports = {resolvers};

@@ -11,12 +11,9 @@ services:
       - PORT=5000
       - JWT_SECRET=mysecretkey
       - MONGODB_URL=mongodb://mongo:27017/authService
-      - RABBITMQ_URL=amqp://user:password@rabbitmq:5672
     depends_on:
       mongo:
         condition: service_started
-      rabbitmq:
-        condition: service_healthy
 
   contact_service:
     build:
@@ -26,14 +23,10 @@ services:
       - "4000:4000"
     environment:
       - PORT=4000
-      - JWT_SECRET=mysecretkey
       - MONGODB_URL=mongodb://mongo:27017/contactService
-      - RABBITMQ_URL=amqp://user:password@rabbitmq:5672
     depends_on:
       mongo:
         condition: service_started
-      rabbitmq:
-        condition: service_healthy
 
   chat_service:
     build:
@@ -43,14 +36,22 @@ services:
       - "4500:4500"
     environment:
       - PORT=4500
-      - JWT_SECRET=mysecretkey
       - MONGODB_URL=mongodb://mongo:27017/chatService
-      - RABBITMQ_URL=amqp://user:password@rabbitmq:5672
     depends_on:
       mongo:
         condition: service_started
-      rabbitmq:
-        condition: service_healthy
+
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+    depends_on:
+      mongo:
+        condition: service_started
 
   frontend:
     build:
@@ -59,12 +60,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_CONTACT_SERVICE_HTTP_URL=http://localhost:4000
-      - REACT_APP_CONTACT_SERVICE_WS_URL=ws://localhost:4000
-      - REACT_APP_AUTH_SERVICE_HTTP_URL=http://localhost:5000
-      - REACT_APP_AUTH_SERVICE_WS_URL=ws://localhost:5000
-      - REACT_APP_CHAT_SERVICE_HTTP_URL=http://localhost:4500
-      - REACT_APP_CHAT_SERVICE_WS_URL=ws://localhost:4500
+      - REACT_APP_GATEWAY_HTTP_URL=http://localhost:3001
+      - REACT_APP_GATEWAY_WS_URL=ws://localhost:3001
 
   mongo:
     image: mongo:latest
@@ -73,23 +70,5 @@ services:
     volumes:
       - mongo-data:/data/db
 
-  rabbitmq:
-    image: "rabbitmq:management"
-    hostname: "rabbitmq"
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-    environment:
-      - RABBITMQ_DEFAULT_USER=user
-      - RABBITMQ_DEFAULT_PASS=password
-    healthcheck:
-      test: ["CMD", "rabbitmqctl", "status"]
-      interval: 30s
-      timeout: 30s
-      retries: 5
-
 volumes:
   mongo-data:
-  rabbitmq_data:
