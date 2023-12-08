@@ -32,7 +32,7 @@ class AuthAPI extends RESTDataSource {
         // })
 
 		const params = {password, hashed}
-		const data = await this.get("/v1/password-comparison/", {params});
+		const data = await this.get("/v1/password/", {params});
 
         debug(`getPasswordComparison/data: ${JSON.stringify(data)}`);
 		debug(`getPasswordComparison/data as object: ${data}`);
@@ -51,7 +51,7 @@ class AuthAPI extends RESTDataSource {
         //     }
         // })
 		const params = {id, email}
-		const data = await this.get("/v1/token-by-payload/", {params})
+		const data = await this.get("/v1/token/", {params})
 
         debug(`getTokenByPayload/data: ${JSON.stringify(data)}`);
         return data;
@@ -108,7 +108,7 @@ class AuthAPI extends RESTDataSource {
         //     }
         // })
 		const params = {password}
-		const data = await this.get("/v1/password-encrypted", {params})
+		const data = await this.get("/v1/password", {params})
         debug(`getPasswordEncrypted/data: ${JSON.stringify(data)}`);
         return data;
 	}
@@ -135,7 +135,7 @@ class AuthAPI extends RESTDataSource {
         debug(`email: ${email}`);
         debug(`password: ${password}`);
 
-        const data = await this.put("/v1/new-password", {
+        const data = await this.put("/v1/password", {
             body: {
                 email,
                 password
