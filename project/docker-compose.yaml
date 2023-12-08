@@ -49,6 +49,9 @@ services:
       - "3001:3001"
     environment:
       - PORT=3001
+      - CONTACT_SERVICE_URL=http://contact_service:4000
+      - CHAT_SERVICE_URL=http://chat_service:4500
+      - AUTH_SERVICE_URL=http://auth_service:5000
     depends_on:
       mongo:
         condition: service_started

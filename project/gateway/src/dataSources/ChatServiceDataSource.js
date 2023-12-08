@@ -4,7 +4,7 @@ const {debug} = require("../utils/logger");
 class ChatAPI extends RESTDataSource {
 	constructor(options) {
         super(options);
-        this.baseURL = 'http://chat_service:4500';
+        this.baseURL = process.env.CHAT_SERVICE_URL || 'http://localhost:4500';
     }
 	async getChatRoomById(chatRoomId) {
 		debug("getChatRoomById")

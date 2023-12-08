@@ -4,7 +4,7 @@ const {debug} = require("../utils/logger");
 class ContactAPI extends RESTDataSource {
 	constructor(options) {
 		super(options);
-		this.baseURL = 'http://contact_service:4000';
+		this.baseURL = process.env.CONTACT_SERVICE_URL || 'http://localhost:4000';
 	}
 
 	async sendContactRequest(senderId, recipientId) {
