@@ -17,7 +17,7 @@ class ChatAPI extends RESTDataSource {
         // })
 
 		const params = {chatRoomId}
-		const data = await this.get("/v1/chat-room-by-id", {params})
+		const data = await this.get("/v1/chat-room", {params})
 		debug(`ChatAPI | getChatRoomById | data: ${JSON.stringify(data)}`);
 		return data;
 	}
@@ -33,7 +33,7 @@ class ChatAPI extends RESTDataSource {
         // })
 
 		const params = {chatRoomId}
-		const data = await this.get("/v1/chat-room-by-id-populated-with-users", {params})
+		const data = await this.get("/v1/chat-room-populated", {params})
 		debug(`ChatAPI | getChatRoomByIdPopulatedWithUsers | data: ${JSON.stringify(data)}`);
 
         return data;
@@ -79,7 +79,7 @@ class ChatAPI extends RESTDataSource {
         // })
         // debug(`getChatRoomByParticipantIds/data: ${JSON.stringify(data)}`);
 		const params = {participantIds}
-        const data = await this.get("/v1/chat-room-by-participant-ids", {params})
+        const data = await this.get("/v1/chat-room", {params})
         debug(`ChatAPI | getChatRoomByParticipantIds | data: ${JSON.stringify(data)}`);
 
         return data;
@@ -133,7 +133,7 @@ class ChatAPI extends RESTDataSource {
 	async getChatRoomsByUserId(userId) {
 		debug("ChatAPI | getChatRoomsForCurrentUser")
 		debug(`userId: ${userId}`);
-		const data = await this.get("/v1/chat-rooms", {
+		const data = await this.get("/v1/search", {
             params: {
                 userId
             }
