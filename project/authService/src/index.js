@@ -50,7 +50,7 @@ app.use(express.json());
 // app.get('/v1/user-by-username', UserController.getUserByUsername);
 // app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
 // app.put('/v1/new-username', UserController.changeUsername);
-app.get('/v1/many-users-by-email', UserController.getManyUsersByEmail);
+app.get('/v1/search', UserController.getManyUsersByEmail);
 
 app.get('/v1/user', UserController.getUser);
 app.post('/v1/user', UserController.createUser);
