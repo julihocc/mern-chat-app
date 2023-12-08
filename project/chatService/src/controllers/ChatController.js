@@ -103,10 +103,51 @@ const getChatRooms = async (req, res) => {
 	}
 }
 
+const getChatRoom = async (req, res) => {
+	debug("getChatRoom")
+	const {chatRoomId, participantIds} = req.query;
+	debug(`chatRoomId: ${chatRoomId}`);
+	debug(`participantIds: ${participantIds}`);
+	if(chatRoomId){
+		try {
+			const chatRoom = await ChatRoom.findById(chatRoomId);
+			debug(`chatRoom: ${chatRoom}`);
+			res.json(chatRoom);
+			res.status(200);
+			return chatRoom;
+		} catch (err) {
+			res.status(500).json({
+				message: `Error getting chat room by id: ${err}`
+			})
+		}
+	}
+	if(participantIds){
+		const participantIdsArray = participantIds.split(",");
+		debug(`participantIdsArray: ${participantIdsArray}`);
+		try {
+			const chatRoom = await ChatRoom.findOne(
+				{
+					participantIds: {
+						$all: participantIdsArray
+					}
+				}
+			)
+			res.json(chatRoom);
+			res.status(200);
+			return chatRoom;
+		} catch (err) {
+			res.status(500).json({
+				message: `Error getting chat room by participant ids: ${err}`
+			})
+		}
+	}
+}
+
 module.exports = {
-	getChatRoomById,
+	// getChatRoomById,
 	getChatRoomByIdPopulatedWithUsers,
 	getChatRoomByParticipantIds,
 	createChatRoom,
-	getChatRooms
+	getChatRooms,
+	getChatRoom
 }

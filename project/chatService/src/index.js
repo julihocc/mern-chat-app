@@ -44,18 +44,18 @@ app.use(cookieParser());
 app.use(express.json());
 
 // RESTful routes
-app.get("/v1/chat-room-by-id", ChatController.getChatRoomById);
-app.get("/v1/chat-room-by-id-populated-with-users", ChatController.getChatRoomByIdPopulatedWithUsers);
-app.get("/v1/chat-room-by-participant-ids", ChatController.getChatRoomByParticipantIds);
-app.get("/v1/chat-room-by-id-populated-with-users", ChatController.getChatRoomByIdPopulatedWithUsers);
-app.get("/v1/chat-rooms", ChatController.getChatRooms)
-app.get("/v1/messages", MessageController.getMessagesByChatRoomId);
+// app.get("/v1/chat-room-by-id", ChatController.getChatRoomById);
+// app.get("/v1/chat-room-by-participant-ids", ChatController.getChatRoomByParticipantIds);
+app.get("/v1/chat-room-populated", ChatController.getChatRoomByIdPopulatedWithUsers);
+app.get("/v1/search", ChatController.getChatRooms)
 
-
+app.get("/v1/chat-room", ChatController.getChatRoom);
 app.post("/v1/chat-room", ChatController.createChatRoom);
-app.post("/v1/message", MessageController.saveMessage);
-app.post("/v1/user", UserController.createUser);
 
+app.get("/v1/messages", MessageController.getMessagesByChatRoomId);
+app.post("/v1/message", MessageController.saveMessage);
+
+app.post("/v1/user", UserController.createUser);
 app.put("/v1/user", UserController.updateUser);
 
 async function startServer() {
