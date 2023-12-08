@@ -54,6 +54,10 @@ const sendMessage = async (parent, args, context) => {
 		throw new Error(`Could not find chat room with id: ${chatRoomId}`);
 	}
 
+	if (!chatRoom.participantIds.includes(senderId)) {
+		throw new AuthenticationError("You are not authorized to send messages in this chat room");
+	}
+
 	// const messageInput = {
 	// 	chatRoomId: chatRoom._id,
 	// 	senderId: sender._id,
