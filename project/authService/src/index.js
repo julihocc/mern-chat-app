@@ -45,20 +45,20 @@ app.use(express.json());
 
 // RESTful route for getting user by email
 // app.get('/v1/user-by-email', UserController.getUserByEmail);
-app.get('/v1/password-comparison', PasswordController.getPasswordComparison);
-app.get('/v1/token-by-payload', UserController.getTokenByPayload);
+// app.get('/v1/password-comparison', PasswordController.getPasswordComparison);
 // app.get('/v1/user-by-token', UserController.getUserByToken);
 // app.get('/v1/user-by-username', UserController.getUserByUsername);
-app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
-app.put('/v1/new-password', PasswordController.changePassword);
+// app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
 // app.put('/v1/new-username', UserController.changeUsername);
-app.get('/v1/many-users-by-email', UserController.getManyUsersByEmail);
 
 app.get('/v1/user', UserController.getUser);
 app.post('/v1/user', UserController.createUser);
 app.put('/v1/user', UserController.updateUser);
-
 app.get('/v1/contacts', UserController.getContactsByUserId);
+app.get('/v1/token', UserController.getTokenByPayload);
+app.get('/v1/password', PasswordController.getPassword)
+app.put('/v1/password', PasswordController.changePassword);
+app.get('/v1/search', UserController.getManyUsersByEmail);
 
 async function startServer() {
 	try {
