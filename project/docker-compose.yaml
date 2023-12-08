@@ -33,7 +33,7 @@ services:
       - JWT_SECRET=mysecretkey
       - MONGODB_URL=mongodb://mongo_auth:27017/authService
     depends_on:
-      mongo:
+      mongo_auth:
         condition: service_started
 
   contact_service:
@@ -46,7 +46,7 @@ services:
       - PORT=4000
       - MONGODB_URL=mongodb://mongo_contact:27017/contactService
     depends_on:
-      mongo:
+      mongo_contact:
         condition: service_started
 
   chat_service:
@@ -59,7 +59,7 @@ services:
       - PORT=4500
       - MONGODB_URL=mongodb://mongo_chat:27017/chatService
     depends_on:
-      mongo:
+      mongo_chat:
         condition: service_started
 
   gateway:
