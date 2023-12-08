@@ -50,18 +50,15 @@ app.use(express.json());
 // app.get('/v1/user-by-username', UserController.getUserByUsername);
 // app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
 // app.put('/v1/new-username', UserController.changeUsername);
-app.get('/v1/search', UserController.getManyUsersByEmail);
 
 app.get('/v1/user', UserController.getUser);
 app.post('/v1/user', UserController.createUser);
 app.put('/v1/user', UserController.updateUser);
-
 app.get('/v1/contacts', UserController.getContactsByUserId);
-
 app.get('/v1/token', UserController.getTokenByPayload);
-
 app.get('/v1/password', PasswordController.getPassword)
 app.put('/v1/password', PasswordController.changePassword);
+app.get('/v1/search', UserController.getManyUsersByEmail);
 
 async function startServer() {
 	try {
