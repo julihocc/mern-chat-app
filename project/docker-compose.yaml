@@ -73,9 +73,9 @@ services:
       - CONTACT_SERVICE_URL=http://contact_service:4000
       - CHAT_SERVICE_URL=http://chat_service:4500
       - AUTH_SERVICE_URL=http://auth_service:5000
-    depends_on:
-      mongo:
-        condition: service_started
+#    depends_on:
+#      mongo:
+#        condition: service_started
 
   frontend:
     build:
@@ -86,13 +86,6 @@ services:
     environment:
       - REACT_APP_GATEWAY_HTTP_URL=http://localhost:3001
       - REACT_APP_GATEWAY_WS_URL=ws://localhost:3001
-
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
 
 volumes:
   mongo-auth-data:
