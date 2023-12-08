@@ -1,6 +1,27 @@
 version: '2.1'
 
 services:
+  mongo_auth:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-auth-data:/data/db
+
+  mongo_contact:
+    image: mongo:latest
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongo-contact-data:/data/db
+
+  mongo_chat:
+    image: mongo:latest
+    ports:
+      - "27020:27017"
+    volumes:
+      - mongo-chat-data:/data/db
+
   auth_service:
     build:
       context: ./authService
@@ -10,9 +31,9 @@ services:
     environment:
       - PORT=5000
       - JWT_SECRET=mysecretkey
-      - MONGODB_URL=mongodb://mongo:27017/authService
+      - MONGODB_URL=mongodb://mongo_auth:27017/authService
     depends_on:
-      mongo:
+      mongo_auth:
         condition: service_started
 
   contact_service:
@@ -23,9 +44,9 @@ services:
       - "4000:4000"
     environment:
       - PORT=4000
-      - MONGODB_URL=mongodb://mongo:27017/contactService
+      - MONGODB_URL=mongodb://mongo_contact:27017/contactService
     depends_on:
-      mongo:
+      mongo_contact:
         condition: service_started
 
   chat_service:
@@ -36,9 +57,9 @@ services:
       - "4500:4500"
     environment:
       - PORT=4500
-      - MONGODB_URL=mongodb://mongo:27017/chatService
+      - MONGODB_URL=mongodb://mongo_chat:27017/chatService
     depends_on:
-      mongo:
+      mongo_chat:
         condition: service_started
 
   gateway:
@@ -49,9 +70,12 @@ services:
       - "3001:3001"
     environment:
       - PORT=3001
-    depends_on:
-      mongo:
-        condition: service_started
+      - CONTACT_SERVICE_URL=http://contact_service:4000
+      - CHAT_SERVICE_URL=http://chat_service:4500
+      - AUTH_SERVICE_URL=http://auth_service:5000
+#    depends_on:
+#      mongo:
+#        condition: service_started
 
   frontend:
     build:
@@ -63,12 +87,7 @@ services:
       - REACT_APP_GATEWAY_HTTP_URL=http://localhost:3001
       - REACT_APP_GATEWAY_WS_URL=ws://localhost:3001
 
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-
 volumes:
-  mongo-data:
+  mongo-auth-data:
+  mongo-contact-data:
+  mongo-chat-data:

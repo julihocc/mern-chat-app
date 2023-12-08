@@ -5,7 +5,7 @@ const {debug} = require("../utils/logger");
 class AuthAPI extends RESTDataSource {
 	constructor(options) {
 		super(options);
-		this.baseURL = 'http://auth_service:5000';
+		this.baseURL = process.env.AUTH_SERVICE_URL || 'http://localhost:5000';
 	}
 
 	async getUserByEmail(email) {
