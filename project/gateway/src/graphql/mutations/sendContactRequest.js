@@ -42,6 +42,13 @@ const sendContactRequest = async (parent, args, context, info) => {
 		throw new AuthenticationError(`Could not find recipient for contact request: ${recipientId}`)
 	}
 
+	const existingRequest = await context.dataSources.contactAPI.getContactRequestsByUsers(sender._id, recipient._id);
+	logger.debug(`existingRequest: ${JSON.stringify(existingRequest)}`);
+
+	if (existingRequest) {
+		throw new Error("A contact request already exists between these users");
+	}
+
 	try {
 		const contactRequest = await context.dataSources.contactAPI.sendContactRequest(sender._id, recipient._id);
 		logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
