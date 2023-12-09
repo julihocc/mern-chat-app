@@ -30,6 +30,15 @@ const saveMessage = async (req, res) => {
 	// const body = req.body.body
 	// const fileContent = req.body.fileContent
 	const {chatRoomId, senderId, body, fileContent} = req.body;
+
+	const chatRoom = await ChatRoom.findById(chatRoomId);
+	if (!chatRoom.participantIds.includes(senderId)) {
+		res.status(403).json({
+			message: `User ${senderId} is not a participant of chat room ${chatRoomId}`
+		})
+		return;
+	}
+
 	debug(`chatRoomId: ${JSON.stringify(chatRoomId)}`)
 	debug(`senderId: ${senderId}`);
 	debug(`body: ${body}`)
