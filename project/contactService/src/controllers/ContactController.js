@@ -5,6 +5,12 @@ const sendContactRequest = async (req, res) => {
 	const {senderId, recipientId} = req.body;
 	debug(senderId, recipientId)
 	try {
+
+		const existingRequest = await ContactRequest.findOne({ senderId, recipientId });
+		if (existingRequest) {
+			return res.status(409).json({ message: "Contact request already exists" });
+		}
+
 		const contactRequest = new ContactRequest({senderId, recipientId, status: "pending"});
 		await contactRequest.save();
 		res.json(contactRequest);
