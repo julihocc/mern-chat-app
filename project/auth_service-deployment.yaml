@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth-service
-          image: [Your Docker Image for auth_service]
+          image: jdk2py/auth-service:latest
           ports:
             - containerPort: 5000
           env:
