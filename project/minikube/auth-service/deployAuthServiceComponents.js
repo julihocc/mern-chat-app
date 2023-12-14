@@ -13,16 +13,15 @@ function execShellCommand(cmd) {
 	});
 }
 
-// Paths to your Kubernetes YAML files
+// Paths to your Kubernetes YAML files for the auth service
 const kubeFiles = [
-	'./mongo_auth-deployment.yaml',
-	'./mongo_auth-service.yaml',
-	'./mongo_auth-pvc.yaml'
+	'./auth_service.yaml',
+	'./auth_service-deployment.yaml'
 ];
 
 // Function to apply Kubernetes configurations
 async function applyKubeConfigurations() {
-	console.log("Deploying MongoDB for Auth Service...");
+	console.log("Deploying Auth Service...");
 
 	for (const file of kubeFiles) {
 		try {
@@ -36,4 +35,5 @@ async function applyKubeConfigurations() {
 	console.log("Deployment of Auth Service components is complete.");
 }
 
-applyKubeConfigurations().then(console.log)
+// Run the deployment function
+applyKubeConfigurations().then(r => console.log(r))

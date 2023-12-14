@@ -16,27 +16,10 @@ spec:
         - name: mongo-auth
           image: mongo:latest
           ports:
-            - containerPort: 27017
+            - containerPort: 27018
           volumeMounts:
             - name: mongo-auth-data
               mountPath: /data/db
-          resources:
-            requests:
-              memory: "256Mi"
-              cpu: "250m"
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
-          livenessProbe:
-            tcpSocket:
-              port: 27017
-            initialDelaySeconds: 15
-            periodSeconds: 20
-          readinessProbe:
-            tcpSocket:
-              port: 27017
-            initialDelaySeconds: 5
-            periodSeconds: 10
       volumes:
         - name: mongo-auth-data
           persistentVolumeClaim:
