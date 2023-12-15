@@ -13,12 +13,12 @@ function execShellCommand(cmd) {
 }
 
 const kubeFiles = [
-	'./auth_service.yaml',
-	'./auth_service-deployment.yaml'
+	'./chat_service.yaml',
+	'./chat_service-deployment.yaml'
 ];
 
 async function applyKubeConfigurations() {
-	console.log("Deploying Auth Service...");
+	console.log("Deploying Chat Service...");
 
 	for (const file of kubeFiles) {
 		try {
@@ -29,7 +29,7 @@ async function applyKubeConfigurations() {
 		}
 	}
 
-	console.log("Deployment of Auth Service components is complete.");
+	console.log("Deployment of Chat Service components is complete.");
 }
 
 applyKubeConfigurations().then(r => console.log(r))

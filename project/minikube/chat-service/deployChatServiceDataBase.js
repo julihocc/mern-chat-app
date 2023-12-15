@@ -14,13 +14,13 @@ function execShellCommand(cmd) {
 
 // Paths to your Kubernetes YAML files
 const kubeFiles = [
-	'./mongo_auth-deployment.yaml',
-	'./mongo_auth-service.yaml',
-	'./mongo_auth-pvc.yaml'
+	'./mongo_chat-deployment.yaml',
+	'./mongo_chat-service.yaml',
+	'./mongo_chat-pvc.yaml'
 ];
 
 async function applyKubeConfigurations() {
-	console.log("Deploying MongoDB for Auth Service...");
+	console.log("Deploying MongoDB for Chat Service...");
 
 	for (const file of kubeFiles) {
 		try {
@@ -31,7 +31,7 @@ async function applyKubeConfigurations() {
 		}
 	}
 
-	console.log("Deployment of Auth Service DataBase is complete.");
+	console.log("Deployment of Chat Service DataBase is complete.");
 }
 
 applyKubeConfigurations().then(r => console.log(r))

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongo-auth-pvc
+  name: mongo-chat-pvc
 spec:
   accessModes:
     - ReadWriteOnce

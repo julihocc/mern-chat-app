@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo-auth
+  name: mongo-chat
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo-auth
+      app: mongo-chat
   template:
     metadata:
       labels:
-        app: mongo-auth
+        app: mongo-chat
     spec:
       containers:
-        - name: mongo-auth
+        - name: mongo-chat
           image: mongo:latest
           ports:
             - containerPort: 27017
           volumeMounts:
-            - name: mongo-auth-data
+            - name: mongo-chat-data
               mountPath: /data/db
       volumes:
-        - name: mongo-auth-data
+        - name: mongo-chat-data
           persistentVolumeClaim:
-            claimName: mongo-auth-pvc
+            claimName: mongo-chat-pvc
