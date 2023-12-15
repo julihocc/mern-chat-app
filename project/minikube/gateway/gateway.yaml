@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: contact-service
+  name: gateway
 spec:
   type: LoadBalancer
   selector:
-    app: contact-service
+    app: gateway
   ports:
     - protocol: TCP
-      port: 4000
-      targetPort: 4000
+      port: 3001
+      targetPort: 3001
