@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chat-service
+  template:
+    metadata:
+      labels:
+        app: chat-service
+    spec:
+      containers:
+        - name: chat-service
+          image: jdk2py/chat-service:latest
+          ports:
+            - containerPort: 4500
+          env:
+            - name: PORT
+              value: "4500"
+            - name: JWT_SECRET
+              value: "mysecretkey"
+            - name: MONGODB_URL
+              value: "mongodb://mongo-chat:27017/chatService"
