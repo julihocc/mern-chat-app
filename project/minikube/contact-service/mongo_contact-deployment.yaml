@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-contact
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-contact
+  template:
+    metadata:
+      labels:
+        app: mongo-contact
+    spec:
+      containers:
+        - name: mongo-contact
+          image: mongo:latest
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: mongo-contact-data
+              mountPath: /data/db
+      volumes:
+        - name: mongo-contact-data
+          persistentVolumeClaim:
+            claimName: mongo-contact-pvc

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contact-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contact-service
+  template:
+    metadata:
+      labels:
+        app: contact-service
+    spec:
+      containers:
+        - name: contact-service
+          image: jdk2py/contact-service:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: PORT
+              value: "4000"
+            - name: JWT_SECRET
+              value: "mysecretkey"
+            - name: MONGODB_URL
+              value: "mongodb://mongo-contact:27017/chatService"
