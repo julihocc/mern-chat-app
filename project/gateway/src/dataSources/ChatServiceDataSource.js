@@ -10,12 +10,6 @@ class ChatAPI extends RESTDataSource {
 		debug("getChatRoomById")
 		debug(`chatRoomId: ${chatRoomId}`);
 
-		// const data = await this.post("/chat-service/getChatRoomById", {
-        //     body: {
-        //         chatRoomId
-        //     }
-        // })
-
 		const params = {chatRoomId}
 		const data = await this.get("/v1/chat-room", {params})
 		debug(`ChatAPI | getChatRoomById | data: ${JSON.stringify(data)}`);
@@ -25,12 +19,6 @@ class ChatAPI extends RESTDataSource {
 	async getChatRoomByIdPopulatedWithUsers(chatRoomId) {
 		debug("getChatRoomByIdPopulatedWithUsers")
         debug(`chatRoomId: ${chatRoomId}`);
-
-        // const data = await this.post("/chat-service/getChatRoomByIdPopulatedWithUsers", {
-        //     body: {
-        //         chatRoomId
-        //     }
-        // })
 
 		const params = {chatRoomId}
 		const data = await this.get("/v1/chat-room-populated", {params})
@@ -45,7 +33,6 @@ class ChatAPI extends RESTDataSource {
 
 		const params = {chatRoomId}
 		const data = await this.get("/v1/messages", {params})
-		// debug(`ChatAPI | getMessagesByChatRoomId | data: ${JSON.stringify(data)}`);
 
 		return data;
 	}
@@ -72,12 +59,6 @@ class ChatAPI extends RESTDataSource {
 		debug("getChatRoomByParticipantIds")
         debug(`participantIds: ${participantIds}`);
 
-        // const data = await this.post("/chat-service/getChatRoomByParticipantIds", {
-        //     body: {
-        //         participantIds
-        //     }
-        // })
-        // debug(`getChatRoomByParticipantIds/data: ${JSON.stringify(data)}`);
 		const params = {participantIds}
         const data = await this.get("/v1/chat-room", {params})
         debug(`ChatAPI | getChatRoomByParticipantIds | data: ${JSON.stringify(data)}`);

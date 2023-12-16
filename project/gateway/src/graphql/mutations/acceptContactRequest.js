@@ -29,9 +29,9 @@ const acceptContactRequest = async (parent, {requestId}, context) => {
 		const contactRequest = await context.dataSources.contactAPI.getContactRequest(requestId);
 		logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
 
-		if (user._id!== contactRequest.recipientId.toString()) {
+		if (user._id !== contactRequest.recipientId.toString()) {
 			logger.error(`You must be the recipient of the contact request to accept it`)
-            throw new AuthenticationError(`You must be the recipient of the contact request to accept it`)
+			throw new AuthenticationError(`You must be the recipient of the contact request to accept it`)
 		}
 
 		if (!contactRequest) {
@@ -55,8 +55,8 @@ const acceptContactRequest = async (parent, {requestId}, context) => {
 		await context.dataSources.authAPI.addContact(recipientId, senderId);
 		return updatedContactRequest;
 	} catch (error) {
-        logger.error(`Mutations | acceptContactRequest | error: ${JSON.stringify(error)}`)
-        throw new Error(`Mutations | acceptContactRequest | error: ${JSON.stringify(error)}`)
+		logger.error(`Mutations | acceptContactRequest | error: ${JSON.stringify(error)}`)
+		throw new Error(`Mutations | acceptContactRequest | error: ${JSON.stringify(error)}`)
 	}
 }
 

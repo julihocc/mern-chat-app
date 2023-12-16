@@ -5,15 +5,15 @@ const rejectContactRequest = async (parent, {requestId}, context) => {
 	logger.debug(`Mutations | rejectContactRequest`)
 	logger.debug(`requestId: ${requestId}`)
 	if (!requestId) {
-        logger.error('Request ID is required')
-        throw new AuthenticationError('Request ID is required')
-    }
+		logger.error('Request ID is required')
+		throw new AuthenticationError('Request ID is required')
+	}
 
 	const {token} = context;
 	logger.debug(`token: ${token}`)
 	if (!token) {
 		logger.error(`You must be logged in to reject a contact request`)
-        throw new AuthenticationError('You must be logged in to reject a contact request')
+		throw new AuthenticationError('You must be logged in to reject a contact request')
 	}
 
 	try {
@@ -42,7 +42,7 @@ const rejectContactRequest = async (parent, {requestId}, context) => {
 		return updatedContactRequest
 	} catch (error) {
 		logger.error(`Mutations | rejectContactRequest | error: ${JSON.stringify(error)}`)
-        throw new Error(`Mutations | rejectContactRequest | error: ${JSON.stringify(error)}`)
+		throw new Error(`Mutations | rejectContactRequest | error: ${JSON.stringify(error)}`)
 	}
 }
 

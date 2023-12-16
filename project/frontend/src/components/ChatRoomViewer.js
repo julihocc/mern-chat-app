@@ -42,18 +42,6 @@ const ChatRoomViewer = () => {
 	const {sendMessageMutation, error: sendMessageError, loading: sendMessageLoading} = useSendMessage(chatRoomId);
 
 	const isLoading = chatRoom.loading || messageLoading || sendMessageLoading;
-
-	// const handleFileChange = (e) => {
-	// 	const tempFile = e.target.files[0];
-	// 	logger.debug(`type of file: ${typeof tempFile}`);
-	// 	logger.debug(`file size: ${tempFile.size}`);
-	// 	logger.debug(`file name: ${tempFile.name}`);
-	// 	logger.debug(`file type: ${tempFile.type}`);
-	// 	logger.debug(`file: ${JSON.stringify(tempFile)}`);
-	// 	setFile(tempFile);
-	// 	logger.debug(`File: ${JSON.stringify(file)}`);
-	// };
-
 	const handleFileChange = (e) => {
 		logger.debug(`File changed: ${e.target.files[0].name}`);
 		setFileName(e.target.files[0].name);
@@ -68,37 +56,6 @@ const ChatRoomViewer = () => {
 		}
 	};
 
-	// const handleSendMessage = async (e, senderId, chatRoomId) => {
-	// 	e.preventDefault();
-	// 	await sendMessageMutation({
-	// 		variables: {
-	// 			chatRoomId: chatRoomId, body: messageBody, file: file,
-	// 		},
-	// 	});
-	// };
-
-	// const handleSendMessage = async (e) => {
-	// 	logger.debug(`Sending message: ${messageBody}`);
-	// 	e.preventDefault();
-	// 	const fileInput = document.getElementById('inputForFile');
-	// 	const file = fileInput.files[0]; // Directly using the file from input
-	//
-	// 	if (file) {
-	// 		logger.debug("File selected: ", file.name);
-	// 		logger.debug(`File size: ${file.size}`);
-	// 		logger.debug(`File type: ${file.type}`);
-	// 		await sendMessageMutation({
-	// 			variables: {
-	// 				chatRoomId: chatRoomId,
-	// 				body: messageBody,
-	// 				file: file,
-	// 			},
-	// 		});
-	// 	} else {
-	// 		logger.debug("No file selected");
-	// 		// Handle the case where no file is selected
-	// 	}
-	// };
 
 	const handleSendMessage = async (e) => {
 		e.preventDefault();

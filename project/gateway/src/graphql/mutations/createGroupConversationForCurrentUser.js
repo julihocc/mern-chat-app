@@ -1,6 +1,5 @@
 const logger = require('../../utils/logger');
 const {AuthenticationError} = require('apollo-server-express');
-const {publishUserEvent} = require("../../utils/rabbitMQPublisher");
 
 const createGroupConversationForCurrentUser = async (_, args, context) => {
 	const {additionalEmails} = args;

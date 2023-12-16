@@ -1,7 +1,5 @@
 const {AuthenticationError} = require("apollo-server-express");
 const {debug} = require("winston");
-// const {getUserFromToken} = require("../../utils/authentication");
-// const ContactRequest = require("../../models/ContactRequestModel");
 const getContactRequestsByContext = async (parent, args, context) => {
 	debug("ContactController | getContactRequestsByContext")
 	const {token} = context;
@@ -11,7 +9,6 @@ const getContactRequestsByContext = async (parent, args, context) => {
 	}
 	debug(`ContactController | getContactRequestsByContext | token: ${token}`)
 
-	// const recipient = await getUserFromToken(token);
 	const recipient = await context.dataSources.authAPI.getUserByToken(token)
 	debug(`ContactController | getContactRequestsByContext | recipient: ${JSON.stringify(recipient)}`)
 
@@ -19,9 +16,6 @@ const getContactRequestsByContext = async (parent, args, context) => {
 		throw new AuthenticationError("You must be logged in");
 	}
 
-	// const contactRequest = ContactRequest.find({
-	// 	recipientId: recipient.id,
-	// }).populate("senderId");
 
 	const contactRequest = await context.dataSources.contactAPI.getContactRequestsByRecipientId(recipient._id);
 	debug(`ContactController | getContactRequestsByContext | contactRequest: ${JSON.stringify(contactRequest)}`)

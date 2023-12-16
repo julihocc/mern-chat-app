@@ -1,7 +1,5 @@
-
 const logger = require("../../utils/logger");
 const getContactRequests = async (_, {userId}, context) => {
-	// const user = await User.findById(userId);
 	logger.debug(`GateWay | Queries | getContactRequests | userId: ${userId}`)
 
 	const user = context.dataSources.authAPI.getUserById(userId);
@@ -12,7 +10,6 @@ const getContactRequests = async (_, {userId}, context) => {
 	}
 
 	try {
-		// return await ContactRequest.find({recipientId: userId});
 		const contactRequests = await context.dataSources.contactAPI.getContactRequestsByRecipientId(userId);
 		logger.debug(`GateWay | Queries | getContactRequests | contactRequest: ${JSON.stringify(contactRequests)}`)
 		return contactRequests;

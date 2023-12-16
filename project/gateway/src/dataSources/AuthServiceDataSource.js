@@ -24,12 +24,6 @@ class AuthAPI extends RESTDataSource {
 		debug(`password: ${password}`);
 		debug(`hashedPassword: ${hashed}`);
 
-		// const data = await this.get("/v1/password-comparison", {
-		// 	body: {
-		// 		password,
-		// 		hashed
-		// 	}
-		// })
 
 		const params = {password, hashed}
 		const data = await this.get("/v1/password/", {params});
@@ -44,12 +38,7 @@ class AuthAPI extends RESTDataSource {
 		debug(`id: ${id}`);
 		debug(`email: ${email}`);
 
-		// const data = await this.get("/v1/token-by-payload", {
-		//     body: {
-		//         id,
-		//         email
-		//     }
-		// })
+
 		const params = {id, email}
 		const data = await this.get("/v1/token/", {params})
 
@@ -61,11 +50,6 @@ class AuthAPI extends RESTDataSource {
 		debug("AuthAPI | getUserByToken",)
 		debug(`token: ${token}`);
 
-		// const data = await this.get("/v1/user-by-token", {
-		//     body: {
-		//         token
-		//     }
-		// })
 
 		const params = {token}
 		debug(`params: ${JSON.stringify(params)}`);
@@ -78,11 +62,7 @@ class AuthAPI extends RESTDataSource {
 		debug("getUserByUsername",)
 		debug(`username: ${username}`);
 
-		// const data = await this.get("/v1/user-by-username", {
-		//     body: {
-		//         username
-		//     }
-		// })
+
 		const params = {username}
 		const data = await this.get("/v1/user/", {params})
 		debug(`getUserByUsername/data: ${JSON.stringify(data)}`);
@@ -102,11 +82,7 @@ class AuthAPI extends RESTDataSource {
 		debug("getPasswordEncrypted",)
 		debug(`password: ${password}`);
 
-		// const data = await this.get("/v1/password-encrypted", {
-		//     body: {
-		//         password
-		//     }
-		// })
+
 		const params = {password}
 		const data = await this.get("/v1/password", {params})
 		debug(`getPasswordEncrypted/data: ${JSON.stringify(data)}`);
@@ -160,15 +136,7 @@ class AuthAPI extends RESTDataSource {
 		debug("authService/getManyUsersByEmail",)
 		debug(`additionalEmails: ${emails}`);
 
-		// const data = await this.get("/auth-service/many-users-by-email", {
-		//     body: {
-		//         additionalEmails
-		//     }
-		// })
 
-		// const joinedEmails = emails.join(",");
-		// debug(`joinedEmails: ${joinedEmails}`);
-		// const params = {emails: joinedEmails}
 		const params = {emails}
 		debug(`params: ${JSON.stringify(params)}`);
 		try {

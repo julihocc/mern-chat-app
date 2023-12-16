@@ -1,5 +1,3 @@
-// contactService/src/graphql/mutations/changePassword.js
-
 const {
 	AuthenticationError, UserInputError,
 } = require("apollo-server-express");
@@ -9,9 +7,6 @@ const changePassword = async (_, {oldPassword, newPassword}, context) => {
 	if (oldPassword === newPassword) {
 		throw new UserInputError("New password cannot be the same as old password");
 	}
-
-	// const hashedOldPassword = await encryptPassword(oldPassword);
-	// const hashedNewPassword = await encryptPassword(newPassword);
 
 	const {token} = context;
 
@@ -57,12 +52,12 @@ const changePassword = async (_, {oldPassword, newPassword}, context) => {
 	// }
 	try {
 		logger.debug(`Changing password for user: ${user.email}`);
-        const updatedUser = await context.dataSources.authAPI.changePassword(user.email, newPassword);
+		const updatedUser = await context.dataSources.authAPI.changePassword(user.email, newPassword);
 		logger.debug(`Updated user: ${JSON.stringify(updatedUser)}`);
 		return updatedUser;
 	} catch (err) {
 		logger.error(`Error changing password: ${err.message}`);
-        throw new Error("Error changing password");
+		throw new Error("Error changing password");
 	}
 };
 

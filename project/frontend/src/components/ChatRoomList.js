@@ -1,4 +1,3 @@
-// path: frontend/src/components/ChatRoomList.js
 import React, {useEffect, useState} from "react";
 import {Alert, CircularProgress, FormControl, InputLabel, MenuItem, Select, Typography} from "@mui/material";
 import {useTranslation} from "react-i18next";

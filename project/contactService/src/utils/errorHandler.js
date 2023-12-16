@@ -1,4 +1,3 @@
-// path: contactService\src\errorHandler.js
 const logger = require("./logger"); // Import the logger
 
 const errorHandler = (err, req, res, next) => {

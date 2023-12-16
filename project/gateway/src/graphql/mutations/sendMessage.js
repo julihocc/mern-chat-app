@@ -30,16 +30,15 @@ const sendMessage = async (parent, args, context) => {
 	}
 
 
-
 	let fileContent = null;
 
-	if(file) {
+	if (file) {
 		fileContent = file.split(";base64,")[1];
 	}
 
 	const chatRoom = await context.dataSources.chatAPI.getChatRoomById(chatRoomId)
 
-	if(!chatRoom) {
+	if (!chatRoom) {
 		logger.error(`Could not find chat room with id: ${chatRoomId}`);
 		throw new Error(`Could not find chat room with id: ${chatRoomId}`);
 	}
@@ -48,12 +47,7 @@ const sendMessage = async (parent, args, context) => {
 		throw new AuthenticationError("You are not authorized to send messages in this chat room");
 	}
 
-	const message = await context.dataSources.chatAPI.saveMessage(
-		chatRoomId,
-        senderId,
-        body,
-        fileContent,
-	)
+	const message = await context.dataSources.chatAPI.saveMessage(chatRoomId, senderId, body, fileContent,)
 
 	logger.debug(`Message: ${JSON.stringify(message._id)}`);
 
