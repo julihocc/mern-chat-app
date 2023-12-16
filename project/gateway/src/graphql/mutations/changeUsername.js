@@ -1,7 +1,6 @@
 // contactService/src/graphql/mutations/changeUsername.js
 const {AuthenticationError} = require('apollo-server-express');
 const logger = require("../../utils/logger");
-const {publishUserEvent} = require("../../utils/rabbitMQPublisher");
 
 const changeUsername = async (_, args, context) => {
 	logger.debug("changeUsername")
@@ -11,7 +10,6 @@ const changeUsername = async (_, args, context) => {
 	if (!token) {
 		throw new AuthenticationError('You are not logged in');
 	}
-	// const user = await getUserFromToken(token);
 
 	const user = await context.dataSources.authAPI.getUserByToken(token);
 	logger.debug(`User found: ${user.email} (${user.id})`);
@@ -20,7 +18,6 @@ const changeUsername = async (_, args, context) => {
 		throw new AuthenticationError('Not user found');
 	}
 
-	// const match = await comparePassword(currentPassword, user.password);
 	const match = await context.dataSources.authAPI.getPasswordComparison(currentPassword, user.password);
 	logger.debug(`Current password match: ${match}`);
 
@@ -28,7 +25,6 @@ const changeUsername = async (_, args, context) => {
 		throw new AuthenticationError('Invalid password. Not able to change username!');
 	}
 
-	// const existingUser = await User.findOne({username: newUsername});
 	const existingUser = await context.dataSources.authAPI.getUserByUsername(newUsername);
 
 	if (existingUser) {

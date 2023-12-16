@@ -1,4 +1,3 @@
-// frontend/src/components/Dashboard.js
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Alert, CircularProgress, Container, Grid, Typography,} from "@mui/material";

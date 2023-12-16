@@ -4,7 +4,6 @@ const {ApolloServer} = require("apollo-server-express");
 const {PubSub} = require("graphql-subscriptions");
 const {execute, subscribe} = require("graphql");
 const {SubscriptionServer} = require("subscriptions-transport-ws");
-const cors = require("cors");
 const {typeDefs} = require("./graphql/typeDefs");
 const {resolvers} = require("./graphql/resolvers");
 const errorHandler = require("./utils/errorHandler");
@@ -21,14 +20,6 @@ const {ContactAPI} = require("./dataSources/ContactServiceDataSource")
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
-
-const corsOptions = {
-	origin: "*",
-	credentials: true,
-	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-	allowedHeaders: ["Content-Type", "Authorization"],
-};
-// app.use(cors(corsOptions));
 
 const apiLimiter = rateLimit({
 	windowMs: 60 * 60 * 1000, // 1 hour window
@@ -72,10 +63,8 @@ async function startServer() {
 			}
 		},
 
-		dataSources : () => ({
-			authAPI: new AuthAPI(),
-			chatAPI: new ChatAPI(),
-			contactAPI: new ContactAPI(),
+		dataSources: () => ({
+			authAPI: new AuthAPI(), chatAPI: new ChatAPI(), contactAPI: new ContactAPI(),
 		}),
 
 		uploads: false,

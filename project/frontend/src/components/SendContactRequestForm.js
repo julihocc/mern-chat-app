@@ -50,7 +50,7 @@ const SendContactRequestForm = () => {
 				});
 		}
 	}, [getUserByEmailData, currentUserData?.getCurrentUser?._id]);
-	// }, [getUserByEmailData, currentUserData?.getCurrentUser?.id, sendContactRequest,]);
+
 	if (currentUserLoading || getUserByEmailLoading) return <CircularProgress/>;
 	if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 

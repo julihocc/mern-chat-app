@@ -1,6 +1,5 @@
 // authService/src/index.js
 const express = require("express");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const http = require("http");
 const rateLimit = require("express-rate-limit");
@@ -18,15 +17,6 @@ const app = express();
 // Static files
 app.use(express.static(__dirname + "/public"));
 
-// CORS setup
-const corsOptions = {
-	origin: "*",
-	credentials: true,
-	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-	allowedHeaders: ["Content-Type", "Authorization"],
-};
-// app.use(cors(corsOptions));
-
 // Rate limiting
 const apiLimiter = rateLimit({
 	windowMs: 60 * 60 * 1000, // 1 hour window
@@ -43,13 +33,6 @@ app.use(cookieParser());
 
 app.use(express.json());
 
-// RESTful route for getting user by email
-// app.get('/v1/user-by-email', UserController.getUserByEmail);
-// app.get('/v1/password-comparison', PasswordController.getPasswordComparison);
-// app.get('/v1/user-by-token', UserController.getUserByToken);
-// app.get('/v1/user-by-username', UserController.getUserByUsername);
-// app.get('/v1/password-encrypted', PasswordController.getPasswordEncrypted);
-// app.put('/v1/new-username', UserController.changeUsername);
 
 app.get('/v1/user', UserController.getUser);
 app.post('/v1/user', UserController.createUser);

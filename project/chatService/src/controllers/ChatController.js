@@ -2,23 +2,6 @@ const ChatRoom = require('../models/ChatRoomModel');
 const {debug} = require("../utils/logger");
 require('../models/UserModel');
 
-const getChatRoomById = async (req, res) => {
-	debug("getChatRoomById");
-	try {
-		// const chatRoomId = req.body.chatRoomId;
-		const {chatRoomId} = req.query;
-		debug(`chatRoomId: ${chatRoomId}`);
-		const chatRoom = await ChatRoom.findById(chatRoomId);
-		debug(`chatRoom: ${chatRoom}`);
-		res.json(chatRoom);
-		res.status(200);
-		return chatRoom;
-	} catch (err) {
-		res.status(500).json({
-			message: `Error getting chat room by id: ${err}`
-		})
-	}
-}
 
 const getChatRoomByIdPopulatedWithUsers = async (req, res) => {
 	debug("getChatRoomById");
@@ -48,13 +31,11 @@ const getChatRoomByParticipantIds = async (req, res) => {
 	const participantIdsArray = participantIds.split(",");
 	debug(`participantIdsArray: ${participantIdsArray}`);
 	try {
-		const chatRoom = await ChatRoom.findOne(
-			{
-				participantIds: {
-					$all: participantIdsArray
-				}
+		const chatRoom = await ChatRoom.findOne({
+			participantIds: {
+				$all: participantIdsArray
 			}
-		)
+		})
 		res.json(chatRoom);
 		res.status(200);
 		return chatRoom;
@@ -89,7 +70,7 @@ const getChatRooms = async (req, res) => {
 	debug("getChatRoomsByUserId");
 	const {userId} = req.query;
 	debug(`userId: ${userId}`);
-	if(userId) {
+	if (userId) {
 		try {
 			const chatRooms = await ChatRoom.find({participantIds: userId});
 			res.json(chatRooms);
@@ -108,7 +89,7 @@ const getChatRoom = async (req, res) => {
 	const {chatRoomId, participantIds} = req.query;
 	debug(`chatRoomId: ${chatRoomId}`);
 	debug(`participantIds: ${participantIds}`);
-	if(chatRoomId){
+	if (chatRoomId) {
 		try {
 			const chatRoom = await ChatRoom.findById(chatRoomId);
 			debug(`chatRoom: ${chatRoom}`);
@@ -121,17 +102,15 @@ const getChatRoom = async (req, res) => {
 			})
 		}
 	}
-	if(participantIds){
+	if (participantIds) {
 		const participantIdsArray = participantIds.split(",");
 		debug(`participantIdsArray: ${participantIdsArray}`);
 		try {
-			const chatRoom = await ChatRoom.findOne(
-				{
-					participantIds: {
-						$all: participantIdsArray
-					}
+			const chatRoom = await ChatRoom.findOne({
+				participantIds: {
+					$all: participantIdsArray
 				}
-			)
+			})
 			res.json(chatRoom);
 			res.status(200);
 			return chatRoom;
@@ -144,10 +123,5 @@ const getChatRoom = async (req, res) => {
 }
 
 module.exports = {
-	// getChatRoomById,
-	getChatRoomByIdPopulatedWithUsers,
-	getChatRoomByParticipantIds,
-	createChatRoom,
-	getChatRooms,
-	getChatRoom
+	getChatRoomByIdPopulatedWithUsers, getChatRoomByParticipantIds, createChatRoom, getChatRooms, getChatRoom
 }

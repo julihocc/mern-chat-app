@@ -1,5 +1,3 @@
-// contactService\src\graphql\resolvers\hooks\hooksHub.js
-
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/UserModel");

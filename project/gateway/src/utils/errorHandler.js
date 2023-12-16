@@ -1,5 +1,5 @@
-// path: contactService\src\errorHandler.js
-const logger = require("./logger"); // Import the logger
+
+const logger = require("./logger");
 
 const errorHandler = (err, req, res, next) => {
   logger.error(err.stack);

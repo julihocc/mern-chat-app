@@ -1,6 +1,5 @@
 const {debug} = require("../utils/logger");
 const ChatRoom = require('../models/ChatRoomModel');
-const User = require('../models/UserModel');
 
 const createChatRoom = async (req, res) => {
 	debug("contactService | createChatRoomWithParticipantIds");

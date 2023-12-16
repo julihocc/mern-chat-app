@@ -1,13 +1,11 @@
 // authService/src/index.js
 const express = require("express");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const http = require("http");
 const rateLimit = require("express-rate-limit");
 const connectDB = require("./utils/connectDB");
 const errorHandler = require("./utils/errorHandler");
 const logger = require("./utils/logger");
-// const ChatController = require("./controllers/ChatController");
 const ContactController = require("./controllers/ContactController");
 const UserController = require("./controllers/UserController");
 const ChatController = require("./controllers/ChatController");
@@ -19,14 +17,6 @@ const app = express();
 // Static files
 app.use(express.static(__dirname + "/public"));
 
-// CORS setup
-const corsOptions = {
-	origin: "*",
-	credentials: true,
-	methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-	allowedHeaders: ["Content-Type", "Authorization"],
-};
-// app.use(cors(corsOptions));
 
 // Rate limiting
 const apiLimiter = rateLimit({
