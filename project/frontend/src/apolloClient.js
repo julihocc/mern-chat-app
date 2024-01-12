@@ -25,11 +25,13 @@ const authMiddleware = setContext((_, {headers}) => {
 });
 
 const gatewayHttpLink = createUploadLink({
-	uri: GATEWAY_HTTP_URL + "/graphql",
+	// uri: GATEWAY_HTTP_URL + "/graphql",
 });
 
 const gatewayWsLink = new WebSocketLink({
-	uri: GATEWAY_WS_URL + "/graphql", options: {
+	// uri: GATEWAY_WS_URL + "/graphql",
+	uri: `ws://${window.location.host}/graphql`,
+	options: {
 		reconnect: true,
 	},
 });
