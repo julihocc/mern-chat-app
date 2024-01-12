@@ -12,6 +12,13 @@ export const ChangePassword = () => {
 
 	const handlePasswordChange = async () => {
 		try {
+
+			if(!currentPassword || !newPassword || !confirmPassword) {
+				logger.error("All fields must be filled");
+				alert("Please fill in all fields");
+				return
+			}
+
 			if (newPassword !== confirmPassword) {
 				logger.error("Password and its confirmation do not match");
 				throw new Error("Passwords do not match");
