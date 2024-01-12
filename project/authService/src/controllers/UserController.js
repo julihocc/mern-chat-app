@@ -3,6 +3,7 @@ const User = require('../models/UserModel');
 const {retrieveUserByToken, encryptPassword} = require('../utils/authentication');
 const {debug} = require("../utils/logger");
 const {sign} = require("jsonwebtoken");
+const {validatePassword} = require('../utils/passwordValidator')
 
 const getTokenByPayload = async (req, res) => {
 	debug("getTokenByPayload");
@@ -24,6 +25,12 @@ const getTokenByPayload = async (req, res) => {
 const createUser = async (req, res) => {
 	try {
 		const {email, username, password} = req.body;
+
+		const passwordValidationResult = validatePassword(password)
+		if (!passwordValidationResult.isValid) {
+			return res.status(400).json({message: passwordValidationResult.message})
+		}
+
 		const hashedPassword = await encryptPassword(password);
 		const user = new User({email, username, password: hashedPassword});
 		await user.save();

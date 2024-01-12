@@ -24,9 +24,14 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
 		throw new UserInputError("Passwords don't match");
 	}
 
-	const user = await context.dataSources.authAPI.createUser(email, username, password);
-	await context.dataSources.chatAPI.createUser(user._id, user.email, user.username);
-	await context.dataSources.contactAPI.createUser(user._id, user.email, user.username);
+	try {
+		const user = await context.dataSources.authAPI.createUser(email, username, password);
+		await context.dataSources.chatAPI.createUser(user._id, user.email, user.username);
+		await context.dataSources.contactAPI.createUser(user._id, user.email, user.username);
+	} catch(error) {
+		logger.error(`Password length requirement no satisfied`)
+		throw new UserInputError('Password length must be between 8 and 16 characters')
+	}
 
 	logger.debug(`AuthAPI | user: ${JSON.stringify(user)}`);
 
