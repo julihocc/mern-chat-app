@@ -30,7 +30,7 @@ const signUp = async (_, {email, username, password, confirmPassword}, context,)
 		await context.dataSources.contactAPI.createUser(user._id, user.email, user.username);
 	} catch(error) {
 		logger.error(`Password length requirement no satisfied`)
-		throw new UserInputError('Password length')
+		throw new UserInputError('Password length must be between 8 and 16 characters')
 	}
 
 	logger.debug(`AuthAPI | user: ${JSON.stringify(user)}`);

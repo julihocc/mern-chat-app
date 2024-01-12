@@ -1,7 +1,7 @@
 
 const validatePassword = (password) => {
 	const minLength = 8; // Minimum length of password
-	const maxLength = 50; // Maximum length of password
+	const maxLength = 16; // Maximum length of password
 
 	if (!password || password.length < minLength || password.length > maxLength) {
 		return {
