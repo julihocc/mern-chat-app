@@ -17,6 +17,7 @@ const {AuthAPI} = require("./dataSources/AuthServiceDataSource")
 const {ChatAPI} = require("./dataSources/ChatServiceDataSource")
 const {ContactAPI} = require("./dataSources/ContactServiceDataSource")
 
+
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
@@ -49,6 +50,8 @@ async function startServer() {
 
 	const pubSub = new PubSub();
 
+// const schema = makeExecutableSchema({ typeDefs, resolvers });
+
 	const apolloServer = new ApolloServer({
 		typeDefs, resolvers,
 
@@ -72,7 +75,14 @@ async function startServer() {
 
 	await apolloServer.start();
 
-	apolloServer.applyMiddleware({app});
+	return apolloServer;
+}
+
+(async () => {
+	try {
+		const apolloServer = await startServer();	
+		apolloServer.applyMiddleware({app});
+	 logger.debug(`Apollo Server schema: ${JSON.stringify(apolloServer.schema)}`)
 
 	const httpServer = http.createServer(app);
 
@@ -86,11 +96,6 @@ async function startServer() {
 		logger.debug(`Server is running at http://localhost:${PORT}${apolloServer.graphqlPath}`,);
 		logger.debug(`Subscriptions ready at ws://localhost:${PORT}${apolloServer.graphqlPath}`,);
 	});
-}
-
-(async () => {
-	try {
-		await startServer();
 	} catch (err) {
 		logger.error("Error starting the authentication service:", err);
 	}

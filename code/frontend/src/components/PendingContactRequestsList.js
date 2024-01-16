@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import logger from "../utils/logger";
 import { useSubscription } from "@apollo/client";
-import { NEW_CONTACT_REQUEST } from "../graphql/subscriptions";
+import { NEW_CONTACT_REQUEST } from "../gql/subscriptions/NEW_CONTACT_REQUEST";
 
 const PendingContactRequestsList = () => {
   const { _id } = useSelector((state) => state.user);
@@ -32,7 +32,9 @@ const PendingContactRequestsList = () => {
   }, [refreshKey, refetch]);
 
   if (loading || newContactRequestLoading) return <p>Loading...</p>;
-  if (error || newContactRequestError) return <p>Error : {error.message} </p>;
+  if (error ) return <p>Error : {error.message} </p>;
+  if (newContactRequestError) return <p>Error : {newContactRequestError.message} </p>;
+
   logger.debug(
     `newContactRequestData: ${JSON.stringify(newContactRequestData)}`
   );
