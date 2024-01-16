@@ -16,6 +16,7 @@ const rateLimit = require("express-rate-limit");
 const {AuthAPI} = require("./dataSources/AuthServiceDataSource")
 const {ChatAPI} = require("./dataSources/ChatServiceDataSource")
 const {ContactAPI} = require("./dataSources/ContactServiceDataSource")
+const {makeExecutableSchema} = require("@graphql-tools/schema");
 
 
 const app = express();
@@ -52,6 +53,9 @@ async function startServer() {
 
 // const schema = makeExecutableSchema({ typeDefs, resolvers });
 
+	// logger.debug(`typeDefs: ${JSON.stringify(typeDefs)}`);
+	// logger.debug(`resolvers: ${JSON.stringify(resolvers)}`);
+
 	const apolloServer = new ApolloServer({
 		typeDefs, resolvers,
 
@@ -86,8 +90,13 @@ async function startServer() {
 
 	const httpServer = http.createServer(app);
 
+	const schema = makeExecutableSchema({ typeDefs, resolvers });
+
 	SubscriptionServer.create({
-		schema: apolloServer.schema, execute, subscribe,
+		// schema: apolloServer.schema,
+		schema,
+		execute, 
+		subscribe,
 	}, {
 		server: httpServer, path: apolloServer.graphqlPath,
 	},);
