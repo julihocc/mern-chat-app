@@ -33,7 +33,7 @@ const PendingContactRequestsList = () => {
 
   if (loading || newContactRequestLoading) return <p>Loading...</p>;
   if (error ) return <p>Error : {error.message} </p>;
-  if (newContactRequestError) return <p>Error : {newContactRequestError.message} </p>;
+  if (newContactRequestError) return <p>New Contact Request Error : {newContactRequestError.message} </p>;
 
   logger.debug(
     `newContactRequestData: ${JSON.stringify(newContactRequestData)}`
