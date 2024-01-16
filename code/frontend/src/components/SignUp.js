@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {Alert, Button, TextField} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import {useSignup} from "../hooks/mutations/useSignup";
+import logger from "../utils/logger";
 
 const Signup = () => {
 	const navigate = useNavigate();
@@ -39,6 +40,7 @@ const Signup = () => {
 		}
 
 		if(error) {
+			logger.debug(`error: ${error.message}`)
 			setErrorMessage(error.message)
 		}
 
