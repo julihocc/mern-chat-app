@@ -7,6 +7,11 @@ const subscriptions = {
 			return pubSub.asyncIterator(`NEW_MESSAGE_${chatRoomId}`);
 		},
 	},
+	newContactRequest: {
+		subscribe: (parent, args, {pubSub}) => {
+			return pubSub.asyncIterator("NEW_CONTACT_REQUEST");
+		}
+	}
 };
 
 module.exports = subscriptions;
