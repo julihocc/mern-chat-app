@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {Alert, Button, TextField} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import {useSignup} from "../hooks/mutations/useSignup";
+import logger from "../utils/logger";
 
 const Signup = () => {
 	const navigate = useNavigate();
@@ -39,7 +40,14 @@ const Signup = () => {
 		}
 
 		if(error) {
+			logger.debug(`error: ${error.message}`)
 			setErrorMessage(error.message)
+			return
+		}
+
+		if (!username || !email || !password || !confirmPassword) {
+			setErrorMessage(t("allFieldsRequired"));
+			return;
 		}
 
 		try {
@@ -47,7 +55,8 @@ const Signup = () => {
 				variables: {username, email, password, confirmPassword},
 			});
 		} catch (err) {
-			console.error("handleSubmit Error:", err.message);
+			logger.debug("handleSubmit Error:", err.message);
+			setErrorMessage(err.message);
 		}
 	};
 
