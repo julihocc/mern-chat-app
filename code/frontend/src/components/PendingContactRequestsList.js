@@ -37,10 +37,6 @@ const PendingContactRequestsList = () => {
   if (newContactRequestError)
     return <p>New Contact Request Error : {newContactRequestError.message} </p>;
 
-  logger.debug(
-    `newContactRequestData: ${JSON.stringify(newContactRequestData)}`
-  );
-
   const pendingRequests = data.getContactRequestsByContext.filter(
     (request) => request.status === "pending"
   );
