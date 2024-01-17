@@ -19,7 +19,6 @@ const PendingContactRequestsList = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const {
     data: newContactRequestData,
-    loading: newContactRequestLoading,
     error: newContactRequestError,
   } = useSubscription(NEW_CONTACT_REQUEST);
 
@@ -33,14 +32,10 @@ const PendingContactRequestsList = () => {
 
   // if (loading || newContactRequestLoading) return <p>Loading...</p>;
   if (loading) return <p>Loading...</p>;
-  if (newContactRequestLoading) return <p>New Contact Request Loading...</p>;
+  // if (newContactRequestLoading) return <p>New Contact Request Loading...</p>;
   if (error) return <p>Error : {error.message} </p>;
   if (newContactRequestError)
     return <p>New Contact Request Error : {newContactRequestError.message} </p>;
-
-  logger.debug(
-    `newContactRequestData: ${JSON.stringify(newContactRequestData)}`
-  );
 
   const pendingRequests = data.getContactRequestsByContext.filter(
     (request) => request.status === "pending"
