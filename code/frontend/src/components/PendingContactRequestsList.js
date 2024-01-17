@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import logger from "../utils/logger";
 import { useSubscription } from "@apollo/client";
 import { NEW_CONTACT_REQUEST } from "../gql/subscriptions/NEW_CONTACT_REQUEST";
+import Alert from "@mui/material/Alert";
 
 const PendingContactRequestsList = () => {
   const { _id } = useSelector((state) => state.user);
@@ -29,6 +30,7 @@ const PendingContactRequestsList = () => {
   useEffect(() => {
     refetch();
   }, [refreshKey, refetch]);
+  
 
   // if (loading || newContactRequestLoading) return <p>Loading...</p>;
   if (loading) return <p>Loading...</p>;
@@ -46,6 +48,11 @@ const PendingContactRequestsList = () => {
 
   return (
     <div>
+      {newContactRequestData && (
+        <Alert severity="info">
+          You have a new contact request
+        </Alert>
+      )}
       <h3> {t("contactRequest")} </h3>
       <ul>
         {pendingRequests.map(({ _id, senderId, status, createdAt }) => (
