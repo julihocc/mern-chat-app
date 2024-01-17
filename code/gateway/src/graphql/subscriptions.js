@@ -2,8 +2,6 @@
 const logger = require("../utils/logger"); // Import the logger
 const {PubSub} = require("graphql-subscriptions"); // Import the PubSub class from graphql-subscriptions
 
-
-
 const subscriptions = {
 	newMessage: {
 		subscribe: (parent, {chatRoomId}, {pubSub}) => {

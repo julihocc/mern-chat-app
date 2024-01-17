@@ -1,6 +1,7 @@
 // frontend\src\apolloClient.js
 import {ApolloClient, InMemoryCache, split} from "@apollo/client";
 import {WebSocketLink} from "@apollo/client/link/ws";
+import {SubscriptionClient} from "subscriptions-transport-ws";
 import {getMainDefinition} from "@apollo/client/utilities";
 import {setContext} from "@apollo/client/link/context";
 import {createUploadLink} from "apollo-upload-client";
@@ -28,11 +29,17 @@ const gatewayHttpLink = createUploadLink({
 	uri: GATEWAY_HTTP_URL + "/graphql",
 });
 
-const gatewayWsLink = new WebSocketLink({
-	uri: GATEWAY_WS_URL + "/graphql", options: {
+// const gatewayWsLink = new WebSocketLink({
+// 	uri: GATEWAY_WS_URL + "/graphql", options: {
+// 		reconnect: true,
+// 	},
+// });
+
+const gatewayWsLink = new WebSocketLink(
+	new SubscriptionClient(GATEWAY_WS_URL + "/graphql", {
 		reconnect: true,
-	},
-});
+	})
+);
 
 const gatewayApolloClientLink = split(({query}) => {
 		const definition = getMainDefinition(query);
