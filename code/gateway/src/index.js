@@ -15,6 +15,7 @@ const rateLimit = require("express-rate-limit");
 const { AuthAPI } = require("./dataSources/AuthServiceDataSource");
 const { ChatAPI } = require("./dataSources/ChatServiceDataSource");
 const { ContactAPI } = require("./dataSources/ContactServiceDataSource");
+const {PubSub} = require("graphql-subscriptions");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -47,11 +48,14 @@ async function startServer() {
     resolvers,
     context: ({ req, res, connection }) => {
       if (connection) {
-        return { ...connection.context };
+        const pubSub = new PubSub();
+        return { ...connection.context, pubSub};
       } else {
         const token = req.headers.authorization || "";
         req.token = token;
-        return { req, res, token };
+        const pubSub = new PubSub();
+        req.pubSub = pubSub;
+        return { req, res, token, pubSub};
       }
     },
     dataSources: () => ({
