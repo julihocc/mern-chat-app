@@ -34,9 +34,10 @@ const PendingContactRequestsList = () => {
   if (loading) return <p>Loading...</p>;
   // if (newContactRequestLoading) return <p>New Contact Request Loading...</p>;
   if (error) return <p>Error : {error.message} </p>;
-  if (newContactRequestError)
+  if (newContactRequestError){
+    logger.error("Error subscribing to new contact request:", newContactRequestError);
     return <p>New Contact Request Error : {newContactRequestError.message} </p>;
-
+}
   const pendingRequests = data.getContactRequestsByContext.filter(
     (request) => request.status === "pending"
   );
