@@ -68,7 +68,7 @@ const sendContactRequest = async (parent, args, context, info) => {
         recipient._id
       );
     logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
-    context.pubSub.publish(`NEW_CONTACT_REQUEST_${recipientId}`, {
+    context.pubSub.publish(`NEW_CONTACT_REQUEST`, {
       newContactRequest: contactRequest,
     });
     return contactRequest;
