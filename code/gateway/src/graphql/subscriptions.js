@@ -5,7 +5,8 @@ const {PubSub} = require("graphql-subscriptions"); // Import the PubSub class fr
 const subscriptions = {
 	newMessage: {
 		subscribe: (parent, args, {pubSub}) => {
-			return pubSub.asyncIterator(`NEW_MESSAGE`);
+			const {chatRoomId} = args;
+			return pubSub.asyncIterator(`NEW_MESSAGE_${chatRoomId}`);
 		},
 	},
 	newContactRequest: {

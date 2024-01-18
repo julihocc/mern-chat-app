@@ -53,7 +53,7 @@ const PendingContactRequestsList = () => {
     refetch();
   }, [refreshKey, refetch]);
 
-  // if (loading || newContactRequestLoading) return <p>Loading...</p>;
+  if (loading || newContactRequestLoading) return <p>Loading...</p>;
   if (loading) return <p>Loading...</p>;
   // if (newContactRequestLoading) return <p>New Contact Request Loading...</p>;
   if (error) return <p>Error : {error.message} </p>;
