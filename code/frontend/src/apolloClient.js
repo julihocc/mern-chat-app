@@ -61,8 +61,8 @@ const splitLink = split(
       definition.operation === "subscription"
     );
   },
-//   wsLink,
-  authMiddleware.concat(wsLink),
+  wsLink,
+//   authMiddleware.concat(wsLink),
   authMiddleware.concat(httpLink)
 );
 
