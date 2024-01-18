@@ -18,10 +18,32 @@ const PendingContactRequestsList = () => {
   const acceptContactRequestHandler = useAcceptContactRequest(userId);
   const rejectContactRequestHandler = useRejectContactRequest(userId);
   const [refreshKey, setRefreshKey] = useState(0);
+  // const {
+  //   data: newContactRequestData,
+  //   error: newContactRequestError,
+  // } = useSubscription(NEW_CONTACT_REQUEST);
+
   const {
     data: newContactRequestData,
     error: newContactRequestError,
+    loading: newContactRequestLoading,
   } = useSubscription(NEW_CONTACT_REQUEST);
+
+  // Log the subscription result
+  useEffect(() => {
+    if (newContactRequestLoading) {
+      logger.debug("Subscribing to new contact requests...");
+    }
+    if (newContactRequestData) {
+      logger.debug("New contact request data received:", newContactRequestData);
+    }
+    if (newContactRequestError) {
+      logger.error(
+        "Error in new contact request subscription:",
+        newContactRequestError
+      );
+    }
+  }, [newContactRequestData, newContactRequestError, newContactRequestLoading]);
 
   const forceUpdate = () => {
     setRefreshKey((oldKey) => oldKey + 1);
@@ -30,16 +52,12 @@ const PendingContactRequestsList = () => {
   useEffect(() => {
     refetch();
   }, [refreshKey, refetch]);
-  
 
   // if (loading || newContactRequestLoading) return <p>Loading...</p>;
   if (loading) return <p>Loading...</p>;
   // if (newContactRequestLoading) return <p>New Contact Request Loading...</p>;
   if (error) return <p>Error : {error.message} </p>;
-  if (newContactRequestError){
-    logger.error("Error subscribing to new contact request:", newContactRequestError);
-    // return <p>New Contact Request Error : {newContactRequestError.message} </p>;
-}
+
   const pendingRequests = data.getContactRequestsByContext.filter(
     (request) => request.status === "pending"
   );
@@ -49,9 +67,7 @@ const PendingContactRequestsList = () => {
   return (
     <div>
       {newContactRequestData && (
-        <Alert severity="info">
-          You have a new contact request
-        </Alert>
+        <Alert severity="info">You have a new contact request</Alert>
       )}
       <h3> {t("contactRequest")} </h3>
       <ul>

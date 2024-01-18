@@ -83,7 +83,7 @@ async function startServer() {
   });
 
   const schema = makeExecutableSchema({ typeDefs, resolvers });
-  
+
   useServer(
     {
       schema,
