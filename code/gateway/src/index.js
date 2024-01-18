@@ -58,12 +58,11 @@ async function startServer() {
         return { req, res, token, pubSub };
       }
     },
-    // subscriptions: {
-    //   onConnect: () => {
-    //     // This context is merged with the context from the Apollo Server setup
-    //     return { pubSub };
-    //   },
-    // },
+    subscriptions: {
+      onConnect: () => {
+              return { pubSub };
+      },
+    },
     dataSources: () => ({
       authAPI: new AuthAPI(),
       chatAPI: new ChatAPI(),
