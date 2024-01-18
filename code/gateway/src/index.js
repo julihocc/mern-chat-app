@@ -182,10 +182,10 @@ async function startServer() {
 
   httpServer.listen(PORT, () => {
     logger.debug(
-      `Server is running at http://localhost:${PORT}${server.graphqlPath}`
+      `Server is running at http://localhost:${PORT}/graphql`
     );
     logger.debug(
-      `Subscriptions ready at ws://localhost:${PORT}${server.graphqlPath}`
+      `Subscriptions ready at ws://localhost:${PORT}/graphql`
     );
   });
 }
