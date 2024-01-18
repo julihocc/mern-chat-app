@@ -1,9 +1,8 @@
-import { ApolloClient, InMemoryCache, split } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache, split } from "@apollo/client";
 import { createClient } from "graphql-ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { setContext } from "@apollo/client/link/context";
-import { createUploadLink } from "apollo-upload-client";
 import logger from "./utils/logger";
 
 const GATEWAY_HTTP_URL = process.env.REACT_APP_GATEWAY_HTTP_URL || "http://localhost:3001";
@@ -25,27 +24,54 @@ const authMiddleware = setContext((_, { headers }) => {
 	};
 });
 
-const gatewayHttpLink = createUploadLink({
+// const gatewayHttpLink = createUploadLink({
+// 	uri: GATEWAY_HTTP_URL + "/graphql",
+// });
+
+const httpLink = new HttpLink({
 	uri: GATEWAY_HTTP_URL + "/graphql",
 });
 
-const wsClient = createClient({
+// const wsClient = createClient({
+// 	url: GATEWAY_WS_URL + "/graphql",
+// 	reconnect: true,
+// });
+
+// const wsLink = new GraphQLWsLink(wsClient);
+
+const wsLink = new GraphQLWsLink(createClient({
 	url: GATEWAY_WS_URL + "/graphql",
 	reconnect: true,
-});
+}));
 
-const wsLink = new GraphQLWsLink(wsClient);
+// const gatewayApolloClientLink = split(
+// 	({ query }) => {
+// 		const definition = getMainDefinition(query);
+// 		return (definition.kind === "OperationDefinition" && definition.operation === "subscription");
+// 	},
+// 	wsLink,
+// 	authMiddleware.concat(gatewayHttpLink),
+// );
 
-const gatewayApolloClientLink = split(
-	({ query }) => {
-		const definition = getMainDefinition(query);
-		return (definition.kind === "OperationDefinition" && definition.operation === "subscription");
-	},
-	wsLink,
-	authMiddleware.concat(gatewayHttpLink),
+const splitLink = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === "OperationDefinition" &&
+      definition.operation === "subscription"
+    );
+  },
+//   wsLink,
+  authMiddleware.concat(wsLink),
+  authMiddleware.concat(httpLink)
 );
 
+// export const apolloClient = new ApolloClient({
+// 	link: gatewayApolloClientLink,
+// 	cache: new InMemoryCache(),
+// });
+
 export const apolloClient = new ApolloClient({
-	link: gatewayApolloClientLink,
-	cache: new InMemoryCache(),
+  link: splitLink,
+  cache: new InMemoryCache(),
 });
