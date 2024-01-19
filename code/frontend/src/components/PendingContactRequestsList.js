@@ -18,10 +18,7 @@ const PendingContactRequestsList = () => {
   const acceptContactRequestHandler = useAcceptContactRequest(userId);
   const rejectContactRequestHandler = useRejectContactRequest(userId);
   const [refreshKey, setRefreshKey] = useState(0);
-  // const {
-  //   data: newContactRequestData,
-  //   error: newContactRequestError,
-  // } = useSubscription(NEW_CONTACT_REQUEST);
+  const [pendingRequests, setPendingRequests] = useState([]);
 
   const {
     data: newContactRequestData,
@@ -30,6 +27,11 @@ const PendingContactRequestsList = () => {
   } = useSubscription(NEW_CONTACT_REQUEST, {
     onComplete: () => {
       logger.debug("New contact request subscription completed");
+      // const pendingRequestsUpdated = data.getContactRequestsByContext.filter(
+      //   (request) => request.status === "pending"
+      // );
+      // setPendingRequests(pendingRequestsUpdated);
+      setPendingRequests(newContactRequestData.newContactRequest);
     },
     onError: (err) => {
       logger.error("*Error in new contact request subscription:", err);
@@ -59,20 +61,19 @@ const PendingContactRequestsList = () => {
     refetch();
   }, [refreshKey, refetch]);
 
-  if (loading || newContactRequestLoading) return <p>Loading...</p>;
+  // if (newContactRequestLoading) return <p>Loading (Subscriptions)...</p>;
 
   if (loading) return <p>Loading...</p>;
   // if (newContactRequestLoading) return <p>New Contact Request Loading...</p>;
   if (error) return <p>Error : {error.message} </p>;
 
-  const pendingRequests = data.getContactRequestsByContext.filter(
-    (request) => request.status === "pending"
-  );
-
-  if (pendingRequests.length === 0) return null;
+  // if (pendingRequests.length === 0) return null;
 
   return (
     <div>
+      <h1> 
+    Pending contact requests
+    </h1>
       {newContactRequestData && (
         <Alert severity="info">You have a new contact request</Alert>
       )}

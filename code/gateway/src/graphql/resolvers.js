@@ -37,7 +37,7 @@ const { GraphQLUpload } = require("graphql-upload");
 const subscriptions = require("./subscriptions");
 const { PubSub } = require("graphql-subscriptions");
 
-// const pubSub = new PubSub();
+
 
 const resolvers = {
   Upload: GraphQLUpload,

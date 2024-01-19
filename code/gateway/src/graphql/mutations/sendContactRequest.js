@@ -1,6 +1,7 @@
 const logger = require("../../utils/logger");
 const { AuthenticationError } = require("apollo-server-express");
 const yup = require("yup");
+const pubSub = require("../../utils/pubsub");
 
 const sendContactRequest = async (parent, args, context, info) => {
   logger.debug("Mutations | sendContactRequest");
@@ -69,7 +70,9 @@ const sendContactRequest = async (parent, args, context, info) => {
       );
     logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
 
-    context.pubSub.publish(`NEW_CONTACT_REQUEST`, {
+    ////////////
+
+    pubSub.publish(`NEW_CONTACT_REQUEST`, {
       newContactRequest: contactRequest,
     });
 
