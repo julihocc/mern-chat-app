@@ -67,13 +67,13 @@ const PendingContactRequestsList = () => {
     data,
   ]);
 
-  const forceUpdate = () => {
-    setRefreshKey((oldKey) => oldKey + 1);
-  };
+  // const forceUpdate = () => {
+  //   setRefreshKey((oldKey) => oldKey + 1);
+  // };
 
-  useEffect(() => {
-    refetch();
-  }, [refreshKey, refetch]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [refreshKey, refetch]);
 
   // if (newContactRequestLoading) return <p>Loading (Subscriptions)...</p>;
 
@@ -103,7 +103,7 @@ const PendingContactRequestsList = () => {
                     await acceptContactRequestHandler({
                       variables: { requestId: _id },
                     });
-                    forceUpdate();
+                    // forceUpdate();
                   } catch (error) {
                     logger.error("Error accepting contact request:", error);
                   }
@@ -117,7 +117,7 @@ const PendingContactRequestsList = () => {
                     await rejectContactRequestHandler({
                       variables: { requestId: _id },
                     });
-                    forceUpdate();
+                    // forceUpdate();
                   } catch (error) {
                     logger.error("Error rejecting contact request:", error);
                   }
