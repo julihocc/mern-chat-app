@@ -28,10 +28,12 @@ const PendingContactRequestsList = () => {
   } = useSubscription(NEW_CONTACT_REQUEST, {
     onComplete: () => {
       // logger.debug("New contact request subscription completed");
-      const pendingRequestsUpdated = data.getContactRequestsByContext.filter(
-        (request) => request.status === "pending"
-      );
-      setPendingRequests(pendingRequestsUpdated);
+      if (data) {
+        const pendingRequestsUpdated = data.getContactRequestsByContext.filter(
+          (request) => request.status === "pending"
+        );
+        setPendingRequests(pendingRequestsUpdated);
+      }
       // setPendingRequests(newContactRequestData.newContactRequest);
     },
     onError: (err) => {
