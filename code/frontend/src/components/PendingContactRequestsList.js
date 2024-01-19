@@ -18,6 +18,7 @@ const PendingContactRequestsList = () => {
   const acceptContactRequestHandler = useAcceptContactRequest(userId);
   const rejectContactRequestHandler = useRejectContactRequest(userId);
   const [refreshKey, setRefreshKey] = useState(0);
+
   const [pendingRequests, setPendingRequests] = useState([]);
 
   const {
@@ -26,12 +27,12 @@ const PendingContactRequestsList = () => {
     loading: newContactRequestLoading,
   } = useSubscription(NEW_CONTACT_REQUEST, {
     onComplete: () => {
-      logger.debug("New contact request subscription completed");
-      // const pendingRequestsUpdated = data.getContactRequestsByContext.filter(
-      //   (request) => request.status === "pending"
-      // );
-      // setPendingRequests(pendingRequestsUpdated);
-      setPendingRequests(newContactRequestData.newContactRequest);
+      // logger.debug("New contact request subscription completed");
+      const pendingRequestsUpdated = data.getContactRequestsByContext.filter(
+        (request) => request.status === "pending"
+      );
+      setPendingRequests(pendingRequestsUpdated);
+      // setPendingRequests(newContactRequestData.newContactRequest);
     },
     onError: (err) => {
       logger.error("*Error in new contact request subscription:", err);
@@ -51,7 +52,18 @@ const PendingContactRequestsList = () => {
         newContactRequestError
       );
     }
-  }, [newContactRequestData, newContactRequestError, newContactRequestLoading]);
+    if (data) {
+      const pendingRequestsUpdated = data.getContactRequestsByContext.filter(
+        (request) => request.status === "pending"
+      );
+      setPendingRequests(pendingRequestsUpdated);
+    }
+  }, [
+    newContactRequestData,
+    newContactRequestError,
+    newContactRequestLoading,
+    data,
+  ]);
 
   const forceUpdate = () => {
     setRefreshKey((oldKey) => oldKey + 1);
@@ -71,9 +83,7 @@ const PendingContactRequestsList = () => {
 
   return (
     <div>
-      <h1> 
-    Pending contact requests
-    </h1>
+      <h1>Pending contact requests</h1>
       {newContactRequestData && (
         <Alert severity="info">You have a new contact request</Alert>
       )}
