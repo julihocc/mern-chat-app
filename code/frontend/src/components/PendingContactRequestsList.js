@@ -17,7 +17,6 @@ const PendingContactRequestsList = () => {
   const { loading, error, data, refetch } = useGetContactRequestsByContext();
   const acceptContactRequestHandler = useAcceptContactRequest(userId);
   const rejectContactRequestHandler = useRejectContactRequest(userId);
-  const [refreshKey, setRefreshKey] = useState(0);
 
   const [pendingRequests, setPendingRequests] = useState([]);
 
