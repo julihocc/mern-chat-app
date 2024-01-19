@@ -45,26 +45,6 @@ async function startServer() {
   const serverCleanup = useServer(
     {
       schema,
-      // execute,
-      // subscribe,
-      // onSubscribe: (ctx, msg) => {
-      //   logger.debug(`gateway | onSubscribe: ${JSON.stringify(msg.payload)}`);
-      //   return ctx;
-      // },
-      // context: async () => {
-      //   const { cache } = server;
-
-      //   const dataSources = {
-      //     authAPI: new AuthAPI({ cache }),
-      //     usersAPI: new UsersAPI({ cache }),
-      //     chatAPI: new ChatAPI({ cache }),
-      //   };
-
-      //   return {
-      //     dataSources, 
-      //     // pubSub
-      //   };
-      // },
     },
     wsServer
   );
@@ -125,7 +105,6 @@ async function startServer() {
       const token = req.headers.authorization || "";
       
       req.token = token;
-      // req.pubSub = pubSub;
 
       const dataSources = {
         authAPI: new AuthAPI({cache}),
@@ -137,7 +116,6 @@ async function startServer() {
         req,
         res,
         token,
-        // pubSub,
         dataSources,
       };
     }
