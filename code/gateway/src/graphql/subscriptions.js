@@ -18,6 +18,11 @@ const subscriptions = {
 			return pubSub.asyncIterator("NEW_CONTACT_REQUEST");
 		}
 	},
+	newContact: {
+		subscribe: (parent, args, context) => {
+			return pubSub.asyncIterator(`NEW_CONTACT`);
+		}
+	},
 };
 
 module.exports = subscriptions;
