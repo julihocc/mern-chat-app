@@ -11,6 +11,7 @@ const ChatRoomList = () => {
 	const {loading, error, data} = useGetChatRoomsForCurrentUser();
 	const [sortOption, setSortOption] = useState("ascending");
 	const [sortedChatRooms, setSortedChatRooms] = useState([]);
+
 	useEffect(() => {
 		let sorted;
 

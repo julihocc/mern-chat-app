@@ -123,6 +123,7 @@ const typeDefs = gql`
         newMessage: Message!
         newContactRequest: ContactRequest!
         newContact: ContactRequest!
+        newChatRoom: ChatRoom!
     }
 `;
 
