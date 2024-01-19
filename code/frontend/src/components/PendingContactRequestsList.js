@@ -14,7 +14,7 @@ const PendingContactRequestsList = () => {
   const { _id } = useSelector((state) => state.user);
   const userId = _id;
   const { t } = useTranslation();
-  const { loading, error, data, refetch } = useGetContactRequestsByContext();
+  const { loading, error, data  } = useGetContactRequestsByContext();
   const acceptContactRequestHandler = useAcceptContactRequest(userId);
   const rejectContactRequestHandler = useRejectContactRequest(userId);
 
