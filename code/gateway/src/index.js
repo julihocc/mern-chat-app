@@ -51,8 +51,9 @@ async function startServer() {
       execute,
       subscribe,
       onSubscribe: (ctx, msg) => {
-        logger.debug(`gateway | onSubscribe: ${msg.payload.operationName}`);
-        return { ...ctx, pubSub };
+        logger.debug(`gateway | onSubscribe: ${JSON.stringify(msg.payload)}`);
+        // return { ...ctx, pubSub };
+        return ctx;
       },
       context: async () => {
         const { cache } = server;

@@ -27,9 +27,15 @@ const PendingContactRequestsList = () => {
     data: newContactRequestData,
     error: newContactRequestError,
     loading: newContactRequestLoading,
-  } = useSubscription(NEW_CONTACT_REQUEST);
+  } = useSubscription(NEW_CONTACT_REQUEST,{
+    onComplete: () => {
+      logger.debug("New contact request subscription completed");
+    },
+    onError: (err) => {
+      logger.error("*Error in new contact request subscription:", err);
+    },
+  });
 
-  // Log the subscription result
   useEffect(() => {
     if (newContactRequestLoading) {
       logger.debug("Subscribing to new contact requests...");
@@ -54,6 +60,7 @@ const PendingContactRequestsList = () => {
   }, [refreshKey, refetch]);
 
   if (loading || newContactRequestLoading) return <p>Loading...</p>;
+
   if (loading) return <p>Loading...</p>;
   // if (newContactRequestLoading) return <p>New Contact Request Loading...</p>;
   if (error) return <p>Error : {error.message} </p>;
@@ -66,9 +73,12 @@ const PendingContactRequestsList = () => {
 
   return (
     <div>
-      {newContactRequestData && (
+      {
+      // newContactRequestData && 
+      (
         <Alert severity="info">You have a new contact request</Alert>
-      )}
+      )
+      }
       <h3> {t("contactRequest")} </h3>
       <ul>
         {pendingRequests.map(({ _id, senderId, status, createdAt }) => (

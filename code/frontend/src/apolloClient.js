@@ -24,6 +24,8 @@ const authMiddleware = setContext((_, { headers }) => {
 	};
 });
 
+// logger.debug(`authMiddleware: ${JSON.stringify(authMiddleware)}`);
+
 // const gatewayHttpLink = createUploadLink({
 // 	uri: GATEWAY_HTTP_URL + "/graphql",
 // });
@@ -41,6 +43,7 @@ const httpLink = new HttpLink({
 
 const wsLink = new GraphQLWsLink(createClient({
 	url: GATEWAY_WS_URL + "/graphql",
+	// url: "ws://localhost:3001/graphql",
 	reconnect: true,
 }));
 

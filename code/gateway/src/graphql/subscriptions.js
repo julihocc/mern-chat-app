@@ -12,6 +12,7 @@ const subscriptions = {
 	newContactRequest: {
 		subscribe: (parent, args, {pubSub}) => {
 			// const pubSub = new PubSub();
+			logger.debug(`subscriptions.js | newContactRequest`);
 			return pubSub.asyncIterator("NEW_CONTACT_REQUEST");
 		}
 	}
