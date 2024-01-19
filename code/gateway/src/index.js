@@ -23,7 +23,6 @@ const { AuthAPI } = require("./dataSources/AuthServiceDataSource");
 const { ChatAPI } = require("./dataSources/ChatServiceDataSource");
 const { ContactAPI } = require("./dataSources/ContactServiceDataSource");
 const { PubSub } = require("graphql-subscriptions");
-// import cors from "cors";
 const cors = require("cors");
 
 async function startServer() {
@@ -39,11 +38,9 @@ async function startServer() {
 
   const wsServer = new WebSocketServer({
     server: httpServer,
-    // path: apolloServer.graphqlPath,
     path: "/graphql",
   });
 
-  // const serverCleanup = useServer({ schema }, wsServer);
 
   const serverCleanup = useServer(
     {
@@ -52,7 +49,6 @@ async function startServer() {
       subscribe,
       onSubscribe: (ctx, msg) => {
         logger.debug(`gateway | onSubscribe: ${JSON.stringify(msg.payload)}`);
-        // return { ...ctx, pubSub };
         return ctx;
       },
       context: async () => {
@@ -64,7 +60,8 @@ async function startServer() {
           chatAPI: new ChatAPI({ cache }),
         };
         return {
-          dataSources
+          dataSources, 
+          pubSub
         };
       },
     },
@@ -74,36 +71,12 @@ async function startServer() {
   // tutorial step 7
 
   const server = new ApolloServer({
-    // typeDefs,
-    // resolvers,
+
     schema,
-    // context: ({ req, res, connection }) => {
-    //   if (connection) {
-    //     return { ...connection.context, pubSub };
-    //   } else {
-    //     const token = req.headers.authorization || "";
-    //     req.token = token;
-    //     req.pubSub = pubSub;
-    //     return { req, res, token, pubSub };
-    //   }
-    // },
-    // subscriptions: {
-    //   onConnect: () => {
-    //     return { pubSub };
-    //   },
-    // },
-    // dataSources: () => ({
-    //   authAPI: new AuthAPI(),
-    //   chatAPI: new ChatAPI(),
-    //   contactAPI: new ContactAPI(),
-    // }),
-    // uploads: false,
-    // this is new
+
     plugins: [
-      // Proper shutdown for the HTTP server.
       ApolloServerPluginDrainHttpServer({ httpServer }),
 
-      // Proper shutdown for the WebSocket server.
       {
         async serverWillStart() {
           return {
@@ -117,9 +90,7 @@ async function startServer() {
   });
 
   await server.start();
-  // apolloServer.applyMiddleware({ app });
 
-  // tutorial final step
   app.use(express.static(__dirname + "/public"));
 
   const apiLimiter = rateLimit({
@@ -147,14 +118,7 @@ async function startServer() {
   express.json(), 
   expressMiddleware(server,{
     context: async ({ req, res }) => {
-      // if (connection) {
-      //   return { ...connection.context, pubSub };
-      // } else {
-      //   const token = req.headers.authorization || "";
-      //   req.token = token;
-      //   req.pubSub = pubSub;
-      //   return { req, res, token, pubSub };
-      // }
+
 
       const {cache} = server;
       const token = req.headers.authorization || "";

@@ -24,37 +24,17 @@ const authMiddleware = setContext((_, { headers }) => {
 	};
 });
 
-// logger.debug(`authMiddleware: ${JSON.stringify(authMiddleware)}`);
-
-// const gatewayHttpLink = createUploadLink({
-// 	uri: GATEWAY_HTTP_URL + "/graphql",
-// });
-
 const httpLink = new HttpLink({
 	uri: GATEWAY_HTTP_URL + "/graphql",
 });
 
-// const wsClient = createClient({
-// 	url: GATEWAY_WS_URL + "/graphql",
-// 	reconnect: true,
-// });
-
-// const wsLink = new GraphQLWsLink(wsClient);
 
 const wsLink = new GraphQLWsLink(createClient({
 	url: GATEWAY_WS_URL + "/graphql",
-	// url: "ws://localhost:3001/graphql",
 	reconnect: true,
 }));
 
-// const gatewayApolloClientLink = split(
-// 	({ query }) => {
-// 		const definition = getMainDefinition(query);
-// 		return (definition.kind === "OperationDefinition" && definition.operation === "subscription");
-// 	},
-// 	wsLink,
-// 	authMiddleware.concat(gatewayHttpLink),
-// );
+
 
 const splitLink = split(
   ({ query }) => {
@@ -65,14 +45,9 @@ const splitLink = split(
     );
   },
   wsLink,
-//   authMiddleware.concat(wsLink),
   authMiddleware.concat(httpLink)
 );
 
-// export const apolloClient = new ApolloClient({
-// 	link: gatewayApolloClientLink,
-// 	cache: new InMemoryCache(),
-// });
 
 export const apolloClient = new ApolloClient({
   link: splitLink,
