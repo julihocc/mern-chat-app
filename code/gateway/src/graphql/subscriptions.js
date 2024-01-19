@@ -17,7 +17,7 @@ const subscriptions = {
 			logger.debug(`subscriptions.js | newContactRequest`);
 			return pubSub.asyncIterator("NEW_CONTACT_REQUEST");
 		}
-	}
+	},
 };
 
 module.exports = subscriptions;
