@@ -37,11 +37,11 @@ const { GraphQLUpload } = require("graphql-upload");
 const subscriptions = require("./subscriptions");
 const { PubSub } = require("graphql-subscriptions");
 
-const pubSub = new PubSub();
+
 
 const resolvers = {
   Upload: GraphQLUpload,
-  // Subscription: subscriptions,
+  Subscription: subscriptions,
   Query: {
     getCurrentUser,
     getChatRoomById,
@@ -68,14 +68,14 @@ const resolvers = {
     rejectContactRequest,
   },
 
-  Subscription: {
-    newMessage: {
-      subscribe: () => pubSub.asyncIterator(`NEW_MESSAGE`)
-    },
-    newContactRequest: {
-      subscribe: () => pubSub.asyncIterator("NEW_CONTACT_REQUEST")    
-    },
-  },
+  // Subscription: {
+  //   newMessage: {
+  //     subscribe: (_,__,context) => context.pubSub.asyncIterator(`NEW_MESSAGE`)
+  //   },
+  //   newContactRequest: {
+  //     subscribe: (_, __,context) => context.pubSub.asyncIterator("NEW_CONTACT_REQUEST")    
+  //   },
+  // },
 };
 
 module.exports = { resolvers };

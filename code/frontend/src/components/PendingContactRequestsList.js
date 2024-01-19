@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import logger from "../utils/logger";
 import { useSubscription } from "@apollo/client";
 import { NEW_CONTACT_REQUEST } from "../gql/subscriptions/NEW_CONTACT_REQUEST";
+import Alert from "@mui/material/Alert";
 
 const PendingContactRequestsList = () => {
   const { _id } = useSelector((state) => state.user);
@@ -17,10 +18,40 @@ const PendingContactRequestsList = () => {
   const acceptContactRequestHandler = useAcceptContactRequest(userId);
   const rejectContactRequestHandler = useRejectContactRequest(userId);
   const [refreshKey, setRefreshKey] = useState(0);
+  const [pendingRequests, setPendingRequests] = useState([]);
+
   const {
     data: newContactRequestData,
     error: newContactRequestError,
-  } = useSubscription(NEW_CONTACT_REQUEST);
+    loading: newContactRequestLoading,
+  } = useSubscription(NEW_CONTACT_REQUEST, {
+    onComplete: () => {
+      logger.debug("New contact request subscription completed");
+      // const pendingRequestsUpdated = data.getContactRequestsByContext.filter(
+      //   (request) => request.status === "pending"
+      // );
+      // setPendingRequests(pendingRequestsUpdated);
+      setPendingRequests(newContactRequestData.newContactRequest);
+    },
+    onError: (err) => {
+      logger.error("*Error in new contact request subscription:", err);
+    },
+  });
+
+  useEffect(() => {
+    if (newContactRequestLoading) {
+      logger.debug("Subscribing to new contact requests...");
+    }
+    if (newContactRequestData) {
+      logger.debug("New contact request data received:", newContactRequestData);
+    }
+    if (newContactRequestError) {
+      logger.error(
+        "Error in new contact request subscription:",
+        newContactRequestError
+      );
+    }
+  }, [newContactRequestData, newContactRequestError, newContactRequestLoading]);
 
   const forceUpdate = () => {
     setRefreshKey((oldKey) => oldKey + 1);
@@ -30,21 +61,22 @@ const PendingContactRequestsList = () => {
     refetch();
   }, [refreshKey, refetch]);
 
-  // if (loading || newContactRequestLoading) return <p>Loading...</p>;
+  // if (newContactRequestLoading) return <p>Loading (Subscriptions)...</p>;
+
   if (loading) return <p>Loading...</p>;
   // if (newContactRequestLoading) return <p>New Contact Request Loading...</p>;
   if (error) return <p>Error : {error.message} </p>;
-  if (newContactRequestError)
-    return <p>New Contact Request Error : {newContactRequestError.message} </p>;
 
-  const pendingRequests = data.getContactRequestsByContext.filter(
-    (request) => request.status === "pending"
-  );
-
-  if (pendingRequests.length === 0) return null;
+  // if (pendingRequests.length === 0) return null;
 
   return (
     <div>
+      <h1> 
+    Pending contact requests
+    </h1>
+      {newContactRequestData && (
+        <Alert severity="info">You have a new contact request</Alert>
+      )}
       <h3> {t("contactRequest")} </h3>
       <ul>
         {pendingRequests.map(({ _id, senderId, status, createdAt }) => (
