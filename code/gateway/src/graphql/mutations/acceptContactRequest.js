@@ -1,5 +1,6 @@
 const logger = require("../../utils/logger");
 const {AuthenticationError} = require("apollo-server");
+const pubSub = require("../../utils/pubsub");
 
 const acceptContactRequest = async (parent, {requestId}, context) => {
 	logger.debug("Mutations | acceptContactRequest")
@@ -53,7 +54,12 @@ const acceptContactRequest = async (parent, {requestId}, context) => {
 		await context.dataSources.contactAPI.addChatRoomIdToContactRequest(requestId, chatRoom._id);
 		await context.dataSources.authAPI.addContact(senderId, recipientId);
 		await context.dataSources.authAPI.addContact(recipientId, senderId);
+
+		pubSub.publish('NEW_CONTACT', {newContact: updatedContactRequest});
+		pubSub.publish('NEW_CHAT_ROOM', {newChatRoom: chatRoom});
+
 		return updatedContactRequest;
+		
 	} catch (error) {
 		logger.error(`Mutations | acceptContactRequest | error: ${JSON.stringify(error)}`)
 		throw new Error(`Mutations | acceptContactRequest | error: ${JSON.stringify(error)}`)

@@ -1,5 +1,6 @@
 const logger = require('../../utils/logger');
 const {AuthenticationError} = require('apollo-server-express');
+const pubSub = require('../../utils/pubsub');
 
 const createGroupConversationForCurrentUser = async (_, args, context) => {
 	const {additionalEmails} = args;
@@ -35,6 +36,7 @@ const createGroupConversationForCurrentUser = async (_, args, context) => {
 		const chatRoom = await context.dataSources.chatAPI.createChatRoomWithParticipantIds(participantIds);
 		await context.dataSources.contactAPI.createChatRoomWithParticipantIds(chatRoom._id, participantIds);
 		logger.debug(`chatRoom: ${JSON.stringify(chatRoom)}`);
+		pubSub.publish('NEW_CHAT_ROOM', {newChatRoom: chatRoom});
 		return chatRoom;
 	} catch (err) {
 		logger.error(`Error creating chat room: ${err}`);

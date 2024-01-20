@@ -122,6 +122,8 @@ const typeDefs = gql`
     type Subscription {
         newMessage: Message!
         newContactRequest: ContactRequest!
+        newContact: ContactRequest!
+        newChatRoom: ChatRoom!
     }
 `;
 

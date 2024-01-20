@@ -18,6 +18,16 @@ const subscriptions = {
 			return pubSub.asyncIterator("NEW_CONTACT_REQUEST");
 		}
 	},
+	newContact: {
+		subscribe: (parent, args, context) => {
+			return pubSub.asyncIterator(`NEW_CONTACT`);
+		}
+	},
+	newChatRoom: {
+		subscribe: (parent, args, context) => {
+			return pubSub.asyncIterator(`NEW_CHAT_ROOM`);
+		}
+	},
 };
 
 module.exports = subscriptions;

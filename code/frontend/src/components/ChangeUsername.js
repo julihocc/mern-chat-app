@@ -33,7 +33,7 @@ export const ChangeUsername = () => {
             // window.location.reload();
             logger.debug(`Username has been changed to ${newUsername}`);
         }
-    }, [usernameHasChanged]);
+    }, [usernameHasChanged, newUsername]);
 
     return (
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">

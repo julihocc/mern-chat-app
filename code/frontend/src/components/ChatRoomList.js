@@ -4,6 +4,9 @@ import {useTranslation} from "react-i18next";
 import logger from "../utils/logger"; // importing the logger
 import {useGetChatRoomsForCurrentUser} from "../hooks/queries/useGetChatRoomsForCurrentUser";
 import {Link} from "react-router-dom";
+// import { use } from "i18next";
+import { useSubscription } from "@apollo/client";
+import { NEW_CHAT_ROOM } from "../gql/subscriptions/NEW_CHAT_ROOM";
 
 const ChatRoomList = () => {
 	const {t} = useTranslation();
@@ -11,6 +14,49 @@ const ChatRoomList = () => {
 	const {loading, error, data} = useGetChatRoomsForCurrentUser();
 	const [sortOption, setSortOption] = useState("ascending");
 	const [sortedChatRooms, setSortedChatRooms] = useState([]);
+
+	const {
+		data: newChatRoomData,
+		error: newChatRoomError,
+		loading: newChatRoomLoading,
+	} = useSubscription(NEW_CHAT_ROOM, {
+		onComplete: () => {
+			if (data) {
+				const sorted = [...data.getChatRoomsForCurrentUser];
+				if (sortOption === "ascending") {
+					sorted.sort((a, b) => a.createdAt - b.createdAt);
+				} else if (sortOption === "descending") {
+					sorted.sort((a, b) => b.createdAt - a.createdAt);
+				}
+				setSortedChatRooms(sorted);
+			}
+		},
+		onError: (err) => {
+			logger.error(`*Error in new chat room subscription: ${err}`);
+		},
+	});
+
+	useEffect(() => {
+		if (newChatRoomLoading) {
+			logger.debug(`Subscribing to new chat rooms...`);
+		}
+		if (newChatRoomData) {
+			logger.debug(`New chat room data received: ${newChatRoomData}`);
+		}
+		if (newChatRoomError) {
+			logger.error(`Error in new chat room subscription: ${newChatRoomError}`);
+		}
+		if (data) {
+			const sorted = [...data.getChatRoomsForCurrentUser];
+			if (sortOption === "ascending") {
+				sorted.sort((a, b) => a.createdAt - b.createdAt);
+			} else if (sortOption === "descending") {
+				sorted.sort((a, b) => b.createdAt - a.createdAt);
+			}
+			setSortedChatRooms(sorted);
+		}
+	}, [newChatRoomLoading, newChatRoomError, newChatRoomData, data, sortOption]);
+
 	useEffect(() => {
 		let sorted;
 
@@ -45,6 +91,15 @@ const ChatRoomList = () => {
 
 	return (<div>
 		<Typography variant="h3">{t("chatList")}</Typography>
+
+		{ 
+			newChatRoomData && (
+				<Alert severity="info">
+					New chat room: {newChatRoomData.newChatRoom.createdAt}
+				</Alert>
+			)
+		}
+
 		<FormControl fullWidth>
 			<InputLabel id="sort-select-label">Sort</InputLabel>
 			<Select

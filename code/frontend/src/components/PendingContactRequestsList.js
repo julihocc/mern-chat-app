@@ -9,15 +9,15 @@ import logger from "../utils/logger";
 import { useSubscription } from "@apollo/client";
 import { NEW_CONTACT_REQUEST } from "../gql/subscriptions/NEW_CONTACT_REQUEST";
 import Alert from "@mui/material/Alert";
+import { Typography } from "@mui/material";
 
 const PendingContactRequestsList = () => {
   const { _id } = useSelector((state) => state.user);
   const userId = _id;
   const { t } = useTranslation();
-  const { loading, error, data, refetch } = useGetContactRequestsByContext();
+  const { loading, error, data  } = useGetContactRequestsByContext();
   const acceptContactRequestHandler = useAcceptContactRequest(userId);
   const rejectContactRequestHandler = useRejectContactRequest(userId);
-  const [refreshKey, setRefreshKey] = useState(0);
 
   const [pendingRequests, setPendingRequests] = useState([]);
 
@@ -85,7 +85,10 @@ const PendingContactRequestsList = () => {
 
   return (
     <div>
-      <h1>Pending contact requests</h1>
+      {/* <h1>Pending contact requests</h1> */}
+
+      <Typography variant="h3">{t("pendingContactRequests")}</Typography>
+
       {newContactRequestData && (
         <Alert severity="info">You have a new contact request</Alert>
       )}
