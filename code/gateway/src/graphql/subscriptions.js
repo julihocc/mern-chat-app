@@ -7,8 +7,7 @@ const pubSub = require("../utils/pubsub"); // Import the pubsub instance from ut
 const subscriptions = {
 	newMessage: {
 		subscribe: (parent, args, context) => {
-			const {chatRoomId} = args;
-			return pubSub.asyncIterator(`NEW_MESSAGE_${chatRoomId}`);
+			return pubSub.asyncIterator(`NEW_MESSAGE`);
 		},
 	},
 	newContactRequest: {

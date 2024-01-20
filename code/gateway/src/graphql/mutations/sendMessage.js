@@ -50,6 +50,7 @@ const sendMessage = async (parent, args, context) => {
 	const message = await context.dataSources.chatAPI.saveMessage(chatRoomId, senderId, body, fileContent,)
 
 	logger.debug(`Message: ${JSON.stringify(message._id)}`);
+	pubSub.publish(`NEW_MESSAGE`, {newMessage: message});
 
 	return message;
 }
