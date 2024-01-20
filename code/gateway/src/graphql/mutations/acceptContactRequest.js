@@ -56,6 +56,7 @@ const acceptContactRequest = async (parent, {requestId}, context) => {
 		await context.dataSources.authAPI.addContact(recipientId, senderId);
 
 		pubSub.publish('NEW_CONTACT', {newContact: updatedContactRequest});
+		pubSub.publish('NEW_CHAT_ROOM', {newChatRoom: chatRoom});
 
 		return updatedContactRequest;
 		
