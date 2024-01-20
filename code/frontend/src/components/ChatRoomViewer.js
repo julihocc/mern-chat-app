@@ -84,18 +84,17 @@ const ChatRoomViewer = () => {
   }, [messageData]);
 
   useEffect(() => {
+    if (newMessageError) {
+      logger.error(`New message error: ${newMessageError}`);
+    }
 
-	if(newMessageError) {
-		logger.error(`New message error: ${newMessageError}`);
-	}
+    if (newMessageLoading) {
+      logger.debug(`New message loading: ${newMessageLoading}`);
+    }
 
-	if(newMessageLoading) {
-		logger.debug(`New message loading: ${newMessageLoading}`);
-	}
-
-	if(newMessageData) {
-		logger.debug(`New message data: ${newMessageData}`);
-	}
+    if (newMessageData) {
+      logger.debug(`New message data: ${newMessageData}`);
+    }
 
     if (newMessageData?.newMessage) {
       logger.debug("New message from subscription:", newMessageData.newMessage);
@@ -170,6 +169,15 @@ const ChatRoomViewer = () => {
           .join(", ")}
       </Typography>
       <List>
+
+			{
+				newMessageData && (
+					<Alert severity="info">
+						New message: {newMessageData.newMessage.body}
+					</Alert>
+				)
+			}
+
         {messages &&
           messages.slice(-5).map((message, index) => (
             <ListItem
