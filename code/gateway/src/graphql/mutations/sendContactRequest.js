@@ -51,6 +51,10 @@ const sendContactRequest = async (parent, args, context, info) => {
     );
   }
 
+  if (sender._id === recipient._id) {
+    throw new Error("You cannot send a contact request to yourself");
+  }
+
   const existingRequest =
     await context.dataSources.contactAPI.getContactRequestsByUsers(
       sender._id,
