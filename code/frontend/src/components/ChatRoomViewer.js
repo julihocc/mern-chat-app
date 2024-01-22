@@ -169,14 +169,11 @@ const ChatRoomViewer = () => {
           .join(", ")}
       </Typography>
       <List>
-
-			{
-				newMessageData && (
-					<Alert severity="info">
-						New message: {newMessageData.newMessage.body}
-					</Alert>
-				)
-			}
+        {newMessageData && (
+          <Alert severity="info">
+            New message: {newMessageData.newMessage.body}
+          </Alert>
+        )}
 
         {messages &&
           messages.slice(-5).map((message, index) => (

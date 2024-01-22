@@ -2,8 +2,8 @@
 import gql from "graphql-tag";
 
 export const NEW_MESSAGE = gql`
-  subscription NewMessage($chatRoomId: ID!) {
-    newMessage(chatRoomId: $chatRoomId) {
+  subscription NewMessage{
+    newMessage{
       _id
       senderId
       chatRoomId
