@@ -2,7 +2,7 @@
 import gql from "graphql-tag";
 
 export const SEND_MESSAGE = gql`
-  mutation SendMessage($chatRoomId: ID!, $body: String, $file: Upload) {
+  mutation SendMessage($chatRoomId: ID!, $body: String, $file: String) {
     sendMessage(chatRoomId: $chatRoomId, body: $body, file: $file) {
       _id
       senderId
