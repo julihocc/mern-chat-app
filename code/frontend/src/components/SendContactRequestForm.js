@@ -55,7 +55,7 @@ const SendContactRequestForm = () => {
     if (getUserByEmailError) {
       setError(getUserByEmailError);
     }
-  }, [getUserByEmailError]);
+  }, [getUserByEmailError, setError]);
 
   useEffect(() => {
     logger.debug(
@@ -91,7 +91,11 @@ const SendContactRequestForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     logger.debug(`SendContactRequestForm | handleSubmit | ${recipientEmail}`);
+
     try {
+      if (!recipientEmail) {
+        throw new Error("Please enter an email address");
+      }
       logger.debug(
         `SendContactRequestForm | handleSubmit | getUserByEmail | awaiting`
       );
@@ -109,7 +113,9 @@ const SendContactRequestForm = () => {
     }
   };
 
-  if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
+  // if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
+  if (currentUserLoading) return <p> Current User Loading... </p>;
+  if (getUserByEmailLoading) return <p> Get User By Email Loading... </p>;
   if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 
   return (
