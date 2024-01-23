@@ -25,43 +25,32 @@ const sendContactRequest = async (parent, args, context, info) => {
     throw new UserInputError("Invalid recipient ID provided");
   }
 
+
   try {
     const { token } = context;
     logger.debug(
       `gateway\src\graphql\mutations\sendContactRequest.js | token: ${token}`
     );
-
-    if (!token) {
-      throw new AuthenticationError(
-        `Could not find token for contact request: ${token}`
-      );
-    }
-  } catch (error) {
-    logger.error(`Error validating contact request: ${error.message}`);
-    throw new UserInputError("Invalid token provided");
-  }
-
-  const sender = await context.dataSources.authAPI.getUserByToken(token);
-  logger.debug(`sender: ${JSON.stringify(sender)}`);
-
-  if (!sender) {
-    logger.error(`Could not find sender for contact request: ${token}`);
-    throw new AuthenticationError(
-      `Could not find sender for contact request: ${token}`
+    const sender = await context.dataSources.authAPI.getUserByToken(token);
+    logger.debug(`sender: ${JSON.stringify(sender)}`);
+  } catch (senderError) {
+    logger.error(
+      `gateway\src\graphql\mutations\sendContactRequest.js \n 
+      Error retrieving sender: ${senderError.message}`
     );
   }
 
+  try {
   const recipient = await context.dataSources.authAPI.getUserById(recipientId);
   logger.debug(`recipient: ${JSON.stringify(recipient)}`);
-
-  if (!recipient) {
+  } catch (recipientError) {
     logger.error(
-      `Could not find recipient for contact request: ${recipientId}`
+      `gateway\src\graphql\mutations\sendContactRequest.js \n
+      Error retrieving recipient: ${recipientError.message}`
     );
-    throw new AuthenticationError(
-      `Could not find recipient for contact request: ${recipientId}`
-    );
+    throw new Error("Error retrieving recipient");
   }
+
 
   if (sender._id === recipient._id) {
     throw new Error("You cannot send a contact request to yourself");
