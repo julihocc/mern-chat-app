@@ -37,6 +37,26 @@ const SendContactRequestForm = () => {
     data: getUserByEmailData,
   } = useGetUserByEmail();
 
+  logger.debug(
+    `SendContactRequestForm | getUserByEmailError: ${getUserByEmailError}`
+  );
+  logger.debug(
+    `SendContactRequestForm | getUserByEmailData: ${JSON.stringify(
+      getUserByEmailData
+    )}`
+  );
+  
+      useEffect(() => {
+    logger.debug(
+      `SendContactRequestForm | useEffect | getUserByEmailError: ${JSON.stringify(
+        getUserByEmailError
+      )}`
+    );
+    if (getUserByEmailError) {
+      setError(getUserByEmailError);
+    }
+  }, [getUserByEmailError]);
+
   useEffect(() => {
     logger.debug(
       `SendContactRequestForm | useEffect | getUserByEmailData: ${JSON.stringify(
@@ -48,8 +68,8 @@ const SendContactRequestForm = () => {
         currentUserData
       )}`
     );
-    let senderId=null;
-    let recipientId=null;
+    let senderId = null;
+    let recipientId = null;
     if (currentUserData?.getCurrentUser?._id) {
       senderId = currentUserData.getCurrentUser._id;
       logger.debug(`senderId: ${senderId}`);
@@ -72,22 +92,25 @@ const SendContactRequestForm = () => {
     e.preventDefault();
     logger.debug(`SendContactRequestForm | handleSubmit | ${recipientEmail}`);
     try {
-      await getUserByEmail({ variables: { email: recipientEmail } });
-    } catch (getUserByEmailError) {
-      logger.error(
-        `SendContactRequestForm | handleSubmit | getUserByEmailError: ${getUserByEmailError.message}`
+      logger.debug(
+        `SendContactRequestForm | handleSubmit | getUserByEmail | awaiting`
       );
-      setError(getUserByEmailError);
+      await getUserByEmail({
+        variables: { email: recipientEmail },
+      });
+      logger.debug(
+        `SendContactRequestForm | handleSubmit | getUserByEmail | completed`
+      );
+    } catch (err) {
+      logger.error(
+        `SendContactRequestForm | handleSubmit | getUserByEmail-Error: ${err.message}`
+      );
+      setError(err);
     }
   };
 
   if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
   if (currentUserError) return <p>Error: {currentUserError.message}</p>;
-
-  if (getUserByEmailError) {
-    // If the getUserByEmail query results in an error, set a custom error message to inform the user that the recipient email does not exist
-    setError("User with this email does not exist.");
-  }
 
   return (
     <div>
