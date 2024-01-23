@@ -1,5 +1,9 @@
 const logger = require("../../utils/logger");
-const { AuthenticationError } = require("apollo-server-express");
+const {
+  AuthenticationError,
+  ValidationError,
+  UserInputError,
+} = require("apollo-server-express");
 const yup = require("yup");
 const pubSub = require("../../utils/pubsub");
 
@@ -8,50 +12,48 @@ const sendContactRequest = async (parent, args, context, info) => {
   const { recipientId } = args;
   logger.debug(`recipientId: ${recipientId}`);
 
-  const schema = yup.object().shape({
-    recipientId: yup.string().required(),
-  });
-
   try {
+    const schema = yup.object().shape({
+      recipientId: yup.string().required(),
+    });
+
     await schema.validate({ recipientId });
-  } catch (err) {
-    logger.error(`Error validating contact request: ${err.message}`);
-    throw new AuthenticationError(err.message);
-  }
-
-  const { token } = context;
-  logger.debug(`token: ${token}`);
-
-  if (!token) {
-    logger.error(`Could not find token for contact request: ${token}`);
-    throw new AuthenticationError(
-      `Could not find token for contact request: ${token}`
-    );
-  }
-
-  const sender = await context.dataSources.authAPI.getUserByToken(token);
-  logger.debug(`sender: ${JSON.stringify(sender)}`);
-
-  if (!sender) {
-    logger.error(`Could not find sender for contact request: ${token}`);
-    throw new AuthenticationError(
-      `Could not find sender for contact request: ${token}`
-    );
-  }
-
-  const recipient = await context.dataSources.authAPI.getUserById(recipientId);
-  logger.debug(`recipient: ${JSON.stringify(recipient)}`);
-
-  if (!recipient) {
+  } catch (valitationError) {
     logger.error(
-      `Could not find recipient for contact request: ${recipientId}`
+      `Error validating contact request: ${ValidationError.message}`
     );
-    throw new AuthenticationError(
-      `Could not find recipient for contact request: ${recipientId}`
+    throw new UserInputError("Invalid recipient ID provided");
+  }
+
+  let sender;
+  try {
+    const { token } = context;
+    logger.debug(
+      `gateway\src\graphql\mutations\sendContactRequest.js | token: ${token}`
     );
+    sender = await context.dataSources.authAPI.getUserByToken(token);
+    logger.debug(`sender: ${JSON.stringify(sender)}`);
+  } catch (senderError) {
+    logger.error(
+      `gateway\src\graphql\mutations\sendContactRequest.js \n 
+      Error retrieving sender: ${senderError.message}`
+    );
+  }
+
+  let recipient;
+  try {
+    recipient = await context.dataSources.authAPI.getUserById(recipientId);
+    logger.debug(`recipient: ${JSON.stringify(recipient)}`);
+  } catch (recipientError) {
+    logger.error(
+      `gateway\src\graphql\mutations\sendContactRequest.js \n
+      Error retrieving recipient: ${recipientError.message}`
+    );
+    throw new Error("Error retrieving recipient");
   }
 
   if (sender._id === recipient._id) {
+    logger.error("You cannot send a contact request to yourself");
     throw new Error("You cannot send a contact request to yourself");
   }
 
@@ -60,9 +62,9 @@ const sendContactRequest = async (parent, args, context, info) => {
       sender._id,
       recipient._id
     );
-  logger.debug(`existingRequest: ${JSON.stringify(existingRequest)}`);
 
   if (existingRequest) {
+    logger.debug(`existingRequest: ${JSON.stringify(existingRequest)}`);
     throw new Error("A contact request already exists between these users");
   }
 
@@ -73,8 +75,6 @@ const sendContactRequest = async (parent, args, context, info) => {
         recipient._id
       );
     logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
-
-    ////////////
 
     pubSub.publish(`NEW_CONTACT_REQUEST`, {
       newContactRequest: contactRequest,
