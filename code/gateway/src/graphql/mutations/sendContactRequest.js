@@ -25,13 +25,13 @@ const sendContactRequest = async (parent, args, context, info) => {
     throw new UserInputError("Invalid recipient ID provided");
   }
 
-
+  let sender;
   try {
     const { token } = context;
     logger.debug(
       `gateway\src\graphql\mutations\sendContactRequest.js | token: ${token}`
     );
-    const sender = await context.dataSources.authAPI.getUserByToken(token);
+    sender = await context.dataSources.authAPI.getUserByToken(token);
     logger.debug(`sender: ${JSON.stringify(sender)}`);
   } catch (senderError) {
     logger.error(
@@ -40,9 +40,10 @@ const sendContactRequest = async (parent, args, context, info) => {
     );
   }
 
+  let recipient;
   try {
-  const recipient = await context.dataSources.authAPI.getUserById(recipientId);
-  logger.debug(`recipient: ${JSON.stringify(recipient)}`);
+    recipient = await context.dataSources.authAPI.getUserById(recipientId);
+    logger.debug(`recipient: ${JSON.stringify(recipient)}`);
   } catch (recipientError) {
     logger.error(
       `gateway\src\graphql\mutations\sendContactRequest.js \n
@@ -50,7 +51,6 @@ const sendContactRequest = async (parent, args, context, info) => {
     );
     throw new Error("Error retrieving recipient");
   }
-
 
   if (sender._id === recipient._id) {
     throw new Error("You cannot send a contact request to yourself");
