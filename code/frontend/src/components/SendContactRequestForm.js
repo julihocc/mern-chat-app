@@ -47,66 +47,66 @@ const SendContactRequestForm = () => {
     )}`
   );
 
-  useEffect(() => {
-    logger.debug(`sendContactRequest| useEffect | error: ${sendContactError}`);
-    if (sendContactError) {
-      setError(sendContactError);
-    }
-  }, [sendContactError]);
+  // useEffect(() => {
+  //   logger.debug(`sendContactRequest| useEffect | error: ${sendContactError}`);
+  //   if (sendContactError) {
+  //     setError(sendContactError);
+  //   }
+  // }, [sendContactError]);
 
-  useEffect(() => {
-    logger.debug(
-      `SendContactRequestForm | useEffect | getUserByEmailError: ${JSON.stringify(
-        getUserByEmailError
-      )}`
-    );
-    if (getUserByEmailError) {
-      setError(getUserByEmailError);
-    }
-  }, [getUserByEmailError]);
+  // useEffect(() => {
+  //   logger.debug(
+  //     `SendContactRequestForm | useEffect | getUserByEmailError: ${JSON.stringify(
+  //       getUserByEmailError
+  //     )}`
+  //   );
+  //   if (getUserByEmailError) {
+  //     setError(getUserByEmailError);
+  //   }
+  // }, [getUserByEmailError]);
 
-  useEffect(() => {
-    try {
-      logger.debug(
-        `SendContactRequestForm | useEffect | getUserByEmailData: ${JSON.stringify(
-          getUserByEmailData
-        )}`
-      );
-      logger.debug(
-        `SendContactRequestForm | useEffect | currentUserData: ${JSON.stringify(
-          currentUserData
-        )}`
-      );
-      let senderId = null;
-      let recipientId = null;
-      if (currentUserData?.getCurrentUser?._id) {
-        senderId = currentUserData.getCurrentUser._id;
-        logger.debug(`senderId: ${senderId}`);
-      }
-      if (getUserByEmailData?.getUserByEmail?._id) {
-        recipientId = getUserByEmailData.getUserByEmail._id;
-        logger.debug(`recipientId: ${recipientId}`);
-      }
-      if (senderId && recipientId) {
-        logger.debug(`sendContactRequest | sending contact request`);
-        sendContactRequest({
-          variables: {
-            senderId,
-            recipientId,
-          },
-        });
-        logger.debug(`sendContactRequest | contact request sent`);
-      }
-    } catch (err) {
-      logger.error(`Error sending contact request: ${err.message}`);
-      setError(err);
-    }
-  }, [
-    getUserByEmailData,
-    sendContactRequest,
-    currentUserData,
-    setError,
-  ]);
+  // useEffect(() => {
+  //   try {
+  //     logger.debug(
+  //       `SendContactRequestForm | useEffect | getUserByEmailData: ${JSON.stringify(
+  //         getUserByEmailData
+  //       )}`
+  //     );
+  //     logger.debug(
+  //       `SendContactRequestForm | useEffect | currentUserData: ${JSON.stringify(
+  //         currentUserData
+  //       )}`
+  //     );
+  //     let senderId = null;
+  //     let recipientId = null;
+  //     if (currentUserData?.getCurrentUser?._id) {
+  //       senderId = currentUserData.getCurrentUser._id;
+  //       logger.debug(`senderId: ${senderId}`);
+  //     }
+  //     if (getUserByEmailData?.getUserByEmail?._id) {
+  //       recipientId = getUserByEmailData.getUserByEmail._id;
+  //       logger.debug(`recipientId: ${recipientId}`);
+  //     }
+  //     if (senderId && recipientId) {
+  //       logger.debug(`sendContactRequest | sending contact request`);
+  //       sendContactRequest({
+  //         variables: {
+  //           senderId,
+  //           recipientId,
+  //         },
+  //       });
+  //       logger.debug(`sendContactRequest | contact request sent`);
+  //     }
+  //   } catch (err) {
+  //     logger.error(`Error sending contact request: ${err.message}`);
+  //     setError(err);
+  //   }
+  // }, [
+  //   getUserByEmailData,
+  //   sendContactRequest,
+  //   currentUserData,
+  //   setError,
+  // ]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -116,20 +116,33 @@ const SendContactRequestForm = () => {
       if (!recipientEmail) {
         throw new Error("Please enter an email address");
       }
+
       logger.debug(
         `SendContactRequestForm | handleSubmit | getUserByEmail | awaiting`
       );
-      await getUserByEmail({
-        variables: { email: recipientEmail },
-      });
+
+      try {
+        await getUserByEmail({
+          variables: { email: recipientEmail },
+        });
+      } catch (err) {
+        logger.error(
+          `SendContactRequestForm | handleSubmit | getUserByEmailError: ${err.message}`
+        );
+        throw new Error(err);
+      }
+
       logger.debug(
         `SendContactRequestForm | handleSubmit | getUserByEmail | completed`
       );
     } catch (err) {
       logger.error(
-        `SendContactRequestForm | handleSubmit | getUserByEmailError: ${err.message}`
+        `SendContactRequestForm | handleSubmit | error: ${err.message}`
       );
       setError(err);
+            logger.error(
+              `SendContactRequestForm | handleSubmit | setError: ${error.message}`
+            );
     }
   };
 
