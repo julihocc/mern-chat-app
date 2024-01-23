@@ -56,16 +56,20 @@ const sendContactRequest = async (parent, args, context, info) => {
     logger.error("You cannot send a contact request to yourself");
     throw new Error("You cannot send a contact request to yourself");
   }
+  try {
+    const existingRequest =
+      await context.dataSources.contactAPI.getContactRequestsByUsers(
+        sender._id,
+        recipient._id
+      );
 
-  const existingRequest =
-    await context.dataSources.contactAPI.getContactRequestsByUsers(
-      sender._id,
-      recipient._id
-    );
-
-  if (existingRequest) {
-    logger.debug(`existingRequest: ${JSON.stringify(existingRequest)}`);
-    throw new Error("A contact request already exists between these users");
+    if (existingRequest) {
+      logger.debug(`existingRequest: ${JSON.stringify(existingRequest)}`);
+      throw new Error;
+    }
+  } catch (err) {
+    logger.error(`Error sending contact request: ${err.message}`);
+    throw new Error(`Exisiting request: ${err.message}`);
   }
 
   try {
@@ -83,7 +87,7 @@ const sendContactRequest = async (parent, args, context, info) => {
     return contactRequest;
   } catch (err) {
     logger.error(`Error sending contact request: ${err.message}`);
-    throw new Error(`Error sending contact request: ${err.message}`);
+    throw new Error(`Error sending contact request!!: ${err.message}`);
   }
 };
 

@@ -6,6 +6,7 @@ import { useGetCurrentUser } from "../hooks/queries/useGetCurrentUser";
 import { useSendContactRequest } from "../hooks/mutations/useSendContactRequest";
 import { useGetUserByEmail } from "../hooks/queries/useGetUserByEmail";
 import logger from "../utils/logger";
+import { use } from "i18next";
 
 const SendContactRequestForm = () => {
   const { t } = useTranslation();
@@ -47,6 +48,13 @@ const SendContactRequestForm = () => {
   );
 
   useEffect(() => {
+    logger.debug(`sendContactRequest| useEffect | error: ${sendContactError}`);
+    if (sendContactError) {
+      setError(sendContactError);
+    }
+  }, [sendContactError]);
+
+  useEffect(() => {
     logger.debug(
       `SendContactRequestForm | useEffect | getUserByEmailError: ${JSON.stringify(
         getUserByEmailError
@@ -55,38 +63,50 @@ const SendContactRequestForm = () => {
     if (getUserByEmailError) {
       setError(getUserByEmailError);
     }
-  }, [getUserByEmailError, setError]);
+  }, [getUserByEmailError]);
 
   useEffect(() => {
-    logger.debug(
-      `SendContactRequestForm | useEffect | getUserByEmailData: ${JSON.stringify(
-        getUserByEmailData
-      )}`
-    );
-    logger.debug(
-      `SendContactRequestForm | useEffect | currentUserData: ${JSON.stringify(
-        currentUserData
-      )}`
-    );
-    let senderId = null;
-    let recipientId = null;
-    if (currentUserData?.getCurrentUser?._id) {
-      senderId = currentUserData.getCurrentUser._id;
-      logger.debug(`senderId: ${senderId}`);
+    try {
+      logger.debug(
+        `SendContactRequestForm | useEffect | getUserByEmailData: ${JSON.stringify(
+          getUserByEmailData
+        )}`
+      );
+      logger.debug(
+        `SendContactRequestForm | useEffect | currentUserData: ${JSON.stringify(
+          currentUserData
+        )}`
+      );
+      let senderId = null;
+      let recipientId = null;
+      if (currentUserData?.getCurrentUser?._id) {
+        senderId = currentUserData.getCurrentUser._id;
+        logger.debug(`senderId: ${senderId}`);
+      }
+      if (getUserByEmailData?.getUserByEmail?._id) {
+        recipientId = getUserByEmailData.getUserByEmail._id;
+        logger.debug(`recipientId: ${recipientId}`);
+      }
+      if (senderId && recipientId) {
+        logger.debug(`sendContactRequest | sending contact request`);
+        sendContactRequest({
+          variables: {
+            senderId,
+            recipientId,
+          },
+        });
+        logger.debug(`sendContactRequest | contact request sent`);
+      }
+    } catch (err) {
+      logger.error(`Error sending contact request: ${err.message}`);
+      setError(err);
     }
-    if (getUserByEmailData?.getUserByEmail?._id) {
-      recipientId = getUserByEmailData.getUserByEmail._id;
-      logger.debug(`recipientId: ${recipientId}`);
-    }
-    if (senderId && recipientId) {
-      sendContactRequest({
-        variables: {
-          senderId,
-          recipientId,
-        },
-      });
-    }
-  }, [getUserByEmailData, sendContactRequest, currentUserData]);
+  }, [
+    getUserByEmailData,
+    sendContactRequest,
+    currentUserData,
+    setError,
+  ]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,7 +127,7 @@ const SendContactRequestForm = () => {
       );
     } catch (err) {
       logger.error(
-        `SendContactRequestForm | handleSubmit | getUserByEmail-Error: ${err.message}`
+        `SendContactRequestForm | handleSubmit | getUserByEmailError: ${err.message}`
       );
       setError(err);
     }
@@ -139,8 +159,7 @@ const SendContactRequestForm = () => {
           {sendContactLoading ? t("sending") : t("send")}
         </Button>
       </form>
-      {error && <p>{error.message}</p>}
-      {sendContactError && <p>Error: {sendContactError.message}</p>}
+      {error && <p>Error: {error.message}</p>}
     </div>
   );
 };
