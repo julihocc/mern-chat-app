@@ -1,5 +1,9 @@
 const logger = require("../../utils/logger");
-const { AuthenticationError } = require("apollo-server-express");
+const {
+  AuthenticationError,
+  ValidationError,
+  UserInputError,
+} = require("apollo-server-express");
 const yup = require("yup");
 const pubSub = require("../../utils/pubsub");
 
@@ -8,25 +12,33 @@ const sendContactRequest = async (parent, args, context, info) => {
   const { recipientId } = args;
   logger.debug(`recipientId: ${recipientId}`);
 
-  const schema = yup.object().shape({
-    recipientId: yup.string().required(),
-  });
-
   try {
+    const schema = yup.object().shape({
+      recipientId: yup.string().required(),
+    });
+
     await schema.validate({ recipientId });
-  } catch (err) {
-    logger.error(`Error validating contact request: ${err.message}`);
-    throw new AuthenticationError(err.message);
+  } catch (valitationError) {
+    logger.error(
+      `Error validating contact request: ${ValidationError.message}`
+    );
+    throw new UserInputError("Invalid recipient ID provided");
   }
 
-  const { token } = context;
-  logger.debug(`token: ${token}`);
-
-  if (!token) {
-    logger.error(`Could not find token for contact request: ${token}`);
-    throw new AuthenticationError(
-      `Could not find token for contact request: ${token}`
+  try {
+    const { token } = context;
+    logger.debug(
+      `gateway\src\graphql\mutations\sendContactRequest.js | token: ${token}`
     );
+
+    if (!token) {
+      throw new AuthenticationError(
+        `Could not find token for contact request: ${token}`
+      );
+    }
+  } catch (error) {
+    logger.error(`Error validating contact request: ${error.message}`);
+    throw new UserInputError("Invalid token provided");
   }
 
   const sender = await context.dataSources.authAPI.getUserByToken(token);
