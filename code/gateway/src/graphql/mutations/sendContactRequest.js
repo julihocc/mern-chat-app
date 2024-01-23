@@ -53,6 +53,7 @@ const sendContactRequest = async (parent, args, context, info) => {
   }
 
   if (sender._id === recipient._id) {
+    logger.error("You cannot send a contact request to yourself");
     throw new Error("You cannot send a contact request to yourself");
   }
 
@@ -61,9 +62,9 @@ const sendContactRequest = async (parent, args, context, info) => {
       sender._id,
       recipient._id
     );
-  logger.debug(`existingRequest: ${JSON.stringify(existingRequest)}`);
 
   if (existingRequest) {
+    logger.debug(`existingRequest: ${JSON.stringify(existingRequest)}`);
     throw new Error("A contact request already exists between these users");
   }
 
@@ -74,8 +75,6 @@ const sendContactRequest = async (parent, args, context, info) => {
         recipient._id
       );
     logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
-
-    ////////////
 
     pubSub.publish(`NEW_CONTACT_REQUEST`, {
       newContactRequest: contactRequest,
