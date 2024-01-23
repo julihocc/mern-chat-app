@@ -45,8 +45,8 @@ const SendContactRequestForm = () => {
       getUserByEmailData
     )}`
   );
-  
-      useEffect(() => {
+
+  useEffect(() => {
     logger.debug(
       `SendContactRequestForm | useEffect | getUserByEmailError: ${JSON.stringify(
         getUserByEmailError
