@@ -31,15 +31,29 @@ const SendContactRequestForm = () => {
     data: getUserByEmailData,
   } = useGetUserByEmail();
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUserError(null);
     logger.debug(`Sending contact request to ${email}...`);
+    try {
     const user = await getUserByEmail({ variables: { email } });
     logger.debug(
       `Sending contact request to ${user?.data?.getUserByEmail?._id}...`
     );
+  }catch(err){
+    logger.error(err);
+    setUserError("User with this email does not exist.");
+  }
   };
+
+    useEffect(() => {
+      if (getUserByEmailError) {
+        logger.error(getUserByEmailError);
+        setUserError("User with this email does not exist.");
+      }
+    }, [getUserByEmailError]);
 
   useEffect(() => {
     if (getUserByEmailData && currentUserData?.getCurrentUser?._id) {
