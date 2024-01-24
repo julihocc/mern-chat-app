@@ -67,7 +67,9 @@ const SendContactRequestForm = () => {
   if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 
   if (getUserByEmailError) {
-    // If the getUserByEmail query results in an error, set a custom error message to inform the user that the recipient email does not exist
+    // If the getUserByEmail query results in an error, 
+    // set a custom error message to inform the user that 
+    // the recipient email does not exist
     setUserError("User with this email does not exist.");
   }
 
