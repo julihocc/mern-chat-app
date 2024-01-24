@@ -26,6 +26,7 @@ import { initiateFetchCurrentUser } from "../redux/actions";
 import logger from "../utils/logger";
 import { Gravatar } from "./Gravatar";
 import { useSendMessage } from "../hooks/mutations/useSendMessage";
+import { use } from "i18next";
 
 const ChatRoomViewer = () => {
   const { t } = useTranslation();
@@ -76,7 +77,12 @@ const ChatRoomViewer = () => {
         file: file, // This is now a Base64 string
       },
     });
+    setMessageBody("");
   };
+
+  useEffect(() => {
+    logger.debug(`Messages: ${JSON.stringify(messages)}`);
+  }, [messages]);
 
   useEffect(() => {
     logger.debug("Messages from server:", messageData?.getMessagesByChatRoomId);
@@ -170,13 +176,13 @@ const ChatRoomViewer = () => {
       </Typography>
       <List>
         {newMessageData && (
-          <Alert severity="info">
+          <Alert severity="info" onClose={()=>{setMessageBody("")}}>
             New message: {newMessageData.newMessage.body}
           </Alert>
         )}
 
         {messages &&
-          messages.slice(-5).map((message, index) => (
+          messages.slice(-5).reverse().map((message, index) => (
             <ListItem
               key={index}
               sx={{
