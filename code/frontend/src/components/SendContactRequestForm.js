@@ -31,15 +31,12 @@ const SendContactRequestForm = () => {
     data: getUserByEmailData,
   } = useGetUserByEmail();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setUserError(null);
-    logger.debug(`Sending contact request to ${email}...`);
-    const user = await getUserByEmail({ variables: { email } });
-    logger.debug(
-      `Sending contact request to ${user?.data?.getUserByEmail?._id}...`
-    );
-  };
+  useEffect(() => {
+    logger.debug(`getUserByEmailError: ${getUserByEmailError}`);
+    if (getUserByEmailError) {
+      setUserError("User with this email does not exist.");
+    }
+  }, [getUserByEmailError]);
 
   useEffect(() => {
     if (getUserByEmailData && currentUserData?.getCurrentUser?._id) {
@@ -59,19 +56,36 @@ const SendContactRequestForm = () => {
     }
   }, [
     getUserByEmailData,
-    currentUserData?.getCurrentUser?._id,
+    // currentUserData?.getCurrentUser?._id,
+    currentUserData,
     sendContactRequest,
   ]);
+
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setUserError(null);
+    logger.debug(`Sending contact request to ${email}...`);
+    try {
+      const user = await getUserByEmail({ variables: { email } });
+      logger.debug(
+        `Sending contact request to ${user?.data?.getUserByEmail?._id}...`
+      );
+    } catch (err) {
+      logger.error(err);
+      setUserError("User with this email does not exist.");
+    }
+  };
 
   if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
   if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 
-  if (getUserByEmailError) {
-    // If the getUserByEmail query results in an error, 
-    // set a custom error message to inform the user that 
-    // the recipient email does not exist
-    setUserError("User with this email does not exist.");
-  }
+  // if (getUserByEmailError) {
+  //   // If the getUserByEmail query results in an error, 
+  //   // set a custom error message to inform the user that 
+  //   // the recipient email does not exist
+  //   setUserError("User with this email does not exist.");
+  // }
 
   return (
     <div>
@@ -95,7 +109,7 @@ const SendContactRequestForm = () => {
         </Button>
       </form>
       {userError && <p>{userError}</p>}
-      {sendContactError && <p>Error: {sendContactError.message}</p>}
+      {/* {sendContactError && <p>Error: {sendContactError.message}</p>} */}
     </div>
   );
 };
