@@ -47,14 +47,14 @@ const SendContactRequestForm = () => {
   useEffect(() => {
     logger.debug(`getUserByEmailError: ${getUserByEmailError}`);
     if (getUserByEmailError) {
-      setUserError("User with this email does not exist.");
+      setError(getUserByEmailError.message);
     }
   }, [getUserByEmailError]);
 
   useEffect(() => {
     logger.debug(`sendContactError: ${sendContactError}`);
     if (sendContactError) {
-      setUserError(sendContactError.message);
+      setError(sendContactError.message);
     }
   }, [sendContactError]);
 
@@ -99,20 +99,27 @@ const SendContactRequestForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setUserError(null);
-    logger.debug(`Sending contact request to ${email}...`);
-    if (!email) {
-      setUserError("Please enter a valid email address.");
+    setError(null);
+    logger.debug(`Sending contact request to ${recipientEmail}...`);
+    
+    if (!recipientEmail) {
+      setError("Please enter a valid email address.");
       return;
     }
+
+    if (recipientEmail === currentUserData.getCurrentUser.email) {
+      setError("You cannot send a contact request to yourself.");
+      return;
+    }
+
     try {
-      const user = await getUserByEmail({ variables: { email } });
+      const user = await getUserByEmail({ variables: { email: recipientEmail } });
       logger.debug(
         `Sending contact request to ${user?.data?.getUserByEmail?._id}...`
       );
     } catch (err) {
       logger.error(err);
-      setUserError("User with this email does not exist.");
+      setError("User with this email does not exist.");
     }
   };
 
@@ -130,7 +137,11 @@ const SendContactRequestForm = () => {
           placeholder={t("enterEmail")}
           variant="outlined"
           value={recipientEmail}
-          onChange={(e) => setRecipientEmail(e.target.value)}
+          onChange={(e) => {
+            const providedEmail = e.target.value;
+            logger.debug(`providedEmail: ${providedEmail}`);
+            setRecipientEmail(providedEmail)
+          }}
         />
         <Button
           type="submit"
@@ -142,9 +153,9 @@ const SendContactRequestForm = () => {
         </Button>
       </form>
       {/* {userError && <p>{userError}</p>} */}
-      {userError && (
-        <Alert severity="warning" onClose={() => {setUserError("")}}>
-          {userError}
+      {error && (
+        <Alert severity="warning" onClose={() => {setError("")}}>
+          {error}
         </Alert>
       )}
       {/* {sendContactError && <p>Error: {sendContactError.message}</p>} */}
