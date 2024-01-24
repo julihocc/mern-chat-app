@@ -66,6 +66,10 @@ const SendContactRequestForm = () => {
     e.preventDefault();
     setUserError(null);
     logger.debug(`Sending contact request to ${email}...`);
+    if (!email) {
+      setUserError("Please enter a valid email address.");
+      return;
+    }
     try {
       const user = await getUserByEmail({ variables: { email } });
       logger.debug(
