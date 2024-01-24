@@ -1,6 +1,12 @@
 // path: frontend/src/components/SendContactRequestForm.js
 import React, { useEffect, useState } from "react";
-import { Button, CircularProgress, TextField, Typography } from "@mui/material";
+import {
+  Alert,
+  Button,
+  CircularProgress,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useGetCurrentUser } from "../hooks/queries/useGetCurrentUser";
 import { useSendContactRequest } from "../hooks/mutations/useSendContactRequest";
@@ -39,6 +45,13 @@ const SendContactRequestForm = () => {
   }, [getUserByEmailError]);
 
   useEffect(() => {
+    logger.debug(`sendContactError: ${sendContactError}`);
+    if (sendContactError) {
+      setUserError(sendContactError.message);
+    }
+  }, [sendContactError]);
+
+  useEffect(() => {
     if (getUserByEmailData && currentUserData?.getCurrentUser?._id) {
       // Added null checks
       sendContactRequest({
@@ -61,7 +74,6 @@ const SendContactRequestForm = () => {
     sendContactRequest,
   ]);
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUserError(null);
@@ -85,8 +97,8 @@ const SendContactRequestForm = () => {
   if (currentUserError) return <p>Error: {currentUserError.message}</p>;
 
   // if (getUserByEmailError) {
-  //   // If the getUserByEmail query results in an error, 
-  //   // set a custom error message to inform the user that 
+  //   // If the getUserByEmail query results in an error,
+  //   // set a custom error message to inform the user that
   //   // the recipient email does not exist
   //   setUserError("User with this email does not exist.");
   // }
@@ -112,7 +124,12 @@ const SendContactRequestForm = () => {
           {sendContactLoading ? t("sending") : t("send")}
         </Button>
       </form>
-      {userError && <p>{userError}</p>}
+      {/* {userError && <p>{userError}</p>} */}
+      {userError && (
+        <Alert severity="warning" onClose={() => {setUserError("")}}>
+          {userError}
+        </Alert>
+      )}
       {/* {sendContactError && <p>Error: {sendContactError.message}</p>} */}
     </div>
   );
