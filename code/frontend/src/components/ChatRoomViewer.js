@@ -78,6 +78,7 @@ const ChatRoomViewer = () => {
       },
     });
     setMessageBody("");
+    setFileName("Upload File");
   };
 
   useEffect(() => {
@@ -153,20 +154,21 @@ const ChatRoomViewer = () => {
   return (
     <Container
       component={Paper}
-      sx={{
-        height: "90vh",
-        mt: 2,
-        display: "flex",
-        flexDirection: "column",
-        p: 2,
-      }}
+      // sx={{
+      //   height: "110vh",
+      //   mt: 2,
+      //   display: "flex",
+      //   flexDirection: "column",
+      //   p: 2,
+      // }}
     >
       <CssBaseline />
       <Typography variant="h2" sx={{ mb: 2 }}>
         {t("messages")}
       </Typography>
       <Typography variant="h3" sx={{ mb: 2 }}>
-        {t("chatRoom")}: {Date(Number(chatRoom.data.getChatRoomById.createdAt))}
+        {/* {t("chatRoom")}: {Date(Number(chatRoom.data.getChatRoomById.createdAt))} */}
+        {t("chatRoom")}: {chatRoom.data.getChatRoomById._id}
       </Typography>
       <Typography variant="h4" sx={{ mb: 2 }}>
         {t("participants")}:{" "}
@@ -176,42 +178,50 @@ const ChatRoomViewer = () => {
       </Typography>
       <List>
         {newMessageData && (
-          <Alert severity="info" onClose={()=>{setMessageBody("")}}>
+          <Alert
+            severity="info"
+            onClose={() => {
+              setMessageBody("");
+            }}
+          >
             New message: {newMessageData.newMessage.body}
           </Alert>
         )}
 
         {messages &&
-          messages.slice(-5).reverse().map((message, index) => (
-            <ListItem
-              key={index}
-              sx={{
-                flexDirection:
-                  message.senderId._id === currentUserId
-                    ? "row-reverse"
-                    : "row",
-              }}
-            >
-              <ListItemAvatar>
-                <Gravatar email={message.senderId.email} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={message.body}
-                secondary={message.senderId.username}
+          messages
+            .slice(-10)
+            .reverse()
+            .map((message, index) => (
+              <ListItem
+                key={index}
                 sx={{
-                  textAlign:
-                    message.senderId._id === currentUserId ? "right" : "left",
+                  flexDirection:
+                    message.senderId._id === currentUserId
+                      ? "row-reverse"
+                      : "row",
                 }}
-              />
-              {message.fileContent && ( // Assuming the file is an image, render it as an image tag
-                <img
-                  src={`data:${message.mimeType};base64,${message.fileContent}`}
-                  alt="Uploaded content"
+              >
+                <ListItemAvatar>
+                  <Gravatar email={message.senderId.email} />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={message.body}
+                  secondary={message.senderId.username}
+                  sx={{
+                    textAlign:
+                      message.senderId._id === currentUserId ? "right" : "left",
+                  }}
                 />
-                // For other file types, you can create a download link with the appropriate MIME type
-              )}
-            </ListItem>
-          ))}
+                {message.fileContent && ( // Assuming the file is an image, render it as an image tag
+                  <img
+                    src={`data:${message.mimeType};base64,${message.fileContent}`}
+                    alt="Uploaded content"
+                  />
+                  // For other file types, you can create a download link with the appropriate MIME type
+                )}
+              </ListItem>
+            ))}
       </List>
       <form onSubmit={(e) => handleSendMessage(e, currentUserId, chatRoomId)}>
         <Stack direction="row" spacing={1}>
