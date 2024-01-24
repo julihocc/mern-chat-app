@@ -9,14 +9,20 @@ import logger from "../utils/logger";
 
 const SendContactRequestForm = () => {
   const { t } = useTranslation();
-  const [email, setEmail] = useState("");
-  const [userError, setUserError] = useState(null);
+  const [recipientEmail, setRecipientEmail] = useState("");
+  const [error, setError] = useState(null);
 
   const {
     data: currentUserData,
     loading: currentUserLoading,
     error: currentUserError,
   } = useGetCurrentUser();
+
+  logger.debug(
+    `SendContactRequestForm | currentUserData: ${JSON.stringify(
+      currentUserData
+    )}`
+  );
 
   const {
     sendContactRequest,
@@ -30,8 +36,6 @@ const SendContactRequestForm = () => {
     error: getUserByEmailError,
     data: getUserByEmailData,
   } = useGetUserByEmail();
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,6 +51,15 @@ const SendContactRequestForm = () => {
     setUserError("User with this email does not exist.");
   }
   };
+  logger.debug(
+    `SendContactRequestForm | getUserByEmailError: ${getUserByEmailError}`
+  );
+  logger.debug(
+    `SendContactRequestForm | getUserByEmailData: ${JSON.stringify(
+      getUserByEmailData
+    )}`
+  );
+>>>>>>> 15e71aff71170fe8f4ec6b9a7d38cd5167641ed2
 
     useEffect(() => {
       if (getUserByEmailError) {
@@ -56,34 +69,70 @@ const SendContactRequestForm = () => {
     }, [getUserByEmailError]);
 
   useEffect(() => {
-    if (getUserByEmailData && currentUserData?.getCurrentUser?._id) {
-      // Added null checks
+    logger.debug(
+      `SendContactRequestForm | useEffect | getUserByEmailError: ${JSON.stringify(
+        getUserByEmailError
+      )}`
+    );
+    if (getUserByEmailError) {
+      setError(getUserByEmailError);
+    }
+  }, [getUserByEmailError]);
+
+  useEffect(() => {
+    logger.debug(
+      `SendContactRequestForm | useEffect | getUserByEmailData: ${JSON.stringify(
+        getUserByEmailData
+      )}`
+    );
+    logger.debug(
+      `SendContactRequestForm | useEffect | currentUserData: ${JSON.stringify(
+        currentUserData
+      )}`
+    );
+    let senderId = null;
+    let recipientId = null;
+    if (currentUserData?.getCurrentUser?._id) {
+      senderId = currentUserData.getCurrentUser._id;
+      logger.debug(`senderId: ${senderId}`);
+    }
+    if (getUserByEmailData?.getUserByEmail?._id) {
+      recipientId = getUserByEmailData.getUserByEmail._id;
+      logger.debug(`recipientId: ${recipientId}`);
+    }
+    if (senderId && recipientId) {
       sendContactRequest({
         variables: {
-          senderId: currentUserData.getCurrentUser._id,
-          recipientId: getUserByEmailData.getUserByEmail._id,
+          senderId,
+          recipientId,
         },
-      })
-        .then(() => {
-          setEmail("");
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      });
     }
-  }, [
-    getUserByEmailData,
-    currentUserData?.getCurrentUser?._id,
-    sendContactRequest,
-  ]);
+  }, [getUserByEmailData, sendContactRequest, currentUserData]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    logger.debug(`SendContactRequestForm | handleSubmit | ${recipientEmail}`);
+    try {
+      logger.debug(
+        `SendContactRequestForm | handleSubmit | getUserByEmail | awaiting`
+      );
+      await getUserByEmail({
+        variables: { email: recipientEmail },
+      });
+      logger.debug(
+        `SendContactRequestForm | handleSubmit | getUserByEmail | completed`
+      );
+    } catch (err) {
+      logger.error(
+        `SendContactRequestForm | handleSubmit | getUserByEmail-Error: ${err.message}`
+      );
+      setError(err);
+    }
+  };
 
   if (currentUserLoading || getUserByEmailLoading) return <CircularProgress />;
   if (currentUserError) return <p>Error: {currentUserError.message}</p>;
-
-  if (getUserByEmailError) {
-    // If the getUserByEmail query results in an error, set a custom error message to inform the user that the recipient email does not exist
-    setUserError("User with this email does not exist.");
-  }
 
   return (
     <div>
@@ -94,8 +143,8 @@ const SendContactRequestForm = () => {
           label={t("email")}
           placeholder={t("enterEmail")}
           variant="outlined"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={recipientEmail}
+          onChange={(e) => setRecipientEmail(e.target.value)}
         />
         <Button
           type="submit"
@@ -106,7 +155,7 @@ const SendContactRequestForm = () => {
           {sendContactLoading ? t("sending") : t("send")}
         </Button>
       </form>
-      {userError && <p>{userError}</p>}
+      {error && <p>{error.message}</p>}
       {sendContactError && <p>Error: {sendContactError.message}</p>}
     </div>
   );
