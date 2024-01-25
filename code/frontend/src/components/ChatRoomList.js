@@ -94,14 +94,15 @@ const ChatRoomList = () => {
     if (sortOption === ASC) {
       logger.debug(`useEffect | Sorting chat rooms in ascending order`);
       //   sortedChatRooms.sort((a, b) => Date(a.createdAt) - Date(b.createdAt));
-      temp.sort();
+    //   temp.sort();
       logger.debug(
         `useEffect | temp: ${temp.map((chatRoom) => chatRoom.createdAt)}`
       );
     } else if (sortOption === DESC) {
       logger.debug(`useEffect | Sorting chat rooms in descending order`);
       //   sortedChatRooms.sort((a, b) => Date(b.createdAt) - Date(a.createdAt));
-      temp = temp.sort().reverse();
+    //   temp = temp.sort().reverse();
+	temp = temp.reverse();
       logger.debug(
         `useEffect | temp: ${temp.map((chatRoom) => chatRoom.createdAt)}`
       );
