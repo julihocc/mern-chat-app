@@ -26,7 +26,6 @@ import { initiateFetchCurrentUser } from "../redux/actions";
 import logger from "../utils/logger";
 import { Gravatar } from "./Gravatar";
 import { useSendMessage } from "../hooks/mutations/useSendMessage";
-import { use } from "i18next";
 
 const ChatRoomViewer = () => {
   const { t } = useTranslation();
