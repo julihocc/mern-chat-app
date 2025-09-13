@@ -2,6 +2,7 @@
 mode: agent
 ---
 
+- Exclude files from virtual environments and dependencies. Particularly, ignore directories like `venv`, `env`, `.venv`, `.env`, `node_modules`, and any other dependency folders.
 - Execute .github/prompts/commit.prompt.md to commit the changes in suitable chunks to maintain a clean git history.
 - Check for the recent history commit messages to identify the last version bump.
 - Update the documentation accordingly.
