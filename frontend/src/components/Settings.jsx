@@ -1,7 +1,7 @@
 import React from "react";
 import {Grid} from "@mui/material";
-import {ChangeUsername} from "./ChangeUsername";
-import {ChangePassword} from "./ChangePassword";
+import {ChangeUsername} from "./ChangeUsername.jsx";
+import {ChangePassword} from "./ChangePassword.jsx";
 
 const Settings = () => {
 	return (<div>

@@ -19,14 +19,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSubscription } from "@apollo/client";
 import { NEW_MESSAGE } from "../gql/subscriptions/NEW_MESSAGE";
-import Loading from "./Loading";
+import Loading from "./Loading.jsx";
 import useGetMessagesByChatRoomId from "../hooks/queries/useGetMessagesByChatRoomId";
 import { useTranslation } from "react-i18next";
 import { useGetChatRoomById } from "../hooks/queries/useGetChatRoomById";
 import { useDispatch, useSelector } from "react-redux";
 import { initiateFetchCurrentUser } from "../redux/actions";
 import logger from "../utils/logger";
-import { Gravatar } from "./Gravatar";
+import { Gravatar } from "./Gravatar.jsx";
 import { useSendMessage } from "../hooks/mutations/useSendMessage";
 
 const ChatRoomViewer = () => {

@@ -7,15 +7,15 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import SendContactRequestForm from "./SendContactRequestForm";
-import PendingContactRequestsList from "./PendingContactRequestsList";
-import CreateGroupConversation from "./CreateGroupConversation";
+import SendContactRequestForm from "./SendContactRequestForm.jsx";
+import PendingContactRequestsList from "./PendingContactRequestsList.jsx";
+import CreateGroupConversation from "./CreateGroupConversation.jsx";
 import { useTranslation } from "react-i18next";
 import logger from "../utils/logger";
 import { initiateFetchCurrentUser } from "../redux/actions";
-import { Gravatar } from "./Gravatar";
-import ChatRoomList from "./ChatRoomList";
-import { ContactListWithChatRoom } from "./ContactListWithChatRoom";
+import { Gravatar } from "./Gravatar.jsx";
+import ChatRoomList from "./ChatRoomList.jsx";
+import { ContactListWithChatRoom } from "./ContactListWithChatRoom.jsx";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
