@@ -16,9 +16,9 @@ spec:
         - name: frontend
           image: jdk2py/frontend:latest
           env:
-            - name: REACT_APP_CONTACT_SERVICE_HTTP_URL
+            - name: VITE_GATEWAY_HTTP_URL
               value: "http://localhost:3001"
-            - name: REACT_APP_CONTACT_SERVICE_WS_URL
+            - name: VITE_GATEWAY_WS_URL
               value: "ws://localhost:3001"
           ports:
             - containerPort: 3000

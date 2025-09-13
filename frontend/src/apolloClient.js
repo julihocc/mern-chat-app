@@ -5,8 +5,8 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { setContext } from "@apollo/client/link/context";
 import logger from "./utils/logger";
 
-const GATEWAY_HTTP_URL = process.env.REACT_APP_GATEWAY_HTTP_URL || "http://localhost:3001";
-const GATEWAY_WS_URL = process.env.REACT_APP_GATEWAY_WS_URL || "ws://localhost:3001";
+const GATEWAY_HTTP_URL = import.meta.env.VITE_GATEWAY_HTTP_URL || "http://localhost:3001";
+const GATEWAY_WS_URL = import.meta.env.VITE_GATEWAY_WS_URL || "ws://localhost:3001";
 
 logger.debug(`GATEWAY_SERVICE_HTTP_URL: ${GATEWAY_HTTP_URL}`);
 logger.debug(`GATEWAY_SERVICE_WS_URL: ${GATEWAY_WS_URL}`);
