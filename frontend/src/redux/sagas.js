@@ -1,6 +1,5 @@
-// frontend/src/redux/sagas.js
 import {all, call, put, takeLatest} from "redux-saga/effects";
-import {apolloClient} from "../apolloClient";
+import {apolloClient} from "../apolloClient.js";
 import {GET_CURRENT_USER} from "../gql/queries/GET_CURRENT_USER";
 import {fetchUserFailure, fetchUserRequest, fetchUserSaga, fetchUserSuccess,} from "./slices/userSlice";
 import logger from "../utils/logger";

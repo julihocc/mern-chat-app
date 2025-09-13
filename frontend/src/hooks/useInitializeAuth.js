@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import gql from "graphql-tag";
 import {setUser} from "../redux/slices/userSlice";
-import {apolloClient} from "../apolloClient";
+import {apolloClient} from "../apolloClient.js";
 
 const GET_CURRENT_USER = gql`
     query GetCurrentUser {

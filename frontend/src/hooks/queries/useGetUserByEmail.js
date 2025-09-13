@@ -1,4 +1,4 @@
-import {useLazyQuery} from "@apollo/react-hooks";
+import {useLazyQuery} from "@apollo/client";
 import {GET_USER_BY_EMAIL} from "../../gql/queries/GET_USER_BY_EMAIL";
 
 

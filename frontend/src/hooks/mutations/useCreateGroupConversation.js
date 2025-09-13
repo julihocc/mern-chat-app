@@ -1,4 +1,4 @@
-import {useMutation} from "@apollo/react-hooks";
+import {useMutation} from "@apollo/client";
 import {CREATE_GROUP_CONVERSATION} from "../../gql/mutations/CREATE_GROUP_CONVERSATION";
 
 

@@ -12,7 +12,7 @@ const initializeStore = async () => {
 	const preloadedState = await rehydrateState();
 
 	const optionalConfig = {
-		devTools: process.env.NODE_ENV !== "production",
+		devTools: import.meta.env.MODE !== "production",
 	};
 
 	const store = configureStore({

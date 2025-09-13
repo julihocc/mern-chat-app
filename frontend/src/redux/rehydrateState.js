@@ -1,5 +1,4 @@
-// frontend/src/redux/rehydrateState.js
-import {apolloClient} from "../apolloClient";
+import {apolloClient} from "../apolloClient.js";
 import gql from "graphql-tag";
 import logger from "../utils/logger";
 

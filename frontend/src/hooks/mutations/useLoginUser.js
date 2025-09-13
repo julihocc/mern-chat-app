@@ -1,4 +1,4 @@
-import {useMutation} from "@apollo/react-hooks";
+import {useMutation} from "@apollo/client";
 import logger from "../../utils/logger";
 import {LOGIN_USER} from "../../gql/mutations/LOGIN_USER";
 

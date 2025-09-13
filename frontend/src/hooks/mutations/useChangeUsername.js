@@ -1,4 +1,4 @@
-import {useMutation} from "@apollo/react-hooks";
+import {useMutation} from "@apollo/client";
 import {CHANGE_USERNAME} from "../../gql/mutations/CHANGE_USERNAME";
 
 export const useChangeUsername = (newUsername, currentPassword) => {

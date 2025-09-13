@@ -1,6 +1,6 @@
 import { SEND_MESSAGE } from "../../gql/mutations/SEND_MESSAGE";
 import { GET_MESSAGES_BY_CHATROOM_ID } from "../../gql/queries/GET_MESSAGES_BY_CHATROOM_ID";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import logger from "../../utils/logger";
 
 export const useSendMessage = (chatRoomId) => {
