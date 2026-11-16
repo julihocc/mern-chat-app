@@ -1,4 +1,4 @@
-import {useMutation} from "@apollo/client";
+import {useMutation} from "@apollo/client/react";
 import {LOGOUT_MUTATION} from "../../gql/mutations/LOGOUT_MUTATION";
 
 

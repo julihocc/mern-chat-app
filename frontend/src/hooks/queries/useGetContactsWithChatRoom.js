@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import { GET_CONTACTS_WITH_CHATROOM } from "../../gql/queries/GET_CONTACTS_WITH_CHATROOM";
 
 export const useGetContactsWithChatRoom = () => {

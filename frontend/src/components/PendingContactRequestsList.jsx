@@ -6,7 +6,7 @@ import { useRejectContactRequest } from "../hooks/mutations/useRejectContactRequ
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import logger from "../utils/logger";
-import { useSubscription } from "@apollo/client";
+import { useSubscription } from "@apollo/client/react";
 import { NEW_CONTACT_REQUEST } from "../gql/subscriptions/NEW_CONTACT_REQUEST";
 import Alert from "@mui/material/Alert";
 import { Typography } from "@mui/material";

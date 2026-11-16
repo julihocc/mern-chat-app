@@ -1,7 +1,7 @@
 // frontend/src/components/Login.js
 import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import {useApolloClient} from "@apollo/client";
+import {useApolloClient} from "@apollo/client/react";
 import {useNavigate} from "react-router-dom";
 import {Alert, Button, TextField} from "@mui/material";
 import {useTranslation} from "react-i18next";
@@ -88,7 +88,7 @@ const Login = () => {
 
 	return (<div>
 			<h2>{t("login")}</h2>
-			<form onSubmit={handleSubmit}>
+			<form aria-label={t("login")} onSubmit={handleSubmit}>
 
 				<TextField
 					type="email"

@@ -4,7 +4,7 @@ import { useGetContactsWithChatRoom } from "../hooks/queries/useGetContactsWithC
 import { Alert, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useSubscription } from "@apollo/client";
+import { useSubscription } from "@apollo/client/react";
 import log from "../utils/logger";
 import { useState } from "react";
 import { NEW_CONTACT } from "../gql/subscriptions/NEW_CONTACT";

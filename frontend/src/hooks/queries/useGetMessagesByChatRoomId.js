@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import { GET_MESSAGES_BY_CHATROOM_ID } from "../../gql/queries/GET_MESSAGES_BY_CHATROOM_ID";
 
 export default function useGetMessagesByChatRoomId(id) {

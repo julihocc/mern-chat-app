@@ -2,11 +2,10 @@
 import { describe, it, expect } from 'vitest'
 import { screen, waitFor } from '@testing-library/react'
 import { render } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from '@mui/material/styles'
 import { I18nextProvider } from 'react-i18next'
-import { MockedProvider } from '@apollo/client/testing'
+import { MockedProvider } from '@apollo/client/testing/react'
 
 import App from "../../App.jsx"
 import initializeStore from '../../redux/store'
@@ -15,6 +14,7 @@ import i18n from '../../utils/i18n'
 
 // Custom render for App component testing
 const renderApp = async (initialRoute = '/', preloadedState = {}) => {
+  window.history.pushState({}, '', initialRoute)
   const store = await initializeStore(preloadedState)
   
   return render(
@@ -22,9 +22,7 @@ const renderApp = async (initialRoute = '/', preloadedState = {}) => {
       <I18nextProvider i18n={i18n}>
         <ThemeProvider theme={theme}>
           <Provider store={store}>
-            <MemoryRouter initialEntries={[initialRoute]}>
-              <App />
-            </MemoryRouter>
+            <App />
           </Provider>
         </ThemeProvider>
       </I18nextProvider>

@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import { GET_CONTACT_REQUESTS_BY_CONTEXT } from "../../gql/queries/GET_CONTACT_REQUESTS_BY_CONTEXT";
 
 export const useGetContactRequestsByContext = () => {

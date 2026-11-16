@@ -1,7 +1,20 @@
 // Login component tests - demonstrating TDD approach
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { screen, fireEvent, waitFor, userEvent } from '@testing-library/react'
+import { screen, fireEvent, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { renderWithProviders } from '@test/utils/testing-library.jsx'
+
+const { mockNavigate } = vi.hoisted(() => ({
+  mockNavigate: vi.fn(),
+}))
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom')
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+  }
+})
 import { mockLoginSuccess, mockLoginError } from '@test/mocks/graphql'
 import Login from '../Login.jsx'
 
@@ -148,17 +161,6 @@ describe('Login Component', () => {
 
   describe('Navigation', () => {
     it('redirects to dashboard after successful login', async () => {
-      // This test would require mocking useNavigate from react-router-dom
-      // For now, we'll test that the navigation logic is called
-      const mockNavigate = vi.fn()
-      vi.mock('react-router-dom', async () => {
-        const actual = await vi.importActual('react-router-dom')
-        return {
-          ...actual,
-          useNavigate: () => mockNavigate
-        }
-      })
-
       await renderWithProviders(<Login />, {
         mocks: [mockLoginSuccess]
       })

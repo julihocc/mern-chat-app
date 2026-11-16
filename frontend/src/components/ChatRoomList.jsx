@@ -13,7 +13,7 @@ import logger from "../utils/logger"; // importing the logger
 import { useGetChatRoomsForCurrentUser } from "../hooks/queries/useGetChatRoomsForCurrentUser";
 import { Link } from "react-router-dom";
 // import { use } from "i18next";
-import { useSubscription } from "@apollo/client";
+import { useSubscription } from "@apollo/client/react";
 import { NEW_CHAT_ROOM } from "../gql/subscriptions/NEW_CHAT_ROOM";
 
 const ChatRoomList = () => {

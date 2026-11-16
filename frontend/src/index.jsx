@@ -11,7 +11,7 @@ import logger from "./utils/logger";
 import React from "react";
 import {Provider} from "react-redux";
 import initializeStore from "./redux/store";
-import {ApolloProvider} from "@apollo/client";
+import {ApolloProvider} from "@apollo/client/react";
 import {apolloClient} from "./apolloClient";
 
 

@@ -1,4 +1,4 @@
-import {useMutation} from "@apollo/client";
+import {useMutation} from "@apollo/client/react";
 import {SEND_CONTACT_REQUEST} from "../../gql/mutations/SEND_CONTACT_REQUEST";
 
 

@@ -1,5 +1,5 @@
 // Apollo Client testing utilities
-import { MockedProvider } from '@apollo/client/testing'
+import { MockedProvider } from '@apollo/client/testing/react'
 import { render } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
@@ -38,12 +38,13 @@ export const renderWithProviders = async (
   ui, 
   {
     preloadedState = {},
-    store = await initializeStore(preloadedState),
+    store,
     mocks = [],
     apolloOptions = {},
     ...renderOptions
   } = {}
 ) => {
+  const resolvedStore = store ?? await initializeStore(preloadedState)
   const apolloProps = createMockApolloClient(mocks, apolloOptions)
   
   function Wrapper({ children }) {
@@ -51,7 +52,7 @@ export const renderWithProviders = async (
       <MockedProvider {...apolloProps}>
         <I18nextProvider i18n={i18n}>
           <ThemeProvider theme={theme}>
-            <Provider store={store}>
+            <Provider store={resolvedStore}>
               <BrowserRouter>
                 {children}
               </BrowserRouter>
@@ -63,7 +64,7 @@ export const renderWithProviders = async (
   }
 
   return {
-    store,
+    store: resolvedStore,
     ...render(ui, { wrapper: Wrapper, ...renderOptions })
   }
 }

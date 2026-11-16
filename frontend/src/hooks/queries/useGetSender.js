@@ -1,4 +1,4 @@
-import {useQuery} from "@apollo/client";
+import {useQuery} from "@apollo/client/react";
 import {GET_USER_BY_ID} from "../../gql/queries/GET_USER_BY_ID";
 
 export const useGetSender = (message) => {

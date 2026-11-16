@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSubscription } from "@apollo/client";
+import { useSubscription } from "@apollo/client/react";
 import { NEW_MESSAGE } from "../gql/subscriptions/NEW_MESSAGE";
 import Loading from "./Loading.jsx";
 import useGetMessagesByChatRoomId from "../hooks/queries/useGetMessagesByChatRoomId";
