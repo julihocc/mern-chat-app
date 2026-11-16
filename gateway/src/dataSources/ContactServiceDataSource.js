@@ -1,10 +1,15 @@
 const {RESTDataSource} = require("@apollo/datasource-rest");
 const {debug} = require("../utils/logger");
+const {internalApiToken} = require("../utils/internalApiToken");
 
 class ContactAPI extends RESTDataSource {
 	constructor(options) {
 		super(options);
 		this.baseURL = process.env.CONTACT_SERVICE_URL || 'http://localhost:4000';
+	}
+
+	async willSendRequest(_path, request) {
+		request.headers["x-internal-token"] = internalApiToken();
 	}
 
 	async sendContactRequest(senderId, recipientId) {

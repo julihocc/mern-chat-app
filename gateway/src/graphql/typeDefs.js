@@ -120,7 +120,7 @@ const typeDefs = gql`
   }
 
   type Subscription {
-    newMessage: Message!
+    newMessage(chatRoomId: ID!): Message!
     newContactRequest: ContactRequest!
     newContact: ContactRequest!
     newChatRoom: ChatRoom!

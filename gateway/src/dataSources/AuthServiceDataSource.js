@@ -1,11 +1,16 @@
 // AuthServiceDataSource.js
 const {RESTDataSource} = require("@apollo/datasource-rest");
 const {debug} = require("../utils/logger");
+const {internalApiToken} = require("../utils/internalApiToken");
 
 class AuthAPI extends RESTDataSource {
 	constructor(options) {
 		super(options);
 		this.baseURL = process.env.AUTH_SERVICE_URL || 'http://localhost:5000';
+	}
+
+	async willSendRequest(_path, request) {
+		request.headers["x-internal-token"] = internalApiToken();
 	}
 
 	async getUserByEmail(email) {

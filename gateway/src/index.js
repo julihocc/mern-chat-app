@@ -50,10 +50,22 @@ async function startServer() {
     {
       schema,
       context: async (ctx) => {
-        const token = tokenFromRequest(ctx.extra.request);
+        const token = tokenFromRequest(ctx.extra && ctx.extra.request);
+        const dataSources = buildDataSources(server.cache);
+        let userId = null;
+        if (token) {
+          try {
+            const user = await dataSources.authAPI.getUserByToken(token);
+            userId = user && user._id ? String(user._id) : null;
+          } catch (err) {
+            logger.debug("Subscription auth failed");
+            userId = null;
+          }
+        }
         return {
           token,
-          dataSources: buildDataSources(server.cache),
+          dataSources,
+          userId,
         };
       },
     },

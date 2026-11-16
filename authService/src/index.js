@@ -9,6 +9,7 @@ const errorHandler = require("./utils/errorHandler");
 const logger = require("./utils/logger");
 const UserController = require('./controllers/UserController');
 const PasswordController = require('./controllers/PasswordController');
+const requireInternalToken = require('./utils/requireInternalToken');
 
 const PORT = process.env.PORT || 5000;
 
@@ -32,7 +33,7 @@ app.use(errorHandler);
 app.use(cookieParser());
 
 app.use(express.json());
-
+app.use(requireInternalToken);
 
 app.get('/v1/user', UserController.getUser);
 app.post('/v1/user', UserController.createUser);

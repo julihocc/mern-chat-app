@@ -9,6 +9,7 @@ const logger = require("./utils/logger");
 const ChatController = require("./controllers/ChatController");
 const MessageController = require("./controllers/MessageController");
 const UserController = require("./controllers/UserController");
+const requireInternalToken = require("./utils/requireInternalToken");
 
 const PORT = process.env.PORT || 4500;
 
@@ -32,6 +33,7 @@ app.use(errorHandler);
 app.use(cookieParser());
 
 app.use(express.json());
+app.use(requireInternalToken);
 
 // RESTful routes
 app.get("/v1/chat-room-populated", ChatController.getChatRoomByIdPopulatedWithUsers);

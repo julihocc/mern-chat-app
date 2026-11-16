@@ -50,7 +50,9 @@ const ChatRoomViewer = () => {
     data: newMessageData,
     error: newMessageError,
     loading: newMessageLoading,
-  } = useSubscription(NEW_MESSAGE);
+  } = useSubscription(NEW_MESSAGE, {
+    variables: { chatRoomId },
+  });
 
   const isLoading = chatRoom.loading || messageLoading || sendMessageLoading;
   const handleFileChange = (e) => {

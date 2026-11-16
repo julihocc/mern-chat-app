@@ -1,11 +1,16 @@
 const {RESTDataSource} = require("@apollo/datasource-rest");
 const {debug} = require("../utils/logger");
+const {internalApiToken} = require("../utils/internalApiToken");
 
 class ChatAPI extends RESTDataSource {
 	constructor(options) {
         super(options);
         this.baseURL = process.env.CHAT_SERVICE_URL || 'http://localhost:4500';
     }
+
+	async willSendRequest(_path, request) {
+		request.headers["x-internal-token"] = internalApiToken();
+	}
 	async getChatRoomById(chatRoomId) {
 		debug("getChatRoomById")
 		debug(`chatRoomId: ${chatRoomId}`);
