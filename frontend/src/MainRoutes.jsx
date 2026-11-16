@@ -48,6 +48,10 @@ const MainRoutes = () => {
 		setDrawerOpen(!drawerOpen);
 	};
 
+	const requireLogin = (element) => (
+		isLoggedIn ? element : <Navigate to="/login" replace />
+	);
+
 	return (
     <>
       <Container>
@@ -104,28 +108,19 @@ const MainRoutes = () => {
         <Routes>
           <Route
             path="/"
-            element={
-              isLoggedIn ? (
-                <Dashboard onLogout={handleLogout} />
-              ) : (
-                <Navigate to="/" replace />
-              )
-            }
+            element={requireLogin(<Dashboard onLogout={handleLogout} />)}
           />
           <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route
             path="/dashboard"
-            element={
-              isLoggedIn ? (
-                <Dashboard onLogout={handleLogout} />
-              ) : (
-                <Navigate to="/" replace />
-              )
-            }
+            element={requireLogin(<Dashboard onLogout={handleLogout} />)}
           />
-          <Route path="/chat/:chatRoomId" element={<ChatRoomViewer />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/chat/:chatRoomId"
+            element={requireLogin(<ChatRoomViewer />)}
+          />
+          <Route path="/settings" element={requireLogin(<Settings />)} />
           <Route path="/logout" element={<Logout />} />
         </Routes>
       </Container>

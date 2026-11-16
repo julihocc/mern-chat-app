@@ -112,8 +112,30 @@ describe('App Component', () => {
       await renderApp('/dashboard', unauthenticatedState)
       
       await waitFor(() => {
-        // Should redirect to login or show login prompt
-        expect(screen.getByText(/please log in/i) || screen.getByRole('button', { name: /login/i })).toBeInTheDocument()
+        expect(screen.getAllByRole('button', { name: /login/i }).length).toBeGreaterThan(0)
+      })
+    })
+
+    it('redirects logged-out visits to chat and settings', async () => {
+      const unauthenticatedState = {
+        user: {
+          _id: null,
+          email: null,
+          username: null,
+          isLoggedIn: false,
+          loading: false,
+          error: null
+        }
+      }
+
+      await renderApp('/settings', unauthenticatedState)
+      await waitFor(() => {
+        expect(screen.getAllByRole('button', { name: /login/i }).length).toBeGreaterThan(0)
+      })
+
+      await renderApp('/chat/room-1', unauthenticatedState)
+      await waitFor(() => {
+        expect(screen.getAllByRole('button', { name: /login/i }).length).toBeGreaterThan(0)
       })
     })
   })

@@ -8,8 +8,8 @@ import createSagaMiddleware from "redux-saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const initializeStore = async () => {
-	const preloadedState = await rehydrateState();
+const initializeStore = async (override) => {
+	const preloadedState = override ?? await rehydrateState();
 
 	const optionalConfig = {
 		devTools: import.meta.env.MODE !== "production",
