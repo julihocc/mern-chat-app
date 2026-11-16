@@ -150,6 +150,19 @@ const updateUser = async (req, res) => {
 	}
 }
 
+const deleteUser = async (req, res) => {
+	const {userId} = req.query;
+	if (!userId) {
+		return res.status(400).json({message: "userId is required"});
+	}
+	try {
+		await User.findByIdAndDelete(userId);
+		res.json({deleted: true});
+	} catch (error) {
+		res.status(500).json({message: `deleteUser error: ${error}`});
+	}
+}
+
 const getContactsByUserId = async (req, res) => {
 	debug("UserController | getContactsByUserId")
 	const {userId} = req.query;
@@ -165,5 +178,5 @@ const getContactsByUserId = async (req, res) => {
 }
 
 module.exports = {
-	getTokenByPayload, createUser, getManyUsersByEmail, getUser, updateUser, getContactsByUserId,
+	getTokenByPayload, createUser, getManyUsersByEmail, getUser, updateUser, deleteUser, getContactsByUserId,
 };

@@ -29,24 +29,45 @@ const signUp = async (
     throw new UserInputError("Passwords don't match");
   }
 
+  const rollback = async (label, action) => {
+    try {
+      await action();
+    } catch (rollbackError) {
+      logger.error(`Signup rollback failed (${label}): ${rollbackError.message}`);
+    }
+  };
+
+  let user;
   try {
-    const user = await context.dataSources.authAPI.createUser(
+    user = await context.dataSources.authAPI.createUser(
       email,
       username,
       password
     );
-    await context.dataSources.chatAPI.createUser(
-      user._id,
-      user.email,
-      user.username
-    );
-    await context.dataSources.contactAPI.createUser(
-      user._id,
-      user.email,
-      user.username
-    );
+    try {
+      await context.dataSources.chatAPI.createUser(
+        user._id,
+        user.email,
+        user.username
+      );
+    } catch (chatError) {
+      await rollback("auth user", () => context.dataSources.authAPI.deleteUser(user._id));
+      throw chatError;
+    }
+    try {
+      await context.dataSources.contactAPI.createUser(
+        user._id,
+        user.email,
+        user.username
+      );
+    } catch (contactError) {
+      await rollback("contact user", () => context.dataSources.contactAPI.deleteUser(user._id));
+      await rollback("chat user", () => context.dataSources.chatAPI.deleteUser(user._id));
+      await rollback("auth user", () => context.dataSources.authAPI.deleteUser(user._id));
+      throw contactError;
+    }
 
-    logger.debug(`AuthAPI | user: ${JSON.stringify(user)}`);
+    logger.debug(`Created user ${user.email}`);
 
 
   const token = await context.dataSources.authAPI.getTokenByPayload(

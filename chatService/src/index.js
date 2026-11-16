@@ -46,6 +46,7 @@ app.get("/v1/messages", MessageController.getMessagesByChatRoomId);
 app.post("/v1/message", MessageController.saveMessage);
 
 app.post("/v1/user", UserController.createUser);
+app.delete("/v1/user", UserController.deleteUser);
 app.put("/v1/user", UserController.updateUser);
 
 async function startServer() {

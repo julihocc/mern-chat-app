@@ -42,6 +42,7 @@ app.get("/v1/contact-request", ContactController.getContactRequest);
 app.put("/v1/contact-request", ContactController.changeContactRequest);
 
 app.post("/v1/user", UserController.createUser);
+app.delete("/v1/user", UserController.deleteUser);
 app.put("/v1/user", UserController.updateUser);
 
 app.post("/v1/chat-room", ChatController.createChatRoom);

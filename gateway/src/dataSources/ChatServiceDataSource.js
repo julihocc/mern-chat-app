@@ -101,6 +101,10 @@ class ChatAPI extends RESTDataSource {
         return data;
 	}
 
+	async deleteUser(userId) {
+		return await this.delete("/v1/user", {params: {userId}});
+	}
+
 	async changeUsername(username, newUsername) {
 		debug("ChatAPIT | updateUser")
         debug(`username: ${username}`)

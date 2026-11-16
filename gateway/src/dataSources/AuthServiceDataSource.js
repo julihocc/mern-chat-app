@@ -94,6 +94,10 @@ class AuthAPI extends RESTDataSource {
 		return data;
 	}
 
+	async deleteUser(userId) {
+		return await this.delete("/v1/user", {params: {userId}});
+	}
+
 	async changeUsername(username, newUsername) {
 		debug("changeUsername",)
 		debug(`username: ${username}`);

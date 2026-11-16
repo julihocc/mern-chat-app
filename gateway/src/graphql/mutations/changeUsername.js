@@ -12,11 +12,12 @@ const changeUsername = async (_, args, context) => {
 	}
 
 	const user = await context.dataSources.authAPI.getUserByToken(token);
-	logger.debug(`User found: ${user.email} (${user.id})`);
 
 	if (!user) {
 		throw new AuthenticationError('Not user found');
 	}
+
+	logger.debug(`User found: ${user.email}`);
 
 	const match = await context.dataSources.authAPI.getPasswordComparison(user.email, currentPassword);
 
@@ -30,14 +31,33 @@ const changeUsername = async (_, args, context) => {
 		throw new Error('Username already taken');
 	}
 
+	const previousUsername = user.username;
+	let authUpdated = false;
+	let chatUpdated = false;
+	const rollback = async (label, action) => {
+		try {
+			await action();
+		} catch (rollbackError) {
+			logger.error(`Username rollback failed (${label}): ${rollbackError.message}`);
+		}
+	};
+
 	try {
-		logger.debug(`Updating username: ${user.username} to ${newUsername}`);
-		const updatedUser = await context.dataSources.authAPI.changeUsername(user.username, newUsername)
-		await context.dataSources.chatAPI.changeUsername(user.username, newUsername);
-		await context.dataSources.contactAPI.changeUsername(user.username, newUsername);
-		logger.debug(`Updated user: ${JSON.stringify(updatedUser)}`);
+		logger.debug(`Updating username: ${previousUsername} to ${newUsername}`);
+		const updatedUser = await context.dataSources.authAPI.changeUsername(previousUsername, newUsername);
+		authUpdated = true;
+		await context.dataSources.chatAPI.changeUsername(previousUsername, newUsername);
+		chatUpdated = true;
+		await context.dataSources.contactAPI.changeUsername(previousUsername, newUsername);
 		return updatedUser;
 	} catch (err) {
+		if (chatUpdated) {
+			await rollback("contact username", () => context.dataSources.contactAPI.changeUsername(newUsername, previousUsername));
+			await rollback("chat username", () => context.dataSources.chatAPI.changeUsername(newUsername, previousUsername));
+		}
+		if (authUpdated) {
+			await rollback("auth username", () => context.dataSources.authAPI.changeUsername(newUsername, previousUsername));
+		}
 		throw new Error(`Error updating username: ${err.message}`);
 	}
 

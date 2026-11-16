@@ -37,6 +37,7 @@ app.use(requireInternalToken);
 
 app.get('/v1/user', UserController.getUser);
 app.post('/v1/user', UserController.createUser);
+app.delete('/v1/user', UserController.deleteUser);
 app.put('/v1/user', UserController.updateUser);
 app.get('/v1/contacts', UserController.getContactsByUserId);
 app.get('/v1/token', UserController.getTokenByPayload);
