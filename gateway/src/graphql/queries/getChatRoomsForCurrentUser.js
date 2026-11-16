@@ -3,7 +3,6 @@ const {AuthenticationError} = require('../../utils/graphqlErrors');
 const getChatRoomsForCurrentUser = async (parent, args, context) => {
 	logger.debug("gateway | getChatRoomsForCurrentUser");
 	const {token} = context;
-	logger.debug(`gateway | getChatRoomsForCurrentUser | token: ${token}`);
 	if (!token) {
 		throw new AuthenticationError("gateway | getChatRoomsForCurrentUser | Not authenticated");
 	}

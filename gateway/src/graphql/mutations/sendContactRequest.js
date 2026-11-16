@@ -28,9 +28,6 @@ const sendContactRequest = async (parent, args, context, info) => {
   let sender;
   try {
     const { token } = context;
-    logger.debug(
-      `gateway\src\graphql\mutations\sendContactRequest.js | token: ${token}`
-    );
     sender = await context.dataSources.authAPI.getUserByToken(token);
     logger.debug(`sender: ${JSON.stringify(sender)}`);
   } catch (senderError) {

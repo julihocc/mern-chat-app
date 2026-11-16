@@ -10,7 +10,6 @@ const rejectContactRequest = async (parent, {requestId}, context) => {
 	}
 
 	const {token} = context;
-	logger.debug(`token: ${token}`)
 	if (!token) {
 		logger.error(`You must be logged in to reject a contact request`)
 		throw new AuthenticationError('You must be logged in to reject a contact request')
@@ -20,8 +19,8 @@ const rejectContactRequest = async (parent, {requestId}, context) => {
 		const user = await context.dataSources.authAPI.getUserByToken(token)
 		logger.debug(`user: ${JSON.stringify(user)}`)
 		if (!user) {
-			logger.error(`Could not find user for contact request: ${token}`)
-			throw new AuthenticationError(`Could not find user for contact request: ${token}`)
+			logger.error("Could not find user for contact request")
+			throw new AuthenticationError("Could not find user for contact request")
 		}
 
 		const contactRequest = await context.dataSources.contactAPI.getContactRequest(requestId)

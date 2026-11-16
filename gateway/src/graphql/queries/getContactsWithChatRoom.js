@@ -5,7 +5,6 @@ const {AuthenticationError} = require("../../utils/graphqlErrors");
 const getContactsWithChatRoom = async (parent, args, context) => {
 	logger.debug("gateway | Mutations | getContactsWithChatRoom")
 	const {token} = context;
-	logger.debug(`token: ${token}`);
 	if (!token) {
 		throw new AuthenticationError("You must be logged in to get contacts");
 	}

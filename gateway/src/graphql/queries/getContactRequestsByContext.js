@@ -7,7 +7,6 @@ const getContactRequestsByContext = async (parent, args, context) => {
 	if (!token) {
 		throw new AuthenticationError("You must be logged in");
 	}
-	debug(`ContactController | getContactRequestsByContext | token: ${token}`)
 
 	const recipient = await context.dataSources.authAPI.getUserByToken(token)
 	debug(`ContactController | getContactRequestsByContext | recipient: ${JSON.stringify(recipient)}`)

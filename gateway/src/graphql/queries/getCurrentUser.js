@@ -4,7 +4,6 @@ const getCurrentUser = async (parent, args, context) => {
 	debug("queries/getCurrentUser");
 
 	const {token} = context;
-	debug("token:", token);
 
 	if (!token) {
 		throw new AuthenticationError("You must be logged in");

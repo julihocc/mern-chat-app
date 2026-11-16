@@ -13,8 +13,6 @@ const sendMessage = async (parent, args, context) => {
     throw new AuthenticationError("You must be logged in to send a message");
   }
 
-  logger.debug(`Token: ${token}`);
-
   const sender = await context.dataSources.authAPI.getUserByToken(token);
 
   if (!sender) {

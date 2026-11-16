@@ -5,7 +5,6 @@ const getChatRoomById = async (_, {chatRoomId}, context) => {
 	logger.debug("gateway/getChatRoomById");
     logger.debug(`gateway/chatRoomId: ${chatRoomId}`);
 	const {token} = context;
-	logger.debug(`gateway/token: ${token}`);
     if (!token) {
         throw new AuthenticationError('You need to be logged in');
     }
