@@ -94,13 +94,12 @@ async function startServer() {
 
   const apiLimiter = rateLimit({
     windowMs: 60 * 60 * 1000, // 1 hour window
-    max: 10000, // limit each IP to 100 requests per windowMs
+    max: 10000, // limit each IP to 10000 requests per windowMs
     message: "Too many requests from this IP, please try again after an hour",
   });
 
   app.use("/graphql", apiLimiter);
   app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
-  app.use(errorHandler);
   app.use(cookieParser());
 
   const corsOptions = {
@@ -123,6 +122,8 @@ async function startServer() {
       },
     })
   );
+
+  app.use(errorHandler);
 
   const PORT = process.env.PORT || 3001;
 

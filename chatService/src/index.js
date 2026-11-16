@@ -21,13 +21,10 @@ app.use(express.static(__dirname + "/public"));
 // Rate limiting
 const apiLimiter = rateLimit({
 	windowMs: 60 * 60 * 1000, // 1 hour window
-	max: 10000, // limit each IP to 100 requests per windowMs
+	max: 10000, // limit each IP to 10000 requests per windowMs
 	message: "Too many requests from this IP, please try again after an hour",
 });
 app.use(apiLimiter);
-
-// Error handling
-app.use(errorHandler);
 
 // Cookie parsing
 app.use(cookieParser());
@@ -48,6 +45,8 @@ app.post("/v1/message", MessageController.saveMessage);
 app.post("/v1/user", UserController.createUser);
 app.delete("/v1/user", UserController.deleteUser);
 app.put("/v1/user", UserController.updateUser);
+
+app.use(errorHandler);
 
 async function startServer() {
 	try {

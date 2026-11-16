@@ -21,13 +21,10 @@ app.use(express.static(__dirname + "/public"));
 // Rate limiting
 const apiLimiter = rateLimit({
 	windowMs: 60 * 60 * 1000, // 1 hour window
-	max: 10000, // limit each IP to 100 requests per windowMs
+	max: 10000, // limit each IP to 10000 requests per windowMs
 	message: "Too many requests from this IP, please try again after an hour",
 });
 app.use(apiLimiter);
-
-// Error handling
-app.use(errorHandler);
 
 // Cookie parsing
 app.use(cookieParser());
@@ -44,6 +41,8 @@ app.get('/v1/token', UserController.getTokenByPayload);
 app.post('/v1/password/compare', PasswordController.comparePasswords);
 app.put('/v1/password', PasswordController.changePassword);
 app.get('/v1/search', UserController.getManyUsersByEmail);
+
+app.use(errorHandler);
 
 async function startServer() {
 	try {
