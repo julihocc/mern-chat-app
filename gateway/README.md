@@ -8,15 +8,14 @@ Unified GraphQL API gateway for the MERN Chat Application microservices architec
 
 ## 🌐 Overview
 
-The Gateway serves as the central API endpoint, aggregating and federating data from all microservices into a unified GraphQL interface. It operates on **port 3001** and provides both HTTP and WebSocket endpoints for queries, mutations, and real-time subscriptions.
+The gateway is a backend-for-frontend. It owns one GraphQL schema and calls the auth, chat, and contact services over REST. It operates on **port 3001** and provides both HTTP and WebSocket endpoints for queries, mutations, and real-time subscriptions.
 
 ## 📋 Features
 
-- **GraphQL Federation** - Unified schema from multiple services
+- **One GraphQL schema** - Auth, chat, and contact do not expose GraphQL
 - **Apollo Server** - Modern GraphQL server implementation
 - **Real-time Subscriptions** - WebSocket support for live updates
 - **Data Source Integration** - RESTDataSource for microservice communication
-- **Schema Stitching** - Combine schemas from auth, chat, and contact services
 - **Caching Layer** - Intelligent data caching and invalidation
 - **Error Handling** - Centralized error management and reporting
 - **Authentication Middleware** - JWT token validation and user context
@@ -440,7 +439,6 @@ const normalizeUser = (serviceUser) => ({
 
 ## 🚀 Future Enhancements
 
-- [ ] **GraphQL Federation** - Apollo Federation for schema composition
 - [ ] **Advanced Caching** - Redis and CDN integration
 - [ ] **API Analytics** - Detailed usage analytics and insights
 - [ ] **Schema Versioning** - Backward-compatible schema evolution
