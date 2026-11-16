@@ -1,0 +1,87 @@
+const logger = require("../../utils/logger");
+const {
+  AuthenticationError,
+  ValidationError,
+  UserInputError,
+} = require("../../utils/graphqlErrors");
+const yup = require("yup");
+const pubSub = require("../../utils/pubsub");
+
+const sendContactRequest = async (parent: any, args: any, context: any, info: any) => {
+  logger.debug("Mutations | sendContactRequest");
+  const { recipientId } = args;
+  logger.debug(`recipientId: ${recipientId}`);
+
+  try {
+    const schema = yup.object().shape({
+      recipientId: yup.string().required(),
+    });
+
+    await schema.validate({ recipientId });
+  } catch (valitationError: any) {
+    logger.error(
+      `Error validating contact request: ${ValidationError.message}`
+    );
+    throw new UserInputError("Invalid recipient ID provided");
+  }
+
+  let sender;
+  try {
+    const { token } = context;
+    sender = await context.dataSources.authAPI.getUserByToken(token);
+    logger.debug(`sender: ${JSON.stringify(sender)}`);
+  } catch (senderError: any) {
+    logger.error(
+      `gateway\src\graphql\mutations\sendContactRequest.js \n 
+      Error retrieving sender: ${senderError.message}`
+    );
+  }
+
+  let recipient;
+  try {
+    recipient = await context.dataSources.authAPI.getUserById(recipientId);
+    logger.debug(`recipient: ${JSON.stringify(recipient)}`);
+  } catch (recipientError: any) {
+    logger.error(
+      `gateway\src\graphql\mutations\sendContactRequest.js \n
+      Error retrieving recipient: ${recipientError.message}`
+    );
+    throw new Error("Error retrieving recipient");
+  }
+
+  if (sender._id === recipient._id) {
+    logger.error("You cannot send a contact request to yourself");
+    throw new Error("You cannot send a contact request to yourself");
+  }
+
+  const existingRequest =
+    await context.dataSources.contactAPI.getContactRequestsByUsers(
+      sender._id,
+      recipient._id
+    );
+
+  if (existingRequest) {
+    logger.debug(`existingRequest: ${JSON.stringify(existingRequest)}`);
+    throw new Error("A contact request already exists between these users");
+  }
+
+  try {
+    const contactRequest =
+      await context.dataSources.contactAPI.sendContactRequest(
+        sender._id,
+        recipient._id
+      );
+    logger.debug(`contactRequest: ${JSON.stringify(contactRequest)}`);
+
+    pubSub.publish(`NEW_CONTACT_REQUEST`, {
+      newContactRequest: contactRequest,
+    });
+
+    return contactRequest;
+  } catch (err: any) {
+    logger.error(`Error sending contact request: ${err.message}`);
+    throw new Error(`Error sending contact request: ${err.message}`);
+  }
+};
+
+module.exports = { sendContactRequest };

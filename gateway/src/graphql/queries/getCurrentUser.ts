@@ -1,0 +1,22 @@
+const {AuthenticationError} = require("../../utils/graphqlErrors");
+const {debug} = require("../../utils/logger");
+const getCurrentUser = async (parent: any, args: any, context: any) => {
+	debug("queries/getCurrentUser");
+
+	const {token} = context;
+
+	if (!token) {
+		throw new AuthenticationError("You must be logged in");
+	}
+
+	const user = await context.dataSources.authAPI.getUserByToken(token);
+	debug("user:", user);
+
+	if (!user) {
+		throw new AuthenticationError("Invalid token");
+	}
+
+	return user;
+};
+
+module.exports = {getCurrentUser};

@@ -1,0 +1,11 @@
+import {useMutation} from "@apollo/client/react";
+import {SEND_CONTACT_REQUEST} from "../../gql/mutations/SEND_CONTACT_REQUEST";
+
+
+export const useSendContactRequest = () => {
+	const [sendContactRequest, {loading, error},] = (useMutation as any)(SEND_CONTACT_REQUEST);
+
+	return {
+		sendContactRequest, loading, error
+	};
+}

@@ -1,23 +1,32 @@
+import { existsSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+
+// `define.global` rewrites the identifier inside import specifiers, so
+// Apollo's `./global.js` becomes `./globalThis.js`. Point that back at the file.
+function keepGlobalFilename() {
+  return {
+    name: 'keep-global-filename',
+    resolveId(source, importer) {
+      if (!importer || source !== './globalThis.js') return null
+      const rewritten = resolve(dirname(importer), source)
+      const original = resolve(dirname(importer), 'global.js')
+      if (!existsSync(rewritten) && existsSync(original)) return original
+      return null
+    },
+  }
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    keepGlobalFilename(),
     react({
       include: "**/*.{jsx,tsx,js,ts}",
     })
   ],
-  esbuild: {
-    include: /\.(tsx?|jsx?)$/,
-    loader: 'jsx',
-  },
   optimizeDeps: {
-    esbuildOptions: {
-      loader: {
-        '.js': 'jsx',
-      },
-    },
     exclude: ['@apollo/client'],
   },
   server: {

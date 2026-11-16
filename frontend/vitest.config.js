@@ -13,7 +13,7 @@ export default defineConfig({
     environment: 'jsdom',
     
     // Setup file to configure testing environment
-    setupFiles: ['./src/test/setup.js'],
+    setupFiles: ['./src/test/setup.ts'],
     
     // Global test configuration
     globals: true,
@@ -63,17 +63,4 @@ export default defineConfig({
     }
   },
   
-  // Reuse the same esbuild configuration from main vite config
-  esbuild: {
-    include: /\.(tsx?|jsx?)$/,
-    loader: 'jsx',
-  },
-  
-  optimizeDeps: {
-    esbuildOptions: {
-      loader: {
-        '.js': 'jsx',
-      },
-    },
-  },
 })

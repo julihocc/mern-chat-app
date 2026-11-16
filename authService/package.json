@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js"
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit --pretty false"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^22.13.10",
     "nodemon": "^2.0.22",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
