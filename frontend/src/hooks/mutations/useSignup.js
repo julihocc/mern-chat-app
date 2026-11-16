@@ -11,8 +11,7 @@ export const useSignup = (setErrorMessage, navigate, dispatch) => {
 			setErrorMessage(err.message);
 			navigate("/signup");
 		}, onCompleted(data) {
-			document.cookie = `token=${data.signUp.token}; path=/; max-age=3600`;
-			dispatch(setUser());
+			dispatch(setUser(data.signUp.user));
 			navigate("/dashboard");
 		},
 	});

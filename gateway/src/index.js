@@ -11,7 +11,6 @@ const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 
 const express = require("express");
-const { execute, subscribe } = require("graphql");
 const { typeDefs } = require("./graphql/typeDefs");
 const { resolvers } = require("./graphql/resolvers");
 const errorHandler = require("./utils/errorHandler");
@@ -22,42 +21,49 @@ const rateLimit = require("express-rate-limit");
 const { AuthAPI } = require("./dataSources/AuthServiceDataSource");
 const { ChatAPI } = require("./dataSources/ChatServiceDataSource");
 const { ContactAPI } = require("./dataSources/ContactServiceDataSource");
-const { PubSub } = require("graphql-subscriptions");
 const cors = require("cors");
+const { tokenFromRequest } = require("./utils/requestToken");
+
+function buildDataSources(cache) {
+  return {
+    authAPI: new AuthAPI({ cache }),
+    chatAPI: new ChatAPI({ cache }),
+    contactAPI: new ContactAPI({ cache }),
+  };
+}
 
 async function startServer() {
   const app = express();
 
-  // const pubSub = new PubSub();
+  const httpServer = createServer(app);
 
-  const httpServer = createServer(app); // tutorial step 3
-
-  const schema = makeExecutableSchema({ typeDefs, resolvers }); // tutorial step 4
-
-  // tutorial step 5
+  const schema = makeExecutableSchema({ typeDefs, resolvers });
 
   const wsServer = new WebSocketServer({
     server: httpServer,
     path: "/graphql",
   });
 
+  let server;
 
   const serverCleanup = useServer(
     {
       schema,
+      context: async (ctx) => {
+        const token = tokenFromRequest(ctx.extra.request);
+        return {
+          token,
+          dataSources: buildDataSources(server.cache),
+        };
+      },
     },
     wsServer
   );
 
-  // tutorial step 7
-
-  const server = new ApolloServer({
-
+  server = new ApolloServer({
     schema,
-
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
-
       {
         async serverWillStart() {
           return {
@@ -85,52 +91,32 @@ async function startServer() {
   app.use(errorHandler);
   app.use(cookieParser());
 
-  app.use((req, res, next) => {
-    const token = req.cookies.authToken;
-    if (token) {
-      logger.debug(`gateway | Token: ${token}`);
-      req.token = token;
-    }
-    next();
-  });
+  const corsOptions = {
+    origin: process.env.CLIENT_ORIGIN || "http://localhost:3000",
+    credentials: true,
+  };
 
-  app.use("/graphql", 
-  cors(), 
-  express.json(), 
-  expressMiddleware(server,{
-    context: async ({ req, res }) => {
-
-
-      const {cache} = server;
-      const token = req.headers.authorization || "";
-      
-      req.token = token;
-
-      const dataSources = {
-        authAPI: new AuthAPI({cache}),
-        chatAPI: new ChatAPI({cache}),
-        contactAPI: new ContactAPI({cache}),
-      };
-
-      return {
-        req,
-        res,
-        token,
-        dataSources,
-      };
-    }
-  }
-  ));
+  app.use(
+    "/graphql",
+    cors(corsOptions),
+    express.json(),
+    expressMiddleware(server, {
+      context: async ({ req, res }) => {
+        return {
+          req,
+          res,
+          token: tokenFromRequest(req),
+          dataSources: buildDataSources(server.cache),
+        };
+      },
+    })
+  );
 
   const PORT = process.env.PORT || 3001;
 
   httpServer.listen(PORT, () => {
-    logger.debug(
-      `Server is running at http://localhost:${PORT}/graphql`
-    );
-    logger.debug(
-      `Subscriptions ready at ws://localhost:${PORT}/graphql`
-    );
+    logger.debug(`Server is running at http://localhost:${PORT}/graphql`);
+    logger.debug(`Subscriptions ready at ws://localhost:${PORT}/graphql`);
   });
 }
 

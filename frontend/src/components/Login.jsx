@@ -56,7 +56,6 @@ const Login = () => {
 		}
 
 		if (data) {
-			logger.debug("Login data:", data);
 			setErrorMessage("");
 			dispatch(setUser(data.login.user));
 

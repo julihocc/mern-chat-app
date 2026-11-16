@@ -18,9 +18,18 @@ export const rehydrateState = async () => {
 		const {data} = await apolloClient.query({
 			query: GET_CURRENT_USER, fetchPolicy: "network-only",
 		});
-		logger.debug("rehydrated user:", data.getCurrentUser);
+		const profile = data.getCurrentUser;
+		logger.debug("rehydrated user:", profile.email);
 		return {
-			user: data.getCurrentUser,
+			user: {
+				user: profile,
+				_id: profile._id,
+				email: profile.email,
+				username: profile.username,
+				isLoggedIn: true,
+				loading: false,
+				error: null,
+			},
 		};
 	} catch (err) {
 		console.error("Error retrieving current user:", err.message);

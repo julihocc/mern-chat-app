@@ -20,12 +20,12 @@ const login = async (_, {email, password}, context) => {
 	}
 
 	const token = await context.dataSources.authAPI.getTokenByPayload(user._id, user.email)
-	logger.debug(`token: ${JSON.stringify(token)}`);
 
 	context.res.cookie('authToken', token.token, {
 		httpOnly: true,
 		maxAge: 3600000,
-		sameSite: 'lax'
+		sameSite: 'lax',
+		path: '/',
 	});
 
 	return {

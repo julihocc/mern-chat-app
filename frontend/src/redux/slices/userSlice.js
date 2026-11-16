@@ -9,11 +9,20 @@ const userSlice = createSlice({
 	name: "user", initialState, reducers: {
 		fetchUserSaga: (state, action) => {
 		}, setUser: (state, action) => {
-			state.user = action.payload;
-			state.isLoggedIn = true; // Mark user as logged in
+			const profile = action.payload || null;
+			state.user = profile;
+			state.isLoggedIn = Boolean(profile);
+			state._id = profile?._id ?? null;
+			state.email = profile?.email ?? null;
+			state.username = profile?.username ?? null;
+			state.loading = false;
+			state.error = null;
 		}, logoutUser: (state) => {
 			state.isLoggedIn = false;
 			state.user = null;
+			state._id = null;
+			state.email = null;
+			state.username = null;
 		}, fetchUserRequest: (state) => {
 			state.loading = true;
 		}, fetchUserSuccess: (state, action) => {
@@ -27,7 +36,10 @@ const userSlice = createSlice({
 			state.error = action.payload;
 			state.isLoggedIn = false;
 		}, setUserUsername: (state, action) => {
-			state.user.username = action.payload;
+			state.username = action.payload;
+			if (state.user) {
+				state.user.username = action.payload;
+			}
 		},
 	},
 });

@@ -53,12 +53,12 @@ const signUp = async (
     user._id,
     user.email
   );
-  logger.debug(`token: ${JSON.stringify(token)}`);
 
   context.res.cookie("authToken", token.token, {
     httpOnly: true,
     maxAge: 3600000,
     sameSite: "lax",
+    path: "/",
   });
 
   return { token: token.token, user };  
