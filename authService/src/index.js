@@ -39,7 +39,7 @@ app.post('/v1/user', UserController.createUser);
 app.put('/v1/user', UserController.updateUser);
 app.get('/v1/contacts', UserController.getContactsByUserId);
 app.get('/v1/token', UserController.getTokenByPayload);
-app.get('/v1/password', PasswordController.getPassword)
+app.post('/v1/password/compare', PasswordController.comparePasswords);
 app.put('/v1/password', PasswordController.changePassword);
 app.get('/v1/search', UserController.getManyUsersByEmail);
 

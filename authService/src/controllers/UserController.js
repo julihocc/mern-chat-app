@@ -5,16 +5,21 @@ const {debug} = require("../utils/logger");
 const {sign} = require("jsonwebtoken");
 const {validatePassword} = require('../utils/passwordValidator')
 
+const toPublicUser = (user) => {
+	if (!user) {
+		return user;
+	}
+	const obj = typeof user.toObject === "function" ? user.toObject() : {...user};
+	delete obj.password;
+	return obj;
+};
+
 const getTokenByPayload = async (req, res) => {
 	debug("getTokenByPayload");
 	const {id, email} = req.query;
-	debug(`id: ${id}`);
-	debug(`email: ${email}`);
 	const payload = {id, email};
-	debug(`payload: ${JSON.stringify(payload)}`);
 	try {
 		const token = sign(payload, process.env.JWT_SECRET, {expiresIn: "1h"});
-		debug(`token: ${token}`);
 		res.json({token});
 		return token;
 	} catch (error) {
@@ -34,7 +39,7 @@ const createUser = async (req, res) => {
 		const hashedPassword = await encryptPassword(password);
 		const user = new User({email, username, password: hashedPassword});
 		await user.save();
-		res.json(user);
+		res.json(toPublicUser(user));
 		return user;
 	} catch (error) {
 		res.status(500).json({message: `createUser error: ${error}`});
@@ -47,8 +52,7 @@ const getManyUsersByEmail = async (req, res) => {
 	const emailsAsArray = emails.split(",");
 	debug(`emailsAsArray: ${emailsAsArray}`);
 	try {
-		const otherUsers = await User.find({email: {$in: emailsAsArray}});
-		debug(`otherUsers: ${JSON.stringify(otherUsers)}`);
+		const otherUsers = await User.find({email: {$in: emailsAsArray}}).select("-password");
 		res.json(otherUsers);
 		return otherUsers;
 	} catch (error) {
@@ -58,13 +62,13 @@ const getManyUsersByEmail = async (req, res) => {
 
 const getUser = async (req, res) => {
 	debug("UserController | getUser")
-	const {userId, email, token, username} = req.query;
+	const {userId, email, username} = req.query;
+	const token = req.get("authorization") || req.query.token;
 
 	if (userId) {
 		debug(`User id: ${userId}`);
 		try {
-			const user = await User.findById(userId);
-			debug(`user: ${JSON.stringify(user)}`);
+			const user = await User.findById(userId).select("-password");
 			res.json(user);
 			return user;
 		} catch (error) {
@@ -72,11 +76,8 @@ const getUser = async (req, res) => {
 		}
 	}
 	if (token) {
-		debug(`token: ${token}`);
-		debug(`JWT_SECRET: ${process.env.JWT_SECRET}`);
 		try {
 			const user = await retrieveUserByToken(token);
-			debug(`user: ${JSON.stringify(user)}`);
 			res.json(user);
 			return user;
 		} catch (error) {
@@ -86,8 +87,7 @@ const getUser = async (req, res) => {
 	if (email) {
 		debug(`email: ${email}`);
 		try {
-			const user = await User.findOne({email});
-			debug(`user: ${JSON.stringify(user)}`);
+			const user = await User.findOne({email}).select("-password");
 			res.json(user);
 			return user;
 		} catch (error) {
@@ -98,8 +98,7 @@ const getUser = async (req, res) => {
 	if (username) {
 		debug(`username: ${username}`);
 		try {
-			const user = await User.findOne({username});
-			debug(`user: ${JSON.stringify(user)}`);
+			const user = await User.findOne({username}).select("-password");
 			res.json(user);
 			return user;
 		} catch (error) {
@@ -120,8 +119,7 @@ const updateUser = async (req, res) => {
 		debug(`Changing username from ${username} to ${newUsername}`);
 		try {
 			await User.updateOne({username}, {$set: {username: newUsername}});
-			const user = await User.findOne({username: newUsername});
-			debug(`Updated user: ${JSON.stringify(user)}`);
+			const user = await User.findOne({username: newUsername}).select("-password");
 
 			res.json(user);
 			return user;
@@ -133,8 +131,7 @@ const updateUser = async (req, res) => {
 	if (userId && contactId) {
 		debug(`Adding new contact ${contactId} to user ${userId}`)
 		try {
-			const user = await User.findById(userId);
-			debug(`user: ${JSON.stringify(user)}`);
+			const user = await User.findById(userId).select("-password");
 			if (!user.contacts) {
 				user.contacts = [];
 			}
@@ -158,9 +155,8 @@ const getContactsByUserId = async (req, res) => {
 	const {userId} = req.query;
 	debug(`userId: ${userId}`);
 	try {
-		const user = await User.findById(userId);
-		const contacts = await User.find({_id: {$in: user.contacts}});
-		debug(`contacts: ${JSON.stringify(contacts)}`);
+		const user = await User.findById(userId).select("-password");
+		const contacts = await User.find({_id: {$in: user.contacts}}).select("-password");
 		res.json(contacts);
 		return contacts;
 	} catch (error) {

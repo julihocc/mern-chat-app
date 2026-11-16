@@ -19,18 +19,11 @@ class AuthAPI extends RESTDataSource {
 		return data;
 	}
 
-	async getPasswordComparison(password, hashed) {
-		debug("AuthAPI/getPasswordComparison",)
-		debug(`password: ${password}`);
-		debug(`hashedPassword: ${hashed}`);
-
-
-		const params = {password, hashed}
-		const data = await this.get("/v1/password/", {params});
-
-		debug(`getPasswordComparison/data: ${JSON.stringify(data)}`);
-		debug(`getPasswordComparison/data as object: ${data}`);
-		return data;
+	async getPasswordComparison(email, password) {
+		const data = await this.post("/v1/password/compare", {
+			body: {email, password},
+		});
+		return Boolean(data && data.match);
 	}
 
 	async getTokenByPayload(id, email) {
@@ -40,22 +33,13 @@ class AuthAPI extends RESTDataSource {
 
 
 		const params = {id, email}
-		const data = await this.get("/v1/token/", {params})
-
-		debug(`getTokenByPayload/data: ${JSON.stringify(data)}`);
-		return data;
+		return await this.get("/v1/token/", {params});
 	}
 
 	async getUserByToken(token) {
-		debug("AuthAPI | getUserByToken",)
-		debug(`token: ${token}`);
-
-
-		const params = {token}
-		debug(`params: ${JSON.stringify(params)}`);
-		const data = await this.get("/v1/user/", {params})
-		debug(`getUserByToken/data: ${JSON.stringify(data)}`);
-		return data;
+		return await this.get("/v1/user/", {
+			headers: {authorization: token},
+		});
 	}
 
 	async getUserByUsername(username) {
@@ -78,22 +62,10 @@ class AuthAPI extends RESTDataSource {
 		return data;
 	}
 
-	async getPasswordEncrypted(password) {
-		debug("getPasswordEncrypted",)
-		debug(`password: ${password}`);
-
-
-		const params = {password}
-		const data = await this.get("/v1/password", {params})
-		debug(`getPasswordEncrypted/data: ${JSON.stringify(data)}`);
-		return data;
-	}
-
 	async createUser(email, username, password) {
 		debug("createUser",)
 		debug(`email: ${email}`);
 		debug(`username: ${username}`);
-		debug(`password: ${password}`);
 
 		const data = await this.post("/v1/user", {
 			body: {
@@ -107,7 +79,6 @@ class AuthAPI extends RESTDataSource {
 	async changePassword(email, password) {
 		debug("changePassword",)
 		debug(`email: ${email}`);
-		debug(`password: ${password}`);
 
 		const data = await this.put("/v1/password", {
 			body: {

@@ -18,8 +18,7 @@ const changeUsername = async (_, args, context) => {
 		throw new AuthenticationError('Not user found');
 	}
 
-	const match = await context.dataSources.authAPI.getPasswordComparison(currentPassword, user.password);
-	logger.debug(`Current password match: ${match}`);
+	const match = await context.dataSources.authAPI.getPasswordComparison(user.email, currentPassword);
 
 	if (!match) {
 		throw new AuthenticationError('Invalid password. Not able to change username!');

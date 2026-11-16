@@ -1,18 +1,16 @@
 const logger = require("../../utils/logger");
 
 const login = async (_, {email, password}, context) => {
-	logger.debug("login", {email, password});
+	logger.debug(`login attempt for ${email}`);
 
 	const user = await context.dataSources.authAPI.getUserByEmail(email);
-	logger.debug(`user: ${JSON.stringify(user)}`);
 
 	if (!user) {
 		logger.error(`No user with email: ${email}`);
 		throw new Error(`No user with email: ${email}`);
 	}
 
-	const match = await context.dataSources.authAPI.getPasswordComparison(password, user.password);
-	logger.debug(`match: ${JSON.stringify(match)}`);
+	const match = await context.dataSources.authAPI.getPasswordComparison(email, password);
 
 	if (!match) {
 		logger.error(`Invalid password for email: ${email}`);

@@ -3,7 +3,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/UserModel");
-const logger = require("./logger");
 const saltRounds = 10;
 
 const encryptPassword = async (password) => {
@@ -15,21 +14,14 @@ const comparePassword = async (password, hash) => {
 };
 
 const retrieveUserByToken = async (token) => {
-	logger.debug(`retrieveUserByToken: ${token}`);
-	const tokenString = token.split(" ")[1];
-	logger.debug(`tokenString: ${tokenString}`);
-
+	const tokenString = String(token).replace(/^bearer\s+/i, "");
 	const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);
-	logger.debug(`decoded: ${JSON.stringify(decoded)}`);
 
 	try {
-		const user = await User.findById(decoded.id);
-		logger.debug(`getUserFromToken: ${JSON.stringify(user)}`)
-		return user;
+		return await User.findById(decoded.id).select("-password");
 	} catch (err) {
 		throw new Error(err);
 	}
-
 };
 
 module.exports = {encryptPassword, comparePassword, retrieveUserByToken};

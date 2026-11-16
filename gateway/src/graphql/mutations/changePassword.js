@@ -23,33 +23,12 @@ const changePassword = async (_, {oldPassword, newPassword}, context) => {
 		logger.debug(`User found: ${user.email} (${user.id})`);
 	}
 
-	const currentHashedPassword = user.password;
-	logger.debug(`Current hashed password: ${currentHashedPassword}`);
-
-
-	// const isPasswordValid = await comparePassword(oldPassword, user.password);
-	const isPasswordValid = await context.dataSources.authAPI.getPasswordComparison(oldPassword, currentHashedPassword);
+	const isPasswordValid = await context.dataSources.authAPI.getPasswordComparison(user.email, oldPassword);
 
 	if (!isPasswordValid) {
 		throw new UserInputError("Incorrect password.");
 	}
 
-	const hashedNewPassword = await context.dataSources.authAPI.getPasswordEncrypted(newPassword);
-
-	if (currentHashedPassword === hashedNewPassword) {
-		throw new UserInputError("New password cannot be the same as old password");
-	}
-
-	// try {
-	// 	logger.debug(`Changing password for user: ${user.email}`);
-	// 	await User.updateOne({email: user.email}, {$set: {password: hashedNewPassword}},);
-	// 	const updatedUser = await User.findOne({email: user.email});
-	// 	logger.debug(`Updated user: ${JSON.stringify(updatedUser)}`);
-	// 	return updatedUser;
-	// } catch (err) {
-	// 	logger.error(`Error changing password: ${err.message}`);
-	// 	throw new Error("Error changing password");
-	// }
 	try {
 		logger.debug(`Changing password for user: ${user.email}`);
 		const updatedUser = await context.dataSources.authAPI.changePassword(user.email, newPassword);
