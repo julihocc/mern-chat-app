@@ -33,7 +33,7 @@ Subscriptions (`newMessage`, `newContactRequest`, `newContact`, `newChatRoom`) u
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22+
 - Docker and Docker Compose, for the full stack
 
 ### Docker Compose

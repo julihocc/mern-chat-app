@@ -1,5 +1,5 @@
 #contactService/Dockerfile
-FROM node:16.20.1
+FROM node:22-bookworm
 
 # Create and Set working directory
 RUN mkdir -p /usr/src/app
