@@ -1,4 +1,4 @@
-const {UserInputError} = require("apollo-server-express");
+const {UserInputError} = require("../../utils/graphqlErrors");
 const {debug} = require("winston");
 
 const getMessagesByChatRoomId = async (parent, args, context) => {

@@ -1,4 +1,4 @@
-const {AuthenticationError} = require("apollo-server-express");
+const {AuthenticationError} = require("../../utils/graphqlErrors");
 const {debug} = require("../../utils/logger");
 const getCurrentUser = async (parent, args, context) => {
 	debug("queries/getCurrentUser");

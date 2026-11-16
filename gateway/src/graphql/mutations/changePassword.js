@@ -1,6 +1,6 @@
 const {
 	AuthenticationError, UserInputError,
-} = require("apollo-server-express");
+} = require("../../utils/graphqlErrors");
 const logger = require("../../utils/logger");
 
 const changePassword = async (_, {oldPassword, newPassword}, context) => {

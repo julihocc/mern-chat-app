@@ -1,4 +1,4 @@
-const {AuthenticationError} = require("apollo-server-express");
+const {AuthenticationError} = require("../../utils/graphqlErrors");
 const {debug} = require("winston");
 const getContactRequestsByContext = async (parent, args, context) => {
 	debug("ContactController | getContactRequestsByContext")

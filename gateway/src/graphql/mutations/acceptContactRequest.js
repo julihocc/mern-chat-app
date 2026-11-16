@@ -1,5 +1,5 @@
 const logger = require("../../utils/logger");
-const {AuthenticationError} = require("apollo-server");
+const {AuthenticationError} = require("../../utils/graphqlErrors");
 const pubSub = require("../../utils/pubsub");
 
 const acceptContactRequest = async (parent, {requestId}, context) => {

@@ -1,4 +1,4 @@
-const {AuthenticationError} = require('apollo-server-express');
+const {AuthenticationError} = require('../../utils/graphqlErrors');
 const logger = require('../../utils/logger');
 
 const getChatRoomById = async (_, {chatRoomId}, context) => {

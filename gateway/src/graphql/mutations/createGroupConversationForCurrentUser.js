@@ -1,5 +1,5 @@
 const logger = require("../../utils/logger");
-const { AuthenticationError } = require("apollo-server-express");
+const { AuthenticationError } = require("../../utils/graphqlErrors");
 const pubSub = require("../../utils/pubsub");
 const e = require("express");
 

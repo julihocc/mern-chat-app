@@ -1,5 +1,5 @@
 // contactService/src/graphql/mutations/changeUsername.js
-const {AuthenticationError} = require('apollo-server-express');
+const {AuthenticationError} = require('../../utils/graphqlErrors');
 const logger = require("../../utils/logger");
 
 const changeUsername = async (_, args, context) => {

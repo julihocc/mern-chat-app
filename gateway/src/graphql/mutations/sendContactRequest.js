@@ -3,7 +3,7 @@ const {
   AuthenticationError,
   ValidationError,
   UserInputError,
-} = require("apollo-server-express");
+} = require("../../utils/graphqlErrors");
 const yup = require("yup");
 const pubSub = require("../../utils/pubsub");
 

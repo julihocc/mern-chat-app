@@ -1,6 +1,6 @@
 // contactService\src\graphql\resolvers\mutations\signUp.js
 
-const { UserInputError } = require("apollo-server-express");
+const { UserInputError } = require("../../utils/graphqlErrors");
 const logger = require("../../utils/logger");
 
 const signUp = async (

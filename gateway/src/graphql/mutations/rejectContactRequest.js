@@ -1,5 +1,5 @@
 const logger = require("../../utils/logger");
-const {AuthenticationError} = require("apollo-server-express");
+const {AuthenticationError} = require("../../utils/graphqlErrors");
 
 const rejectContactRequest = async (parent, {requestId}, context) => {
 	logger.debug(`Mutations | rejectContactRequest`)
