@@ -8,6 +8,7 @@ const errorHandler = require("./utils/errorHandler");
 const logger = require("./utils/logger");
 const ChatController = require("./controllers/ChatController");
 const MessageController = require("./controllers/MessageController");
+const SchoolController = require("./controllers/SchoolController");
 const UserController = require("./controllers/UserController");
 const requireInternalToken = require("./utils/requireInternalToken");
 
@@ -29,7 +30,7 @@ app.use(apiLimiter);
 // Cookie parsing
 app.use(cookieParser());
 
-app.use(express.json());
+app.use(express.json({limit: "8mb"}));
 app.use(requireInternalToken);
 
 // RESTful routes
@@ -45,6 +46,14 @@ app.post("/v1/message", MessageController.saveMessage);
 app.post("/v1/user", UserController.createUser);
 app.delete("/v1/user", UserController.deleteUser);
 app.put("/v1/user", UserController.updateUser);
+
+app.post("/v1/school-room", SchoolController.startSchoolRoom);
+app.post("/v1/school-room/claim", SchoolController.claimSchoolRoom);
+app.get("/v1/school-rooms", SchoolController.listWaitingRooms);
+app.get("/v1/message", SchoolController.getMessage);
+app.post("/v1/knowledge/document", SchoolController.saveDocument);
+app.get("/v1/knowledge/search", SchoolController.searchKnowledge);
+app.post("/v1/marked-answer", SchoolController.saveMarkedAnswer);
 
 app.use(errorHandler);
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tsx --test src/school/knowledge.test.ts",
     "start": "tsx src/index.ts",
     "typecheck": "tsc --noEmit --pretty false"
   },
@@ -23,6 +23,7 @@
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.5",
     "mongoose": "^8.0.2",
+    "pdf-parse": "^1.1.1",
     "winston": "^3.11.0"
   }
 }
