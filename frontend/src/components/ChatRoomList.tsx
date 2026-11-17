@@ -108,7 +108,7 @@ const ChatRoomList = () => {
       );
     }
     setSortedChatRooms(temp);
-  }, [sortOption, setSortedChatRooms, unsortedChatRooms, sortedChatRooms]);
+  }, [sortOption, unsortedChatRooms]);
 
   const handleSortChange = (event: any) => {
     logger.debug(
