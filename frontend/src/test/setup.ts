@@ -1,8 +1,20 @@
 // Test setup file for Vitest + React Testing Library
+import { readFileSync } from "node:fs"
+import path from "node:path"
 import { expect, afterEach, beforeAll, afterAll } from 'vitest'
 import { cleanup } from '@testing-library/react'
 import * as matchers from '@testing-library/jest-dom/matchers'
 import { server } from './mocks/server'
+
+const resourcesCsv = readFileSync(path.join(process.cwd(), "public", "resources.csv"), "utf8")
+const nativeFetch = globalThis.fetch.bind(globalThis)
+globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
+  const url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url
+  if (url.includes("resources.csv")) {
+    return new Response(resourcesCsv, {status: 200, headers: {"Content-Type": "text/csv"}})
+  }
+  return nativeFetch(input, init)
+}) as typeof fetch
 
 // Extend Vitest's expect with jest-dom matchers
 expect.extend(matchers)

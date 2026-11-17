@@ -1,5 +1,6 @@
 // GraphQL query and mutation mocks for testing
 import { gql } from '@apollo/client'
+import { GET_CHAT_ROOMS_FOR_CURRENT_USER } from '../../gql/queries/GET_CHAT_ROOMS_FOR_CURRENT_USER'
 
 // Login mutation mock
 export const LOGIN_MUTATION = gql`
@@ -45,20 +46,8 @@ export const GET_CURRENT_USER = gql`
   }
 `
 
-// Get chat rooms query mock
-export const GET_CHAT_ROOMS = gql`
-  query GetChatRoomsForCurrentUser {
-    getChatRoomsForCurrentUser {
-      _id
-      createdAt
-      participantIds {
-        _id
-        username
-        email
-      }
-    }
-  }
-`
+// Same document the chat list hook sends. A different selection set never matches.
+export const GET_CHAT_ROOMS = GET_CHAT_ROOMS_FOR_CURRENT_USER
 
 // Get messages query mock
 export const GET_MESSAGES = gql`
@@ -151,6 +140,7 @@ export const mockGetCurrentUser = {
   request: {
     query: GET_CURRENT_USER
   },
+  maxUsageCount: Number.POSITIVE_INFINITY,
   result: {
     data: {
       getCurrentUser: mockUser
@@ -162,6 +152,7 @@ export const mockGetChatRooms = {
   request: {
     query: GET_CHAT_ROOMS
   },
+  maxUsageCount: Number.POSITIVE_INFINITY,
   result: {
     data: {
       getChatRoomsForCurrentUser: [mockChatRoom]

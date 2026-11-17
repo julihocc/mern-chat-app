@@ -9,6 +9,9 @@ export const GET_CHAT_ROOM_BY_ID = gql`
       }
       messageIds
       createdAt
+      groupId
+      status
+      expertId
     }
   }
 `;

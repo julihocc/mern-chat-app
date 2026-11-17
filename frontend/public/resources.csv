@@ -34,4 +34,21 @@ settings,Settings,Paramètres,Ajustes
 currentUser,Current user,Utilisateur actuel,Usuario actual
 passwordsDontMatch,Passwords do not match,Les mots de passe ne correspondent pas,Las contraseñas no corresponden
 allFieldsRequired,All fields are required,Tous les champs sont obligatoires,Todos los campos son obligatorios
-pendingContactRequests,Pending contact requests,Demandes de contact en attente,Solicitudes de contacto pendientes   
+pendingContactRequests,Pending contact requests,Demandes de contact en attente,Solicitudes de contacto pendientes
+coursesAndOffices,Courses and offices,Cours et bureaux,Cursos y oficinas
+askQuestion,Ask a question,Poser une question,Hacer una pregunta
+makeClearer,Make this clearer,Rendre ceci plus clair,Hacer esto más claro
+useThis,Use this,Utiliser ceci,Usar esto
+waitingQuestions,Waiting questions,Questions en attente,Preguntas en espera
+createCourseOrOffice,Create a course or an office,Créer un cours ou un bureau,Crear un curso o una oficina
+name,Name,Nom,Nombre
+kind,Kind,Type,Tipo
+course,Course,Cours,Curso
+office,Office,Bureau,Oficina
+addExpert,Add an expert,Ajouter un expert,Agregar un experto
+uploadDocument,Upload a document,Téléverser un document,Subir un documento
+schoolWide,School-wide,Pour toute l'école,Para toda la escuela
+takeQuestion,Take question,Prendre la question,Tomar la pregunta
+suggestReply,Suggest a reply,Proposer une réponse,Sugerir una respuesta
+nothingToSuggest,Nothing to suggest,Rien à suggérer,Nada que sugerir
+keepThisAnswer,Keep this answer,Garder cette réponse,Conservar esta respuesta

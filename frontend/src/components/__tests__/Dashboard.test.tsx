@@ -3,7 +3,22 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { screen, waitFor } from '@testing-library/react'
 import { renderWithProviders, mockUserState } from '@test/utils/testing-library.tsx'
 import { mockGetCurrentUser, mockGetChatRooms } from '@test/mocks/graphql'
+import { SCHOOL_GROUPS } from '../../gql/school'
 import Dashboard from '../Dashboard.tsx'
+
+const schoolGroupsMock = {
+  request: { query: SCHOOL_GROUPS },
+  maxUsageCount: Number.POSITIVE_INFINITY,
+  result: {
+    data: {
+      schoolGroups: [],
+      myExpertGroups: [],
+      canCreateSchoolGroup: false,
+    },
+  },
+}
+
+const dashboardMocks = (...mocks: any[]) => [schoolGroupsMock, mockGetCurrentUser, ...mocks]
 
 describe('Dashboard Component', () => {
   describe('Authentication Required', () => {
@@ -61,7 +76,7 @@ describe('Dashboard Component', () => {
     it('renders dashboard with user information', async () => {
       await renderWithProviders(<Dashboard />, {
         preloadedState: mockUserState,
-        mocks: [mockGetCurrentUser, mockGetChatRooms]
+        mocks: dashboardMocks(mockGetChatRooms)
       })
 
       await waitFor(() => {
@@ -73,15 +88,14 @@ describe('Dashboard Component', () => {
     it('displays all main sections', async () => {
       await renderWithProviders(<Dashboard />, {
         preloadedState: mockUserState,
-        mocks: [mockGetCurrentUser, mockGetChatRooms]
+        mocks: dashboardMocks(mockGetChatRooms)
       })
 
       await waitFor(() => {
         // Check for main dashboard sections
         expect(screen.getByText(/dashboard/i)).toBeInTheDocument()
-        expect(screen.getByText(/pending contact requests/i)).toBeInTheDocument()
-        expect(screen.getByText(/create group conversation/i)).toBeInTheDocument()
-        expect(screen.getByText(/send contact request/i)).toBeInTheDocument()
+        expect(screen.getAllByText(/courses and offices/i).length).toBeGreaterThan(0)
+        expect(screen.getByText(/ask a question/i)).toBeInTheDocument()
         expect(screen.getByText(/chat list/i)).toBeInTheDocument()
       })
     })
@@ -89,7 +103,7 @@ describe('Dashboard Component', () => {
     it('shows user gravatar and settings link', async () => {
       await renderWithProviders(<Dashboard />, {
         preloadedState: mockUserState,
-        mocks: [mockGetCurrentUser, mockGetChatRooms]
+        mocks: dashboardMocks(mockGetChatRooms)
       })
 
       await waitFor(() => {
@@ -102,7 +116,7 @@ describe('Dashboard Component', () => {
     it('renders chat rooms list when available', async () => {
       await renderWithProviders(<Dashboard />, {
         preloadedState: mockUserState,
-        mocks: [mockGetCurrentUser, mockGetChatRooms]
+        mocks: dashboardMocks(mockGetChatRooms)
       })
 
       await waitFor(() => {
@@ -116,6 +130,7 @@ describe('Dashboard Component', () => {
         request: {
           query: mockGetChatRooms.request.query
         },
+        maxUsageCount: Number.POSITIVE_INFINITY,
         result: {
           data: {
             getChatRoomsForCurrentUser: []
@@ -125,7 +140,7 @@ describe('Dashboard Component', () => {
 
       await renderWithProviders(<Dashboard />, {
         preloadedState: mockUserState,
-        mocks: [mockGetCurrentUser, emptyChatRoomsMock]
+        mocks: dashboardMocks(emptyChatRoomsMock)
       })
 
       await waitFor(() => {
@@ -139,29 +154,25 @@ describe('Dashboard Component', () => {
     it('integrates all child components correctly', async () => {
       await renderWithProviders(<Dashboard />, {
         preloadedState: mockUserState,
-        mocks: [mockGetCurrentUser, mockGetChatRooms]
+        mocks: dashboardMocks(mockGetChatRooms)
       })
 
       await waitFor(() => {
         // Verify all major child components are rendered
-        expect(screen.getByText(/pending contact requests/i)).toBeInTheDocument()
-        expect(screen.getByText(/create group conversation/i)).toBeInTheDocument()
-        expect(screen.getByText(/send contact request/i)).toBeInTheDocument()
+        expect(screen.getAllByText(/courses and offices/i).length).toBeGreaterThan(0)
+        expect(screen.getByText(/ask a question/i)).toBeInTheDocument()
         expect(screen.getByText(/chat list/i)).toBeInTheDocument()
-        expect(screen.getByText(/contacts/i)).toBeInTheDocument()
       })
     })
 
     it('maintains responsive grid layout', async () => {
       await renderWithProviders(<Dashboard />, {
         preloadedState: mockUserState,
-        mocks: [mockGetCurrentUser, mockGetChatRooms]
+        mocks: dashboardMocks(mockGetChatRooms)
       })
 
       await waitFor(() => {
-        // Check that Material-UI Grid components are present
-        const container = screen.getByRole('main') || document.querySelector('.MuiContainer-root')
-        expect(container).toBeInTheDocument()
+        expect(document.querySelector('.MuiContainer-root')).toBeInTheDocument()
       })
     })
   })
@@ -172,7 +183,7 @@ describe('Dashboard Component', () => {
       // For now, we'll just ensure the component can handle data updates
       const { rerender } = await renderWithProviders(<Dashboard />, {
         preloadedState: mockUserState,
-        mocks: [mockGetCurrentUser, mockGetChatRooms]
+        mocks: dashboardMocks(mockGetChatRooms)
       })
 
       await waitFor(() => {

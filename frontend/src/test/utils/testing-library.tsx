@@ -109,6 +109,11 @@ export const mockUserState = {
     isLoggedIn: true,
     loading: false,
     error: null,
+    user: {
+      _id: 'test-user-id',
+      email: 'test@example.com',
+      username: 'testuser',
+    },
   }
 }
 

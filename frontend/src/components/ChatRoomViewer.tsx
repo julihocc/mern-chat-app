@@ -28,6 +28,7 @@ import { initiateFetchCurrentUser } from "../redux/actions";
 import logger from "../utils/logger";
 import { Gravatar } from "./Gravatar.tsx";
 import { useSendMessage } from "../hooks/mutations/useSendMessage";
+import SchoolAssist from "./SchoolAssist.tsx";
 
 const ChatRoomViewer = () => {
   const { t } = useTranslation();
@@ -224,6 +225,15 @@ const ChatRoomViewer = () => {
               </ListItem>
             ))}
       </List>
+      <SchoolAssist
+        chatRoomId={chatRoomId}
+        groupId={chatRoom.data.getChatRoomById.groupId}
+        expertId={chatRoom.data.getChatRoomById.expertId}
+        currentUserId={currentUserId}
+        draft={messageBody}
+        setDraft={setMessageBody}
+        messages={messages}
+      />
       <form onSubmit={(e) => handleSendMessage(e, currentUserId, chatRoomId)}>
         <Stack direction="row" spacing={1}>
           <TextField

@@ -7,15 +7,12 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import SendContactRequestForm from "./SendContactRequestForm.tsx";
-import PendingContactRequestsList from "./PendingContactRequestsList.tsx";
-import CreateGroupConversation from "./CreateGroupConversation.tsx";
 import { useTranslation } from "react-i18next";
 import logger from "../utils/logger";
 import { initiateFetchCurrentUser } from "../redux/actions";
 import { Gravatar } from "./Gravatar.tsx";
 import ChatRoomList from "./ChatRoomList.tsx";
-import { ContactListWithChatRoom } from "./ContactListWithChatRoom.tsx";
+import SchoolHome from "./SchoolHome.tsx";
 import { Link } from "react-router-dom";
 
 const Dashboard = (_props: { onLogout?: () => void }) => {
@@ -60,13 +57,7 @@ const Dashboard = (_props: { onLogout?: () => void }) => {
               </Typography>
             </Grid>
             <Grid item>
-              <PendingContactRequestsList />
-            </Grid>
-            <Grid item>
-              <CreateGroupConversation />
-            </Grid>
-            <Grid item>
-              <SendContactRequestForm />
+              <SchoolHome />
             </Grid>
             {/*</Grid>*/}
           </Grid>
@@ -78,9 +69,6 @@ const Dashboard = (_props: { onLogout?: () => void }) => {
             </Grid>
             <Grid item>
               <ChatRoomList />
-            </Grid>
-            <Grid item>
-              <ContactListWithChatRoom />
             </Grid>
             <Grid item>
               <Link to="/settings">
