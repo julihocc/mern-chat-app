@@ -9,6 +9,7 @@ const logger = require("./utils/logger");
 const ContactController = require("./controllers/ContactController");
 const UserController = require("./controllers/UserController");
 const ChatController = require("./controllers/ChatController");
+const GroupController = require("./controllers/GroupController");
 const requireInternalToken = require("./utils/requireInternalToken");
 
 const PORT = process.env.PORT || 4000;
@@ -43,6 +44,12 @@ app.delete("/v1/user", UserController.deleteUser);
 app.put("/v1/user", UserController.updateUser);
 
 app.post("/v1/chat-room", ChatController.createChatRoom);
+
+app.post("/v1/group", GroupController.createGroup);
+app.get("/v1/groups", GroupController.listGroups);
+app.get("/v1/group", GroupController.getGroup);
+app.post("/v1/membership", GroupController.addMembership);
+app.get("/v1/memberships", GroupController.listMemberships);
 
 app.use(errorHandler);
 
