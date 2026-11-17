@@ -78,6 +78,8 @@ services:
       - CONTACT_SERVICE_URL=http://contact_service:4000
       - CHAT_SERVICE_URL=http://chat_service:4500
       - AUTH_SERVICE_URL=http://auth_service:5000
+      - XAI_API_KEY=${XAI_API_KEY:-}
+      - BOOTSTRAP_EXPERT_EMAIL=${BOOTSTRAP_EXPERT_EMAIL:-}
 #    depends_on:
 #      mongo:
 #        condition: service_started

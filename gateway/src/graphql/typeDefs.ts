@@ -35,6 +35,9 @@ const typeDefs = `
     participantIds: [ID!]!
     messageIds: [ID]
     createdAt: String!
+    groupId: ID
+    status: String
+    expertId: ID
   }
 
   type ChatRoomPopulated {
@@ -42,6 +45,29 @@ const typeDefs = `
     participantIds: [User!]!
     messageIds: [ID]
     createdAt: String!
+    groupId: ID
+    status: String
+    expertId: ID
+  }
+
+  type SchoolGroup {
+    _id: ID!
+    name: String!
+    kind: String!
+  }
+
+  type WaitingConversation {
+    _id: ID!
+    groupId: ID!
+    question: String!
+    username: String!
+    open: Boolean!
+  }
+
+  type ReplyProposal {
+    proposal: String
+    nothingToSuggest: Boolean!
+    excerpts: [String!]!
   }
 
   type Message {
@@ -93,6 +119,10 @@ const typeDefs = `
     # testing integration
     getUserByEmail(email: String!): User
     getManyUsersByEmail(emails: [String!]!): [User]
+    schoolGroups: [SchoolGroup!]!
+    myExpertGroups: [SchoolGroup!]!
+    canCreateSchoolGroup: Boolean!
+    waitingConversations(groupId: ID!): [WaitingConversation!]!
   }
 
   type Mutation {
@@ -115,6 +145,14 @@ const typeDefs = `
     sendContactRequest(recipientId: ID!): ContactRequest
     acceptContactRequest(requestId: ID!): ContactRequest
     rejectContactRequest(requestId: ID!): ContactRequest
+    createSchoolGroup(name: String!, kind: String!): SchoolGroup!
+    addExpert(groupId: ID!, email: String!): SchoolGroup!
+    startSchoolConversation(groupId: ID!, body: String!): ChatRoom!
+    takeSchoolConversation(chatRoomId: ID!): ChatRoom!
+    suggestQuestionWording(groupId: ID!, draft: String!): String!
+    suggestReply(chatRoomId: ID!): ReplyProposal!
+    uploadSchoolDocument(groupId: ID, schoolWide: Boolean!, filename: String!, file: String!): Boolean!
+    markAnswer(messageId: ID!): Boolean!
   }
 
   type Subscription {
@@ -122,6 +160,7 @@ const typeDefs = `
     newContactRequest: ContactRequest!
     newContact: ContactRequest!
     newChatRoom: ChatRoom!
+    waitingConversation(groupId: ID!): WaitingConversation!
   }
 `;
 

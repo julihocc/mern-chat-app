@@ -76,6 +76,27 @@ const subscriptions = {
 			}
 		),
 	},
+	waitingConversation: {
+		subscribe: withFilter(
+			(_parent: any, args: any, context: any) => {
+				requireUser(context);
+				if (!args.groupId) {
+					throw new GraphQLError("groupId is required", {
+						extensions: {code: "BAD_USER_INPUT"},
+					});
+				}
+				return pubSub.asyncIterator("WAITING_CONVERSATION");
+			},
+			async (payload: any, args: any, context: any) => {
+				const item = payload && payload.waitingConversation;
+				if (!item || !sameId(item.groupId, args.groupId)) {
+					return false;
+				}
+				const memberships = await context.dataSources.contactAPI.listMemberships(context.userId);
+				return Array.isArray(memberships) && memberships.some((membership: any) => sameId(membership.groupId, args.groupId));
+			}
+		),
+	},
 	newChatRoom: {
 		subscribe: withFilter(
 			(_parent: any, _args: any, context: any) => {

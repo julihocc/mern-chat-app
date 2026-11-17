@@ -120,6 +120,38 @@ class ChatAPI extends RESTDataSource {
         return data;
 	}
 
+	async startSchoolRoom(studentId: any, groupId: any, body: any) {
+		return await this.post("/v1/school-room", {body: {studentId, groupId, body}});
+	}
+
+	async claimSchoolRoom(chatRoomId: any, expertId: any) {
+		return await this.post("/v1/school-room/claim", {body: {chatRoomId, expertId}});
+	}
+
+	async listWaitingRooms(groupId: any) {
+		return await this.get("/v1/school-rooms", {params: {groupId}});
+	}
+
+	async getMessage(messageId: any) {
+		return await this.get("/v1/message", {params: {messageId}});
+	}
+
+	async saveDocument(filename: any, scope: any, groupId: any, file: any, uploadedBy: any) {
+		return await this.post("/v1/knowledge/document", {
+			body: {filename, scope, groupId, file, uploadedBy},
+		});
+	}
+
+	async searchKnowledge(groupId: any, q: any) {
+		return await this.get("/v1/knowledge/search", {params: {groupId, q}});
+	}
+
+	async saveMarkedAnswer(groupId: any, questionText: any, answerText: any, messageId: any, markedBy: any) {
+		return await this.post("/v1/marked-answer", {
+			body: {groupId, questionText, answerText, messageId, markedBy},
+		});
+	}
+
 	async getChatRoomsByUserId(userId: any) {
 		debug("ChatAPI | getChatRoomsForCurrentUser")
 		debug(`userId: ${userId}`);

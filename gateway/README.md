@@ -86,6 +86,10 @@ GRAPHQL_PLAYGROUND=true      # Default: true in development
 GRAPHQL_INTROSPECTION=true   # Default: true in development
 JWT_SECRET=your_jwt_secret   # For token validation
 CORS_ORIGIN=http://localhost:3000  # Frontend URL
+
+# School expert chat. Keep the key on the gateway only.
+XAI_API_KEY=                     # xAI key for rephrase and reply proposals
+BOOTSTRAP_EXPERT_EMAIL=          # Email of the first expert, who can create the first course or office
 ```
 
 ## 📊 GraphQL Schema

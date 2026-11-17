@@ -34,6 +34,7 @@ const { getContactRequests } = require("./queries/getContactRequests");
 const { getUserByEmail } = require("./queries/getUserByEmail");
 const { getManyUsersByEmail } = require("./queries/getManyUsersByEmail");
 const { GraphQLUpload } = require("graphql-upload");
+const school = require("./school");
 const subscriptions = require("./subscriptions");
 const { PubSub } = require("graphql-subscriptions");
 
@@ -53,6 +54,7 @@ const resolvers = {
     getContactsWithChatRoom,
     getContactRequests,
     getUserById,
+    ...school.Query,
   },
 
   Mutation: {
@@ -66,6 +68,7 @@ const resolvers = {
     sendContactRequest,
     acceptContactRequest,
     rejectContactRequest,
+    ...school.Mutation,
   },
 
   // Subscription: {

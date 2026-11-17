@@ -112,6 +112,26 @@ class ContactAPI extends RESTDataSource {
 		return data;
 	}
 
+	async createGroup(name: any, kind: any, createdBy: any) {
+		return await this.post("/v1/group", {body: {name, kind, createdBy}});
+	}
+
+	async listGroups() {
+		return await this.get("/v1/groups");
+	}
+
+	async getGroup(groupId: any) {
+		return await this.get("/v1/group", {params: {groupId}});
+	}
+
+	async addMembership(userId: any, groupId: any) {
+		return await this.post("/v1/membership", {body: {userId, groupId}});
+	}
+
+	async listMemberships(userId: any) {
+		return await this.get("/v1/memberships", {params: {userId}});
+	}
+
 	async createChatRoomWithParticipantIds(chatRoomId: any, participantIds: any) {
 		debug("ContactAPI | createChatRoomWithParticipantIds");
 		debug(`chatRoomId: ${chatRoomId}`);
